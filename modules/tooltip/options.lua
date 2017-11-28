@@ -60,8 +60,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local statusbar_text = ns.createFonstring("tooltip", "Healthbar:")
 		statusbar_text:SetPoint("LEFT", border, "RIGHT", 10, 0)
 
-		local statusbar = ns.createInputbox("tooltip", 100, 20, LolzenUIcfg.tooltip["tip_healthbar_texture"])
-		statusbar:SetPoint("LEFT", statusbar_text, "RIGHT", 10, 0)
+		local statusbar = ns.createPicker("tooltip", "statusbar", "tip_statusbar", 120, LolzenUIcfg.tooltip["tip_healthbar_texture"])
+		statusbar:SetPoint("LEFT", statusbar_text, "RIGHT", -10, -3)
 
 		local header3 = ns.createHeader("tooltip", "Status flags:")
 		header3:SetPoint("TOPLEFT", border_text, "BOTTOMLEFT", 0, -20)
@@ -105,7 +105,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
 			LolzenUIcfg.tooltip["tip_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)]
 			LolzenUIcfg.tooltip["tip_border"] = border:GetText()
-			LolzenUIcfg.tooltip["tip_healthbar_texture"] = statusbar:GetText()
+			LolzenUIcfg.tooltip["tip_healthbar_texture"] = UIDropDownMenu_GetSelectedName(statusbar)
 			LolzenUIcfg.tooltip["tip_statusflag_afk"] = afk_flag:GetText()
 			LolzenUIcfg.tooltip["tip_statusflag_dnd"] = dnd_flag:GetText()
 			LolzenUIcfg.tooltip["tip_statusflag_off"] = off_flag:GetText()
@@ -121,7 +121,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_anchor1"] = "BOTTOMRIGHT"
 			LolzenUIcfg.tooltip["tip_anchor2"] = "BOTTOMRIGHT"
 			LolzenUIcfg.tooltip["tip_border"] = "border"
-			LolzenUIcfg.tooltip["tip_healthbar_texture"] = "statusbar"
+			LolzenUIcfg.tooltip["tip_healthbar_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.tooltip["tip_statusflag_afk"] = "AFK|"
 			LolzenUIcfg.tooltip["tip_statusflag_dnd"] = "DND|"
 			LolzenUIcfg.tooltip["tip_statusflag_off"] = "(Off)"

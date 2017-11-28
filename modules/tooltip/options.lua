@@ -54,11 +54,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local border_text = ns.createFonstring("tooltip", "Border:")
 		border_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
 
-		local border = ns.createInputbox("tooltip", 100, 20, LolzenUIcfg.tooltip["tip_border"])
-		border:SetPoint("LEFT", border_text, "RIGHT", 10, 0)
+		local border = ns.createPicker("tooltip", "border", "tip_border", 120, LolzenUIcfg.tooltip["tip_border"])
+		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
 
 		local statusbar_text = ns.createFonstring("tooltip", "Healthbar:")
-		statusbar_text:SetPoint("LEFT", border, "RIGHT", 10, 0)
+		statusbar_text:SetPoint("LEFT", border, "RIGHT", -5, 3)
 
 		local statusbar = ns.createPicker("tooltip", "statusbar", "tip_statusbar", 120, LolzenUIcfg.tooltip["tip_healthbar_texture"])
 		statusbar:SetPoint("LEFT", statusbar_text, "RIGHT", -10, -3)
@@ -104,7 +104,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_posy"] = tonumber(pos_y:GetText())
 			LolzenUIcfg.tooltip["tip_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
 			LolzenUIcfg.tooltip["tip_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)]
-			LolzenUIcfg.tooltip["tip_border"] = border:GetText()
+			LolzenUIcfg.tooltip["tip_border"] = UIDropDownMenu_GetSelectedName(border)
 			LolzenUIcfg.tooltip["tip_healthbar_texture"] = UIDropDownMenu_GetSelectedName(statusbar)
 			LolzenUIcfg.tooltip["tip_statusflag_afk"] = afk_flag:GetText()
 			LolzenUIcfg.tooltip["tip_statusflag_dnd"] = dnd_flag:GetText()
@@ -120,7 +120,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_posy"] = 43
 			LolzenUIcfg.tooltip["tip_anchor1"] = "BOTTOMRIGHT"
 			LolzenUIcfg.tooltip["tip_anchor2"] = "BOTTOMRIGHT"
-			LolzenUIcfg.tooltip["tip_border"] = "border"
+			LolzenUIcfg.tooltip["tip_border"] = "LolzenUI Standard"
 			LolzenUIcfg.tooltip["tip_healthbar_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.tooltip["tip_statusflag_afk"] = "AFK|"
 			LolzenUIcfg.tooltip["tip_statusflag_dnd"] = "DND|"

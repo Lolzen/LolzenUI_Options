@@ -77,7 +77,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.itemlevel["ilvl_font_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.itemlevel["ilvl_font_posy"] = tonumber(pos_y:GetText())
 			LolzenUIcfg.itemlevel["ilvl_font_color"] = {color:GetVertexColor()}
-			LolzenUIcfg.itemlevel["ilvl_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(font)]
+			LolzenUIcfg.itemlevel["ilvl_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.itemlevel["ilvl_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.itemlevel["ilvl_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 		end

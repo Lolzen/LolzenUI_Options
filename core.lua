@@ -150,12 +150,14 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 		t = ns.picker_bin
 	elseif pickertype == "statusbar" then
 		t = LSM:List(LSM.MediaType.STATUSBAR)
+	elseif pickertype == "background" then
+		t = LSM:List(LSM.MediaType.BACKGROUND)
 	end
 	local selectedNum, selectedName
 	local picker = CreateFrame("Button", name, ns[module], "UIDropDownMenuTemplate")
 	picker:Show()
 	local function OnClick(name)
-		if pickertype == "font" or pickertype == "statusbar" then
+		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" then
 			UIDropDownMenu_SetSelectedName(picker, name.value)
 		else
 			UIDropDownMenu_SetSelectedID(picker, name:GetID())
@@ -178,7 +180,7 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 	UIDropDownMenu_Initialize(picker, initialize)
 	UIDropDownMenu_SetWidth(picker, width)
 	UIDropDownMenu_SetButtonWidth(picker, width+15)
-	if pickertype == "font" or pickertype == "statusbar" then
+	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" then
 		UIDropDownMenu_SetSelectedName(picker, selectedName)
 	else
 		UIDropDownMenu_SetSelectedID(picker, selectedNum)

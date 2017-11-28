@@ -22,7 +22,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local prev_np = prev_np_frame:CreateTexture(nil, "BACKGROUND")
 		prev_np:SetAllPoints(prev_np_frame)
-		prev_np:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..LolzenUIcfg.nameplates["np_texture"])
+		prev_np:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.nameplates["np_texture"]))
 		prev_np:SetVertexColor(0.6, 0.1, 0)
 
 		local prev_np_lvlname = prev_np_frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
@@ -103,11 +103,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local texture_text = ns.createFonstring("nameplates", "Texture:")
 		texture_text:SetPoint("LEFT", width, "RIGHT", 10, 0)
 
-		local texture = ns.createInputbox("nameplates", 100, 20, LolzenUIcfg.nameplates["np_texture"])
-		texture:SetPoint("LEFT", texture_text, "RIGHT", 10, 0)
+		local texture = ns.createPicker("nameplates", "statusbar", "np_statusbar", 120, LolzenUIcfg.nameplates["np_texture"])
+		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 
 		local selected_text = ns.createFonstring("nameplates", "Target nameplate scale:")
-		selected_text:SetPoint("LEFT", texture, "RIGHT", 10, 0)
+		selected_text:SetPoint("LEFT", texture, "RIGHT", -5, 3)
 
 		local selected = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates["np_selected_scale"])
 		selected:SetPoint("LEFT", selected_text, "RIGHT", 10, 0)
@@ -214,7 +214,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local cb_prev_np = cb_prev_np_frame:CreateTexture(nil, "BACKGROUND")
 		cb_prev_np:SetAllPoints(cb_prev_np_frame)
-		cb_prev_np:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..LolzenUIcfg.nameplates["np_texture"])
+		cb_prev_np:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.nameplates["np_texture"]))
 		cb_prev_np:SetVertexColor(0.6, 0.1, 0)
 
 		local cb_prev_np_lvlname = cb_prev_np_frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
@@ -225,7 +225,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_prev_np_cb = cb_prev_np_frame:CreateTexture(nil, "BACKGROUND")
 		cb_prev_np_cb:SetSize(LolzenUIcfg.nameplates["np_cb_width"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_cb_height"]*LolzenUIcfg.nameplates["np_selected_scale"])
 		cb_prev_np_cb:SetPoint(LolzenUIcfg.nameplates["np_cb_anchor"], cb_prev_np_frame, LolzenUIcfg.nameplates["np_cb_anchor2"], LolzenUIcfg.nameplates["np_cb_posx"], LolzenUIcfg.nameplates["np_cb_posy"])
-		cb_prev_np_cb:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..LolzenUIcfg.nameplates["np_cb_texture"])
+		cb_prev_np_cb:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.nameplates["np_cb_texture"]))
 
 		local cb_prev_np_spark = cb_prev_np_frame:CreateTexture(nil, "BACKGROUND")
 		cb_prev_np_spark:SetSize(LolzenUIcfg.nameplates["np_spark_width"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_spark_height"]*LolzenUIcfg.nameplates["np_selected_scale"])
@@ -276,11 +276,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_texture_text = ns.createFonstring("np_castbar_options", "Texture:")
 		cb_texture_text:SetPoint("TOPLEFT", cb_pos_x_text, "BOTTOMLEFT", 0, -15)
 
-		local cb_texture = ns.createInputbox("np_castbar_options", 100, 20, LolzenUIcfg.nameplates["np_cb_texture"])
-		cb_texture:SetPoint("LEFT", cb_texture_text, "RIGHT", 10, 0)
+		local cb_texture = ns.createPicker("np_castbar_options", "statusbar", "np_cb_statusbar", 120, LolzenUIcfg.nameplates["np_cb_texture"])
+		cb_texture:SetPoint("LEFT", cb_texture_text, "RIGHT", -10, -3)
 
 		local cb_height_text = ns.createFonstring("np_castbar_options", "Height:")
-		cb_height_text:SetPoint("LEFT", cb_texture, "RIGHT", 10, 0)
+		cb_height_text:SetPoint("LEFT", cb_texture, "RIGHT", -5, 3)
 
 		local cb_height = ns.createInputbox("np_castbar_options", 40, 20, LolzenUIcfg.nameplates["np_cb_height"])
 		cb_height:SetPoint("LEFT", cb_height_text, "RIGHT", 10, 0)
@@ -436,7 +436,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_width"] = tonumber(width:GetText())
 			LolzenUIcfg.nameplates["np_height"] = tonumber(height:GetText())
 			LolzenUIcfg.nameplates["np_selected_scale"] = tonumber(selected:GetText())
-			LolzenUIcfg.nameplates["np_texture"] = texture:GetText()
+			LolzenUIcfg.nameplates["np_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.nameplates["np_lvlname_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(lvlname_font)]
 			LolzenUIcfg.nameplates["np_lvlname_font_size"] = tonumber(lvlname_font_size:GetText())
 			LolzenUIcfg.nameplates["np_lvlname_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(lvlname_font_flag)]
@@ -456,7 +456,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_width"] = 100
 			LolzenUIcfg.nameplates["np_height"] = 4
 			LolzenUIcfg.nameplates["np_selected_scale"] = 1.4
-			LolzenUIcfg.nameplates["np_texture"] = "statusbar"
+			LolzenUIcfg.nameplates["np_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.nameplates["np_lvlname_font"] = "DroidSansBold"
 			LolzenUIcfg.nameplates["np_lvlname_font_size"] = 6
 			LolzenUIcfg.nameplates["np_lvlname_font_flag"] = "THINOUTLINE"
@@ -477,7 +477,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_cb_posy"] = tonumber(cb_pos_y:GetText())
 			LolzenUIcfg.nameplates["np_cb_height"] = tonumber(cb_height:GetText())
 			LolzenUIcfg.nameplates["np_cb_width"] = tonumber(cb_width:GetText())
-			LolzenUIcfg.nameplates["np_cb_texture"] = cb_texture:GetText()
+			LolzenUIcfg.nameplates["np_cb_texture"] = UIDropDownMenu_GetSelectedName(cb_texture)
 			LolzenUIcfg.nameplates["np_spark_height"] = tonumber(cb_spark_height:GetText())
 			LolzenUIcfg.nameplates["np_spark_width"] = tonumber(cb_spark_width:GetText())
 			LolzenUIcfg.nameplates["np_cbicon_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor)]
@@ -508,7 +508,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_cb_posy"] = 1
 			LolzenUIcfg.nameplates["np_cb_height"] = 1
 			LolzenUIcfg.nameplates["np_cb_width"] = 100
-			LolzenUIcfg.nameplates["np_cb_texture"] = "statusbar"
+			LolzenUIcfg.nameplates["np_cb_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.nameplates["np_spark_height"] = 4
 			LolzenUIcfg.nameplates["np_spark_width"] = 6
 			LolzenUIcfg.nameplates["np_cbicon_anchor"] = "RIGHT"

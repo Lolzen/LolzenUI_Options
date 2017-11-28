@@ -102,8 +102,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns["clock"].okay = function(self)
 			LolzenUIcfg.clock["clock_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.clock["clock_seconds_color"] = {seconds_color:GetVertexColor()}
-			LolzenUIcfg.clock["clock_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(font)]
-			LolzenUIcfg.clock["clock_font_seconds"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(seconds_font)]
+			LolzenUIcfg.clock["clock_font"] = UIDropDownMenu_GetSelectedName(font)
+			LolzenUIcfg.clock["clock_font_seconds"] = UIDropDownMenu_GetSelectedName(seconds_font)
 			LolzenUIcfg.clock["clock_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.clock["clock_seconds_font_size"] = tonumber(seconds_font_size:GetText())
 			LolzenUIcfg.clock["clock_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]

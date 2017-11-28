@@ -1,6 +1,6 @@
 --// options for tooltip //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")

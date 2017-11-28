@@ -8,10 +8,12 @@ local f = CreateFrame("Frame")
 -- create the module specific options
 local function createOptionPanels()
 	for i=1, #LolzenUI.modules do
-		ns[LolzenUI.modules[i]] = CreateFrame("Frame", LolzenUI.modules[i].."panel", LolzenUI.panel)
-		ns[LolzenUI.modules[i]].name = LolzenUI.modules[i]
-		ns[LolzenUI.modules[i]].parent = LolzenUI.panel.name
-		InterfaceOptions_AddCategory(ns[LolzenUI.modules[i]])
+		if LolzenUIcfg.modules[LolzenUI.modules[i]] == true then
+			ns[LolzenUI.modules[i]] = CreateFrame("Frame", LolzenUI.modules[i].."panel", LolzenUI.panel)
+			ns[LolzenUI.modules[i]].name = LolzenUI.modules[i]
+			ns[LolzenUI.modules[i]].parent = LolzenUI.panel.name
+			InterfaceOptions_AddCategory(ns[LolzenUI.modules[i]])
+		end
 	end
 end
 

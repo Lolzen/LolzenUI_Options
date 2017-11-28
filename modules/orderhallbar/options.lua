@@ -1,6 +1,6 @@
 --// options for orderhallbar //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -92,7 +92,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["orderhallbar"].default = function(self)
 			LolzenUIcfg.orderhallbar["ohb_currency_icon_size"] = 18
-			LolzenUIcfg.orderhallbar["ohb_currency_font"] = "DroidSansBold.ttf"
+			LolzenUIcfg.orderhallbar["ohb_currency_font"] = "DroidSansBold"
 			LolzenUIcfg.orderhallbar["ohb_currency_font_size"] = 12
 			LolzenUIcfg.orderhallbar["ohb_currency_font_flag"] = "OUTLINE"
 			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {51/255, 181/255, 229/225}

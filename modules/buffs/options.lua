@@ -1,6 +1,6 @@
 --// options for buffs //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -239,13 +239,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.buffs["buff_duration_posx"] = 0
 			LolzenUIcfg.buffs["buff_duration_posy"] = 3
 			LolzenUIcfg.buffs["buff_duration_detailed"] = true
-			LolzenUIcfg.buffs["buff_duration_font"] = "DroidSans.ttf"
+			LolzenUIcfg.buffs["buff_duration_font"] = "DroidSans"
 			LolzenUIcfg.buffs["buff_duration_font_size"] = 11
 			LolzenUIcfg.buffs["buff_duration_font_flag"] = "OUTLINE"
 			LolzenUIcfg.buffs["buff_counter_anchor"] = "TOPRIGHT"
 			LolzenUIcfg.buffs["buff_counter_posx"] = 0
 			LolzenUIcfg.buffs["buff_counter_posy"] = 0
-			LolzenUIcfg.buffs["buff_counter_font"] = "DroidSans.ttf"
+			LolzenUIcfg.buffs["buff_counter_font"] = "DroidSans"
 			LolzenUIcfg.buffs["buff_counter_size"] = 16
 			LolzenUIcfg.buffs["buff_counter_font_flag"] = "OUTLINE"
 			LolzenUIcfg.buffs["buff_aura_texture"] = "auraborder"

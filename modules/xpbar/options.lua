@@ -1,6 +1,6 @@
 --// options for xpbar //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -217,7 +217,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {0, 187/255, 255/255}
 			LolzenUIcfg.xpbar["xpbar_1px_border"] = true
 			LolzenUIcfg.xpbar["xpbar_1px_border_round"] = true
-			LolzenUIcfg.xpbar["xpbar_font"] = "DroidSansBold.ttf"
+			LolzenUIcfg.xpbar["xpbar_font"] = "DroidSansBold"
 			LolzenUIcfg.xpbar["xpbar_font_size"] = 10
 			LolzenUIcfg.xpbar["xpbar_font_flag"] = "THINOUTLINE"
 			LolzenUIcfg.xpbar["xpbar_font_color"] = {1, 1, 1}

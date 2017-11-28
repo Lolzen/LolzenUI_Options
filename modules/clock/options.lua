@@ -1,6 +1,6 @@
 --// options for clock //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -117,8 +117,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns["clock"].default = function(self)
 			LolzenUIcfg.clock["clock_color"] = {0.85, 0.55, 0}
 			LolzenUIcfg.clock["clock_seconds_color"] = {1, 1, 1}
-			LolzenUIcfg.clock["clock_font"] = "DroidSansBold.ttf"
-			LolzenUIcfg.clock["clock_font_seconds"] = "DroidSans.ttf"
+			LolzenUIcfg.clock["clock_font"] = "DroidSansBold"
+			LolzenUIcfg.clock["clock_font_seconds"] = "DroidSans"
 			LolzenUIcfg.clock["clock_font_size"] = 20
 			LolzenUIcfg.clock["clock_seconds_font_size"] = 14
 			LolzenUIcfg.clock["clock_font_flag"] = "OUTLINE"

@@ -1,6 +1,6 @@
 --// options for itemlevel //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -90,7 +90,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.itemlevel["ilvl_font_posx"] = 0
 			LolzenUIcfg.itemlevel["ilvl_font_posy"] = -5
 			LolzenUIcfg.itemlevel["ilvl_font_color"] = {0, 1, 0}
-			LolzenUIcfg.itemlevel["ilvl_font"] = "DroidSans.ttf"
+			LolzenUIcfg.itemlevel["ilvl_font"] = "DroidSans"
 			LolzenUIcfg.itemlevel["ilvl_font_size"] = 14
 			LolzenUIcfg.itemlevel["ilvl_font_flag"] = "THINOUTLINE"
 			ReloadUI()

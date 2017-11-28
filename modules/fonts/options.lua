@@ -1,6 +1,6 @@
 --// options for fonts //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -47,10 +47,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["fonts"].default = function(self)
-			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = "DroidSansBold.ttf"
-			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = "DroidSans.ttf"
-			LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"] = "DroidSans.ttf"
-			LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"] = "DroidSans.ttf"
+			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = "DroidSansBold"
+			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = "DroidSans"
+			LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"] = "DroidSans"
+			LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"] = "DroidSans"
 			ReloadUI()
 		end
 	end

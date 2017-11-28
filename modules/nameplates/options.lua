@@ -1,6 +1,6 @@
 --// options for nameplates //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -456,7 +456,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_height"] = 4
 			LolzenUIcfg.nameplates["np_selected_scale"] = 1.4
 			LolzenUIcfg.nameplates["np_texture"] = "statusbar"
-			LolzenUIcfg.nameplates["np_lvlname_font"] = "DroidSansBold.ttf"
+			LolzenUIcfg.nameplates["np_lvlname_font"] = "DroidSansBold"
 			LolzenUIcfg.nameplates["np_lvlname_font_size"] = 6
 			LolzenUIcfg.nameplates["np_lvlname_font_flag"] = "THINOUTLINE"
 			LolzenUIcfg.nameplates["np_lvlname_posx"] = 0
@@ -519,14 +519,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_cbtime_anchor2"] = "LEFT"
 			LolzenUIcfg.nameplates["np_cbtime_posx"] = 2
 			LolzenUIcfg.nameplates["np_cbtime_posy"] = -5
-			LolzenUIcfg.nameplates["np_cbtime_font"] = "DroidSansBold.ttf"
+			LolzenUIcfg.nameplates["np_cbtime_font"] = "DroidSansBold"
 			LolzenUIcfg.nameplates["np_cbtime_font_size"] = 6
 			LolzenUIcfg.nameplates["np_cbtime_font_flag"] = "THINOUTLINE"
 			LolzenUIcfg.nameplates["np_cbtext_anchor"] = "RIGHT"
 			LolzenUIcfg.nameplates["np_cbtext_anchor2"] = "RIGHT"
 			LolzenUIcfg.nameplates["np_cbtext_posx"] = -2
 			LolzenUIcfg.nameplates["np_cbtext_posy"] = -5
-			LolzenUIcfg.nameplates["np_cbtext_font"] = "DroidSansBold.ttf"
+			LolzenUIcfg.nameplates["np_cbtext_font"] = "DroidSansBold"
 			LolzenUIcfg.nameplates["np_cbtext_font_size"] = 6
 			LolzenUIcfg.nameplates["np_cbtext_font_flag"] = "THINOUTLINE"
 			ReloadUI()

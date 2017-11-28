@@ -1,6 +1,6 @@
 --// options for chat //--
 
-local addon, ns = ...
+local _, ns = ...
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -229,7 +229,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_posy"] = 15
 			LolzenUIcfg.chat["chat_anchor1"] = "BOTTOMLEFT"
 			LolzenUIcfg.chat["chat_anchor2"] = "BOTTOMLEFT"
-			LolzenUIcfg.chat["chat_font"] = "DroidSans.ttf"
+			LolzenUIcfg.chat["chat_font"] = "DroidSans"
 			LolzenUIcfg.chat["chat_font_size"] = 12
 			LolzenUIcfg.chat["chat_font_flag"] = ""
 			LolzenUIcfg.chat["chat_font_spacing"] = 1

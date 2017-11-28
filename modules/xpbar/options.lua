@@ -63,11 +63,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local parent = ns.createInputbox("xpbar", 100, 20, LolzenUIcfg.xpbar["xpbar_parent"])
 		parent:SetPoint("LEFT", parent_text, "RIGHT", 10, 0)
 
-		local texture_text = ns.createFonstring("xpbar", "|cff5599ffTexture:|r Interface\\AddOns\\LolzenUI\\media\\")
+		local texture_text = ns.createFonstring("xpbar", "Texture:")
 		texture_text:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -15)
 
-		local texture = ns.createInputbox("xpbar", 100, 20, LolzenUIcfg.xpbar["xpbar_texture"])
-		texture:SetPoint("LEFT", texture_text, "RIGHT", 10, 0)
+		local texture = ns.createPicker("xpbar", "statusbar", "xpbar_statusbar", 120, LolzenUIcfg.xpbar["xpbar_texture"])
+		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 
 		local color_text = ns.createFonstring("xpbar", "Regular xpbar color:")
 		color_text:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -15)
@@ -183,7 +183,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_parent"] = parent:GetText()
 			LolzenUIcfg.xpbar["xpbar_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.xpbar["xpbar_posy"] = tonumber(pos_y:GetText())
-			LolzenUIcfg.xpbar["xpbar_texture"] = texture:GetText()
+			LolzenUIcfg.xpbar["xpbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.xpbar["xpbar_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.xpbar["xpbar_bg_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(bg_alpha)])
 			LolzenUIcfg.xpbar["xpbar_xp_color"] = {color:GetVertexColor()}
@@ -208,7 +208,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_parent"] = "UIParent"
 			LolzenUIcfg.xpbar["xpbar_posx"] = 0
 			LolzenUIcfg.xpbar["xpbar_posy"] = 5
-			LolzenUIcfg.xpbar["xpbar_texture"] = "statusbar"
+			LolzenUIcfg.xpbar["xpbar_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.xpbar["xpbar_alpha"] = 0.4
 			LolzenUIcfg.xpbar["xpbar_bg_alpha"] = 0.5
 			LolzenUIcfg.xpbar["xpbar_xp_color"] = {0.6, 0, 0.6}

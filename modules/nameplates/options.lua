@@ -1,6 +1,7 @@
 --// options for nameplates //--
 
 local _, ns = ...
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -25,7 +26,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		prev_np:SetVertexColor(0.6, 0.1, 0)
 
 		local prev_np_lvlname = prev_np_frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-		prev_np_lvlname:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\"..LolzenUIcfg.nameplates["np_lvlname_font"], LolzenUIcfg.nameplates["np_lvlname_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_lvlname_font_flag"])
+		prev_np_lvlname:SetFont(LSM:Fetch("font", LolzenUIcfg.nameplates["np_lvlname_font"]), LolzenUIcfg.nameplates["np_lvlname_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_lvlname_font_flag"])
 		prev_np_lvlname:SetText("|cffffff00110|r + Random Name")
 		prev_np_lvlname:SetPoint(LolzenUIcfg.nameplates["np_lvlname_anchor"], prev_np_frame, LolzenUIcfg.nameplates["np_lvlname_posx"], LolzenUIcfg.nameplates["np_lvlname_posy"])
 
@@ -217,7 +218,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb_prev_np:SetVertexColor(0.6, 0.1, 0)
 
 		local cb_prev_np_lvlname = cb_prev_np_frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-		cb_prev_np_lvlname:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\"..LolzenUIcfg.nameplates["np_lvlname_font"], LolzenUIcfg.nameplates["np_lvlname_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_lvlname_font_flag"])
+		cb_prev_np_lvlname:SetFont(LSM:Fetch("font", LolzenUIcfg.nameplates["np_lvlname_font"]), LolzenUIcfg.nameplates["np_lvlname_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_lvlname_font_flag"])
 		cb_prev_np_lvlname:SetText("|cffffff00110|r + Random Name")
 		cb_prev_np_lvlname:SetPoint("CENTER", cb_prev_np_frame, 0, 3)
 
@@ -241,11 +242,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb_prev_np_shield:SetPoint("CENTER", cb_prev_np_icon, 0, 0)
 
 		local cb_prev_np_time = ns.createFonstring("np_castbar_options", "3.0")
-		cb_prev_np_time:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\"..LolzenUIcfg.nameplates["np_cbtime_font"], LolzenUIcfg.nameplates["np_cbtime_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"] , LolzenUIcfg.nameplates["np_cbtime_font_flag"])
+		cb_prev_np_time:SetFont(LSM:Fetch("font", LolzenUIcfg.nameplates["np_cbtime_font"]), LolzenUIcfg.nameplates["np_cbtime_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"] , LolzenUIcfg.nameplates["np_cbtime_font_flag"])
 		cb_prev_np_time:SetPoint(LolzenUIcfg.nameplates["np_cbtime_anchor"], cb_prev_np_cb, LolzenUIcfg.nameplates["np_cbtime_anchor2"], LolzenUIcfg.nameplates["np_cbtime_posx"]*LolzenUIcfg.nameplates["np_selected_scale"], LolzenUIcfg.nameplates["np_cbtime_posy"]*LolzenUIcfg.nameplates["np_selected_scale"])
 
 		local cb_prev_np_text = ns.createFonstring("np_castbar_options", "Random Castname")
-		cb_prev_np_text:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\"..LolzenUIcfg.nameplates["np_cbtext_font"], LolzenUIcfg.nameplates["np_cbtext_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"] , LolzenUIcfg.nameplates["np_cbtext_font_flag"])
+		cb_prev_np_text:SetFont(LSM:Fetch("font", LolzenUIcfg.nameplates["np_cbtext_font"]), LolzenUIcfg.nameplates["np_cbtext_font_size"]*LolzenUIcfg.nameplates["np_selected_scale"] , LolzenUIcfg.nameplates["np_cbtext_font_flag"])
 		cb_prev_np_text:SetPoint("RIGHT", cb_prev_np_cb, "RIGHT", -2*LolzenUIcfg.nameplates["np_selected_scale"], -5*LolzenUIcfg.nameplates["np_selected_scale"])
 
 		local cb_pos_x_text = ns.createFonstring("np_castbar_options", "PosX:")

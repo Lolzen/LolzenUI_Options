@@ -192,7 +192,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {color4:GetVertexColor()}
 			LolzenUIcfg.xpbar["xpbar_1px_border"] = cb1:GetChecked()
 			LolzenUIcfg.xpbar["xpbar_1px_border_round"] = cb2:GetChecked()
-			LolzenUIcfg.xpbar["xpbar_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(font)]
+			LolzenUIcfg.xpbar["xpbar_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.xpbar["xpbar_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.xpbar["xpbar_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.xpbar["xpbar_font_color"] = {text_color:GetVertexColor()}

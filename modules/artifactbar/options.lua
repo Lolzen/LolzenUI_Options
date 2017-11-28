@@ -1,7 +1,6 @@
 --// options for artifactbar //--
 
 local _, ns = ...
-local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")

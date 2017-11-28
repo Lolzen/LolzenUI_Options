@@ -63,11 +63,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local parent = ns.createInputbox("artifactbar", 100, 20, LolzenUIcfg.artifactbar["artifactbar_parent"])
 		parent:SetPoint("LEFT", parent_text, "RIGHT", 10, 0)
 
-		local texture_text = ns.createFonstring("artifactbar", "|cff5599ffTexture:|r Interface\\AddOns\\LolzenUI\\media\\")
+		local texture_text = ns.createFonstring("artifactbar", "Texture:")
 		texture_text:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -15)
 
-		local texture = ns.createInputbox("artifactbar", 100, 20, LolzenUIcfg.artifactbar["artifactbar_texture"])
-		texture:SetPoint("LEFT", texture_text, "RIGHT", 10, 0)
+		local texture = ns.createPicker("artifactbar", "statusbar", "artifactbar_statusbar", 120, LolzenUIcfg.artifactbar["artifactbar_texture"])
+		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 
 		local color_text = ns.createFonstring("artifactbar", "Color:")
 		color_text:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -15)
@@ -156,7 +156,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_parent"] = parent:GetText()
 			LolzenUIcfg.artifactbar["artifactbar_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_posy"] = tonumber(pos_y:GetText())
-			LolzenUIcfg.artifactbar["artifactbar_texture"] = texture:GetText()
+			LolzenUIcfg.artifactbar["artifactbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.artifactbar["artifactbar_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.artifactbar["artifactbar_bg_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(bg_alpha)])
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
@@ -178,7 +178,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_parent"] = "UIParent"
 			LolzenUIcfg.artifactbar["artifactbar_posx"] = 0
 			LolzenUIcfg.artifactbar["artifactbar_posy"] = 120
-			LolzenUIcfg.artifactbar["artifactbar_texture"] = "statusbar"
+			LolzenUIcfg.artifactbar["artifactbar_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.artifactbar["artifactbar_alpha"] = 0.4
 			LolzenUIcfg.artifactbar["artifactbar_bg_alpha"] = 0.5
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {1, 1, 0.7}

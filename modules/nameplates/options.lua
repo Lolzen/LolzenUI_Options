@@ -489,14 +489,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_cbtime_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor2)]
 			LolzenUIcfg.nameplates["np_cbtime_posx"] = tonumber(cb_time_pos_x:GetText())
 			LolzenUIcfg.nameplates["np_cbtime_posy"] = tonumber(cb_time_pos_y:GetText())
-			LolzenUIcfg.nameplates["np_cbtime_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(cb_time_font)]
+			LolzenUIcfg.nameplates["np_cbtime_font"] = UIDropDownMenu_GetSelectedName(cb_time_font)
 			LolzenUIcfg.nameplates["np_cbtime_font_size"] = tonumber(cb_time_font_size:GetText())
 			LolzenUIcfg.nameplates["np_cbtime_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_time_font_flag)]
 			LolzenUIcfg.nameplates["np_cbtext_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor)]
 			LolzenUIcfg.nameplates["np_cbtext_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor2)]
 			LolzenUIcfg.nameplates["np_cbtext_posx"] = tonumber(cb_text_pos_x:GetText())
 			LolzenUIcfg.nameplates["np_cbtext_posy"] = tonumber(cb_text_pos_y:GetText())
-			LolzenUIcfg.nameplates["np_cbtext_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(cb_text_font)]
+			LolzenUIcfg.nameplates["np_cbtext_font"] = UIDropDownMenu_GetSelectedName(cb_text_font)
 			LolzenUIcfg.nameplates["np_cbtext_font_size"] = tonumber(cb_text_font_size:GetText())
 			LolzenUIcfg.nameplates["np_cbtext_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_text_font_flag)]
 		end

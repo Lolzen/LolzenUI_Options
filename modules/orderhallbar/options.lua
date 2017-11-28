@@ -21,11 +21,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local ohb_bg_text = ns.createFonstring("orderhallbar", "Texture:")
 		ohb_bg_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
-		local ohb_bg = ns.createInputbox("orderhallbar", 80, 20, LolzenUIcfg.orderhallbar["ohb_background"])
-		ohb_bg:SetPoint("LEFT", ohb_bg_text, "RIGHT", 10, 0)
+		local ohb_bg = ns.createPicker("orderhallbar", "background", "oh_bg_statusbar", 120, LolzenUIcfg.orderhallbar["ohb_background"])
+		ohb_bg:SetPoint("LEFT", ohb_bg_text, "RIGHT", -10, -3)
 
 		local color_text = ns.createFonstring("orderhallbar", "Color:")
-		color_text:SetPoint("LEFT", ohb_bg, "RIGHT", 10, 0)
+		color_text:SetPoint("LEFT", ohb_bg, "RIGHT", -5, 3)
 
 		local color = ns.createColorTexture("orderhallbar", 16, 16, LolzenUIcfg.orderhallbar["ohb_background_color"], LolzenUIcfg.orderhallbar["ohb_background"])
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
@@ -80,11 +80,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["orderhallbar"].okay = function(self)
 			LolzenUIcfg.orderhallbar["ohb_currency_icon_size"] = tonumber(icon_size:GetText())
-			LolzenUIcfg.orderhallbar["ohb_currency_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(font)]
+			LolzenUIcfg.orderhallbar["ohb_currency_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.orderhallbar["ohb_currency_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.orderhallbar["ohb_currency_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {zone_color:GetVertexColor()}
-			LolzenUIcfg.orderhallbar["ohb_background"] = ohb_bg:GetText()
+			LolzenUIcfg.orderhallbar["ohb_background"] = UIDropDownMenu_GetSelectedName(ohb_bg)
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(alpha:GetText())
 			LolzenUIcfg.orderhallbar["ohb_always_show"] = cb1:GetChecked()
@@ -96,7 +96,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.orderhallbar["ohb_currency_font_size"] = 12
 			LolzenUIcfg.orderhallbar["ohb_currency_font_flag"] = "OUTLINE"
 			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {51/255, 181/255, 229/225}
-			LolzenUIcfg.orderhallbar["ohb_background"] = "statusbar"
+			LolzenUIcfg.orderhallbar["ohb_background"] = "LolzenUI Standard"
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {0, 0, 0}
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = 0.5
 			LolzenUIcfg.orderhallbar["ohb_always_show"] = true

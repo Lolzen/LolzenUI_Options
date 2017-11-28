@@ -1,6 +1,7 @@
 --// options for artifactbar //--
 
-local addon, ns = ...
+local _, ns = ...
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -162,7 +163,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.artifactbar["artifactbar_1px_border"] = cb1:GetChecked()
 			LolzenUIcfg.artifactbar["artifactbar_1px_border_round"] = cb2:GetChecked()
-			LolzenUIcfg.artifactbar["artifactbar_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(font)]
+			LolzenUIcfg.artifactbar["artifactbar_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.artifactbar["artifactbar_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.artifactbar["artifactbar_font_color"] = {text_color:GetVertexColor()}
@@ -184,7 +185,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {1, 1, 0.7}
 			LolzenUIcfg.artifactbar["artifactbar_1px_border"] = true
 			LolzenUIcfg.artifactbar["artifactbar_1px_border_round"] = true
-			LolzenUIcfg.artifactbar["artifactbar_font"] = "DroidSansBold.ttf"
+			LolzenUIcfg.artifactbar["artifactbar_font"] = "DroidSansBold"
 			LolzenUIcfg.artifactbar["artifactbar_font_size"] = 10
 			LolzenUIcfg.artifactbar["artifactbar_font_flag"] = "THINOUTLINE"
 			LolzenUIcfg.artifactbar["artifactbar_font_color"] = {1, 1, 1}

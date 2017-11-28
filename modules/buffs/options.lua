@@ -1,6 +1,7 @@
 --// options for buffs //--
 
 local _, ns = ...
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -23,7 +24,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local buttondur = ns.createFonstring("buffs", "TEXT")
 		buttondur:SetPoint(LolzenUIcfg.buffs["buff_duration_anchor1"], button, LolzenUIcfg.buffs["buff_duration_anchor2"], LolzenUIcfg.buffs["buff_duration_posx"], LolzenUIcfg.buffs["buff_duration_posy"])
-		buttondur:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\"..LolzenUIcfg.buffs["buff_duration_font"], LolzenUIcfg.buffs["buff_duration_font_size"], LolzenUIcfg.buffs["buff_duration_font_flag"])
+		buttondur:SetFont(LSM:Fetch("font", LolzenUIcfg.buffs["buff_duration_font"]), LolzenUIcfg.buffs["buff_duration_font_size"], LolzenUIcfg.buffs["buff_duration_font_flag"])
 		if LolzenUIcfg.buffs["buff_duration_detailed"] == true then
 			buttondur:SetText("7:46")
 		else
@@ -33,7 +34,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local buttoncount = ns.createFonstring("buffs", "2")
 		buttoncount:SetPoint(LolzenUIcfg.buffs["buff_counter_anchor"], button, LolzenUIcfg.buffs["buff_counter_posx"], LolzenUIcfg.buffs["buff_counter_posy"])
-		buttoncount:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\"..LolzenUIcfg.buffs["buff_counter_font"], LolzenUIcfg.buffs["buff_counter_size"], LolzenUIcfg.buffs["buff_counter_font_flag"])
+		buttoncount:SetFont(LSM:Fetch("font", LolzenUIcfg.buffs["buff_counter_font"]), LolzenUIcfg.buffs["buff_counter_size"], LolzenUIcfg.buffs["buff_counter_font_flag"])
 		buttoncount:SetDrawLayer("OVERLAY")
 
 		local button2 = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_debuff_size"], select(3, GetSpellInfo(192423)))
@@ -138,7 +139,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local dur_anchor2 = ns.createPicker("buffs", "anchor", "buffs_dur_anchor2_picker", 100, LolzenUIcfg.buffs["buff_duration_anchor2"])
 		dur_anchor2:SetPoint("LEFT", dur_anchor2_text, "RIGHT", -10, -3)
 
-		local dur_font_text = ns.createFonstring("buffs", "|cff5599ffFont:|r Interface\\AddOns\\LolzenUI\\fonts\\")
+		local dur_font_text = ns.createFonstring("buffs", "Font:")
 		dur_font_text:SetPoint("TOPLEFT", dur_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		local dur_font = ns.createPicker("buffs", "font", "buffs_dur_font_picker", 100, LolzenUIcfg.buffs["buff_duration_font"])
@@ -180,7 +181,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local count_anchor = ns.createPicker("buffs", "anchor", "buffs_count_anchor_picker", 100, LolzenUIcfg.buffs["buff_counter_anchor"])
 		count_anchor:SetPoint("LEFT", count_anchor_text, "RIGHT", -10, -3)
 
-		local count_font_text = ns.createFonstring("buffs", "|cff5599ffFont:|r Interface\\AddOns\\LolzenUI\\fonts\\")
+		local count_font_text = ns.createFonstring("buffs", "Font:")
 		count_font_text:SetPoint("TOPLEFT", count_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		local count_font = ns.createPicker("buffs", "font", "count_font_picker", 120, LolzenUIcfg.buffs["buff_counter_font"])
@@ -212,13 +213,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.buffs["buff_duration_posx"] = tonumber(dur_pos_x:GetText())
 			LolzenUIcfg.buffs["buff_duration_posy"] = tonumber(dur_pos_y:GetText())
 			LolzenUIcfg.buffs["buff_duration_detailed"] = cb1:GetChecked()
-			LolzenUIcfg.buffs["buff_duration_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(dur_font)]
+			LolzenUIcfg.buffs["buff_duration_font"] = UIDropDownMenu_GetSelectedName(dur_font)
 			LolzenUIcfg.buffs["buff_duration_font_size"] = tonumber(dur_font_size:GetText())
 			LolzenUIcfg.buffs["buff_duration_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)]
 			LolzenUIcfg.buffs["buff_counter_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(count_anchor)]
 			LolzenUIcfg.buffs["buff_counter_posx"] = tonumber(count_pos_x:GetText())
 			LolzenUIcfg.buffs["buff_counter_posy"] = tonumber(count_pos_y:GetText())
-			LolzenUIcfg.buffs["buff_counter_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(count_font)]
+			LolzenUIcfg.buffs["buff_counter_font"] = UIDropDownMenu_GetSelectedName(count_font)
 			LolzenUIcfg.buffs["buff_counter_size"] = tonumber(count_font_size:GetText())
 			LolzenUIcfg.buffs["buff_counter_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)]
 			LolzenUIcfg.buffs["buff_aura_texture"] = bufftex_path:GetText()

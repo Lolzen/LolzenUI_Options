@@ -99,11 +99,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local texture_text = ns.createFonstring("chat", "Texture:")
 		texture_text:SetPoint("TOPLEFT", cb9, "BOTTOMLEFT", 0, -10)
 
-		local texture = ns.createInputbox("chat", 100, 20, LolzenUIcfg.chat["chat_background_texture"])
-		texture:SetPoint("LEFT", texture_text, "RIGHT", 10, 0)
+		local texture = ns.createPicker("chat", "background", "chat_background", 120, LolzenUIcfg.chat["chat_background_texture"])
+		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 
 		local alpha_text = ns.createFonstring("chat", "Alpha:")
-		alpha_text:SetPoint("LEFT", texture, "RIGHT", 10, 0)
+		alpha_text:SetPoint("LEFT", texture, "RIGHT", -5, 3)
 
 		local alpha = ns.createPicker("chat", "alpha", "chat_bg_alpha", 45, LolzenUIcfg.chat["chat_background_alpha"])
 		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -3)
@@ -195,13 +195,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_posy"] = tonumber(pos_y:GetText())
 			LolzenUIcfg.chat["chat_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
 			LolzenUIcfg.chat["chat_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)]
-			LolzenUIcfg.chat["chat_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(font)]
+			LolzenUIcfg.chat["chat_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.chat["chat_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.chat["chat_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.chat["chat_font_spacing"] = tonumber(spacing:GetText())
 			LolzenUIcfg.chat["chat_font_shadow"] = cb8:GetChecked()
 			LolzenUIcfg.chat["chat_background"] = cb9:GetChecked()
-			LolzenUIcfg.chat["chat_background_texture"] = texture:GetText()
+			LolzenUIcfg.chat["chat_background_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.chat["chat_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.chat["chat_background_border"] = border:GetText()
 			LolzenUIcfg.chat["chat_sticky_say"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_say)])
@@ -235,7 +235,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_font_spacing"] = 1
 			LolzenUIcfg.chat["chat_font_shadow"] = true
 			LolzenUIcfg.chat["chat_background"] = true
-			LolzenUIcfg.chat["chat_background_texture"] = "statusbar"
+			LolzenUIcfg.chat["chat_background_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.chat["chat_background_alpha"] = 0.5
 			LolzenUIcfg.chat["chat_background_border"] = "border"
 			LolzenUIcfg.chat["chat_sticky_say"] = 1

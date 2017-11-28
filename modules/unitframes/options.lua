@@ -19,7 +19,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		texture_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -15)
 
 		local texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
-		--local texture = ns.createInputbox("unitframes", 100, 20, LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 		
 		local header1 = ns.createHeader("unitframes", "Raidmark indicator")

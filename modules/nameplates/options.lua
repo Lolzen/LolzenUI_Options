@@ -437,7 +437,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_height"] = tonumber(height:GetText())
 			LolzenUIcfg.nameplates["np_selected_scale"] = tonumber(selected:GetText())
 			LolzenUIcfg.nameplates["np_texture"] = UIDropDownMenu_GetSelectedName(texture)
-			LolzenUIcfg.nameplates["np_lvlname_font"] = ns.picker_fonts[UIDropDownMenu_GetSelectedID(lvlname_font)]
+			LolzenUIcfg.nameplates["np_lvlname_font"] = UIDropDownMenu_GetSelectedName(lvlname_font)
 			LolzenUIcfg.nameplates["np_lvlname_font_size"] = tonumber(lvlname_font_size:GetText())
 			LolzenUIcfg.nameplates["np_lvlname_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(lvlname_font_flag)]
 			LolzenUIcfg.nameplates["np_lvlname_posx"] = tonumber(lvlname_pos_x:GetText())

@@ -1,6 +1,7 @@
 ﻿--// core //--
 
-local addon, ns = ...
+local _, ns = ...
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 
@@ -121,12 +122,6 @@ ns.picker_anchor = {
 	"RIGHT",
 }
 
-ns.picker_fonts = {
-	"DroidSans.ttf",
-	"DroidSansBold.ttf",
-	"SEMPRG.ttf",
-}
-
 ns.picker_flags = {
 	"OUTLINE",
 	"THINOUTLINE",
@@ -139,15 +134,6 @@ ns.picker_bin = {
 	1,
 }
 
--- insert usermedia
---for k, v in pairs(ns.usermedia) do
---	if k == "fonts" then
---		if not ns.picker_fonts[v] then
---			table.insert(ns.picker_fonts, unpack(v))
---		end
---	end
---end
-
 ns.createPicker = function(module, pickertype, name, width, selected)
 	local t
 	if pickertype == "alpha" then
@@ -155,23 +141,28 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 	elseif pickertype == "anchor" then
 		t = ns.picker_anchor
 	elseif pickertype == "font" then
-		t = ns.picker_fonts
+		t = LSM:List(LSM.MediaType.FONT)
 	elseif pickertype == "flag" then
 		t = ns.picker_flags
 	elseif pickertype == "bin" then
 		t = ns.picker_bin
 	end
-	local selectedNum
+	local selectedNum, selectedName
 	local picker = CreateFrame("Button", name, ns[module], "UIDropDownMenuTemplate")
 	picker:Show()
 	local function OnClick(name)
-		UIDropDownMenu_SetSelectedID(picker, name:GetID())
+		if pickertype == "font" then
+			UIDropDownMenu_SetSelectedName(picker, name.value)
+		else
+			UIDropDownMenu_SetSelectedID(picker, name:GetID())
+		end
 	end
 	local function initialize(picker, level)
 		local info = UIDropDownMenu_CreateInfo()
-		for k,v in pairs(t) do
+		for k, v in pairs(t) do
 			if v == selected then
 				selectedNum = k
+				selectedName = v
 			end
 			info = UIDropDownMenu_CreateInfo()
 			info.text = v
@@ -183,7 +174,11 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 	UIDropDownMenu_Initialize(picker, initialize)
 	UIDropDownMenu_SetWidth(picker, width)
 	UIDropDownMenu_SetButtonWidth(picker, width+15)
-	UIDropDownMenu_SetSelectedID(picker, selectedNum)
+	if pickertype == "font" then
+		UIDropDownMenu_SetSelectedName(picker, selectedName)
+	else
+		UIDropDownMenu_SetSelectedID(picker, selectedNum)
+	end
 	UIDropDownMenu_JustifyText(picker, "LEFT")
 	return picker
 end

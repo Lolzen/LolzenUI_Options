@@ -36,9 +36,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local standard = ns.createPicker("fonts", "font", "fonts_standardfont", 120, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
 		standard:SetPoint("LEFT", standard_text, "RIGHT", -10, -3)
 
-		local tip = ns.createFonstring("fonts", "|cff5599ffPROTIP:|r The fonts have to have been in the folder BEFORE the WoW client was started.")
-		tip:SetPoint("TOPLEFT", standard_text, "BOTTOMLEFT", 0, -20)
-
 		ns["fonts"].okay = function(self)
 			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = UIDropDownMenu_GetSelectedName(dmg)
 			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = UIDropDownMenu_GetSelectedName(unit)

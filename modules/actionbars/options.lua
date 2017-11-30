@@ -50,7 +50,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local pushedtex = ns.createButtonOverlay("actionbars", button5, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
 
-		local header2 = ns.createHeader("actionbars", "Textures & Size: |cffffffff(Textures are located in Interface/AddOns/LolzenUI/media)|r")
+		local header2 = ns.createHeader("actionbars", "Textures & Size:")
 		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -20)
 
 		-- // texture paths // --

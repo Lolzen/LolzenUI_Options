@@ -12,11 +12,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local about = ns.createDescription("unitframes", "Unitframes")
 		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 		
-		local cb1 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
+		local cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 		
+		local cb2 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
+		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -0)
+		
+		cb1:SetScript("OnClick", function(self)
+			if cb1:GetChecked() == true then
+				cb2:Disable()
+				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
+			else
+				cb2:Enable()
+				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
+			end
+		end)
+
+		if cb1:GetChecked() == true then
+			cb2:Disable()
+			uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
+		else
+			cb2:Enable()
+		end
+		
 		local texture_text = ns.createFonstring("unitframes", "Texture:")
-		texture_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -15)
+		texture_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -15)
 
 		local texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
@@ -88,7 +108,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		fadout_alpha:SetPoint("LEFT", fadeout_alpha_text, "RIGHT", -10, -3)
 		
 		ns["unitframes"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_use_sivalue"] = cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_hp_percent"] = cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_sivalue"] = cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(rt_size:GetText())
 			LolzenUIcfg.unitframes["uf_ri_posx"] = tonumber(rt_pos_x:GetText())
@@ -103,6 +124,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 		
 		ns["unitframes"].default = function(self)
+			LolzenUIcfg.unitframes["uf_use_hp_percent"] = false
 			LolzenUIcfg.unitframes["uf_use_sivalue"] = true
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.unitframes["uf_ri_size"] = 16

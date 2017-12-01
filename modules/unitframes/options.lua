@@ -41,6 +41,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 		
+		local border_text = ns.createFonstring("unitframes", "Border:")
+		border_text:SetPoint("LEFT", texture, "RIGHT", -5, 3)
+
+		local border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes["uf_border"])
+		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
+		
 		local header1 = ns.createHeader("unitframes", "Raidmark indicator")
 		header1:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -30)
 		
@@ -283,6 +289,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_use_sivalue"] = cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
+			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(border)
 			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(rt_size:GetText())
 			LolzenUIcfg.unitframes["uf_ri_posx"] = tonumber(rt_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_ri_posy"] = tonumber(rt_pos_y:GetText())
@@ -299,6 +306,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = false
 			LolzenUIcfg.unitframes["uf_use_sivalue"] = true
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = "LolzenUI Standard"
+			LolzenUIcfg.unitframes["uf_border"] = "LolzenUI Standard"
 			LolzenUIcfg.unitframes["uf_ri_size"] = 16
 			LolzenUIcfg.unitframes["uf_ri_posx"] = 0
 			LolzenUIcfg.unitframes["uf_ri_posy"] = 10

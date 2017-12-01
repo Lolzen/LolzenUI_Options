@@ -117,6 +117,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 		player_title:SetPoint("TOPLEFT", ns.uf_player_options, 16, -16)
 		player_title:SetText("|cff5599ffUnitframes module: Player Options|r")
 		
+		local player_pos_x_text = ns.createFonstring("uf_player_options", "PosX:")
+		player_pos_x_text:SetPoint("TOPLEFT", player_title, "BOTTOMLEFT", 0, -20)
+
+		local player_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_posx"])
+		player_pos_x:SetPoint("LEFT", player_pos_x_text, "RIGHT", 10, 0)
+
+		local player_pos_y_text = ns.createFonstring("uf_player_options", "PosY:")
+		player_pos_y_text:SetPoint("LEFT", player_pos_x, "RIGHT", 5, 0)
+
+		local player_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_posy"])
+		player_pos_y:SetPoint("LEFT", player_pos_y_text, "RIGHT", 10, 0)
+
+		local player_anchor_text = ns.createFonstring("uf_player_options", "Anchor:")
+		player_anchor_text:SetPoint("LEFT", player_pos_y, "RIGHT", 5, 0)
+
+		local player_anchor = ns.createPicker("uf_player_options", "anchor", "uf_player_anchor", 110, LolzenUIcfg.unitframes["uf_player_anchor"])
+		player_anchor:SetPoint("LEFT", player_anchor_text, "RIGHT", -10, -3)
+		
 		-- // Create a subcategory panel for Target // --
 		ns.uf_target_options = CreateFrame("Frame", "unitframe_targetpanel", ns["unitframes"])
 		ns.uf_target_options.name = "   Target"
@@ -126,6 +144,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local target_title = ns.uf_target_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 		target_title:SetPoint("TOPLEFT", ns.uf_target_options, 16, -16)
 		target_title:SetText("|cff5599ffUnitframes module: Target Options|r")
+		
+		local target_pos_x_text = ns.createFonstring("uf_target_options", "PosX:")
+		target_pos_x_text:SetPoint("TOPLEFT", target_title, "BOTTOMLEFT", 0, -20)
+
+		local target_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_posx"])
+		target_pos_x:SetPoint("LEFT", target_pos_x_text, "RIGHT", 10, 0)
+
+		local target_pos_y_text = ns.createFonstring("uf_target_options", "PosY:")
+		target_pos_y_text:SetPoint("LEFT", target_pos_x, "RIGHT", 5, 0)
+
+		local target_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_posy"])
+		target_pos_y:SetPoint("LEFT", target_pos_y_text, "RIGHT", 10, 0)
+
+		local target_anchor_text = ns.createFonstring("uf_target_options", "Anchor:")
+		target_anchor_text:SetPoint("LEFT", target_pos_y, "RIGHT", 5, 0)
+
+		local target_anchor = ns.createPicker("uf_target_options", "anchor", "uf_target_anchor", 110, LolzenUIcfg.unitframes["uf_target_anchor"])
+		target_anchor:SetPoint("LEFT", target_anchor_text, "RIGHT", -10, -3)
 		
 		-- // Create a subcategory panel for Targettarget // --
 		ns.uf_targettarget_options = CreateFrame("Frame", "unitframe_targettargetpanel", ns["unitframes"])
@@ -137,6 +173,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 		targettarget_title:SetPoint("TOPLEFT", ns.uf_targettarget_options, 16, -16)
 		targettarget_title:SetText("|cff5599ffUnitframes module: Targettarget Options|r")
 		
+		local targettarget_pos_x_text = ns.createFonstring("uf_targettarget_options", "PosX:")
+		targettarget_pos_x_text:SetPoint("TOPLEFT", targettarget_title, "BOTTOMLEFT", 0, -20)
+
+		local targettarget_pos_x = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_posx"])
+		targettarget_pos_x:SetPoint("LEFT", targettarget_pos_x_text, "RIGHT", 10, 0)
+
+		local targettarget_pos_y_text = ns.createFonstring("uf_targettarget_options", "PosY:")
+		targettarget_pos_y_text:SetPoint("LEFT", targettarget_pos_x, "RIGHT", 5, 0)
+
+		local targettarget_pos_y = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_posy"])
+		targettarget_pos_y:SetPoint("LEFT", targettarget_pos_y_text, "RIGHT", 10, 0)
+
+		local targettarget_anchor_text = ns.createFonstring("uf_targettarget_options", "Anchor:")
+		targettarget_anchor_text:SetPoint("LEFT", targettarget_pos_y, "RIGHT", 5, 0)
+
+		local targettarget_anchor = ns.createPicker("uf_targettarget_options", "anchor", "uf_targettarget_anchor", 110, LolzenUIcfg.unitframes["uf_targettarget_anchor"])
+		targettarget_anchor:SetPoint("LEFT", targettarget_anchor_text, "RIGHT", -10, -3)
+		
 		-- // Create a subcategory panel for Party // --
 		ns.uf_party_options = CreateFrame("Frame", "unitframe_partypanel", ns["unitframes"])
 		ns.uf_party_options.name = "   Party"
@@ -146,6 +200,28 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local party_title = ns.uf_party_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 		party_title:SetPoint("TOPLEFT", ns.uf_party_options, 16, -16)
 		party_title:SetText("|cff5599ffUnitframes module: Party Options|r")
+		
+		local party_title = ns.uf_party_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		party_title:SetPoint("TOPLEFT", ns.uf_party_options, 16, -16)
+		party_title:SetText("|cff5599ffUnitframes module: party Options|r")
+		
+		local party_pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
+		party_pos_x_text:SetPoint("TOPLEFT", party_title, "BOTTOMLEFT", 0, -20)
+
+		local party_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posx"])
+		party_pos_x:SetPoint("LEFT", party_pos_x_text, "RIGHT", 10, 0)
+
+		local party_pos_y_text = ns.createFonstring("uf_party_options", "PosY:")
+		party_pos_y_text:SetPoint("LEFT", party_pos_x, "RIGHT", 5, 0)
+
+		local party_pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posy"])
+		party_pos_y:SetPoint("LEFT", party_pos_y_text, "RIGHT", 10, 0)
+
+		local party_anchor_text = ns.createFonstring("uf_party_options", "Anchor:")
+		party_anchor_text:SetPoint("LEFT", party_pos_y, "RIGHT", 5, 0)
+
+		local party_anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_anchor", 110, LolzenUIcfg.unitframes["uf_party_anchor"])
+		party_anchor:SetPoint("LEFT", party_anchor_text, "RIGHT", -10, -3)
 		
 		-- // Create a subcategory panel for Raid // --
 		ns.uf_raid_options = CreateFrame("Frame", "unitframe_raidpanel", ns["unitframes"])
@@ -157,6 +233,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 		raid_title:SetPoint("TOPLEFT", ns.uf_raid_options, 16, -16)
 		raid_title:SetText("|cff5599ffUnitframes module: Raid Options|r")
 		
+		local raid_pos_x_text = ns.createFonstring("uf_raid_options", "PosX:")
+		raid_pos_x_text:SetPoint("TOPLEFT", raid_title, "BOTTOMLEFT", 0, -20)
+
+		local raid_pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_posx"])
+		raid_pos_x:SetPoint("LEFT", raid_pos_x_text, "RIGHT", 10, 0)
+
+		local raid_pos_y_text = ns.createFonstring("uf_raid_options", "PosY:")
+		raid_pos_y_text:SetPoint("LEFT", raid_pos_x, "RIGHT", 5, 0)
+
+		local raid_pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_posy"])
+		raid_pos_y:SetPoint("LEFT", raid_pos_y_text, "RIGHT", 10, 0)
+
+		local raid_anchor_text = ns.createFonstring("uf_raid_options", "Anchor:")
+		raid_anchor_text:SetPoint("LEFT", raid_pos_y, "RIGHT", 5, 0)
+
+		local raid_anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_anchor", 110, LolzenUIcfg.unitframes["uf_raid_anchor"])
+		raid_anchor:SetPoint("LEFT", raid_anchor_text, "RIGHT", -10, -3)
+		
 		-- // Create a subcategory panel for Pet // --
 		ns.uf_pet_options = CreateFrame("Frame", "unitframe_petpanel", ns["unitframes"])
 		ns.uf_pet_options.name = "   Pet"
@@ -166,6 +260,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pet_title = ns.uf_pet_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 		pet_title:SetPoint("TOPLEFT", ns.uf_pet_options, 16, -16)
 		pet_title:SetText("|cff5599ffUnitframes module: Pet Options|r")
+		
+		local pet_pos_x_text = ns.createFonstring("uf_pet_options", "PosX:")
+		pet_pos_x_text:SetPoint("TOPLEFT", pet_title, "BOTTOMLEFT", 0, -20)
+
+		local pet_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_posx"])
+		pet_pos_x:SetPoint("LEFT", pet_pos_x_text, "RIGHT", 10, 0)
+
+		local pet_pos_y_text = ns.createFonstring("uf_pet_options", "PosY:")
+		pet_pos_y_text:SetPoint("LEFT", pet_pos_x, "RIGHT", 5, 0)
+
+		local pet_pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_posy"])
+		pet_pos_y:SetPoint("LEFT", pet_pos_y_text, "RIGHT", 10, 0)
+
+		local pet_anchor_text = ns.createFonstring("uf_pet_options", "Anchor:")
+		pet_anchor_text:SetPoint("LEFT", pet_pos_y, "RIGHT", 5, 0)
+
+		local pet_anchor = ns.createPicker("uf_pet_options", "anchor", "uf_pet_anchor", 110, LolzenUIcfg.unitframes["uf_pet_anchor"])
+		pet_anchor:SetPoint("LEFT", pet_anchor_text, "RIGHT", -10, -3)
 		
 		ns["unitframes"].okay = function(self)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = cb1:GetChecked()
@@ -201,44 +313,80 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 		
 		ns["uf_player_options"].okay = function(self)
+			LolzenUIcfg.unitframes["uf_player_posx"] = tonumber(player_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_posy"] = tonumber(player_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(player_anchor)]
 		end
 		
 		ns["uf_player_options"].default = function(self)
+			LolzenUIcfg.unitframes["uf_player_posx"] = -250
+			LolzenUIcfg.unitframes["uf_player_posy"] = -200
+			LolzenUIcfg.unitframes["uf_player_anchor"] = "CENTER"
 			ReloadUI()
 		end
 		
 		ns["uf_target_options"].okay = function(self)
+			LolzenUIcfg.unitframes["uf_target_posx"] = tonumber(target_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_target_posy"] = tonumber(target_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_target_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(target_anchor)]
 		end
 		
 		ns["uf_target_options"].default = function(self)
+			LolzenUIcfg.unitframes["uf_target_posx"] = 250
+			LolzenUIcfg.unitframes["uf_target_posy"] = -200
+			LolzenUIcfg.unitframes["uf_target_anchor"] = "CENTER"
 			ReloadUI()
 		end
 		
 		ns["uf_targettarget_options"].okay = function(self)
+			LolzenUIcfg.unitframes["uf_targettarget_posx"] = tonumber(targettarget_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_targettarget_posy"] = tonumber(targettarget_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_targettarget_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(targettarget_anchor)]
 		end
 		
 		ns["uf_targettarget_options"].default = function(self)
+			LolzenUIcfg.unitframes["uf_targettarget_posx"] = 300
+			LolzenUIcfg.unitframes["uf_targettarget_posy"] = -177
+			LolzenUIcfg.unitframes["uf_targettarget_anchor"] = "CENTER"
 			ReloadUI()
 		end
 		
 		ns["uf_party_options"].okay = function(self)
+			LolzenUIcfg.unitframes["uf_party_posx"] = tonumber(party_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_party_posy"] = tonumber(party_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_party_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(party_anchor)]
 		end
 		
 		ns["uf_party_options"].default = function(self)
+			LolzenUIcfg.unitframes["uf_party_posx"] = 0
+			LolzenUIcfg.unitframes["uf_party_posy"] = 140
+			LolzenUIcfg.unitframes["uf_party_anchor"] = "BOTTOM"
 			ReloadUI()
 		end
 		
 		ns["uf_raid_options"].okay = function(self)
+			LolzenUIcfg.unitframes["uf_raid_posx"] = tonumber(raid_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_raid_posy"] = tonumber(raid_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_raid_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(raid_anchor)]
 		end
 		
 		ns["uf_raid_options"].default = function(self)
+			LolzenUIcfg.unitframes["uf_raid_posx"] = 20
+			LolzenUIcfg.unitframes["uf_raid_posy"] = 0
+			LolzenUIcfg.unitframes["uf_raid_anchor"] = "LEFT"
 			ReloadUI()
 		end
 		
 		ns["uf_pet_options"].okay = function(self)
+			LolzenUIcfg.unitframes["uf_pet_posx"] = tonumber(pet_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_pet_posy"] = tonumber(pet_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_pet_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pet_anchor)]
 		end
 		
 		ns["uf_pet_options"].default = function(self)
+			LolzenUIcfg.unitframes["uf_pet_posx"] = -300
+			LolzenUIcfg.unitframes["uf_pet_posy"] = -177
+			LolzenUIcfg.unitframes["uf_pet_anchor"] = "CENTER"
 			ReloadUI()
 		end
 	end

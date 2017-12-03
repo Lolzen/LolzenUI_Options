@@ -7,111 +7,258 @@ f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, addon)
 	if addon == "LolzenUI_Options" and LolzenUIcfg.modules["unitframes"] == true then
 
-		local title = ns.createTitle("unitframes")
+		ns.unitframes.title = ns.createTitle("unitframes")
 
-		local about = ns.createDescription("unitframes", "Unitframes")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.about = ns.createDescription("unitframes", "Unitframes")
+		ns.unitframes.about:SetPoint("TOPLEFT", ns.unitframes.title, "BOTTOMLEFT", 0, -8)
 		
-		local cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"])
-		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
+		ns.unitframes.cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"])
+		ns.unitframes.cb1:SetPoint("TOPLEFT", ns.unitframes.about, "BOTTOMLEFT", 0, -20)
 		
-		local cb2 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
-		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -0)
+		ns.unitframes.cb2 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
+		ns.unitframes.cb2:SetPoint("TOPLEFT", ns.unitframes.cb1, "BOTTOMLEFT", 0, -0)
 		
-		cb1:SetScript("OnClick", function(self)
-			if cb1:GetChecked() == true then
-				cb2:Disable()
+		ns.unitframes.cb1:SetScript("OnClick", function(self)
+			if ns.unitframes.cb1:GetChecked() == true then
+				ns.unitframes.cb2:Disable()
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
 			else
-				cb2:Enable()
+				ns.unitframes.cb2:Enable()
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
 			end
 		end)
 
-		if cb1:GetChecked() == true then
-			cb2:Disable()
+		if ns.unitframes.cb1:GetChecked() == true then
+			ns.unitframes.cb2:Disable()
 			uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
 		else
-			cb2:Enable()
+			ns.unitframes.cb2:Enable()
 		end
 		
-		local texture_text = ns.createFonstring("unitframes", "Texture:")
-		texture_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -15)
+		ns.unitframes.texture_text = ns.createFonstring("unitframes", "Texture:")
+		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb2, "BOTTOMLEFT", 0, -15)
 
-		local texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
-		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
+		ns.unitframes.texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.texture:SetPoint("LEFT", ns.unitframes.texture_text, "RIGHT", -10, -3)
 		
-		local border_text = ns.createFonstring("unitframes", "Border:")
-		border_text:SetPoint("LEFT", texture, "RIGHT", -5, 3)
+		ns.unitframes.border_text = ns.createFonstring("unitframes", "Border:")
+		ns.unitframes.border_text:SetPoint("LEFT", ns.unitframes.texture, "RIGHT", -5, 3)
 
-		local border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes["uf_border"])
-		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
+		ns.unitframes.border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes["uf_border"])
+		ns.unitframes.border:SetPoint("LEFT", ns.unitframes.border_text, "RIGHT", -10, -3)
 		
-		local header1 = ns.createHeader("unitframes", "Raidmark indicator")
-		header1:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.header1 = ns.createHeader("unitframes", "Raidmark indicator")
+		ns.unitframes.header1:SetPoint("TOPLEFT", ns.unitframes.texture_text, "BOTTOMLEFT", 0, -30)
 		
-		local rt_size_text = ns.createFonstring("unitframes", "Size:")
-		rt_size_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
+		ns.unitframes.rt_size_text = ns.createFonstring("unitframes", "Size:")
+		ns.unitframes.rt_size_text:SetPoint("TOPLEFT", ns.unitframes.header1, "BOTTOMLEFT", 0, -10)
 
-		local rt_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_size"])
-		rt_size:SetPoint("LEFT", rt_size_text, "RIGHT", 10, 0)
+		ns.unitframes.rt_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_size"])
+		ns.unitframes.rt_size:SetPoint("LEFT", ns.unitframes.rt_size_text, "RIGHT", 10, 0)
 
-		local rt_pos_x_text = ns.createFonstring("unitframes", "PosX:")
-		rt_pos_x_text:SetPoint("LEFT", rt_size, "RIGHT", 10, 0)
+		ns.unitframes.rt_pos_x_text = ns.createFonstring("unitframes", "PosX:")
+		ns.unitframes.rt_pos_x_text:SetPoint("LEFT", ns.unitframes.rt_size, "RIGHT", 10, 0)
 
-		local rt_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posx"])
-		rt_pos_x:SetPoint("LEFT", rt_pos_x_text, "RIGHT", 10, 0)
+		ns.unitframes.rt_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posx"])
+		ns.unitframes.rt_pos_x:SetPoint("LEFT", ns.unitframes.rt_pos_x_text, "RIGHT", 10, 0)
 
-		local rt_pos_y_text = ns.createFonstring("unitframes", "PosY:")
-		rt_pos_y_text:SetPoint("LEFT", rt_pos_x, "RIGHT", 10, 0)
+		ns.unitframes.rt_pos_y_text = ns.createFonstring("unitframes", "PosY:")
+		ns.unitframes.rt_pos_y_text:SetPoint("LEFT", ns.unitframes.rt_pos_x, "RIGHT", 10, 0)
 
-		local rt_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posy"])
-		rt_pos_y:SetPoint("LEFT", rt_pos_y_text, "RIGHT", 10, 0)
+		ns.unitframes.rt_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posy"])
+		ns.unitframes.rt_pos_y:SetPoint("LEFT", ns.unitframes.rt_pos_y_text, "RIGHT", 10, 0)
 
-		local rt_anchor_text = ns.createFonstring("unitframes", "Anchor:")
-		rt_anchor_text:SetPoint("LEFT", rt_pos_y, "RIGHT", 10, 0)
+		ns.unitframes.rt_anchor_text = ns.createFonstring("unitframes", "Anchor:")
+		ns.unitframes.rt_anchor_text:SetPoint("LEFT", ns.unitframes.rt_pos_y, "RIGHT", 10, 0)
 
-		local rt_anchor = ns.createPicker("unitframes", "anchor", "uf_rt_anchor", 110, LolzenUIcfg.unitframes["uf_ri_anchor"])
-		rt_anchor:SetPoint("LEFT", rt_anchor_text, "RIGHT", -10, -3)
+		ns.unitframes.rt_anchor = ns.createPicker("unitframes", "anchor", "uf_rt_anchor", 110, LolzenUIcfg.unitframes["uf_ri_anchor"])
+		ns.unitframes.rt_anchor:SetPoint("LEFT", ns.unitframes.rt_anchor_text, "RIGHT", -10, -3)
 		
-		local header2 = ns.createHeader("unitframes", "Lead indicator")
-		header2:SetPoint("TOPLEFT", rt_size_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.header2 = ns.createHeader("unitframes", "Lead indicator")
+		ns.unitframes.header2:SetPoint("TOPLEFT", ns.unitframes.rt_size_text, "BOTTOMLEFT", 0, -30)
 		
-		local lead_size_text = ns.createFonstring("unitframes", "Size:")
-		lead_size_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		ns.unitframes.lead_size_text = ns.createFonstring("unitframes", "Size:")
+		ns.unitframes.lead_size_text:SetPoint("TOPLEFT", ns.unitframes.header2, "BOTTOMLEFT", 0, -10)
 
-		local lead_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_size"])
-		lead_size:SetPoint("LEFT", lead_size_text, "RIGHT", 10, 0)
+		ns.unitframes.lead_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_size"])
+		ns.unitframes.lead_size:SetPoint("LEFT", ns.unitframes.lead_size_text, "RIGHT", 10, 0)
 
-		local lead_pos_x_text = ns.createFonstring("unitframes", "PosX:")
-		lead_pos_x_text:SetPoint("LEFT", lead_size, "RIGHT", 10, 0)
+		ns.unitframes.lead_pos_x_text = ns.createFonstring("unitframes", "PosX:")
+		ns.unitframes.lead_pos_x_text:SetPoint("LEFT", ns.unitframes.lead_size, "RIGHT", 10, 0)
 
-		local lead_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posx"])
-		lead_pos_x:SetPoint("LEFT", lead_pos_x_text, "RIGHT", 10, 0)
+		ns.unitframes.lead_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posx"])
+		ns.unitframes.lead_pos_x:SetPoint("LEFT", ns.unitframes.lead_pos_x_text, "RIGHT", 10, 0)
 
-		local lead_pos_y_text = ns.createFonstring("unitframes", "PosY:")
-		lead_pos_y_text:SetPoint("LEFT", lead_pos_x, "RIGHT", 10, 0)
+		ns.unitframes.lead_pos_y_text = ns.createFonstring("unitframes", "PosY:")
+		ns.unitframes.lead_pos_y_text:SetPoint("LEFT", ns.unitframes.lead_pos_x, "RIGHT", 10, 0)
 
-		local lead_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posy"])
-		lead_pos_y:SetPoint("LEFT", lead_pos_y_text, "RIGHT", 10, 0)
+		ns.unitframes.lead_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posy"])
+		ns.unitframes.lead_pos_y:SetPoint("LEFT", ns.unitframes.lead_pos_y_text, "RIGHT", 10, 0)
 
-		local lead_anchor_text = ns.createFonstring("unitframes", "Anchor:")
-		lead_anchor_text:SetPoint("LEFT", lead_pos_y, "RIGHT", 10, 0)
+		ns.unitframes.lead_anchor_text = ns.createFonstring("unitframes", "Anchor:")
+		ns.unitframes.lead_anchor_text:SetPoint("LEFT", ns.unitframes.lead_pos_y, "RIGHT", 10, 0)
 
-		local lead_anchor = ns.createPicker("unitframes", "anchor", "uf_lead_anchor", 110, LolzenUIcfg.unitframes["uf_lead_anchor"])
-		lead_anchor:SetPoint("LEFT", lead_anchor_text, "RIGHT", -10, -3)
+		ns.unitframes.lead_anchor = ns.createPicker("unitframes", "anchor", "uf_lead_anchor", 110, LolzenUIcfg.unitframes["uf_lead_anchor"])
+		ns.unitframes.lead_anchor:SetPoint("LEFT", ns.unitframes.lead_anchor_text, "RIGHT", -10, -3)
 		
-		local header3 = ns.createHeader("unitframes", "Fadeout")
-		header3:SetPoint("TOPLEFT", lead_size_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.header3 = ns.createHeader("unitframes", "Fadeout")
+		ns.unitframes.header3:SetPoint("TOPLEFT", ns.unitframes.lead_size_text, "BOTTOMLEFT", 0, -30)
 		
-		local cb2 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
-		cb2:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.cb3 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
+		ns.unitframes.cb3:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
 		
-		local fadeout_alpha_text = ns.createFonstring("unitframes", "out of reach alpha (party/raid members):")
-		fadeout_alpha_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.fadeout_alpha_text = ns.createFonstring("unitframes", "out of reach alpha (party/raid members):")
+		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -8)
 
-		local fadout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
-		fadout_alpha:SetPoint("LEFT", fadeout_alpha_text, "RIGHT", -10, -3)
+		ns.unitframes.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
+		ns.unitframes.fadeout_alpha:SetPoint("LEFT", ns.unitframes.fadeout_alpha_text, "RIGHT", -10, -3)
+		
+		ns.unitframes.header4 = ns.createHeader("unitframes", "Power Colors")
+		ns.unitframes.header4:SetPoint("TOPLEFT", ns.unitframes.fadeout_alpha_text, "BOTTOMLEFT", 0, -30)
+		
+		ns.unitframes.power_color_mana_text = ns.createFonstring("unitframes", "Mana:")
+		ns.unitframes.power_color_mana_text:SetPoint("TOPLEFT", ns.unitframes.header4, "BOTTOMLEFT", 0, -8)
+
+		ns.unitframes.power_color_mana = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["0"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_mana:SetPoint("LEFT", ns.unitframes.power_color_mana_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_mana_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_mana, LolzenUIcfg.unitframes["uf_power_colors"]["0"])
+		ns.unitframes.power_color_mana_f:SetAllPoints(ns.unitframes.power_color_mana)
+		
+		ns.unitframes.power_color_rage_text = ns.createFonstring("unitframes", "Rage:")
+		ns.unitframes.power_color_rage_text:SetPoint("LEFT", ns.unitframes.power_color_mana, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_rage = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["1"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_rage:SetPoint("LEFT", ns.unitframes.power_color_rage_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_rage_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_rage, LolzenUIcfg.unitframes["uf_power_colors"]["1"])
+		ns.unitframes.power_color_rage_f:SetAllPoints(ns.unitframes.power_color_rage)
+		
+		ns.unitframes.power_color_focus_text = ns.createFonstring("unitframes", "Focus:")
+		ns.unitframes.power_color_focus_text:SetPoint("LEFT", ns.unitframes.power_color_rage, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_focus = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["2"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_focus:SetPoint("LEFT", ns.unitframes.power_color_focus_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_focus_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_focus, LolzenUIcfg.unitframes["uf_power_colors"]["2"])
+		ns.unitframes.power_color_focus_f:SetAllPoints(ns.unitframes.power_color_focus)
+		
+		ns.unitframes.power_color_energy_text = ns.createFonstring("unitframes", "Energy:")
+		ns.unitframes.power_color_energy_text:SetPoint("LEFT", ns.unitframes.power_color_focus, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_energy = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["3"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_energy:SetPoint("LEFT", ns.unitframes.power_color_energy_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_energy_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_energy, LolzenUIcfg.unitframes["uf_power_colors"]["3"])
+		ns.unitframes.power_color_energy_f:SetAllPoints(ns.unitframes.power_color_energy)
+		
+		ns.unitframes.power_color_cp_text = ns.createFonstring("unitframes", "Combo Points:")
+		ns.unitframes.power_color_cp_text:SetPoint("TOPLEFT", ns.unitframes.power_color_mana_text, "BOTTOMLEFT", 0, -8)
+		
+		ns.unitframes.power_color_cp = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["4"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_cp:SetPoint("LEFT", ns.unitframes.power_color_cp_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_cp_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_cp, LolzenUIcfg.unitframes["uf_power_colors"]["4"])
+		ns.unitframes.power_color_cp_f:SetAllPoints(ns.unitframes.power_color_cp)
+		
+		ns.unitframes.power_color_runes_text = ns.createFonstring("unitframes", "Runes:")
+		ns.unitframes.power_color_runes_text:SetPoint("LEFT", ns.unitframes.power_color_cp, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_runes = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["5"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_runes:SetPoint("LEFT", ns.unitframes.power_color_runes_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_runes_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_runes, LolzenUIcfg.unitframes["uf_power_colors"]["5"])
+		ns.unitframes.power_color_runes_f:SetAllPoints(ns.unitframes.power_color_runes)
+		
+		ns.unitframes.power_color_rp_text = ns.createFonstring("unitframes", "Runic Power:")
+		ns.unitframes.power_color_rp_text:SetPoint("LEFT", ns.unitframes.power_color_runes, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_rp = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["6"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_rp:SetPoint("LEFT", ns.unitframes.power_color_rp_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_rp_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_rp, LolzenUIcfg.unitframes["uf_power_colors"]["6"])
+		ns.unitframes.power_color_rp_f:SetAllPoints(ns.unitframes.power_color_rp)
+		
+		ns.unitframes.power_color_soulshards_text = ns.createFonstring("unitframes", "Soul Shards:")
+		ns.unitframes.power_color_soulshards_text:SetPoint("LEFT", ns.unitframes.power_color_rp, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_soulshards = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["7"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_soulshards:SetPoint("LEFT", ns.unitframes.power_color_soulshards_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_soulshards_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_soulshards, LolzenUIcfg.unitframes["uf_power_colors"]["7"])
+		ns.unitframes.power_color_soulshards_f:SetAllPoints(ns.unitframes.power_color_soulshards)
+		
+		ns.unitframes.power_color_lp_text = ns.createFonstring("unitframes", "Lunar Power:")
+		ns.unitframes.power_color_lp_text:SetPoint("TOPLEFT", ns.unitframes.power_color_cp_text, "BOTTOMLEFT", 0, -8)
+
+		ns.unitframes.power_color_lp = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["8"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_lp:SetPoint("LEFT", ns.unitframes.power_color_lp_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_lp_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_lp, LolzenUIcfg.unitframes["uf_power_colors"]["8"])
+		ns.unitframes.power_color_lp_f:SetAllPoints(ns.unitframes.power_color_lp)
+		
+		ns.unitframes.power_color_hp_text = ns.createFonstring("unitframes", "Holy Power:")
+		ns.unitframes.power_color_hp_text:SetPoint("LEFT", ns.unitframes.power_color_lp, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_hp = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["9"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_hp:SetPoint("LEFT", ns.unitframes.power_color_hp_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_hp_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_hp, LolzenUIcfg.unitframes["uf_power_colors"]["9"])
+		ns.unitframes.power_color_hp_f:SetAllPoints(ns.unitframes.power_color_hp)
+		
+		ns.unitframes.power_color_maelstrom_text = ns.createFonstring("unitframes", "Maelstrom:")
+		ns.unitframes.power_color_maelstrom_text:SetPoint("LEFT", ns.unitframes.power_color_hp, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_maelstrom = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["11"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_maelstrom:SetPoint("LEFT", ns.unitframes.power_color_maelstrom_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_maelstrom_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_maelstrom, LolzenUIcfg.unitframes["uf_power_colors"]["11"])
+		ns.unitframes.power_color_maelstrom_f:SetAllPoints(ns.unitframes.power_color_maelstrom)
+		
+		ns.unitframes.power_color_chi_text = ns.createFonstring("unitframes", "Chi:")
+		ns.unitframes.power_color_chi_text:SetPoint("LEFT", ns.unitframes.power_color_maelstrom, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_chi = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["12"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_chi:SetPoint("LEFT", ns.unitframes.power_color_chi_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_chi_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_chi, LolzenUIcfg.unitframes["uf_power_colors"]["12"])
+		ns.unitframes.power_color_chi_f:SetAllPoints(ns.unitframes.power_color_chi)
+		
+		ns.unitframes.power_color_insanity_text = ns.createFonstring("unitframes", "Insanity:")
+		ns.unitframes.power_color_insanity_text:SetPoint("TOPLEFT", ns.unitframes.power_color_lp_text, "BOTTOMLEFT", 0, -8)
+
+		ns.unitframes.power_color_insanity = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["13"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_insanity:SetPoint("LEFT", ns.unitframes.power_color_insanity_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_insanity_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_insanity, LolzenUIcfg.unitframes["uf_power_colors"]["13"])
+		ns.unitframes.power_color_insanity_f:SetAllPoints(ns.unitframes.power_color_insanity)
+		
+		ns.unitframes.power_color_ac_text = ns.createFonstring("unitframes", "Arcane Charges:")
+		ns.unitframes.power_color_ac_text:SetPoint("LEFT", ns.unitframes.power_color_insanity, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_ac = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["16"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_ac:SetPoint("LEFT", ns.unitframes.power_color_ac_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_ac_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_ac, LolzenUIcfg.unitframes["uf_power_colors"]["16"])
+		ns.unitframes.power_color_ac_f:SetAllPoints(ns.unitframes.power_color_ac)
+		
+		ns.unitframes.power_color_fury_text = ns.createFonstring("unitframes", "Fury:")
+		ns.unitframes.power_color_fury_text:SetPoint("LEFT", ns.unitframes.power_color_ac, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_fury = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["17"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_fury:SetPoint("LEFT", ns.unitframes.power_color_fury_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_fury_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_fury, LolzenUIcfg.unitframes["uf_power_colors"]["17"])
+		ns.unitframes.power_color_fury_f:SetAllPoints(ns.unitframes.power_color_fury)
+		
+		ns.unitframes.power_color_pain_text = ns.createFonstring("unitframes", "Pain:")
+		ns.unitframes.power_color_pain_text:SetPoint("LEFT", ns.unitframes.power_color_fury, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_pain = ns.createColorTexture("unitframes", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["18"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.unitframes.power_color_pain:SetPoint("LEFT", ns.unitframes.power_color_pain_text, "RIGHT", 10, 0)
+
+		ns.unitframes.power_color_pain_f = ns.createColorPicker("unitframes", ns.unitframes.power_color_pain, LolzenUIcfg.unitframes["uf_power_colors"]["18"])
+		ns.unitframes.power_color_pain_f:SetAllPoints(ns.unitframes.power_color_pain)
 		
 		-- // Create a subcategory panel for Player // --
 		ns.uf_player_options = CreateFrame("Frame", "unitframe_playerpanel", ns["unitframes"])
@@ -520,20 +667,36 @@ f:SetScript("OnEvent", function(self, event, addon)
 		pet_hp_font_flag:SetPoint("LEFT", pet_hp_font_flag_text, "RIGHT", -10, -3)
 		
 		ns["unitframes"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_use_hp_percent"] = cb1:GetChecked()
-			LolzenUIcfg.unitframes["uf_use_sivalue"] = cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
-			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(border)
-			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(rt_size:GetText())
-			LolzenUIcfg.unitframes["uf_ri_posx"] = tonumber(rt_pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_ri_posy"] = tonumber(rt_pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(rt_anchor)]
-			LolzenUIcfg.unitframes["uf_lead_size"] = tonumber(lead_size:GetText())
-			LolzenUIcfg.unitframes["uf_lead_posx"] = tonumber(lead_pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_lead_posy"] = tonumber(lead_pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(lead_anchor)]
-			LolzenUIcfg.unitframes["uf_fade_outofreach"] = cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(fadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_use_hp_percent"] = ns.unitframes.cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_sivalue"] = ns.unitframes.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(ns.unitframes.texture)
+			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(ns.unitframes.border)
+			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(ns.unitframes.rt_size:GetText())
+			LolzenUIcfg.unitframes["uf_ri_posx"] = tonumber(ns.unitframes.rt_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_ri_posy"] = tonumber(ns.unitframes.rt_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.rt_anchor)]
+			LolzenUIcfg.unitframes["uf_lead_size"] = tonumber(ns.unitframes.lead_size:GetText())
+			LolzenUIcfg.unitframes["uf_lead_posx"] = tonumber(ns.unitframes.lead_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_lead_posy"] = tonumber(ns.unitframes.lead_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.lead_anchor)]
+			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.fadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_power_colors"]["0"] = {ns.unitframes.power_color_mana:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["1"] = {ns.unitframes.power_color_rage:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["2"] = {ns.unitframes.power_color_focus:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["3"] = {ns.unitframes.power_color_energy:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["4"] = {ns.unitframes.power_color_cp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["5"] = {ns.unitframes.power_color_runes:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["6"] = {ns.unitframes.power_color_rp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["7"] = {ns.unitframes.power_color_soulshards:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["8"] = {ns.unitframes.power_color_lp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["9"] = {ns.unitframes.power_color_hp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["11"] = {ns.unitframes.power_color_maelstrom:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["12"] = {ns.unitframes.power_color_chi:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["13"] = {ns.unitframes.power_color_insanity:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["16"] = {ns.unitframes.power_color_ac:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["17"] = {ns.unitframes.power_color_fury:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"]["18"] = {ns.unitframes.power_color_pain:GetVertexColor()}
 		end
 		
 		ns["unitframes"].default = function(self)
@@ -551,6 +714,22 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_lead_anchor"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_fade_outofreach"] = true
 			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = 0.5
+			LolzenUIcfg.unitframes["uf_power_colors"]["0"] = {48/255, 113/255, 191/255}
+			LolzenUIcfg.unitframes["uf_power_colors"]["1"] = {1, 0, 0}
+			LolzenUIcfg.unitframes["uf_power_colors"]["2"] = {255/255, 178/255, 0}
+			LolzenUIcfg.unitframes["uf_power_colors"]["3"] = {1.00, 1.00, 34/255}
+			LolzenUIcfg.unitframes["uf_power_colors"]["4"] = {1.00, 0.96, 0.41}
+			LolzenUIcfg.unitframes["uf_power_colors"]["5"] = {0.50, 0.50, 0.50}
+			LolzenUIcfg.unitframes["uf_power_colors"]["6"] = {0.00, 0.82, 1.00}
+			LolzenUIcfg.unitframes["uf_power_colors"]["7"] = {0.50, 0.32, 0.55}
+			LolzenUIcfg.unitframes["uf_power_colors"]["8"] = {0.30, 0.52, 0.90}
+			LolzenUIcfg.unitframes["uf_power_colors"]["9"] = {0.95, 0.90, 0.60}
+			LolzenUIcfg.unitframes["uf_power_colors"]["11"] = {51/255, 181/255, 229/225}
+			LolzenUIcfg.unitframes["uf_power_colors"]["12"] = {0.71, 1.00, 0.92}
+			LolzenUIcfg.unitframes["uf_power_colors"]["13"] = {0.84, 0.1, 0.87}
+			LolzenUIcfg.unitframes["uf_power_colors"]["16"] = {0.10, 0.10, 0.98}
+			LolzenUIcfg.unitframes["uf_power_colors"]["17"] = {0.788, 0.259, 0.992}
+			LolzenUIcfg.unitframes["uf_power_colors"]["18"] = {1.00, 0.61, 0.00}
 			ReloadUI()
 		end
 		

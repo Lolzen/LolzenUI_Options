@@ -580,6 +580,39 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local party_hp_font_flag = ns.createPicker("uf_party_options", "flag", "uf_party_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_party_hp_font_flag"])
 		party_hp_font_flag:SetPoint("LEFT", party_hp_font_flag_text, "RIGHT", -10, -3)
 		
+		local party_header2 = ns.createHeader("uf_party_options", "Role Indicator")
+		party_header2:SetPoint("TOPLEFT", party_hp_font_text, 0, -30)
+		
+		local party_cb1 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ffshow role indicator|r", LolzenUIcfg.unitframes["uf_party_showroleindicator"])
+		party_cb1:SetPoint("TOPLEFT", party_header2, "BOTTOMLEFT", 0, -8)
+		
+		local party_ri_size_text = ns.createFonstring("uf_party_options", "Size:")
+		party_ri_size_text:SetPoint("TOPLEFT", party_cb1, "BOTTOMLEFT", 0, -8)
+		
+		local party_ri_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_size"])
+		party_ri_size:SetPoint("LEFT", party_ri_size_text, "RIGHT", 10, 0)
+
+		local party_ri_pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
+		party_ri_pos_x_text:SetPoint("LEFT", party_ri_size, "RIGHT", 10, 0)
+		
+		local party_ri_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_posx"])
+		party_ri_pos_x:SetPoint("LEFT", party_ri_pos_x_text, "RIGHT", 10, 0)
+		
+		local party_ri_pos_y_text = ns.createFonstring("uf_party_options", "PosY:")
+		party_ri_pos_y_text:SetPoint("LEFT", party_ri_pos_x, "RIGHT", 10, 0)
+		
+		local party_ri_pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_posy"])
+		party_ri_pos_y:SetPoint("LEFT", party_ri_pos_y_text, "RIGHT", 10, 0)
+		
+		local party_ri_anchor_text = ns.createFonstring("uf_party_options", "Anchor:")
+		party_ri_anchor_text:SetPoint("LEFT", party_ri_pos_y, "RIGHT", 10, 0)
+		
+		local party_ri_anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_ri_anchor", 120, LolzenUIcfg.unitframes["uf_party_ri_anchor"])
+		party_ri_anchor:SetPoint("LEFT", party_ri_anchor_text, "RIGHT", -10, -3)
+		
+		--local party_ri_text = ns.createFonstring("uf_party_options", "Font flag:")
+		--party_hp_font_flag_text:SetPoint("LEFT", party_hp_font_size, "RIGHT", 10, 0)
+		
 		-- // Create a subcategory panel for Raid // --
 		ns.uf_raid_options = CreateFrame("Frame", "unitframe_raidpanel", ns["unitframes"])
 		ns.uf_raid_options.name = "   Raid"
@@ -658,6 +691,36 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local raid_hp_font_flag = ns.createPicker("uf_raid_options", "flag", "uf_raid_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_raid_hp_font_flag"])
 		raid_hp_font_flag:SetPoint("LEFT", raid_hp_font_flag_text, "RIGHT", -10, -3)
+		
+		local raid_header2 = ns.createHeader("uf_raid_options", "Role Indicator")
+		raid_header2:SetPoint("TOPLEFT", raid_hp_font_text, 0, -30)
+		
+		local raid_cb1 = ns.createCheckBox("uf_raid_options", "uf_raid_ri", "|cff5599ffshow role indicator|r", LolzenUIcfg.unitframes["uf_raid_showroleindicator"])
+		raid_cb1:SetPoint("TOPLEFT", raid_header2, "BOTTOMLEFT", 0, -8)
+		
+		local raid_ri_size_text = ns.createFonstring("uf_raid_options", "Size:")
+		raid_ri_size_text:SetPoint("TOPLEFT", raid_cb1, "BOTTOMLEFT", 0, -8)
+		
+		local raid_ri_size = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_ri_size"])
+		raid_ri_size:SetPoint("LEFT", raid_ri_size_text, "RIGHT", 10, 0)
+
+		local raid_ri_pos_x_text = ns.createFonstring("uf_raid_options", "PosX:")
+		raid_ri_pos_x_text:SetPoint("LEFT", raid_ri_size, "RIGHT", 10, 0)
+		
+		local raid_ri_pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_ri_posx"])
+		raid_ri_pos_x:SetPoint("LEFT", raid_ri_pos_x_text, "RIGHT", 10, 0)
+		
+		local raid_ri_pos_y_text = ns.createFonstring("uf_raid_options", "PosY:")
+		raid_ri_pos_y_text:SetPoint("LEFT", raid_ri_pos_x, "RIGHT", 10, 0)
+		
+		local raid_ri_pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_ri_posy"])
+		raid_ri_pos_y:SetPoint("LEFT", raid_ri_pos_y_text, "RIGHT", 10, 0)
+		
+		local raid_ri_anchor_text = ns.createFonstring("uf_raid_options", "Anchor:")
+		raid_ri_anchor_text:SetPoint("LEFT", raid_ri_pos_y, "RIGHT", 10, 0)
+		
+		local raid_ri_anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_ri_anchor", 120, LolzenUIcfg.unitframes["uf_raid_ri_anchor"])
+		raid_ri_anchor:SetPoint("LEFT", raid_ri_anchor_text, "RIGHT", -10, -3)
 		
 		-- // Create a subcategory panel for Pet // --
 		ns.uf_pet_options = CreateFrame("Frame", "unitframe_petpanel", ns["unitframes"])
@@ -904,6 +967,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_party_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(party_hp_anchor)]
 			LolzenUIcfg.unitframes["uf_party_width"] = tonumber(party_width:GetText())
 			LolzenUIcfg.unitframes["uf_party_height"] = tonumber(party_height:GetText())
+			LolzenUIcfg.unitframes["uf_party_showroleindicator"] = party_cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_party_ri_size"] = tonumber(party_ri_size:GetText())
+			LolzenUIcfg.unitframes["uf_party_ri_posx"] = tonumber(party_ri_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_party_ri_posy"] = tonumber(party_ri_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_party_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(party_ri_anchor)]
 		end
 		
 		ns["uf_party_options"].default = function(self)
@@ -918,6 +986,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_party_hp_anchor"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_party_width"] = 70
 			LolzenUIcfg.unitframes["uf_party_height"] = 19
+			LolzenUIcfg.unitframes["uf_party_showroleindicator"] = true
+			LolzenUIcfg.unitframes["uf_party_ri_size"] = 16
+			LolzenUIcfg.unitframes["uf_party_ri_posx"] = 0
+			LolzenUIcfg.unitframes["uf_party_ri_posy"] = 0
+			LolzenUIcfg.unitframes["uf_party_ri_anchor"] = "RIGHT"
 			ReloadUI()
 		end
 		
@@ -933,6 +1006,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_raid_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(raid_hp_anchor)]
 			LolzenUIcfg.unitframes["uf_raid_width"] = tonumber(raid_width:GetText())
 			LolzenUIcfg.unitframes["uf_raid_height"] = tonumber(raid_height:GetText())
+			LolzenUIcfg.unitframes["uf_raid_showroleindicator"] = raid_cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_raid_ri_size"] = tonumber(raid_ri_size:GetText())
+			LolzenUIcfg.unitframes["uf_raid_ri_posx"] = tonumber(raid_ri_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_raid_ri_posy"] = tonumber(raid_ri_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_raid_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(raid_ri_anchor)]
 		end
 		
 		ns["uf_raid_options"].default = function(self)
@@ -947,6 +1025,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_raid_hp_anchor"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_raid_width"] = 50
 			LolzenUIcfg.unitframes["uf_raid_height"] = 19
+			LolzenUIcfg.unitframes["uf_raid_showroleindicator"] = true
+			LolzenUIcfg.unitframes["uf_raid_ri_size"] = 16
+			LolzenUIcfg.unitframes["uf_raid_ri_posx"] = 0
+			LolzenUIcfg.unitframes["uf_raid_ri_posy"] = 0
+			LolzenUIcfg.unitframes["uf_raid_ri_anchor"] = "RIGHT"
 			ReloadUI()
 		end
 		

@@ -339,6 +339,45 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local player_hp_font_flag = ns.createPicker("uf_player_options", "flag", "uf_player_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_player_hp_font_flag"])
 		player_hp_font_flag:SetPoint("LEFT", player_hp_font_flag_text, "RIGHT", -10, -3)
 		
+		local player_header2 = ns.createHeader("uf_player_options", "Class Power & Runes")
+		player_header2:SetPoint("TOPLEFT", player_hp_font_text, 0, -30)
+
+		local player_classpower_anchor1_text = ns.createFonstring("uf_player_options", "Anchor1:")
+		player_classpower_anchor1_text:SetPoint("TOPLEFT", player_header2, "BOTTOMLEFT", 0, -13)
+		
+		local player_classpower_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor1", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor1"])
+		player_classpower_anchor1:SetPoint("LEFT", player_classpower_anchor1_text, "RIGHT", -10, -3)
+		
+		local player_classpower_anchor2_text = ns.createFonstring("uf_player_options", "Anchor2:")
+		player_classpower_anchor2_text:SetPoint("LEFT", player_classpower_anchor1, "RIGHT", -5, 3)
+		
+		local player_classpower_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor2", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor2"])
+		player_classpower_anchor2:SetPoint("LEFT", player_classpower_anchor2_text, "RIGHT", -10, -3)
+		
+		local player_classpower_pos_x_text = ns.createFonstring("uf_player_options", "PosX:")
+		player_classpower_pos_x_text:SetPoint("LEFT", player_classpower_anchor2, "RIGHT", -5, 3)
+		
+		local player_classpower_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_posx"])
+		player_classpower_pos_x:SetPoint("LEFT", player_classpower_pos_x_text, "RIGHT", 10, 0)
+		
+		local player_classpower_pos_y_text = ns.createFonstring("uf_player_options", "PosY:")
+		player_classpower_pos_y_text:SetPoint("LEFT", player_classpower_pos_x, "RIGHT", 5, 0)
+
+		local player_classpower_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_posy"])
+		player_classpower_pos_y:SetPoint("LEFT", player_classpower_pos_y_text, "RIGHT", 10, 0)
+		
+		local player_classpower_border_text = ns.createFonstring("uf_player_options", "Border:")
+		player_classpower_border_text:SetPoint("TOPLEFT", player_classpower_anchor1_text, "BOTTOMLEFT", 0, -15)
+		
+		local player_classpower_border = ns.createPicker("uf_player_options", "border", "uf_player_classbar_border", 120, LolzenUIcfg.unitframes["uf_player_classpower_border"])
+		player_classpower_border:SetPoint("LEFT", player_classpower_border_text, "RIGHT", -10, -3)
+		
+		local player_classpower_spacing_text = ns.createFonstring("uf_player_options", "Spacing:")
+		player_classpower_spacing_text:SetPoint("LEFT", player_classpower_border, "RIGHT", -5, 3)
+
+		local player_classpower_spacing = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_spacing"])
+		player_classpower_spacing:SetPoint("LEFT", player_classpower_spacing_text, "RIGHT", 10, 0)
+		
 		-- // Create a subcategory panel for Target // --
 		ns.uf_target_options = CreateFrame("Frame", "unitframe_targetpanel", ns["unitframes"])
 		ns.uf_target_options.name = "   Target"
@@ -927,6 +966,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(player_hp_anchor)]
 			LolzenUIcfg.unitframes["uf_player_width"] = tonumber(player_width:GetText())
 			LolzenUIcfg.unitframes["uf_player_height"] = tonumber(player_height:GetText())
+			LolzenUIcfg.unitframes["uf_player_classpower_border"] = UIDropDownMenu_GetSelectedName(player_classpower_border)
+			LolzenUIcfg.unitframes["uf_player_classpower_spacing"] = tonumber(player_classpower_spacing:GetText())
+			LolzenUIcfg.unitframes["uf_player_classpower_posx"] = tonumber(player_classpower_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_classpower_posy"] = tonumber(player_classpower_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_classpower_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(player_classpower_anchor1)]
+			LolzenUIcfg.unitframes["uf_player_classpower_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(player_classpower_anchor2)]
 		end
 		
 		ns["uf_player_options"].default = function(self)
@@ -941,6 +986,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_hp_anchor"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_player_width"] = 220
 			LolzenUIcfg.unitframes["uf_player_height"] = 21
+			LolzenUIcfg.unitframes["uf_player_classpower_border"] = "Blizzard Tooltip"
+			LolzenUIcfg.unitframes["uf_player_classpower_spacing"] = 5
+			LolzenUIcfg.unitframes["uf_player_classpower_posx"] = 0
+			LolzenUIcfg.unitframes["uf_player_classpower_posy"] = -5
+			LolzenUIcfg.unitframes["uf_player_classpower_anchor1"] = "TOPLEFT"
+			LolzenUIcfg.unitframes["uf_player_classpower_anchor2"] = "BOTTOMLEFT"
 			ReloadUI()
 		end
 		

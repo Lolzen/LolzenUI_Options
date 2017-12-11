@@ -323,7 +323,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.actionbar["actionbar_petb_anchor1"] = "BOTTOMLEFT"
 			LolzenUIcfg.actionbar["actionbar_petb_parent"] = "MultiBarBottomRightButton1"
 			LolzenUIcfg.actionbar["actionbar_petb_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_petb_posx"] = 15
+			LolzenUIcfg.actionbar["actionbar_petb_posx"] = 32
 			LolzenUIcfg.actionbar["actionbar_petb_posy"] = 60
 			LolzenUIcfg.actionbar["actionbar_pb_anchor1"] = "BOTTOMLEFT"
 			LolzenUIcfg.actionbar["actionbar_pb_parent"] = "MultiBarBottomRightButton1"

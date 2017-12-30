@@ -450,8 +450,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.cb1 = ns.createCheckBox("uf_party_options", "uf_party_enabled", "|cff5599ffuse LolzenUI partyframes (disable for alternatives/blizzard default)|r", LolzenUIcfg.unitframes["uf_party_enabled"])
 		ns.uf_party_options.cb1:SetPoint("TOPLEFT", ns.uf_party_options.title, "BOTTOMLEFT", 0, -30)
 
+		ns.uf_party_options.cb2 = ns.createCheckBox("uf_party_options", "uf_party_vertical", "|cff5599ffuse vertical Layout|r", LolzenUIcfg.unitframes["uf_party_use_vertical_layout"])
+		ns.uf_party_options.cb2:SetPoint("TOPLEFT", ns.uf_party_options.cb1, "BOTTOMLEFT", 0, 0)
+
 		ns.uf_party_options.pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
-		ns.uf_party_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb1, "BOTTOMLEFT", 0, -8)
+		ns.uf_party_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb2, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posx"])
 		ns.uf_party_options.pos_x:SetPoint("LEFT", ns.uf_party_options.pos_x_text, "RIGHT", 10, 0)
@@ -483,11 +486,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.header1 = ns.createHeader("uf_party_options", "Healthpoints")
 		ns.uf_party_options.header1:SetPoint("TOPLEFT", ns.uf_party_options.width_text, 0, -30)
 
-		ns.uf_party_options.cb2 = ns.createCheckBox("uf_party_options", "uf_party_use_custom_font_hp", "|cff5599ffoverwrite the general font options for party healthpoints|r", LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"])
-		ns.uf_party_options.cb2:SetPoint("TOPLEFT", ns.uf_party_options.header1, "BOTTOMLEFT", 0, -8)
+		ns.uf_party_options.cb3 = ns.createCheckBox("uf_party_options", "uf_party_use_custom_font_hp", "|cff5599ffoverwrite the general font options for party healthpoints|r", LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"])
+		ns.uf_party_options.cb3:SetPoint("TOPLEFT", ns.uf_party_options.header1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.hp_pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
-		ns.uf_party_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb2, "BOTTOMLEFT", 0, -8)
+		ns.uf_party_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb3, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.hp_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_hp_posx"])
 		ns.uf_party_options.hp_pos_x:SetPoint("LEFT", ns.uf_party_options.hp_pos_x_text, "RIGHT", 10, 0)
@@ -525,11 +528,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.header2 = ns.createHeader("uf_party_options", "Role Indicator")
 		ns.uf_party_options.header2:SetPoint("TOPLEFT", ns.uf_party_options.hp_font_text, 0, -30)
 
-		ns.uf_party_options.cb3 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ffshow role indicator|r", LolzenUIcfg.unitframes["uf_party_showroleindicator"])
-		ns.uf_party_options.cb3:SetPoint("TOPLEFT", ns.uf_party_options.header2, "BOTTOMLEFT", 0, -8)
+		ns.uf_party_options.cb4 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ffshow role indicator|r", LolzenUIcfg.unitframes["uf_party_showroleindicator"])
+		ns.uf_party_options.cb4:SetPoint("TOPLEFT", ns.uf_party_options.header2, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.ri_size_text = ns.createFonstring("uf_party_options", "Size:")
-		ns.uf_party_options.ri_size_text:SetPoint("TOPLEFT", ns.uf_party_options.cb3, "BOTTOMLEFT", 0, -8)
+		ns.uf_party_options.ri_size_text:SetPoint("TOPLEFT", ns.uf_party_options.cb4, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.ri_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_size"])
 		ns.uf_party_options.ri_size:SetPoint("LEFT", ns.uf_party_options.ri_size_text, "RIGHT", 10, 0)
@@ -1113,10 +1116,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["uf_party_options"].okay = function(self)
 			LolzenUIcfg.unitframes["uf_party_enabled"] = ns.uf_party_options.cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_party_use_vertical_layout"] = ns.uf_party_options.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_posx"] = tonumber(ns.uf_party_options.pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_party_posy"] = tonumber(ns.uf_party_options.pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_party_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_party_options.anchor)]
-			LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"] = ns.uf_party_options.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"] = ns.uf_party_options.cb3:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_party_options.hp_font)
 			LolzenUIcfg.unitframes["uf_party_hp_font_size"] = tonumber(ns.uf_party_options.hp_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_party_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_party_options.hp_font_flag)]
@@ -1125,7 +1129,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_party_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_party_options.hp_anchor)]
 			LolzenUIcfg.unitframes["uf_party_width"] = tonumber(ns.uf_party_options.width:GetText())
 			LolzenUIcfg.unitframes["uf_party_height"] = tonumber(ns.uf_party_options.height:GetText())
-			LolzenUIcfg.unitframes["uf_party_showroleindicator"] = ns.uf_party_options.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_party_showroleindicator"] = ns.uf_party_options.cb4:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_ri_size"] = tonumber(ns.uf_party_options.ri_size:GetText())
 			LolzenUIcfg.unitframes["uf_party_ri_posx"] = tonumber(ns.uf_party_options.ri_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_party_ri_posy"] = tonumber(ns.uf_party_options.ri_pos_y:GetText())
@@ -1138,6 +1142,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["uf_party_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_party_enabled"] = true
+			LolzenUIcfg.unitframes["uf_party_use_vertical_layout"] = false
 			LolzenUIcfg.unitframes["uf_party_posx"] = 0
 			LolzenUIcfg.unitframes["uf_party_posy"] = 140
 			LolzenUIcfg.unitframes["uf_party_anchor"] = "BOTTOM"

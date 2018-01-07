@@ -104,8 +104,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("artifactbar", "Font")
 		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -30)
 
+		local cb3 = ns.createCheckBox("artifactbar", "af_text_hover", "|cff5599ffshow text on mouseover|r", LolzenUIcfg.artifactbar["artifactbar_mouseover_text"])
+		cb3:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+
 		local font_text = ns.createFonstring("artifactbar", "Font:")
-		font_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		font_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -10)
 
 		local font = ns.createPicker("artifactbar", "font", "artifactbar_font", 120, LolzenUIcfg.artifactbar["artifactbar_font"])
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
@@ -162,6 +165,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.artifactbar["artifactbar_1px_border"] = cb1:GetChecked()
 			LolzenUIcfg.artifactbar["artifactbar_1px_border_round"] = cb2:GetChecked()
+			LolzenUIcfg.artifactbar["artifactbar_mouseover_text"] = cb3:GetChecked()
 			LolzenUIcfg.artifactbar["artifactbar_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.artifactbar["artifactbar_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
@@ -184,6 +188,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {1, 1, 0.7}
 			LolzenUIcfg.artifactbar["artifactbar_1px_border"] = true
 			LolzenUIcfg.artifactbar["artifactbar_1px_border_round"] = true
+			LolzenUIcfg.artifactbar["artifactbar_mouseover_text"] = true
 			LolzenUIcfg.artifactbar["artifactbar_font"] = "DroidSansBold"
 			LolzenUIcfg.artifactbar["artifactbar_font_size"] = 10
 			LolzenUIcfg.artifactbar["artifactbar_font_flag"] = "THINOUTLINE"

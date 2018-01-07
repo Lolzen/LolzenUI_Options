@@ -1,7 +1,7 @@
 ## Interface: 70300
 ## Author: Lolzen
 ## Title: Lolzen User interface Options
-## Version: 7.3.2_rework
+## Version: 7.3.2_beta
 ## Notes: Options for LolzenUI
 ## Dependencies: LolzenUI
 ## LoadOnDemand: 1

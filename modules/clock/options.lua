@@ -36,7 +36,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_text = ns.createFonstring("clock", "Color:")
 		color_text:SetPoint("LEFT", font_flag, "RIGHT", -5, 3)
 
-		local color = ns.createColorTexture("clock", 16, 16, LolzenUIcfg.clock["clock_color"], "statusbar")
+		local color = ns.createColorTexture("clock", 16, 16, LolzenUIcfg.clock["clock_color"], "LolzenUI Standard")
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
 
 		local color_f = ns.createColorPicker("clock", color, LolzenUIcfg.clock["clock_color"])
@@ -45,8 +45,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("clock", "Seconds:")
 		header2:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -30)
 
+		local cb1 = ns.createCheckBox("clock", "clock_seconds_enabled", "|cff5599ffshow seconds|r", LolzenUIcfg.clock["clock_seconds_enabled"])
+		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+
 		local seconds_font_text = ns.createFonstring("clock", "Font:")
-		seconds_font_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		seconds_font_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
 
 		local seconds_font = ns.createPicker("clock", "font", "clock_font_seconds", 120, LolzenUIcfg.clock["clock_font_seconds"])
 		seconds_font:SetPoint("LEFT", seconds_font_text, "RIGHT", -10, -3)
@@ -66,7 +69,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local seconds_color_text = ns.createFonstring("clock", "Color:")
 		seconds_color_text:SetPoint("LEFT", seconds_font_flag, "RIGHT", -5, 3)
 
-		local seconds_color = ns.createColorTexture("clock", 16, 16, LolzenUIcfg.clock["clock_seconds_color"], "statusbar")
+		local seconds_color = ns.createColorTexture("clock", 16, 16, LolzenUIcfg.clock["clock_seconds_color"], "LolzenUI Standard")
 		seconds_color:SetPoint("LEFT", seconds_color_text, "RIGHT", 10, 0)
 
 		local seconds_color_f = ns.createColorPicker("clock", seconds_color, LolzenUIcfg.clock["clock_seconds_color"])
@@ -100,6 +103,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		anchor2:SetPoint("LEFT", anchor_text2, "RIGHT", -10, -3)
 
 		ns["clock"].okay = function(self)
+			LolzenUIcfg.clock["clock_seconds_enabled"] = cb1:GetChecked()
 			LolzenUIcfg.clock["clock_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.clock["clock_seconds_color"] = {seconds_color:GetVertexColor()}
 			LolzenUIcfg.clock["clock_font"] = UIDropDownMenu_GetSelectedName(font)
@@ -115,6 +119,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["clock"].default = function(self)
+			LolzenUIcfg.clock["clock_seconds_enabled"] = true
 			LolzenUIcfg.clock["clock_color"] = {0.85, 0.55, 0}
 			LolzenUIcfg.clock["clock_seconds_color"] = {1, 1, 1}
 			LolzenUIcfg.clock["clock_font"] = "DroidSansBold"

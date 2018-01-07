@@ -53,10 +53,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("actionbars", "Textures & Size:")
 		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -20)
 
+		local cb1 = ns.createCheckBox("actionbars", "ab_show_keybinds", "|cff5599ffshow keybinds|r", LolzenUIcfg.actionbar["actionbar_show_keybinds"])
+		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+
 		-- // texture paths // --
 		
 		local normaltex_path_text = ns.createFonstring("actionbars", "Normal texture:")
-		normaltex_path_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
 
 		local normaltex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_normal_texture"])
 		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", 10, 0)
@@ -243,6 +246,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		pb_pos_y:SetPoint("LEFT", pb_pos_x, "RIGHT", 10, 0)
 
 		ns["actionbars"].okay = function(self)
+			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = cb1:GetChecked()
 			LolzenUIcfg.actionbar["actionbar_normal_texture"] = normaltex_path:GetText()
 			LolzenUIcfg.actionbar["actionbar_flash_texture"] = flashtex_path:GetText()
 			LolzenUIcfg.actionbar["actionbar_checked_texture"] = checkedtex_path:GetText()
@@ -288,6 +292,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["actionbars"].default = function(self)
+			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = false
 			LolzenUIcfg.actionbar["actionbar_normal_texture"] = "gloss"
 			LolzenUIcfg.actionbar["actionbar_flash_texture"] = "flash"
 			LolzenUIcfg.actionbar["actionbar_checked_texture"] = "checked"

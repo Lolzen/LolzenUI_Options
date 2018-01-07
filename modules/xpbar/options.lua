@@ -131,8 +131,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("xpbar", "Font")
 		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -30)
 
+		local cb3 = ns.createCheckBox("xpbar", "xp_text_hover", "|cff5599ffshow text on mouseover|r", LolzenUIcfg.xpbar["xpbar_mouseover_text"])
+		cb3:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+
 		local font_text = ns.createFonstring("xpbar", "Font:")
-		font_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		font_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -10)
 
 		local font = ns.createPicker("xpbar", "font", "xpbar_font", 120, LolzenUIcfg.xpbar["xpbar_font"])
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
@@ -192,6 +195,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {color4:GetVertexColor()}
 			LolzenUIcfg.xpbar["xpbar_1px_border"] = cb1:GetChecked()
 			LolzenUIcfg.xpbar["xpbar_1px_border_round"] = cb2:GetChecked()
+			LolzenUIcfg.xpbar["xpbar_mouseover_text"] = cb3:GetChecked()
 			LolzenUIcfg.xpbar["xpbar_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.xpbar["xpbar_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.xpbar["xpbar_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
@@ -217,6 +221,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {0, 187/255, 255/255}
 			LolzenUIcfg.xpbar["xpbar_1px_border"] = true
 			LolzenUIcfg.xpbar["xpbar_1px_border_round"] = true
+			LolzenUIcfg.xpbar["xpbar_mouseover_text"] = true
 			LolzenUIcfg.xpbar["xpbar_font"] = "DroidSansBold"
 			LolzenUIcfg.xpbar["xpbar_font_size"] = 10
 			LolzenUIcfg.xpbar["xpbar_font_flag"] = "THINOUTLINE"

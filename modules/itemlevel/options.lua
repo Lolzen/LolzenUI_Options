@@ -45,7 +45,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_text = ns.createFonstring("itemlevel", "Font color:")
 		color_text:SetPoint("LEFT", anchor, "RIGHT", -5, 3)
 
-		local color = ns.createColorTexture("itemlevel", 16, 16, LolzenUIcfg.itemlevel["ilvl_font_color"], "statusbar")
+		local color = ns.createColorTexture("itemlevel", 16, 16, LolzenUIcfg.itemlevel["ilvl_font_color"], "LolzenUI Standard")
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
 
 		local color_f = ns.createColorPicker("itemlevel", color, LolzenUIcfg.itemlevel["ilvl_font_color"])
@@ -68,6 +68,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local font_flag = ns.createPicker("itemlevel", "flag", "itemlevel_font_flag", 120, LolzenUIcfg.itemlevel["ilvl_font_flag"])
 		font_flag:SetPoint("LEFT", font_flag_text, "RIGHT", -10, -3)
+		
+		local cb4 = ns.createCheckBox("itemlevel", "itemquality_colors", "|cff5599ffUse item Quality for itemlevel color|r", LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"])
+		cb4:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
 
 		ns["itemlevel"].okay = function(self)
 			LolzenUIcfg.itemlevel["ilvl_characterframe"] = cb1:GetChecked()
@@ -80,6 +83,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.itemlevel["ilvl_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.itemlevel["ilvl_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.itemlevel["ilvl_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
+			LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"] = cb4:GetChecked()
 		end
 
 		ns["itemlevel"].default = function(self)
@@ -93,6 +97,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.itemlevel["ilvl_font"] = "DroidSans"
 			LolzenUIcfg.itemlevel["ilvl_font_size"] = 14
 			LolzenUIcfg.itemlevel["ilvl_font_flag"] = "THINOUTLINE"
+			LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"] = false
 			ReloadUI()
 		end
 	end

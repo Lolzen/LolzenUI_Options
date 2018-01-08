@@ -114,8 +114,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header4 = ns.createHeader("tooltip", "Player Guild:")
 		header4:SetPoint("TOPLEFT", afk_flag_text, "BOTTOMLEFT", 0, -20)
 
+		local cb4 = ns.createCheckBox("tooltip", "tip_global_guild_color", "|cff5599ffuse guild color for any guild (not only your guild)|r", LolzenUIcfg.tooltip["tip_use_guild_color_globally"])
+		cb4:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
+
 		local color_text = ns.createFonstring("tooltip", "Color:")
-		color_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
+		color_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
 
 		local color = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_own_guild_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
@@ -140,6 +143,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_statusflag_off"] = off_flag:GetText()
 			LolzenUIcfg.tooltip["tip_statusflag_off_color"] = {color_off:GetVertexColor()}
 			LolzenUIcfg.tooltip["tip_own_guild_color"] = {color:GetVertexColor()}
+			LolzenUIcfg.tooltip["tip_use_guild_color_globally"] = cb4:GetChecked()
 		end
 
 		ns["tooltip"].default = function(self)
@@ -159,6 +163,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_statusflag_off"] = "(Off)"
 			LolzenUIcfg.tooltip["tip_statusflag_off_color"] = {1, 1, 1}
 			LolzenUIcfg.tooltip["tip_own_guild_color"] = {0, 5, 1}
+			LolzenUIcfg.tooltip["tip_use_guild_color_globally"] = false
 			ReloadUI()
 		end
 	end

@@ -18,13 +18,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.cb2 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
 		ns.unitframes.cb2:SetPoint("TOPLEFT", ns.unitframes.cb1, "BOTTOMLEFT", 0, -0)
 
+		ns.unitframes.cb3 = ns.createCheckBox("unitframes", "uf_siVal_dot", "|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r", LolzenUIcfg.unitframes["uf_use_dot_format"])
+		ns.unitframes.cb3:SetPoint("TOPLEFT", ns.unitframes.cb2, "BOTTOMLEFT", 0, -0)
+
 		ns.unitframes.cb1:SetScript("OnClick", function(self)
 			if ns.unitframes.cb1:GetChecked() == true then
 				ns.unitframes.cb2:Disable()
+				ns.unitframes.cb3:Disable()
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
+				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r |cffff5555disable hp percentage for this option|r")
 			else
 				ns.unitframes.cb2:Enable()
+				ns.unitframes.cb3:Enable()
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
+				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r")
 			end
 		end)
 
@@ -36,7 +43,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns.unitframes.texture_text = ns.createFonstring("unitframes", "Texture:")
-		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb2, "BOTTOMLEFT", 0, -15)
+		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -15)
 
 		ns.unitframes.texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.unitframes.texture:SetPoint("LEFT", ns.unitframes.texture_text, "RIGHT", -10, -3)
@@ -104,11 +111,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.header3 = ns.createHeader("unitframes", "Fadeout")
 		ns.unitframes.header3:SetPoint("TOPLEFT", ns.unitframes.lead_size_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.cb3 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
-		ns.unitframes.cb3:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.cb4 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
+		ns.unitframes.cb4:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
 
 		ns.unitframes.fadeout_alpha_text = ns.createFonstring("unitframes", "out of reach alpha (party/raid members):")
-		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb4, "BOTTOMLEFT", 0, -8)
 
 		ns.unitframes.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
 		ns.unitframes.fadeout_alpha:SetPoint("LEFT", ns.unitframes.fadeout_alpha_text, "RIGHT", -10, -3)
@@ -963,6 +970,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns["unitframes"].okay = function(self)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = ns.unitframes.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_use_sivalue"] = ns.unitframes.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_dot_format"] = ns.unitframes.cb3:GetChecked()
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(ns.unitframes.texture)
 			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(ns.unitframes.border)
 			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(ns.unitframes.rt_size:GetText())
@@ -973,7 +981,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_lead_posx"] = tonumber(ns.unitframes.lead_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_lead_posy"] = tonumber(ns.unitframes.lead_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.lead_anchor)]
-			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb4:GetChecked()
 			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.fadeout_alpha)])
 			LolzenUIcfg.unitframes["uf_general_hpfont_size"] = tonumber(ns.unitframes.general_font_size_health:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_font"] = UIDropDownMenu_GetSelectedName(ns.unitframes.general_hp_font)
@@ -987,6 +995,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns["unitframes"].default = function(self)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = false
 			LolzenUIcfg.unitframes["uf_use_sivalue"] = true
+			LolzenUIcfg.unitframes["uf_use_dot_format"] = false
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = "LolzenUI Standard"
 			LolzenUIcfg.unitframes["uf_border"] = "LolzenUI Standard"
 			LolzenUIcfg.unitframes["uf_ri_size"] = 16

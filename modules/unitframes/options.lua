@@ -113,7 +113,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		if ns.unitframes.cb3:GetChecked() == true then
+		if ns.unitframes.cb2:GetChecked() == true then
 			ns.unitframes.perc_val_divider_text:Show()
 			ns.unitframes.perc_val_divider:Show()
 		else

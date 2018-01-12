@@ -21,13 +21,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb3 = ns.createCheckBox("interruptannouncer", "sayannounce", "|cff5599ffannounce interrupts in say chat|r", LolzenUIcfg.interruptannouncer["interruptannoucer_say"])
 		cb3:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, 0)
 
-		local msg_text = ns.createFonstring("interruptannouncer", "Message:")
+		local msg_text = ns.createFontstring("interruptannouncer", "Message:")
 		msg_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -13)
 
 		local msg = ns.createInputbox("interruptannouncer", 400, 20, LolzenUIcfg.interruptannouncer["interruptannouncer_msg"])
 		msg:SetPoint("LEFT", msg_text, "RIGHT", 10, 0)
 
-		local msg_desc = ns.createFonstring("interruptannouncer", "use |cff5599ff!spell|r for the interrupted spell and |cff5599ff!name|r for the unit's name which was interrupted")
+		local msg_desc = ns.createFontstring("interruptannouncer", "use |cff5599ff!spell|r for the interrupted spell and |cff5599ff!name|r for the unit's name which was interrupted")
 		msg_desc:SetPoint("TOPLEFT", msg_text, "BOTTOMLEFT", 0, -8)
 
 		ns["interruptannouncer"].okay = function(self)

@@ -36,25 +36,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("chat", "Frame:")
 		header1:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 0, -20)
 
-		local pos_x_text = ns.createFonstring("chat", "PosX:")
+		local pos_x_text = ns.createFontstring("chat", "PosX:")
 		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
 
 		local pos_x = ns.createInputbox("chat", 30, 20, LolzenUIcfg.chat["chat_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
 
-		local pos_y_text = ns.createFonstring("chat", "PosY:")
+		local pos_y_text = ns.createFontstring("chat", "PosY:")
 		pos_y_text:SetPoint("LEFT", pos_x, "RIGHT", 5, 0)
 
 		local pos_y = ns.createInputbox("chat", 30, 20, LolzenUIcfg.chat["chat_posy"])
 		pos_y:SetPoint("LEFT", pos_y_text, "RIGHT", 10, 0)
 
-		local anchor_text = ns.createFonstring("chat", "Anchor1:")
+		local anchor_text = ns.createFontstring("chat", "Anchor1:")
 		anchor_text:SetPoint("LEFT", pos_y, "RIGHT", 5, 0)
 
 		local anchor = ns.createPicker("chat", "anchor", "chat_anchor1", 110, LolzenUIcfg.chat["chat_anchor1"])
 		anchor:SetPoint("LEFT", anchor_text, "RIGHT", -10, -3)
 
-		local anchor2_text = ns.createFonstring("chat", "Anchor2:")
+		local anchor2_text = ns.createFontstring("chat", "Anchor2:")
 		anchor2_text:SetPoint("LEFT", anchor, "RIGHT", -5, 3)
 
 		local anchor2 = ns.createPicker("chat", "anchor", "chat_anchor2", 110, LolzenUIcfg.chat["chat_anchor2"])
@@ -66,25 +66,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb8 = ns.createCheckBox("chat", "chat_font_shadow", "|cff5599fffont shadow|r", LolzenUIcfg.chat["chat_font_shadow"])
 		cb8:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
 
-		local font_text = ns.createFonstring("chat", "Font:")
+		local font_text = ns.createFontstring("chat", "Font:")
 		font_text:SetPoint("TOPLEFT", cb8, "BOTTOMLEFT", 0, -10)
 
 		local font = ns.createPicker("chat", "font", "chat_font", 120, LolzenUIcfg.chat["chat_font"])
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
 
-		local font_size_text = ns.createFonstring("chat", "Size:")
+		local font_size_text = ns.createFontstring("chat", "Size:")
 		font_size_text:SetPoint("LEFT", font, "RIGHT", -5, 3)
 
 		local font_size = ns.createInputbox("chat", 30, 20, LolzenUIcfg.chat["chat_font_size"])
 		font_size:SetPoint("LEFT", font_size_text, "RIGHT", 10, 0)
 
-		local font_flag_text = ns.createFonstring("chat", "Flag:")
+		local font_flag_text = ns.createFontstring("chat", "Flag:")
 		font_flag_text:SetPoint("LEFT", font_size, "RIGHT", 10, 0)
 
 		local font_flag = ns.createPicker("chat", "flag", "chat_font_flag", 120, LolzenUIcfg.chat["chat_font_flag"])
 		font_flag:SetPoint("LEFT", font_flag_text, "RIGHT", -10, -3)
 
-		local spacing_text = ns.createFonstring("chat", "Spacing:")
+		local spacing_text = ns.createFontstring("chat", "Spacing:")
 		spacing_text:SetPoint("LEFT", font_flag, "RIGHT", -5, 3)
 
 		local spacing = ns.createInputbox("chat", 30, 20, LolzenUIcfg.chat["chat_font_spacing"])
@@ -96,19 +96,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb9 = ns.createCheckBox("chat", "chat_backgound", "|cff5599ffchat background|r", LolzenUIcfg.chat["chat_background"])
 		cb9:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -10)
 
-		local texture_text = ns.createFonstring("chat", "Texture:")
+		local texture_text = ns.createFontstring("chat", "Texture:")
 		texture_text:SetPoint("TOPLEFT", cb9, "BOTTOMLEFT", 0, -10)
 
 		local texture = ns.createPicker("chat", "background", "chat_background", 120, LolzenUIcfg.chat["chat_background_texture"])
 		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
 
-		local alpha_text = ns.createFonstring("chat", "Alpha:")
+		local alpha_text = ns.createFontstring("chat", "Alpha:")
 		alpha_text:SetPoint("LEFT", texture, "RIGHT", -5, 3)
 
 		local alpha = ns.createPicker("chat", "alpha", "chat_bg_alpha", 45, LolzenUIcfg.chat["chat_background_alpha"])
 		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -3)
 
-		local border_text = ns.createFonstring("chat", "Border:")
+		local border_text = ns.createFontstring("chat", "Border:")
 		border_text:SetPoint("LEFT", alpha, "RIGHT", -5, 3)
 
 		local border = ns.createPicker("chat", "border", "chat_border", 120, LolzenUIcfg.chat["chat_background_border"])
@@ -117,67 +117,67 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header4 = ns.createHeader("chat", "Flags & Sticky Channels: (0 = false, 1 = true)")
 		header4:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -20)
 
-		local sticky_say_text = ns.createFonstring("chat", "Say:")
+		local sticky_say_text = ns.createFontstring("chat", "Say:")
 		sticky_say_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
 
 		local sticky_say = ns.createPicker("chat", "bin", "chat_sticky_say", 35, LolzenUIcfg.chat["chat_sticky_say"])
 		sticky_say:SetPoint("LEFT", sticky_say_text, "RIGHT", -10, -3)
 
-		local sticky_yell_text = ns.createFonstring("chat", "Yell:")
+		local sticky_yell_text = ns.createFontstring("chat", "Yell:")
 		sticky_yell_text:SetPoint("LEFT", sticky_say, "RIGHT", -5, 3)
 
 		local sticky_yell = ns.createPicker("chat", "bin", "chat_sticky_yell", 35, LolzenUIcfg.chat["chat_sticky_yell"])
 		sticky_yell:SetPoint("LEFT", sticky_yell_text, "RIGHT", -10, -3)
 
-		local sticky_party_text = ns.createFonstring("chat", "Party:")
+		local sticky_party_text = ns.createFontstring("chat", "Party:")
 		sticky_party_text:SetPoint("LEFT", sticky_yell, "RIGHT", -5, 3)
 
 		local sticky_party = ns.createPicker("chat", "bin", "chat_sticky_party", 35, LolzenUIcfg.chat["chat_sticky_party"])
 		sticky_party:SetPoint("LEFT", sticky_party_text, "RIGHT", -10, -3)
 
-		local sticky_guild_text = ns.createFonstring("chat", "Guild:")
+		local sticky_guild_text = ns.createFontstring("chat", "Guild:")
 		sticky_guild_text:SetPoint("LEFT", sticky_party, "RIGHT", -5, 3)
 
 		local sticky_guild = ns.createPicker("chat", "bin", "chat_sticky_guild", 35, LolzenUIcfg.chat["chat_sticky_guild"])
 		sticky_guild:SetPoint("LEFT", sticky_guild_text, "RIGHT", -10, -3)
 
-		local sticky_officer_text = ns.createFonstring("chat", "Officer:")
+		local sticky_officer_text = ns.createFontstring("chat", "Officer:")
 		sticky_officer_text:SetPoint("LEFT", sticky_guild, "RIGHT", -5, 3)
 
 		local sticky_officer = ns.createPicker("chat", "bin", "chat_sticky_officer", 35, LolzenUIcfg.chat["chat_sticky_officer"])
 		sticky_officer:SetPoint("LEFT", sticky_officer_text, "RIGHT", -10, -3)
 
-		local sticky_raid_text = ns.createFonstring("chat", "Raid:")
+		local sticky_raid_text = ns.createFontstring("chat", "Raid:")
 		sticky_raid_text:SetPoint("LEFT", sticky_officer, "RIGHT", -5, 3)
 
 		local sticky_raid = ns.createPicker("chat", "bin", "chat_sticky_raid", 35, LolzenUIcfg.chat["chat_sticky_raid"])
 		sticky_raid:SetPoint("LEFT", sticky_raid_text, "RIGHT", -10, -3)
 
-		local sticky_raidwarning_text = ns.createFonstring("chat", "Raid Warning:")
+		local sticky_raidwarning_text = ns.createFontstring("chat", "Raid Warning:")
 		sticky_raidwarning_text:SetPoint("TOPLEFT", sticky_say_text, "BOTTOMLEFT", 0, -15)
 
 		local sticky_raidwarning = ns.createPicker("chat", "bin", "chat_sticky_raidwarning", 35, LolzenUIcfg.chat["chat_sticky_raidwarning"])
 		sticky_raidwarning:SetPoint("LEFT", sticky_raidwarning_text, "RIGHT", -10, -3)
 
-		local sticky_whisper_text = ns.createFonstring("chat", "Whisper:")
+		local sticky_whisper_text = ns.createFontstring("chat", "Whisper:")
 		sticky_whisper_text:SetPoint("LEFT", sticky_raidwarning, "RIGHT", -5, 3)
 
 		local sticky_whisper = ns.createPicker("chat", "bin", "chat_sticky_whisper", 35, LolzenUIcfg.chat["chat_sticky_whisper"])
 		sticky_whisper:SetPoint("LEFT", sticky_whisper_text, "RIGHT", -10, -3)
 
-		local sticky_channel_text = ns.createFonstring("chat", "Channel:")
+		local sticky_channel_text = ns.createFontstring("chat", "Channel:")
 		sticky_channel_text:SetPoint("LEFT", sticky_whisper, "RIGHT", -5, 3)
 
 		local sticky_channel = ns.createPicker("chat", "bin", "chat_sticky_channel", 35, LolzenUIcfg.chat["chat_sticky_channel"])
 		sticky_channel:SetPoint("LEFT", sticky_channel_text, "RIGHT", -10, -3)
 
-		local chat_afkflag_text = ns.createFonstring("chat", "AFK flag:")
+		local chat_afkflag_text = ns.createFontstring("chat", "AFK flag:")
 		chat_afkflag_text:SetPoint("LEFT", sticky_channel, "RIGHT", -5, 3)
 
 		local chat_afkflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_afk"])
 		chat_afkflag:SetPoint("LEFT", chat_afkflag_text, "RIGHT", 10, 0)
 
-		local chat_dndflag_text = ns.createFonstring("chat", "DND flag:")
+		local chat_dndflag_text = ns.createFontstring("chat", "DND flag:")
 		chat_dndflag_text:SetPoint("LEFT", chat_afkflag, "RIGHT", 5, 0)
 
 		local chat_dndflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_dnd"])

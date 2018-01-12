@@ -44,7 +44,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end
 
-		local add = ns.createFonstring("buffwatcher", "add or delete buffs to be watched (per spellid):")
+		local add = ns.createFontstring("buffwatcher", "add or delete buffs to be watched (per spellid):")
 		add:SetPoint("LEFT", header1, "RIGHT", 100, 0)
 
 		local eb = ns.createInputbox("buffwatcher", 50, 20, nil)
@@ -56,7 +56,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		previewicon:SetSize(16, 16)
 		previewicon:SetPoint("LEFT", eb, "RIGHT", 5, 0)
 
-		local prevname = ns.createFonstring("buffwatcher", GetSpellInfo(212812))
+		local prevname = ns.createFontstring("buffwatcher", GetSpellInfo(212812))
 		prevname:SetPoint("LEFT", previewicon, "RIGHT", 5, 0)
 
 		eb:SetScript("OnTextChanged", function(self)
@@ -96,7 +96,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			print("Hit Okay to reload the list")
 		end)
 
-		local tip = ns.createFonstring("buffwatcher", "|cff5599ffPROTIP: |rrefer to WoWhead and search for your spell,\n the spellid is in the URL")
+		local tip = ns.createFontstring("buffwatcher", "|cff5599ffPROTIP: |rrefer to WoWhead and search for your spell,\n the spellid is in the URL")
 		tip:SetPoint("TOPLEFT", b, "BOTTOMLEFT", 0, -8)
 
 		local help = ns["buffwatcher"]:CreateTexture(nil, "OVERLAY")
@@ -104,28 +104,28 @@ f:SetScript("OnEvent", function(self, event, addon)
 		help:SetTexture("Interface\\AddOns\\LolzenUI_Options\\modules\\buffwatcher\\help.tga")
 		help:SetPoint("TOPLEFT", tip, "BOTTOMLEFT", 0, -8)
 
-		local pos_x_text = ns.createFonstring("buffwatcher", "PosX:")
+		local pos_x_text = ns.createFontstring("buffwatcher", "PosX:")
 		pos_x_text:SetPoint("TOPLEFT", help, "BOTTOMLEFT", 0, -20)
 
 		local pos_x = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_pos_x"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
 
-		local pos_y_text = ns.createFonstring("buffwatcher", "PosY:")
+		local pos_y_text = ns.createFontstring("buffwatcher", "PosY:")
 		pos_y_text:SetPoint("LEFT", pos_x, "RIGHT", 5, 0)
 
 		local pos_y = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_pos_y"])
 		pos_y:SetPoint("LEFT", pos_y_text, "RIGHT", 10, 0)
 
-		local pos_desc = ns.createFonstring("buffwatcher", "The startingpoint is the center of the screen (0/0)")
+		local pos_desc = ns.createFontstring("buffwatcher", "The startingpoint is the center of the screen (0/0)")
 		pos_desc:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -8)
 
-		local icon_size_text = ns.createFonstring("buffwatcher", "Icon Size:")
+		local icon_size_text = ns.createFontstring("buffwatcher", "Icon Size:")
 		icon_size_text:SetPoint("TOPLEFT", pos_desc, "BOTTOMLEFT", 0, -15)
 
 		local icon_size = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_icon_size"])
 		icon_size:SetPoint("LEFT", icon_size_text, "RIGHT", 10, 0)
 
-		local icon_spacing_text = ns.createFonstring("buffwatcher", "Icon Spacing:")
+		local icon_spacing_text = ns.createFontstring("buffwatcher", "Icon Spacing:")
 		icon_spacing_text:SetPoint("LEFT", icon_size, "RIGHT", 5, 0)
 
 		local icon_spacing = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_icon_spacing"])

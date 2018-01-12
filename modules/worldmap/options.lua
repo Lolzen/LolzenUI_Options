@@ -12,10 +12,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local about = ns.createDescription("worldmap", "Scales the Worldmap")
 		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
-		local scale_text = ns.createFonstring("worldmap", "Worldmap Scale:")
+		local scale_text = ns.createFontstring("worldmap", "Worldmap Scale:")
 		scale_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 		
-		local desc = ns.createFonstring("worldmap", "Only use numbers or numbers with decimals (0.75), otherwise it will default to 1")
+		local desc = ns.createFontstring("worldmap", "Only use numbers or numbers with decimals (0.75), otherwise it will default to 1")
 		desc:SetPoint("TOPLEFT", scale_text, "BOTTOMLEFT", 0, -8)
 
 		local scale = ns.createInputbox("worldmap", 30, 20, LolzenUIcfg.worldmap["worldmap_scale"])

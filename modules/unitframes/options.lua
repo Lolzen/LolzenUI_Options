@@ -42,13 +42,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.unitframes.cb2:Enable()
 		end
 
-		ns.unitframes.texture_text = ns.createFonstring("unitframes", "Texture:")
+		ns.unitframes.texture_text = ns.createFontstring("unitframes", "Texture:")
 		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -15)
 
 		ns.unitframes.texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.unitframes.texture:SetPoint("LEFT", ns.unitframes.texture_text, "RIGHT", -10, -3)
 
-		ns.unitframes.border_text = ns.createFonstring("unitframes", "Border:")
+		ns.unitframes.border_text = ns.createFontstring("unitframes", "Border:")
 		ns.unitframes.border_text:SetPoint("LEFT", ns.unitframes.texture, "RIGHT", -5, 3)
 
 		ns.unitframes.border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes["uf_border"])
@@ -57,25 +57,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.header1 = ns.createHeader("unitframes", "Raidmark indicator")
 		ns.unitframes.header1:SetPoint("TOPLEFT", ns.unitframes.texture_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.rt_size_text = ns.createFonstring("unitframes", "Size:")
+		ns.unitframes.rt_size_text = ns.createFontstring("unitframes", "Size:")
 		ns.unitframes.rt_size_text:SetPoint("TOPLEFT", ns.unitframes.header1, "BOTTOMLEFT", 0, -10)
 
 		ns.unitframes.rt_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_size"])
 		ns.unitframes.rt_size:SetPoint("LEFT", ns.unitframes.rt_size_text, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_pos_x_text = ns.createFonstring("unitframes", "PosX:")
+		ns.unitframes.rt_pos_x_text = ns.createFontstring("unitframes", "PosX:")
 		ns.unitframes.rt_pos_x_text:SetPoint("LEFT", ns.unitframes.rt_size, "RIGHT", 10, 0)
 
 		ns.unitframes.rt_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posx"])
 		ns.unitframes.rt_pos_x:SetPoint("LEFT", ns.unitframes.rt_pos_x_text, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_pos_y_text = ns.createFonstring("unitframes", "PosY:")
+		ns.unitframes.rt_pos_y_text = ns.createFontstring("unitframes", "PosY:")
 		ns.unitframes.rt_pos_y_text:SetPoint("LEFT", ns.unitframes.rt_pos_x, "RIGHT", 10, 0)
 
 		ns.unitframes.rt_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posy"])
 		ns.unitframes.rt_pos_y:SetPoint("LEFT", ns.unitframes.rt_pos_y_text, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_anchor_text = ns.createFonstring("unitframes", "Anchor:")
+		ns.unitframes.rt_anchor_text = ns.createFontstring("unitframes", "Anchor:")
 		ns.unitframes.rt_anchor_text:SetPoint("LEFT", ns.unitframes.rt_pos_y, "RIGHT", 10, 0)
 
 		ns.unitframes.rt_anchor = ns.createPicker("unitframes", "anchor", "uf_rt_anchor", 110, LolzenUIcfg.unitframes["uf_ri_anchor"])
@@ -84,25 +84,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.header2 = ns.createHeader("unitframes", "Lead indicator")
 		ns.unitframes.header2:SetPoint("TOPLEFT", ns.unitframes.rt_size_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.lead_size_text = ns.createFonstring("unitframes", "Size:")
+		ns.unitframes.lead_size_text = ns.createFontstring("unitframes", "Size:")
 		ns.unitframes.lead_size_text:SetPoint("TOPLEFT", ns.unitframes.header2, "BOTTOMLEFT", 0, -10)
 
 		ns.unitframes.lead_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_size"])
 		ns.unitframes.lead_size:SetPoint("LEFT", ns.unitframes.lead_size_text, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_pos_x_text = ns.createFonstring("unitframes", "PosX:")
+		ns.unitframes.lead_pos_x_text = ns.createFontstring("unitframes", "PosX:")
 		ns.unitframes.lead_pos_x_text:SetPoint("LEFT", ns.unitframes.lead_size, "RIGHT", 10, 0)
 
 		ns.unitframes.lead_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posx"])
 		ns.unitframes.lead_pos_x:SetPoint("LEFT", ns.unitframes.lead_pos_x_text, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_pos_y_text = ns.createFonstring("unitframes", "PosY:")
+		ns.unitframes.lead_pos_y_text = ns.createFontstring("unitframes", "PosY:")
 		ns.unitframes.lead_pos_y_text:SetPoint("LEFT", ns.unitframes.lead_pos_x, "RIGHT", 10, 0)
 
 		ns.unitframes.lead_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posy"])
 		ns.unitframes.lead_pos_y:SetPoint("LEFT", ns.unitframes.lead_pos_y_text, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_anchor_text = ns.createFonstring("unitframes", "Anchor:")
+		ns.unitframes.lead_anchor_text = ns.createFontstring("unitframes", "Anchor:")
 		ns.unitframes.lead_anchor_text:SetPoint("LEFT", ns.unitframes.lead_pos_y, "RIGHT", 10, 0)
 
 		ns.unitframes.lead_anchor = ns.createPicker("unitframes", "anchor", "uf_lead_anchor", 110, LolzenUIcfg.unitframes["uf_lead_anchor"])
@@ -114,7 +114,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.cb4 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
 		ns.unitframes.cb4:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
 
-		ns.unitframes.fadeout_alpha_text = ns.createFonstring("unitframes", "out of reach alpha (party/raid members):")
+		ns.unitframes.fadeout_alpha_text = ns.createFontstring("unitframes", "out of reach alpha (party/raid members):")
 		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb4, "BOTTOMLEFT", 0, -8)
 
 		ns.unitframes.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
@@ -123,37 +123,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.header4 = ns.createHeader("unitframes", "General Healthpoints Font options (can be overwritten per unit specific settings)")
 		ns.unitframes.header4:SetPoint("TOPLEFT", ns.unitframes.fadeout_alpha_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.general_hp_pos_x_text = ns.createFonstring("unitframes", "PosX:")
+		ns.unitframes.general_hp_pos_x_text = ns.createFontstring("unitframes", "PosX:")
 		ns.unitframes.general_hp_pos_x_text:SetPoint("TOPLEFT", ns.unitframes.header4, "BOTTOMLEFT", 0, -10)
 
 		ns.unitframes.general_hp_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_posx"])
 		ns.unitframes.general_hp_pos_x:SetPoint("LEFT", ns.unitframes.general_hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_pos_y_text = ns.createFonstring("unitframes", "PosY:")
+		ns.unitframes.general_hp_pos_y_text = ns.createFontstring("unitframes", "PosY:")
 		ns.unitframes.general_hp_pos_y_text:SetPoint("LEFT", ns.unitframes.general_hp_pos_x, "RIGHT", 5, 0)
 
 		ns.unitframes.general_hp_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_posy"])
 		ns.unitframes.general_hp_pos_y:SetPoint("LEFT", ns.unitframes.general_hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_anchor_text = ns.createFonstring("unitframes", "Anchor:")
+		ns.unitframes.general_hp_anchor_text = ns.createFontstring("unitframes", "Anchor:")
 		ns.unitframes.general_hp_anchor_text:SetPoint("LEFT", ns.unitframes.general_hp_pos_y, "RIGHT", 5, 0)
 
 		ns.unitframes.general_hp_anchor = ns.createPicker("unitframes", "anchor", "uf_general_hp_anchor", 110, LolzenUIcfg.unitframes["uf_general_hp_anchor"])
 		ns.unitframes.general_hp_anchor:SetPoint("LEFT", ns.unitframes.general_hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.unitframes.general_hp_font_text = ns.createFonstring("unitframes", "Font:")
+		ns.unitframes.general_hp_font_text = ns.createFontstring("unitframes", "Font:")
 		ns.unitframes.general_hp_font_text:SetPoint("TOPLEFT", ns.unitframes.general_hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.unitframes.general_hp_font = ns.createPicker("unitframes", "font", "uf_general_hp_font", 120, LolzenUIcfg.unitframes["uf_general_hp_font"])
 		ns.unitframes.general_hp_font:SetPoint("LEFT", ns.unitframes.general_hp_font_text, "RIGHT", -10, -3)
 
-		ns.unitframes.general_hp_font_size_text = ns.createFonstring("unitframes", "Font size:")
+		ns.unitframes.general_hp_font_size_text = ns.createFontstring("unitframes", "Font size:")
 		ns.unitframes.general_hp_font_size_text:SetPoint("LEFT", ns.unitframes.general_hp_font, "RIGHT", -5, 3)
 
 		ns.unitframes.general_hp_font_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_font_size"])
 		ns.unitframes.general_hp_font_size:SetPoint("LEFT", ns.unitframes.general_hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_font_flag_text = ns.createFonstring("unitframes", "Font flag:")
+		ns.unitframes.general_hp_font_flag_text = ns.createFontstring("unitframes", "Font flag:")
 		ns.unitframes.general_hp_font_flag_text:SetPoint("LEFT", ns.unitframes.general_hp_font_size, "RIGHT", 10, 0)
 
 		ns.unitframes.general_hp_font_flag = ns.createPicker("unitframes", "flag", "uf_general_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_general_hp_font_flag"])
@@ -169,31 +169,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.title:SetPoint("TOPLEFT", ns.uf_player_options, 16, -16)
 		ns.uf_player_options.title:SetText("|cff5599ffUnitframes module: Player Options|r")
 
-		ns.uf_player_options.pos_x_text = ns.createFonstring("uf_player_options", "PosX:")
+		ns.uf_player_options.pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
 		ns.uf_player_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_player_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_player_options.pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_posx"])
 		ns.uf_player_options.pos_x:SetPoint("LEFT", ns.uf_player_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.pos_y_text = ns.createFonstring("uf_player_options", "PosY:")
+		ns.uf_player_options.pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
 		ns.uf_player_options.pos_y_text:SetPoint("LEFT", ns.uf_player_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_player_options.pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_posy"])
 		ns.uf_player_options.pos_y:SetPoint("LEFT", ns.uf_player_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.anchor_text = ns.createFonstring("uf_player_options", "Anchor:")
+		ns.uf_player_options.anchor_text = ns.createFontstring("uf_player_options", "Anchor:")
 		ns.uf_player_options.anchor_text:SetPoint("LEFT", ns.uf_player_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_player_options.anchor = ns.createPicker("uf_player_options", "anchor", "uf_player_anchor", 110, LolzenUIcfg.unitframes["uf_player_anchor"])
 		ns.uf_player_options.anchor:SetPoint("LEFT", ns.uf_player_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.width_text = ns.createFonstring("uf_player_options", "Width:")
+		ns.uf_player_options.width_text = ns.createFontstring("uf_player_options", "Width:")
 		ns.uf_player_options.width_text:SetPoint("TOPLEFT", ns.uf_player_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_player_options.width = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes["uf_player_width"])
 		ns.uf_player_options.width:SetPoint("LEFT", ns.uf_player_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.height_text = ns.createFonstring("uf_player_options", "Height:")
+		ns.uf_player_options.height_text = ns.createFontstring("uf_player_options", "Height:")
 		ns.uf_player_options.height_text:SetPoint("LEFT", ns.uf_player_options.width, "RIGHT", 10, 0)
 
 		ns.uf_player_options.height = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes["uf_player_height"])
@@ -205,37 +205,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.cb1 = ns.createCheckBox("uf_player_options", "uf_player_use_custom_font_hp", "|cff5599ffoverwrite the general font options for player healthpoints|r", LolzenUIcfg.unitframes["uf_player_use_own_hp_font_settings"])
 		ns.uf_player_options.cb1:SetPoint("TOPLEFT", ns.uf_player_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_player_options.hp_pos_x_text = ns.createFonstring("uf_player_options", "PosX:")
+		ns.uf_player_options.hp_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
 		ns.uf_player_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_player_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_player_options.hp_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_hp_posx"])
 		ns.uf_player_options.hp_pos_x:SetPoint("LEFT", ns.uf_player_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.hp_pos_y_text = ns.createFonstring("uf_player_options", "PosY:")
+		ns.uf_player_options.hp_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
 		ns.uf_player_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_player_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_player_options.hp_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_hp_posy"])
 		ns.uf_player_options.hp_pos_y:SetPoint("LEFT", ns.uf_player_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.hp_anchor_text = ns.createFonstring("uf_player_options", "Anchor:")
+		ns.uf_player_options.hp_anchor_text = ns.createFontstring("uf_player_options", "Anchor:")
 		ns.uf_player_options.hp_anchor_text:SetPoint("LEFT", ns.uf_player_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_player_options.hp_anchor = ns.createPicker("uf_player_options", "anchor", "uf_player_hp_anchor", 110, LolzenUIcfg.unitframes["uf_player_hp_anchor"])
 		ns.uf_player_options.hp_anchor:SetPoint("LEFT", ns.uf_player_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.hp_font_text = ns.createFonstring("uf_player_options", "Font:")
+		ns.uf_player_options.hp_font_text = ns.createFontstring("uf_player_options", "Font:")
 		ns.uf_player_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_player_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_player_options.hp_font = ns.createPicker("uf_player_options", "font", "uf_player_hp_font", 120, LolzenUIcfg.unitframes["uf_player_hp_font"])
 		ns.uf_player_options.hp_font:SetPoint("LEFT", ns.uf_player_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.hp_font_size_text = ns.createFonstring("uf_player_options", "Font size:")
+		ns.uf_player_options.hp_font_size_text = ns.createFontstring("uf_player_options", "Font size:")
 		ns.uf_player_options.hp_font_size_text:SetPoint("LEFT", ns.uf_player_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_player_options.hp_font_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_hp_font_size"])
 		ns.uf_player_options.hp_font_size:SetPoint("LEFT", ns.uf_player_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.hp_font_flag_text = ns.createFonstring("uf_player_options", "Font flag:")
+		ns.uf_player_options.hp_font_flag_text = ns.createFontstring("uf_player_options", "Font flag:")
 		ns.uf_player_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_player_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_player_options.hp_font_flag = ns.createPicker("uf_player_options", "flag", "uf_player_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_player_hp_font_flag"])
@@ -244,37 +244,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.header2 = ns.createHeader("uf_player_options", "Class Power & Runes")
 		ns.uf_player_options.header2:SetPoint("TOPLEFT", ns.uf_player_options.hp_font_text, 0, -30)
 
-		ns.uf_player_options.classpower_anchor1_text = ns.createFonstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.classpower_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
 		ns.uf_player_options.classpower_anchor1_text:SetPoint("TOPLEFT", ns.uf_player_options.header2, "BOTTOMLEFT", 0, -13)
 
 		ns.uf_player_options.classpower_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor1", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor1"])
 		ns.uf_player_options.classpower_anchor1:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.classpower_anchor2_text = ns.createFonstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.classpower_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
 		ns.uf_player_options.classpower_anchor2_text:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1, "RIGHT", -5, 3)
 
 		ns.uf_player_options.classpower_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor2", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor2"])
 		ns.uf_player_options.classpower_anchor2:SetPoint("LEFT", ns.uf_player_options.classpower_anchor2_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.classpower_pos_x_text = ns.createFonstring("uf_player_options", "PosX:")
+		ns.uf_player_options.classpower_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
 		ns.uf_player_options.classpower_pos_x_text:SetPoint("LEFT", ns.uf_player_options.classpower_anchor2, "RIGHT", -5, 3)
 
 		ns.uf_player_options.classpower_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_posx"])
 		ns.uf_player_options.classpower_pos_x:SetPoint("LEFT", ns.uf_player_options.classpower_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.classpower_pos_y_text = ns.createFonstring("uf_player_options", "PosY:")
+		ns.uf_player_options.classpower_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
 		ns.uf_player_options.classpower_pos_y_text:SetPoint("LEFT", ns.uf_player_options.classpower_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_player_options.classpower_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_posy"])
 		ns.uf_player_options.classpower_pos_y:SetPoint("LEFT", ns.uf_player_options.classpower_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_player_options.classpower_border_text = ns.createFonstring("uf_player_options", "Border:")
+		ns.uf_player_options.classpower_border_text = ns.createFontstring("uf_player_options", "Border:")
 		ns.uf_player_options.classpower_border_text:SetPoint("TOPLEFT", ns.uf_player_options.classpower_anchor1_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_player_options.classpower_border = ns.createPicker("uf_player_options", "border", "uf_player_classbar_border", 120, LolzenUIcfg.unitframes["uf_player_classpower_border"])
 		ns.uf_player_options.classpower_border:SetPoint("LEFT", ns.uf_player_options.classpower_border_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.classpower_spacing_text = ns.createFonstring("uf_player_options", "Spacing:")
+		ns.uf_player_options.classpower_spacing_text = ns.createFontstring("uf_player_options", "Spacing:")
 		ns.uf_player_options.classpower_spacing_text:SetPoint("LEFT", ns.uf_player_options.classpower_border, "RIGHT", -5, 3)
 
 		ns.uf_player_options.classpower_spacing = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_spacing"])
@@ -290,31 +290,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.title:SetPoint("TOPLEFT", ns.uf_target_options, 16, -16)
 		ns.uf_target_options.title:SetText("|cff5599ffUnitframes module: Target Options|r")
 
-		ns.uf_target_options.pos_x_text = ns.createFonstring("uf_target_options", "PosX:")
+		ns.uf_target_options.pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
 		ns.uf_target_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_target_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_target_options.pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_posx"])
 		ns.uf_target_options.pos_x:SetPoint("LEFT", ns.uf_target_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.pos_y_text = ns.createFonstring("uf_target_options", "PosY:")
+		ns.uf_target_options.pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
 		ns.uf_target_options.pos_y_text:SetPoint("LEFT", ns.uf_target_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_target_options.pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_posy"])
 		ns.uf_target_options.pos_y:SetPoint("LEFT", ns.uf_target_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.anchor_text = ns.createFonstring("uf_target_options", "Anchor:")
+		ns.uf_target_options.anchor_text = ns.createFontstring("uf_target_options", "Anchor:")
 		ns.uf_target_options.anchor_text:SetPoint("LEFT", ns.uf_target_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_target_options.anchor = ns.createPicker("uf_target_options", "anchor", "uf_target_anchor", 110, LolzenUIcfg.unitframes["uf_target_anchor"])
 		ns.uf_target_options.anchor:SetPoint("LEFT", ns.uf_target_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.width_text = ns.createFonstring("uf_target_options", "Width:")
+		ns.uf_target_options.width_text = ns.createFontstring("uf_target_options", "Width:")
 		ns.uf_target_options.width_text:SetPoint("TOPLEFT", ns.uf_target_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_target_options.width = ns.createInputbox("uf_target_options", 40, 20, LolzenUIcfg.unitframes["uf_target_width"])
 		ns.uf_target_options.width:SetPoint("LEFT", ns.uf_target_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.height_text = ns.createFonstring("uf_target_options", "Height:")
+		ns.uf_target_options.height_text = ns.createFontstring("uf_target_options", "Height:")
 		ns.uf_target_options.height_text:SetPoint("LEFT", ns.uf_target_options.width, "RIGHT", 10, 0)
 
 		ns.uf_target_options.height = ns.createInputbox("uf_target_options", 40, 20, LolzenUIcfg.unitframes["uf_target_height"])
@@ -326,37 +326,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.cb1 = ns.createCheckBox("uf_target_options", "uf_target_use_custom_font_hp", "|cff5599ffoverwrite the general font options for target healthpoints|r", LolzenUIcfg.unitframes["uf_target_use_own_hp_font_settings"])
 		ns.uf_target_options.cb1:SetPoint("TOPLEFT", ns.uf_target_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_target_options.hp_pos_x_text = ns.createFonstring("uf_target_options", "PosX:")
+		ns.uf_target_options.hp_pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
 		ns.uf_target_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_target_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_target_options.hp_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_hp_posx"])
 		ns.uf_target_options.hp_pos_x:SetPoint("LEFT", ns.uf_target_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.hp_pos_y_text = ns.createFonstring("uf_target_options", "PosY:")
+		ns.uf_target_options.hp_pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
 		ns.uf_target_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_target_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_target_options.hp_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_hp_posy"])
 		ns.uf_target_options.hp_pos_y:SetPoint("LEFT", ns.uf_target_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.hp_anchor_text = ns.createFonstring("uf_target_options", "Anchor:")
+		ns.uf_target_options.hp_anchor_text = ns.createFontstring("uf_target_options", "Anchor:")
 		ns.uf_target_options.hp_anchor_text:SetPoint("LEFT", ns.uf_target_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_target_options.hp_anchor = ns.createPicker("uf_target_options", "anchor", "uf_target_hp_anchor", 110, LolzenUIcfg.unitframes["uf_target_hp_anchor"])
 		ns.uf_target_options.hp_anchor:SetPoint("LEFT", ns.uf_target_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.hp_font_text = ns.createFonstring("uf_target_options", "Font:")
+		ns.uf_target_options.hp_font_text = ns.createFontstring("uf_target_options", "Font:")
 		ns.uf_target_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_target_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_target_options.hp_font = ns.createPicker("uf_target_options", "font", "uf_target_hp_font", 120, LolzenUIcfg.unitframes["uf_target_hp_font"])
 		ns.uf_target_options.hp_font:SetPoint("LEFT", ns.uf_target_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.hp_font_size_text = ns.createFonstring("uf_target_options", "Font size:")
+		ns.uf_target_options.hp_font_size_text = ns.createFontstring("uf_target_options", "Font size:")
 		ns.uf_target_options.hp_font_size_text:SetPoint("LEFT", ns.uf_target_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_target_options.hp_font_size = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_hp_font_size"])
 		ns.uf_target_options.hp_font_size:SetPoint("LEFT", ns.uf_target_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.hp_font_flag_text = ns.createFonstring("uf_target_options", "Font flag:")
+		ns.uf_target_options.hp_font_flag_text = ns.createFontstring("uf_target_options", "Font flag:")
 		ns.uf_target_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_target_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_target_options.hp_font_flag = ns.createPicker("uf_target_options", "flag", "uf_target_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_target_hp_font_flag"])
@@ -372,31 +372,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_targettarget_options.title:SetPoint("TOPLEFT", ns.uf_targettarget_options, 16, -16)
 		ns.uf_targettarget_options.title:SetText("|cff5599ffUnitframes module: Targettarget Options|r")
 
-		ns.uf_targettarget_options.pos_x_text = ns.createFonstring("uf_targettarget_options", "PosX:")
+		ns.uf_targettarget_options.pos_x_text = ns.createFontstring("uf_targettarget_options", "PosX:")
 		ns.uf_targettarget_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_targettarget_options.pos_x = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_posx"])
 		ns.uf_targettarget_options.pos_x:SetPoint("LEFT", ns.uf_targettarget_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_targettarget_options.pos_y_text = ns.createFonstring("uf_targettarget_options", "PosY:")
+		ns.uf_targettarget_options.pos_y_text = ns.createFontstring("uf_targettarget_options", "PosY:")
 		ns.uf_targettarget_options.pos_y_text:SetPoint("LEFT", ns.uf_targettarget_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_targettarget_options.pos_y = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_posy"])
 		ns.uf_targettarget_options.pos_y:SetPoint("LEFT", ns.uf_targettarget_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_targettarget_options.anchor_text = ns.createFonstring("uf_targettarget_options", "Anchor:")
+		ns.uf_targettarget_options.anchor_text = ns.createFontstring("uf_targettarget_options", "Anchor:")
 		ns.uf_targettarget_options.anchor_text:SetPoint("LEFT", ns.uf_targettarget_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_targettarget_options.anchor = ns.createPicker("uf_targettarget_options", "anchor", "uf_targettarget_anchor", 110, LolzenUIcfg.unitframes["uf_targettarget_anchor"])
 		ns.uf_targettarget_options.anchor:SetPoint("LEFT", ns.uf_targettarget_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_targettarget_options.width_text = ns.createFonstring("uf_targettarget_options", "Width:")
+		ns.uf_targettarget_options.width_text = ns.createFontstring("uf_targettarget_options", "Width:")
 		ns.uf_targettarget_options.width_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_targettarget_options.width = ns.createInputbox("uf_targettarget_options", 40, 20, LolzenUIcfg.unitframes["uf_targettarget_width"])
 		ns.uf_targettarget_options.width:SetPoint("LEFT", ns.uf_targettarget_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_targettarget_options.height_text = ns.createFonstring("uf_targettarget_options", "Height:")
+		ns.uf_targettarget_options.height_text = ns.createFontstring("uf_targettarget_options", "Height:")
 		ns.uf_targettarget_options.height_text:SetPoint("LEFT", ns.uf_targettarget_options.width, "RIGHT", 10, 0)
 
 		ns.uf_targettarget_options.height = ns.createInputbox("uf_targettarget_options", 40, 20, LolzenUIcfg.unitframes["uf_targettarget_height"])
@@ -408,37 +408,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_targettarget_options.cb1 = ns.createCheckBox("uf_targettarget_options", "uf_targettarget_use_custom_font_hp", "|cff5599ffoverwrite the general font options for targettarget healthpoints|r", LolzenUIcfg.unitframes["uf_targettarget_use_own_hp_font_settings"])
 		ns.uf_targettarget_options.cb1:SetPoint("TOPLEFT", ns.uf_targettarget_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_targettarget_options.hp_pos_x_text = ns.createFonstring("uf_targettarget_options", "PosX:")
+		ns.uf_targettarget_options.hp_pos_x_text = ns.createFontstring("uf_targettarget_options", "PosX:")
 		ns.uf_targettarget_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_targettarget_options.hp_pos_x = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_hp_posx"])
 		ns.uf_targettarget_options.hp_pos_x:SetPoint("LEFT", ns.uf_targettarget_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_targettarget_options.hp_pos_y_text = ns.createFonstring("uf_targettarget_options", "PosY:")
+		ns.uf_targettarget_options.hp_pos_y_text = ns.createFontstring("uf_targettarget_options", "PosY:")
 		ns.uf_targettarget_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_targettarget_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_targettarget_options.hp_pos_y = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_hp_posy"])
 		ns.uf_targettarget_options.hp_pos_y:SetPoint("LEFT", ns.uf_targettarget_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_targettarget_options.hp_anchor_text = ns.createFonstring("uf_targettarget_options", "Anchor:")
+		ns.uf_targettarget_options.hp_anchor_text = ns.createFontstring("uf_targettarget_options", "Anchor:")
 		ns.uf_targettarget_options.hp_anchor_text:SetPoint("LEFT", ns.uf_targettarget_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_targettarget_options.hp_anchor = ns.createPicker("uf_targettarget_options", "anchor", "uf_targettarget_hp_anchor", 110, LolzenUIcfg.unitframes["uf_targettarget_hp_anchor"])
 		ns.uf_targettarget_options.hp_anchor:SetPoint("LEFT", ns.uf_targettarget_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_targettarget_options.hp_font_text = ns.createFonstring("uf_targettarget_options", "Font:")
+		ns.uf_targettarget_options.hp_font_text = ns.createFontstring("uf_targettarget_options", "Font:")
 		ns.uf_targettarget_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_targettarget_options.hp_font = ns.createPicker("uf_targettarget_options", "font", "uf_targettarget_hp_font", 120, LolzenUIcfg.unitframes["uf_targettarget_hp_font"])
 		ns.uf_targettarget_options.hp_font:SetPoint("LEFT", ns.uf_targettarget_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_targettarget_options.hp_font_size_text = ns.createFonstring("uf_targettarget_options", "Font size:")
+		ns.uf_targettarget_options.hp_font_size_text = ns.createFontstring("uf_targettarget_options", "Font size:")
 		ns.uf_targettarget_options.hp_font_size_text:SetPoint("LEFT", ns.uf_targettarget_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_targettarget_options.hp_font_size = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_hp_font_size"])
 		ns.uf_targettarget_options.hp_font_size:SetPoint("LEFT", ns.uf_targettarget_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_targettarget_options.hp_font_flag_text = ns.createFonstring("uf_targettarget_options", "Font flag:")
+		ns.uf_targettarget_options.hp_font_flag_text = ns.createFontstring("uf_targettarget_options", "Font flag:")
 		ns.uf_targettarget_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_targettarget_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_targettarget_options.hp_font_flag = ns.createPicker("uf_targettarget_options", "flag", "uf_targettarget_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_targettarget_hp_font_flag"])
@@ -460,31 +460,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.cb2 = ns.createCheckBox("uf_party_options", "uf_party_vertical", "|cff5599ffuse vertical Layout|r", LolzenUIcfg.unitframes["uf_party_use_vertical_layout"])
 		ns.uf_party_options.cb2:SetPoint("TOPLEFT", ns.uf_party_options.cb1, "BOTTOMLEFT", 0, 0)
 
-		ns.uf_party_options.pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
+		ns.uf_party_options.pos_x_text = ns.createFontstring("uf_party_options", "PosX:")
 		ns.uf_party_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb2, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posx"])
 		ns.uf_party_options.pos_x:SetPoint("LEFT", ns.uf_party_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.pos_y_text = ns.createFonstring("uf_party_options", "PosY:")
+		ns.uf_party_options.pos_y_text = ns.createFontstring("uf_party_options", "PosY:")
 		ns.uf_party_options.pos_y_text:SetPoint("LEFT", ns.uf_party_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_party_options.pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posy"])
 		ns.uf_party_options.pos_y:SetPoint("LEFT", ns.uf_party_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.anchor_text = ns.createFonstring("uf_party_options", "Anchor:")
+		ns.uf_party_options.anchor_text = ns.createFontstring("uf_party_options", "Anchor:")
 		ns.uf_party_options.anchor_text:SetPoint("LEFT", ns.uf_party_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_party_options.anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_anchor", 110, LolzenUIcfg.unitframes["uf_party_anchor"])
 		ns.uf_party_options.anchor:SetPoint("LEFT", ns.uf_party_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_party_options.width_text = ns.createFonstring("uf_party_options", "Width:")
+		ns.uf_party_options.width_text = ns.createFontstring("uf_party_options", "Width:")
 		ns.uf_party_options.width_text:SetPoint("TOPLEFT", ns.uf_party_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_party_options.width = ns.createInputbox("uf_party_options", 40, 20, LolzenUIcfg.unitframes["uf_party_width"])
 		ns.uf_party_options.width:SetPoint("LEFT", ns.uf_party_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.height_text = ns.createFonstring("uf_party_options", "Height:")
+		ns.uf_party_options.height_text = ns.createFontstring("uf_party_options", "Height:")
 		ns.uf_party_options.height_text:SetPoint("LEFT", ns.uf_party_options.width, "RIGHT", 10, 0)
 
 		ns.uf_party_options.height = ns.createInputbox("uf_party_options", 40, 20, LolzenUIcfg.unitframes["uf_party_height"])
@@ -496,37 +496,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.cb3 = ns.createCheckBox("uf_party_options", "uf_party_use_custom_font_hp", "|cff5599ffoverwrite the general font options for party healthpoints|r", LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"])
 		ns.uf_party_options.cb3:SetPoint("TOPLEFT", ns.uf_party_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_party_options.hp_pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
+		ns.uf_party_options.hp_pos_x_text = ns.createFontstring("uf_party_options", "PosX:")
 		ns.uf_party_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb3, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.hp_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_hp_posx"])
 		ns.uf_party_options.hp_pos_x:SetPoint("LEFT", ns.uf_party_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.hp_pos_y_text = ns.createFonstring("uf_party_options", "PosY:")
+		ns.uf_party_options.hp_pos_y_text = ns.createFontstring("uf_party_options", "PosY:")
 		ns.uf_party_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_party_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_party_options.hp_pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_hp_posy"])
 		ns.uf_party_options.hp_pos_y:SetPoint("LEFT", ns.uf_party_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.hp_anchor_text = ns.createFonstring("uf_party_options", "Anchor:")
+		ns.uf_party_options.hp_anchor_text = ns.createFontstring("uf_party_options", "Anchor:")
 		ns.uf_party_options.hp_anchor_text:SetPoint("LEFT", ns.uf_party_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_party_options.hp_anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_hp_anchor", 110, LolzenUIcfg.unitframes["uf_party_hp_anchor"])
 		ns.uf_party_options.hp_anchor:SetPoint("LEFT", ns.uf_party_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_party_options.hp_font_text = ns.createFonstring("uf_party_options", "Font:")
+		ns.uf_party_options.hp_font_text = ns.createFontstring("uf_party_options", "Font:")
 		ns.uf_party_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_party_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_party_options.hp_font = ns.createPicker("uf_party_options", "font", "uf_party_hp_font", 120, LolzenUIcfg.unitframes["uf_party_hp_font"])
 		ns.uf_party_options.hp_font:SetPoint("LEFT", ns.uf_party_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_party_options.hp_font_size_text = ns.createFonstring("uf_party_options", "Font size:")
+		ns.uf_party_options.hp_font_size_text = ns.createFontstring("uf_party_options", "Font size:")
 		ns.uf_party_options.hp_font_size_text:SetPoint("LEFT", ns.uf_party_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_party_options.hp_font_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_hp_font_size"])
 		ns.uf_party_options.hp_font_size:SetPoint("LEFT", ns.uf_party_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.hp_font_flag_text = ns.createFonstring("uf_party_options", "Font flag:")
+		ns.uf_party_options.hp_font_flag_text = ns.createFontstring("uf_party_options", "Font flag:")
 		ns.uf_party_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_party_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_party_options.hp_font_flag = ns.createPicker("uf_party_options", "flag", "uf_party_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_party_hp_font_flag"])
@@ -538,25 +538,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.cb4 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ffshow role indicator|r", LolzenUIcfg.unitframes["uf_party_showroleindicator"])
 		ns.uf_party_options.cb4:SetPoint("TOPLEFT", ns.uf_party_options.header2, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_party_options.ri_size_text = ns.createFonstring("uf_party_options", "Size:")
+		ns.uf_party_options.ri_size_text = ns.createFontstring("uf_party_options", "Size:")
 		ns.uf_party_options.ri_size_text:SetPoint("TOPLEFT", ns.uf_party_options.cb4, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.ri_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_size"])
 		ns.uf_party_options.ri_size:SetPoint("LEFT", ns.uf_party_options.ri_size_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.ri_pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
+		ns.uf_party_options.ri_pos_x_text = ns.createFontstring("uf_party_options", "PosX:")
 		ns.uf_party_options.ri_pos_x_text:SetPoint("LEFT", ns.uf_party_options.ri_size, "RIGHT", 10, 0)
 
 		ns.uf_party_options.ri_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_posx"])
 		ns.uf_party_options.ri_pos_x:SetPoint("LEFT", ns.uf_party_options.ri_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.ri_pos_y_text = ns.createFonstring("uf_party_options", "PosY:")
+		ns.uf_party_options.ri_pos_y_text = ns.createFontstring("uf_party_options", "PosY:")
 		ns.uf_party_options.ri_pos_y_text:SetPoint("LEFT", ns.uf_party_options.ri_pos_x, "RIGHT", 10, 0)
 
 		ns.uf_party_options.ri_pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_ri_posy"])
 		ns.uf_party_options.ri_pos_y:SetPoint("LEFT", ns.uf_party_options.ri_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.ri_anchor_text = ns.createFonstring("uf_party_options", "Anchor:")
+		ns.uf_party_options.ri_anchor_text = ns.createFontstring("uf_party_options", "Anchor:")
 		ns.uf_party_options.ri_anchor_text:SetPoint("LEFT", ns.uf_party_options.ri_pos_y, "RIGHT", 10, 0)
 
 		ns.uf_party_options.ri_anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_ri_anchor", 120, LolzenUIcfg.unitframes["uf_party_ri_anchor"])
@@ -565,25 +565,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.header3 = ns.createHeader("uf_party_options", "Readycheck Indicator")
 		ns.uf_party_options.header3:SetPoint("TOPLEFT", ns.uf_party_options.ri_size_text, 0, -30)
 
-		ns.uf_party_options.rc_size_text = ns.createFonstring("uf_party_options", "Size:")
+		ns.uf_party_options.rc_size_text = ns.createFontstring("uf_party_options", "Size:")
 		ns.uf_party_options.rc_size_text:SetPoint("TOPLEFT", ns.uf_party_options.header3, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_party_options.rc_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_rc_size"])
 		ns.uf_party_options.rc_size:SetPoint("LEFT", ns.uf_party_options.rc_size_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.rc_pos_x_text = ns.createFonstring("uf_party_options", "PosX:")
+		ns.uf_party_options.rc_pos_x_text = ns.createFontstring("uf_party_options", "PosX:")
 		ns.uf_party_options.rc_pos_x_text:SetPoint("LEFT", ns.uf_party_options.rc_size, "RIGHT", 10, 0)
 
 		ns.uf_party_options.rc_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_rc_posx"])
 		ns.uf_party_options.rc_pos_x:SetPoint("LEFT", ns.uf_party_options.rc_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.rc_pos_y_text = ns.createFonstring("uf_party_options", "PosY:")
+		ns.uf_party_options.rc_pos_y_text = ns.createFontstring("uf_party_options", "PosY:")
 		ns.uf_party_options.rc_pos_y_text:SetPoint("LEFT", ns.uf_party_options.rc_pos_x, "RIGHT", 10, 0)
 
 		ns.uf_party_options.rc_pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_rc_posy"])
 		ns.uf_party_options.rc_pos_y:SetPoint("LEFT", ns.uf_party_options.rc_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_party_options.rc_anchor_text = ns.createFonstring("uf_party_options", "Anchor:")
+		ns.uf_party_options.rc_anchor_text = ns.createFontstring("uf_party_options", "Anchor:")
 		ns.uf_party_options.rc_anchor_text:SetPoint("LEFT", ns.uf_party_options.rc_pos_y, "RIGHT", 10, 0)
 
 		ns.uf_party_options.rc_anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_rc_anchor", 120, LolzenUIcfg.unitframes["uf_party_rc_anchor"])
@@ -602,31 +602,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_raid_options.cb1 = ns.createCheckBox("uf_raid_options", "uf_raid_enabled", "|cff5599ffuse LolzenUI raidframes (disable for alternatives/blizzard default)|r", LolzenUIcfg.unitframes["uf_raid_enabled"])
 		ns.uf_raid_options.cb1:SetPoint("TOPLEFT", ns.uf_raid_options.title, "BOTTOMLEFT", 0, -30)
 
-		ns.uf_raid_options.pos_x_text = ns.createFonstring("uf_raid_options", "PosX:")
+		ns.uf_raid_options.pos_x_text = ns.createFontstring("uf_raid_options", "PosX:")
 		ns.uf_raid_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_raid_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_raid_options.pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_posx"])
 		ns.uf_raid_options.pos_x:SetPoint("LEFT", ns.uf_raid_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.pos_y_text = ns.createFonstring("uf_raid_options", "PosY:")
+		ns.uf_raid_options.pos_y_text = ns.createFontstring("uf_raid_options", "PosY:")
 		ns.uf_raid_options.pos_y_text:SetPoint("LEFT", ns.uf_raid_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_raid_options.pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_posy"])
 		ns.uf_raid_options.pos_y:SetPoint("LEFT", ns.uf_raid_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.anchor_text = ns.createFonstring("uf_raid_options", "Anchor:")
+		ns.uf_raid_options.anchor_text = ns.createFontstring("uf_raid_options", "Anchor:")
 		ns.uf_raid_options.anchor_text:SetPoint("LEFT", ns.uf_raid_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_raid_options.anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_anchor", 110, LolzenUIcfg.unitframes["uf_raid_anchor"])
 		ns.uf_raid_options.anchor:SetPoint("LEFT", ns.uf_raid_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_raid_options.width_text = ns.createFonstring("uf_raid_options", "Width:")
+		ns.uf_raid_options.width_text = ns.createFontstring("uf_raid_options", "Width:")
 		ns.uf_raid_options.width_text:SetPoint("TOPLEFT", ns.uf_raid_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_raid_options.width = ns.createInputbox("uf_raid_options", 40, 20, LolzenUIcfg.unitframes["uf_raid_width"])
 		ns.uf_raid_options.width:SetPoint("LEFT", ns.uf_raid_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.height_text = ns.createFonstring("uf_raid_options", "Height:")
+		ns.uf_raid_options.height_text = ns.createFontstring("uf_raid_options", "Height:")
 		ns.uf_raid_options.height_text:SetPoint("LEFT", ns.uf_raid_options.width, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.height = ns.createInputbox("uf_raid_options", 40, 20, LolzenUIcfg.unitframes["uf_raid_height"])
@@ -638,37 +638,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_raid_options.cb2 = ns.createCheckBox("uf_raid_options", "uf_raid_use_custom_font_hp", "|cff5599ffoverwrite the general font options for raid healthpoints|r", LolzenUIcfg.unitframes["uf_raid_use_own_hp_font_settings"])
 		ns.uf_raid_options.cb2:SetPoint("TOPLEFT", ns.uf_raid_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_raid_options.hp_pos_x_text = ns.createFonstring("uf_raid_options", "PosX:")
+		ns.uf_raid_options.hp_pos_x_text = ns.createFontstring("uf_raid_options", "PosX:")
 		ns.uf_raid_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_raid_options.cb2, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_raid_options.hp_pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_hp_posx"])
 		ns.uf_raid_options.hp_pos_x:SetPoint("LEFT", ns.uf_raid_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.hp_pos_y_text = ns.createFonstring("uf_raid_options", "PosY:")
+		ns.uf_raid_options.hp_pos_y_text = ns.createFontstring("uf_raid_options", "PosY:")
 		ns.uf_raid_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_raid_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_raid_options.hp_pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_hp_posy"])
 		ns.uf_raid_options.hp_pos_y:SetPoint("LEFT", ns.uf_raid_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.hp_anchor_text = ns.createFonstring("uf_raid_options", "Anchor:")
+		ns.uf_raid_options.hp_anchor_text = ns.createFontstring("uf_raid_options", "Anchor:")
 		ns.uf_raid_options.hp_anchor_text:SetPoint("LEFT", ns.uf_raid_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_raid_options.hp_anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_hp_anchor", 110, LolzenUIcfg.unitframes["uf_raid_hp_anchor"])
 		ns.uf_raid_options.hp_anchor:SetPoint("LEFT", ns.uf_raid_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_raid_options.hp_font_text = ns.createFonstring("uf_raid_options", "Font:")
+		ns.uf_raid_options.hp_font_text = ns.createFontstring("uf_raid_options", "Font:")
 		ns.uf_raid_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_raid_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_raid_options.hp_font = ns.createPicker("uf_raid_options", "font", "uf_raid_hp_font", 120, LolzenUIcfg.unitframes["uf_raid_hp_font"])
 		ns.uf_raid_options.hp_font:SetPoint("LEFT", ns.uf_raid_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_raid_options.hp_font_size_text = ns.createFonstring("uf_raid_options", "Font size:")
+		ns.uf_raid_options.hp_font_size_text = ns.createFontstring("uf_raid_options", "Font size:")
 		ns.uf_raid_options.hp_font_size_text:SetPoint("LEFT", ns.uf_raid_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_raid_options.hp_font_size = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_hp_font_size"])
 		ns.uf_raid_options.hp_font_size:SetPoint("LEFT", ns.uf_raid_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.hp_font_flag_text = ns.createFonstring("uf_raid_options", "Font flag:")
+		ns.uf_raid_options.hp_font_flag_text = ns.createFontstring("uf_raid_options", "Font flag:")
 		ns.uf_raid_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_raid_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.hp_font_flag = ns.createPicker("uf_raid_options", "flag", "uf_raid_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_raid_hp_font_flag"])
@@ -680,25 +680,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_raid_options.cb3 = ns.createCheckBox("uf_raid_options", "uf_raid_ri", "|cff5599ffshow role indicator|r", LolzenUIcfg.unitframes["uf_raid_showroleindicator"])
 		ns.uf_raid_options.cb3:SetPoint("TOPLEFT", ns.uf_raid_options.header2, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_raid_options.ri_size_text = ns.createFonstring("uf_raid_options", "Size:")
+		ns.uf_raid_options.ri_size_text = ns.createFontstring("uf_raid_options", "Size:")
 		ns.uf_raid_options.ri_size_text:SetPoint("TOPLEFT", ns.uf_raid_options.cb3, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_raid_options.ri_size = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_ri_size"])
 		ns.uf_raid_options.ri_size:SetPoint("LEFT", ns.uf_raid_options.ri_size_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.ri_pos_x_text = ns.createFonstring("uf_raid_options", "PosX:")
+		ns.uf_raid_options.ri_pos_x_text = ns.createFontstring("uf_raid_options", "PosX:")
 		ns.uf_raid_options.ri_pos_x_text:SetPoint("LEFT", ns.uf_raid_options.ri_size, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.ri_pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_ri_posx"])
 		ns.uf_raid_options.ri_pos_x:SetPoint("LEFT", ns.uf_raid_options.ri_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.ri_pos_y_text = ns.createFonstring("uf_raid_options", "PosY:")
+		ns.uf_raid_options.ri_pos_y_text = ns.createFontstring("uf_raid_options", "PosY:")
 		ns.uf_raid_options.ri_pos_y_text:SetPoint("LEFT", ns.uf_raid_options.ri_pos_x, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.ri_pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_ri_posy"])
 		ns.uf_raid_options.ri_pos_y:SetPoint("LEFT", ns.uf_raid_options.ri_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.ri_anchor_text = ns.createFonstring("uf_raid_options", "Anchor:")
+		ns.uf_raid_options.ri_anchor_text = ns.createFontstring("uf_raid_options", "Anchor:")
 		ns.uf_raid_options.ri_anchor_text:SetPoint("LEFT", ns.uf_raid_options.ri_pos_y, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.ri_anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_ri_anchor", 120, LolzenUIcfg.unitframes["uf_raid_ri_anchor"])
@@ -707,25 +707,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_raid_options.header3 = ns.createHeader("uf_raid_options", "Readycheck Indicator")
 		ns.uf_raid_options.header3:SetPoint("TOPLEFT", ns.uf_raid_options.ri_size_text, 0, -30)
 
-		ns.uf_raid_options.rc_size_text = ns.createFonstring("uf_raid_options", "Size:")
+		ns.uf_raid_options.rc_size_text = ns.createFontstring("uf_raid_options", "Size:")
 		ns.uf_raid_options.rc_size_text:SetPoint("TOPLEFT", ns.uf_raid_options.header3, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_raid_options.rc_size = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_rc_size"])
 		ns.uf_raid_options.rc_size:SetPoint("LEFT", ns.uf_raid_options.rc_size_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.rc_pos_x_text = ns.createFonstring("uf_raid_options", "PosX:")
+		ns.uf_raid_options.rc_pos_x_text = ns.createFontstring("uf_raid_options", "PosX:")
 		ns.uf_raid_options.rc_pos_x_text:SetPoint("LEFT", ns.uf_raid_options.rc_size, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.rc_pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_rc_posx"])
 		ns.uf_raid_options.rc_pos_x:SetPoint("LEFT", ns.uf_raid_options.rc_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.rc_pos_y_text = ns.createFonstring("uf_raid_options", "PosY:")
+		ns.uf_raid_options.rc_pos_y_text = ns.createFontstring("uf_raid_options", "PosY:")
 		ns.uf_raid_options.rc_pos_y_text:SetPoint("LEFT", ns.uf_raid_options.rc_pos_x, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.rc_pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_rc_posy"])
 		ns.uf_raid_options.rc_pos_y:SetPoint("LEFT", ns.uf_raid_options.rc_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_raid_options.rc_anchor_text = ns.createFonstring("uf_raid_options", "Anchor:")
+		ns.uf_raid_options.rc_anchor_text = ns.createFontstring("uf_raid_options", "Anchor:")
 		ns.uf_raid_options.rc_anchor_text:SetPoint("LEFT", ns.uf_raid_options.rc_pos_y, "RIGHT", 10, 0)
 
 		ns.uf_raid_options.rc_anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_rc_anchor", 120, LolzenUIcfg.unitframes["uf_raid_rc_anchor"])
@@ -741,31 +741,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_pet_options.title:SetPoint("TOPLEFT", ns.uf_pet_options, 16, -16)
 		ns.uf_pet_options.title:SetText("|cff5599ffUnitframes module: Pet Options|r")
 
-		ns.uf_pet_options.pos_x_text = ns.createFonstring("uf_pet_options", "PosX:")
+		ns.uf_pet_options.pos_x_text = ns.createFontstring("uf_pet_options", "PosX:")
 		ns.uf_pet_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_pet_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_pet_options.pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_posx"])
 		ns.uf_pet_options.pos_x:SetPoint("LEFT", ns.uf_pet_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_pet_options.pos_y_text = ns.createFonstring("uf_pet_options", "PosY:")
+		ns.uf_pet_options.pos_y_text = ns.createFontstring("uf_pet_options", "PosY:")
 		ns.uf_pet_options.pos_y_text:SetPoint("LEFT", ns.uf_pet_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_pet_options.pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_posy"])
 		ns.uf_pet_options.pos_y:SetPoint("LEFT", ns.uf_pet_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_pet_options.anchor_text = ns.createFonstring("uf_pet_options", "Anchor:")
+		ns.uf_pet_options.anchor_text = ns.createFontstring("uf_pet_options", "Anchor:")
 		ns.uf_pet_options.anchor_text:SetPoint("LEFT", ns.uf_pet_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_pet_options.anchor = ns.createPicker("uf_pet_options", "anchor", "uf_pet_anchor", 110, LolzenUIcfg.unitframes["uf_pet_anchor"])
 		ns.uf_pet_options.anchor:SetPoint("LEFT", ns.uf_pet_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_pet_options.width_text = ns.createFonstring("uf_pet_options", "Width:")
+		ns.uf_pet_options.width_text = ns.createFontstring("uf_pet_options", "Width:")
 		ns.uf_pet_options.width_text:SetPoint("TOPLEFT", ns.uf_pet_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_pet_options.width = ns.createInputbox("uf_pet_options", 40, 20, LolzenUIcfg.unitframes["uf_pet_width"])
 		ns.uf_pet_options.width:SetPoint("LEFT", ns.uf_pet_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_pet_options.height_text = ns.createFonstring("uf_pet_options", "Height:")
+		ns.uf_pet_options.height_text = ns.createFontstring("uf_pet_options", "Height:")
 		ns.uf_pet_options.height_text:SetPoint("LEFT", ns.uf_pet_options.width, "RIGHT", 10, 0)
 
 		ns.uf_pet_options.height = ns.createInputbox("uf_pet_options", 40, 20, LolzenUIcfg.unitframes["uf_pet_height"])
@@ -777,37 +777,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_pet_options.cb1 = ns.createCheckBox("uf_pet_options", "uf_pet_use_custom_font_hp", "|cff5599ffoverwrite the general font options for pet healthpoints|r", LolzenUIcfg.unitframes["uf_pet_use_own_hp_font_settings"])
 		ns.uf_pet_options.cb1:SetPoint("TOPLEFT", ns.uf_pet_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_pet_options.hp_pos_x_text = ns.createFonstring("uf_pet_options", "PosX:")
+		ns.uf_pet_options.hp_pos_x_text = ns.createFontstring("uf_pet_options", "PosX:")
 		ns.uf_pet_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_pet_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_pet_options.hp_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_hp_posx"])
 		ns.uf_pet_options.hp_pos_x:SetPoint("LEFT", ns.uf_pet_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_pet_options.hp_pos_y_text = ns.createFonstring("uf_pet_options", "PosY:")
+		ns.uf_pet_options.hp_pos_y_text = ns.createFontstring("uf_pet_options", "PosY:")
 		ns.uf_pet_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_pet_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_pet_options.hp_pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_hp_posy"])
 		ns.uf_pet_options.hp_pos_y:SetPoint("LEFT", ns.uf_pet_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_pet_options.hp_anchor_text = ns.createFonstring("uf_pet_options", "Anchor:")
+		ns.uf_pet_options.hp_anchor_text = ns.createFontstring("uf_pet_options", "Anchor:")
 		ns.uf_pet_options.hp_anchor_text:SetPoint("LEFT", ns.uf_pet_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_pet_options.hp_anchor = ns.createPicker("uf_pet_options", "anchor", "uf_pet_hp_anchor", 110, LolzenUIcfg.unitframes["uf_pet_hp_anchor"])
 		ns.uf_pet_options.hp_anchor:SetPoint("LEFT", ns.uf_pet_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_pet_options.hp_font_text = ns.createFonstring("uf_pet_options", "Font:")
+		ns.uf_pet_options.hp_font_text = ns.createFontstring("uf_pet_options", "Font:")
 		ns.uf_pet_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_pet_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_pet_options.hp_font = ns.createPicker("uf_pet_options", "font", "uf_pet_hp_font", 120, LolzenUIcfg.unitframes["uf_pet_hp_font"])
 		ns.uf_pet_options.hp_font:SetPoint("LEFT", ns.uf_pet_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_pet_options.hp_font_size_text = ns.createFonstring("uf_pet_options", "Font size:")
+		ns.uf_pet_options.hp_font_size_text = ns.createFontstring("uf_pet_options", "Font size:")
 		ns.uf_pet_options.hp_font_size_text:SetPoint("LEFT", ns.uf_pet_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_pet_options.hp_font_size = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_hp_font_size"])
 		ns.uf_pet_options.hp_font_size:SetPoint("LEFT", ns.uf_pet_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_pet_options.hp_font_flag_text = ns.createFonstring("uf_pet_options", "Font flag:")
+		ns.uf_pet_options.hp_font_flag_text = ns.createFontstring("uf_pet_options", "Font flag:")
 		ns.uf_pet_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_pet_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_pet_options.hp_font_flag = ns.createPicker("uf_pet_options", "flag", "uf_pet_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_pet_hp_font_flag"])
@@ -823,43 +823,43 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.title:SetPoint("TOPLEFT", ns.uf_boss_options, 16, -16)
 		ns.uf_boss_options.title:SetText("|cff5599ffUnitframes module: Boss Options|r")
 
-		ns.uf_boss_options.pos_x_text = ns.createFonstring("uf_boss_options", "PosX:")
+		ns.uf_boss_options.pos_x_text = ns.createFontstring("uf_boss_options", "PosX:")
 		ns.uf_boss_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_boss_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_boss_options.pos_x = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_posx"])
 		ns.uf_boss_options.pos_x:SetPoint("LEFT", ns.uf_boss_options.pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.pos_y_text = ns.createFonstring("uf_boss_options", "PosY:")
+		ns.uf_boss_options.pos_y_text = ns.createFontstring("uf_boss_options", "PosY:")
 		ns.uf_boss_options.pos_y_text:SetPoint("LEFT", ns.uf_boss_options.pos_x, "RIGHT", 5, 0)
 
 		ns.uf_boss_options.pos_y = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_posy"])
 		ns.uf_boss_options.pos_y:SetPoint("LEFT", ns.uf_boss_options.pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.anchor_text = ns.createFonstring("uf_boss_options", "Anchor:")
+		ns.uf_boss_options.anchor_text = ns.createFontstring("uf_boss_options", "Anchor:")
 		ns.uf_boss_options.anchor_text:SetPoint("LEFT", ns.uf_boss_options.pos_y, "RIGHT", 5, 0)
 
 		ns.uf_boss_options.anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_anchor", 110, LolzenUIcfg.unitframes["uf_boss_anchor"])
 		ns.uf_boss_options.anchor:SetPoint("LEFT", ns.uf_boss_options.anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_boss_options.width_text = ns.createFonstring("uf_boss_options", "Width:")
+		ns.uf_boss_options.width_text = ns.createFontstring("uf_boss_options", "Width:")
 		ns.uf_boss_options.width_text:SetPoint("TOPLEFT", ns.uf_boss_options.pos_x_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_boss_options.width = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_width"])
 		ns.uf_boss_options.width:SetPoint("LEFT", ns.uf_boss_options.width_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.height_text = ns.createFonstring("uf_boss_options", "Height:")
+		ns.uf_boss_options.height_text = ns.createFontstring("uf_boss_options", "Height:")
 		ns.uf_boss_options.height_text:SetPoint("LEFT", ns.uf_boss_options.width, "RIGHT", 10, 0)
 
 		ns.uf_boss_options.height = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_height"])
 		ns.uf_boss_options.height:SetPoint("LEFT", ns.uf_boss_options.height_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.growth_text = ns.createFonstring("uf_boss_options", "Additional Bossframe placement:")
+		ns.uf_boss_options.growth_text = ns.createFontstring("uf_boss_options", "Additional Bossframe placement:")
 		ns.uf_boss_options.growth_text:SetPoint("TOPLEFT", ns.uf_boss_options.width_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_boss_options.growth = ns.createPicker("uf_boss_options", "growth", "uf_boss_additional_boss_anchor", 110, LolzenUIcfg.unitframes["uf_boss_additional_pos"])
 		ns.uf_boss_options.growth:SetPoint("LEFT", ns.uf_boss_options.growth_text, "RIGHT", -10, -3)
 
-		ns.uf_boss_options.growth_spacing_text = ns.createFonstring("uf_boss_options", "Spacing:") --ns.uf_boss_options.growth
+		ns.uf_boss_options.growth_spacing_text = ns.createFontstring("uf_boss_options", "Spacing:") --ns.uf_boss_options.growth
 		ns.uf_boss_options.growth_spacing_text:SetPoint("LEFT", ns.uf_boss_options.growth, "RIGHT", -10, 3)
 
 		ns.uf_boss_options.growth_spacing = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_additional_spacing"])
@@ -871,37 +871,37 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.cb1 = ns.createCheckBox("uf_boss_options", "uf_boss_use_custom_font_hp", "|cff5599ffoverwrite the general font options for boss healthpoints|r", LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"])
 		ns.uf_boss_options.cb1:SetPoint("TOPLEFT", ns.uf_boss_options.header1, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_boss_options.hp_pos_x_text = ns.createFonstring("uf_boss_options", "PosX:")
+		ns.uf_boss_options.hp_pos_x_text = ns.createFontstring("uf_boss_options", "PosX:")
 		ns.uf_boss_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_boss_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_boss_options.hp_pos_x = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_hp_posx"])
 		ns.uf_boss_options.hp_pos_x:SetPoint("LEFT", ns.uf_boss_options.hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.hp_pos_y_text = ns.createFonstring("uf_boss_options", "PosY:")
+		ns.uf_boss_options.hp_pos_y_text = ns.createFontstring("uf_boss_options", "PosY:")
 		ns.uf_boss_options.hp_pos_y_text:SetPoint("LEFT", ns.uf_boss_options.hp_pos_x, "RIGHT", 5, 0)
 
 		ns.uf_boss_options.hp_pos_y = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_hp_posy"])
 		ns.uf_boss_options.hp_pos_y:SetPoint("LEFT", ns.uf_boss_options.hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.hp_anchor_text = ns.createFonstring("uf_boss_options", "Anchor:")
+		ns.uf_boss_options.hp_anchor_text = ns.createFontstring("uf_boss_options", "Anchor:")
 		ns.uf_boss_options.hp_anchor_text:SetPoint("LEFT", ns.uf_boss_options.hp_pos_y, "RIGHT", 5, 0)
 
 		ns.uf_boss_options.hp_anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_hp_anchor", 110, LolzenUIcfg.unitframes["uf_boss_hp_anchor"])
 		ns.uf_boss_options.hp_anchor:SetPoint("LEFT", ns.uf_boss_options.hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.uf_boss_options.hp_font_text = ns.createFonstring("uf_boss_options", "Font:")
+		ns.uf_boss_options.hp_font_text = ns.createFontstring("uf_boss_options", "Font:")
 		ns.uf_boss_options.hp_font_text:SetPoint("TOPLEFT", ns.uf_boss_options.hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_boss_options.hp_font = ns.createPicker("uf_boss_options", "font", "uf_boss_hp_font", 120, LolzenUIcfg.unitframes["uf_boss_hp_font"])
 		ns.uf_boss_options.hp_font:SetPoint("LEFT", ns.uf_boss_options.hp_font_text, "RIGHT", -10, -3)
 
-		ns.uf_boss_options.hp_font_size_text = ns.createFonstring("uf_boss_options", "Font size:")
+		ns.uf_boss_options.hp_font_size_text = ns.createFontstring("uf_boss_options", "Font size:")
 		ns.uf_boss_options.hp_font_size_text:SetPoint("LEFT", ns.uf_boss_options.hp_font, "RIGHT", -5, 3)
 
 		ns.uf_boss_options.hp_font_size = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_hp_font_size"])
 		ns.uf_boss_options.hp_font_size:SetPoint("LEFT", ns.uf_boss_options.hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.hp_font_flag_text = ns.createFonstring("uf_boss_options", "Font flag:")
+		ns.uf_boss_options.hp_font_flag_text = ns.createFontstring("uf_boss_options", "Font flag:")
 		ns.uf_boss_options.hp_font_flag_text:SetPoint("LEFT", ns.uf_boss_options.hp_font_size, "RIGHT", 10, 0)
 
 		ns.uf_boss_options.hp_font_flag = ns.createPicker("uf_boss_options", "flag", "uf_boss_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_boss_hp_font_flag"])
@@ -917,7 +917,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.title:SetPoint("TOPLEFT", ns.uf_powercolor_options, 16, -16)
 		ns.uf_powercolor_options.title:SetText("|cff5599ffUnitframes module: Power Colors|r")
 
-		ns.uf_powercolor_options.mana_text = ns.createFonstring("uf_powercolor_options", "Mana:")
+		ns.uf_powercolor_options.mana_text = ns.createFontstring("uf_powercolor_options", "Mana:")
 		ns.uf_powercolor_options.mana_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_powercolor_options.mana = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["0"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -926,7 +926,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.mana_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.mana, LolzenUIcfg.unitframes["uf_power_colors"]["0"])
 		ns.uf_powercolor_options.mana_f:SetAllPoints(ns.uf_powercolor_options.mana)
 
-		ns.uf_powercolor_options.rage_text = ns.createFonstring("uf_powercolor_options", "Rage:")
+		ns.uf_powercolor_options.rage_text = ns.createFontstring("uf_powercolor_options", "Rage:")
 		ns.uf_powercolor_options.rage_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.mana_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.rage = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["1"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -935,7 +935,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.rage_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.rage, LolzenUIcfg.unitframes["uf_power_colors"]["1"])
 		ns.uf_powercolor_options.rage_f:SetAllPoints(ns.uf_powercolor_options.rage)
 
-		ns.uf_powercolor_options.focus_text = ns.createFonstring("uf_powercolor_options", "Focus:")
+		ns.uf_powercolor_options.focus_text = ns.createFontstring("uf_powercolor_options", "Focus:")
 		ns.uf_powercolor_options.focus_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.rage_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.focus = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["2"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -944,7 +944,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.focus_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.focus, LolzenUIcfg.unitframes["uf_power_colors"]["2"])
 		ns.uf_powercolor_options.focus_f:SetAllPoints(ns.uf_powercolor_options.focus)
 
-		ns.uf_powercolor_options.energy_text = ns.createFonstring("uf_powercolor_options", "Energy:")
+		ns.uf_powercolor_options.energy_text = ns.createFontstring("uf_powercolor_options", "Energy:")
 		ns.uf_powercolor_options.energy_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.focus_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.energy = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["3"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -953,7 +953,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.energy_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.energy, LolzenUIcfg.unitframes["uf_power_colors"]["3"])
 		ns.uf_powercolor_options.energy_f:SetAllPoints(ns.uf_powercolor_options.energy)
 
-		ns.uf_powercolor_options.cp_text = ns.createFonstring("uf_powercolor_options", "Combo Points:")
+		ns.uf_powercolor_options.cp_text = ns.createFontstring("uf_powercolor_options", "Combo Points:")
 		ns.uf_powercolor_options.cp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.energy_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.cp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["4"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -962,7 +962,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.cp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.cp, LolzenUIcfg.unitframes["uf_power_colors"]["4"])
 		ns.uf_powercolor_options.cp_f:SetAllPoints(ns.uf_powercolor_options.cp)
 
-		ns.uf_powercolor_options.runes_text = ns.createFonstring("uf_powercolor_options", "Runes:")
+		ns.uf_powercolor_options.runes_text = ns.createFontstring("uf_powercolor_options", "Runes:")
 		ns.uf_powercolor_options.runes_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.cp_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.runes = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["5"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -971,7 +971,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.runes_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.runes, LolzenUIcfg.unitframes["uf_power_colors"]["5"])
 		ns.uf_powercolor_options.runes_f:SetAllPoints(ns.uf_powercolor_options.runes)
 
-		ns.uf_powercolor_options.rp_text = ns.createFonstring("uf_powercolor_options", "Runic Power:")
+		ns.uf_powercolor_options.rp_text = ns.createFontstring("uf_powercolor_options", "Runic Power:")
 		ns.uf_powercolor_options.rp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.runes_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.rp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["6"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -980,7 +980,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.rp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.rp, LolzenUIcfg.unitframes["uf_power_colors"]["6"])
 		ns.uf_powercolor_options.rp_f:SetAllPoints(ns.uf_powercolor_options.rp)
 
-		ns.uf_powercolor_options.soulshards_text = ns.createFonstring("uf_powercolor_options", "Soul Shards:")
+		ns.uf_powercolor_options.soulshards_text = ns.createFontstring("uf_powercolor_options", "Soul Shards:")
 		ns.uf_powercolor_options.soulshards_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.rp_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.soulshards = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["7"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -989,7 +989,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.soulshards_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.soulshards, LolzenUIcfg.unitframes["uf_power_colors"]["7"])
 		ns.uf_powercolor_options.soulshards_f:SetAllPoints(ns.uf_powercolor_options.soulshards)
 
-		ns.uf_powercolor_options.lp_text = ns.createFonstring("uf_powercolor_options", "Lunar Power:")
+		ns.uf_powercolor_options.lp_text = ns.createFontstring("uf_powercolor_options", "Lunar Power:")
 		ns.uf_powercolor_options.lp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.soulshards_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.lp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["8"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -998,7 +998,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.lp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.lp, LolzenUIcfg.unitframes["uf_power_colors"]["8"])
 		ns.uf_powercolor_options.lp_f:SetAllPoints(ns.uf_powercolor_options.lp)
 
-		ns.uf_powercolor_options.hp_text = ns.createFonstring("uf_powercolor_options", "Holy Power:")
+		ns.uf_powercolor_options.hp_text = ns.createFontstring("uf_powercolor_options", "Holy Power:")
 		ns.uf_powercolor_options.hp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.lp_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.hp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["9"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -1007,7 +1007,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.hp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.hp, LolzenUIcfg.unitframes["uf_power_colors"]["9"])
 		ns.uf_powercolor_options.hp_f:SetAllPoints(ns.uf_powercolor_options.hp)
 
-		ns.uf_powercolor_options.maelstrom_text = ns.createFonstring("uf_powercolor_options", "Maelstrom:")
+		ns.uf_powercolor_options.maelstrom_text = ns.createFontstring("uf_powercolor_options", "Maelstrom:")
 		ns.uf_powercolor_options.maelstrom_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.hp_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.maelstrom = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["11"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -1016,7 +1016,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.maelstrom_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.maelstrom, LolzenUIcfg.unitframes["uf_power_colors"]["11"])
 		ns.uf_powercolor_options.maelstrom_f:SetAllPoints(ns.uf_powercolor_options.maelstrom)
 
-		ns.uf_powercolor_options.chi_text = ns.createFonstring("uf_powercolor_options", "Chi:")
+		ns.uf_powercolor_options.chi_text = ns.createFontstring("uf_powercolor_options", "Chi:")
 		ns.uf_powercolor_options.chi_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.maelstrom_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.chi = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["12"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -1025,7 +1025,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.chi_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.chi, LolzenUIcfg.unitframes["uf_power_colors"]["12"])
 		ns.uf_powercolor_options.chi_f:SetAllPoints(ns.uf_powercolor_options.chi)
 
-		ns.uf_powercolor_options.insanity_text = ns.createFonstring("uf_powercolor_options", "Insanity:")
+		ns.uf_powercolor_options.insanity_text = ns.createFontstring("uf_powercolor_options", "Insanity:")
 		ns.uf_powercolor_options.insanity_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.chi_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.insanity = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["13"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -1034,7 +1034,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.insanity_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.insanity, LolzenUIcfg.unitframes["uf_power_colors"]["13"])
 		ns.uf_powercolor_options.insanity_f:SetAllPoints(ns.uf_powercolor_options.insanity)
 
-		ns.uf_powercolor_options.ac_text = ns.createFonstring("uf_powercolor_options", "Arcane Charges:")
+		ns.uf_powercolor_options.ac_text = ns.createFontstring("uf_powercolor_options", "Arcane Charges:")
 		ns.uf_powercolor_options.ac_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.insanity_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.ac = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["16"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -1043,7 +1043,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.ac_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.ac, LolzenUIcfg.unitframes["uf_power_colors"]["16"])
 		ns.uf_powercolor_options.ac_f:SetAllPoints(ns.uf_powercolor_options.ac)
 
-		ns.uf_powercolor_options.fury_text = ns.createFonstring("uf_powercolor_options", "Fury:")
+		ns.uf_powercolor_options.fury_text = ns.createFontstring("uf_powercolor_options", "Fury:")
 		ns.uf_powercolor_options.fury_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.ac_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.fury = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["17"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
@@ -1052,7 +1052,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.fury_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.fury, LolzenUIcfg.unitframes["uf_power_colors"]["17"])
 		ns.uf_powercolor_options.fury_f:SetAllPoints(ns.uf_powercolor_options.fury)
 
-		ns.uf_powercolor_options.pain_text = ns.createFonstring("uf_powercolor_options", "Pain:")
+		ns.uf_powercolor_options.pain_text = ns.createFontstring("uf_powercolor_options", "Pain:")
 		ns.uf_powercolor_options.pain_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.fury_text, "BOTTOMLEFT", 0, -10)
 
 		ns.uf_powercolor_options.pain = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["18"], LolzenUIcfg.unitframes["uf_statusbar_texture"])

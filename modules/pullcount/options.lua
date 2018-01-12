@@ -33,16 +33,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("pullcount", "Custom Messages to play sounds on:")
 		header2:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 0, -20)
 
-		local pull_message_count_text = ns.createFonstring("pullcount", "Countdown message:")
+		local pull_message_count_text = ns.createFontstring("pullcount", "Countdown message:")
 		pull_message_count_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
 
 		local pull_message_countdown = ns.createInputbox("pullcount", 100, 20, LolzenUIcfg.pullcount["pull_msg_count"])
 		pull_message_countdown:SetPoint("LEFT", pull_message_count_text, "RIGHT", 10, 0)
 
-		local pull_message_text = ns.createFonstring("pullcount", "Pull message:")
+		local pull_message_text = ns.createFontstring("pullcount", "Pull message:")
 		pull_message_text:SetPoint("LEFT", pull_message_countdown, "RIGHT", 10, 0)
 
-		local count_notice = ns.createFonstring("pullcount", "|cff5599ff!n|r represents a number from 1-10")
+		local count_notice = ns.createFontstring("pullcount", "|cff5599ff!n|r represents a number from 1-10")
 		count_notice:SetPoint("TOPLEFT", pull_message_count_text, "BOTTOMLEFT", 0, -8)
 
 		local pull_message = ns.createInputbox("pullcount", 100, 20, LolzenUIcfg.pullcount["pull_msg_now"])
@@ -51,7 +51,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("pullcount", "Count range & Sound files: |cffffffff(Soundfiles are located in Interface\\AddOns\\LolzenUI\\sounds)|r")
 		header3:SetPoint("TOPLEFT", count_notice, "BOTTOMLEFT", 0, -20)
 
-		local pull_count_range_text = ns.createFonstring("pullcount", "Pull count range (1-10):")
+		local pull_count_range_text = ns.createFontstring("pullcount", "Pull count range (1-10):")
 		pull_count_range_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
 
 		local pull_count_range = ns.createInputbox("pullcount", 30, 20, LolzenUIcfg.pullcount["pull_count_range"])
@@ -59,7 +59,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local pull_sound_count = {}
 		for i=1, 10 do
-			pull_sound_count[i] = ns.createFonstring("pullcount", "Soundfile for count: "..i)
+			pull_sound_count[i] = ns.createFontstring("pullcount", "Soundfile for count: "..i)
 			if i == 1 then
 				pull_sound_count[i]:SetPoint("TOPLEFT", pull_count_range_text, "BOTTOMLEFT", 0, -20)
 			else
@@ -70,7 +70,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			pull_sound_count[i].eb:SetPoint("LEFT", pull_sound_count[i], "RIGHT", 10, 0)
 		end
 
-		local pull_now_text = ns.createFonstring("pullcount", "Soundfile for pull:")
+		local pull_now_text = ns.createFontstring("pullcount", "Soundfile for pull:")
 		pull_now_text:SetPoint("TOPLEFT", pull_sound_count[10], "BOTTOMLEFT", 0, -10)
 
 		local pull_now = ns.createInputbox("pullcount", 100, 20, LolzenUIcfg.pullcount["pull_sound_pull"])

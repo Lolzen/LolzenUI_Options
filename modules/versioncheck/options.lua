@@ -18,16 +18,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local v1 = ns.createHeader("versioncheck", "|cff5599ffAddon verion:|r |cffffffff"..addonversion.."|r")
 		v1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
-		local v2 = ns.createFonstring("versioncheck", "|cff5599ffWoW Patch verion:|r "..version)
+		local v2 = ns.createFontstring("versioncheck", "|cff5599ffWoW Patch verion:|r "..version)
 		v2:SetPoint("TOPLEFT", v1, "BOTTOMLEFT", 0, -15)
 
-		local v3 = ns.createFonstring("versioncheck", "|cff5599ffWoW TOC verion:|r "..tocversion)
+		local v3 = ns.createFontstring("versioncheck", "|cff5599ffWoW TOC verion:|r "..tocversion)
 		v3:SetPoint("TOPLEFT", v2, "BOTTOMLEFT", 0, -8)
 
-		local v4 = ns.createFonstring("versioncheck", "|cff5599ffWoW build:|r "..build)
+		local v4 = ns.createFontstring("versioncheck", "|cff5599ffWoW build:|r "..build)
 		v4:SetPoint("TOPLEFT", v3, "BOTTOMLEFT", 0, -8)
 
-		local v5 = ns.createFonstring("versioncheck", "|cff5599ffWoW build date: |r"..date)
+		local v5 = ns.createFontstring("versioncheck", "|cff5599ffWoW build date: |r"..date)
 		v5:SetPoint("TOPLEFT", v4, "BOTTOMLEFT", 0, -8)
 	end
 end)

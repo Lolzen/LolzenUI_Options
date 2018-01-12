@@ -24,25 +24,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("tooltip", "Position:")
 		header1:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -20)
 
-		local pos_x_text = ns.createFonstring("tooltip", "PosX:")
+		local pos_x_text = ns.createFontstring("tooltip", "PosX:")
 		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
 		local pos_x = ns.createInputbox("tooltip", 30, 20, LolzenUIcfg.tooltip["tip_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
 
-		local pos_y_text = ns.createFonstring("tooltip", "PosY:")
+		local pos_y_text = ns.createFontstring("tooltip", "PosY:")
 		pos_y_text:SetPoint("LEFT", pos_x, "RIGHT", 10, 0)
 
 		local pos_y = ns.createInputbox("tooltip", 30, 20, LolzenUIcfg.tooltip["tip_posy"])
 		pos_y:SetPoint("LEFT", pos_y_text, "RIGHT", 10, 0)
 
-		local anchor_text = ns.createFonstring("tooltip", "Anchor1:")
+		local anchor_text = ns.createFontstring("tooltip", "Anchor1:")
 		anchor_text:SetPoint("LEFT", pos_y, "RIGHT", 10, 0)
 
 		local anchor = ns.createPicker("tooltip", "anchor", "tooltip_anchor1", 110, LolzenUIcfg.tooltip["tip_anchor1"])
 		anchor:SetPoint("LEFT", anchor_text, "RIGHT", -10, -3)
 
-		local anchor_text2 = ns.createFonstring("tooltip", "Anchor2:")
+		local anchor_text2 = ns.createFontstring("tooltip", "Anchor2:")
 		anchor_text2:SetPoint("LEFT", anchor, "RIGHT", -5, 3)
 
 		local anchor2 = ns.createPicker("tooltip", "anchor", "tooltip_anchor2", 110, LolzenUIcfg.tooltip["tip_anchor2"])
@@ -51,13 +51,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("tooltip", "Textures:")
 		header2:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -20)
 
-		local border_text = ns.createFonstring("tooltip", "Border:")
+		local border_text = ns.createFontstring("tooltip", "Border:")
 		border_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
 
 		local border = ns.createPicker("tooltip", "border", "tip_border", 120, LolzenUIcfg.tooltip["tip_border"])
 		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
 
-		local statusbar_text = ns.createFonstring("tooltip", "Healthbar:")
+		local statusbar_text = ns.createFontstring("tooltip", "Healthbar:")
 		statusbar_text:SetPoint("LEFT", border, "RIGHT", -5, 3)
 
 		local statusbar = ns.createPicker("tooltip", "statusbar", "tip_statusbar", 120, LolzenUIcfg.tooltip["tip_healthbar_texture"])
@@ -66,13 +66,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("tooltip", "Status flags:")
 		header3:SetPoint("TOPLEFT", border_text, "BOTTOMLEFT", 0, -20)
 
-		local afk_flag_text = ns.createFonstring("tooltip", "AFK flag:")
+		local afk_flag_text = ns.createFontstring("tooltip", "AFK flag:")
 		afk_flag_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
 
 		local afk_flag = ns.createInputbox("tooltip", 50, 20, LolzenUIcfg.tooltip["tip_statusflag_afk"])
 		afk_flag:SetPoint("LEFT", afk_flag_text, "RIGHT", 10, 0)
 
-		local color_afk_text = ns.createFonstring("tooltip", "Color:")
+		local color_afk_text = ns.createFontstring("tooltip", "Color:")
 		color_afk_text:SetPoint("LEFT", afk_flag, "RIGHT", 10, 0)
 
 		local color_afk = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_afk_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
@@ -81,13 +81,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_afk_f = ns.createColorPicker("tooltip", color_afk, LolzenUIcfg.tooltip["tip_statusflag_afk_color"])
 		color_afk_f:SetAllPoints(color_afk)
 
-		local dnd_flag_text = ns.createFonstring("tooltip", "DND flag:")
+		local dnd_flag_text = ns.createFontstring("tooltip", "DND flag:")
 		dnd_flag_text:SetPoint("LEFT", color_afk, "RIGHT", 10, 0)
 
 		local dnd_flag = ns.createInputbox("tooltip", 50, 20, LolzenUIcfg.tooltip["tip_statusflag_dnd"])
 		dnd_flag:SetPoint("LEFT", dnd_flag_text, "RIGHT", 10, 0)
 
-		local color_dnd_text = ns.createFonstring("tooltip", "Color:")
+		local color_dnd_text = ns.createFontstring("tooltip", "Color:")
 		color_dnd_text:SetPoint("LEFT", dnd_flag, "RIGHT", 10, 0)
 
 		local color_dnd = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_dnd_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
@@ -96,13 +96,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_dnd_f = ns.createColorPicker("tooltip", color_dnd, LolzenUIcfg.tooltip["tip_statusflag_dnd_color"])
 		color_dnd_f:SetAllPoints(color_dnd)
 
-		local off_flag_text = ns.createFonstring("tooltip", "Offline flag:")
+		local off_flag_text = ns.createFontstring("tooltip", "Offline flag:")
 		off_flag_text:SetPoint("LEFT", color_dnd, "RIGHT", 10, 0)
 
 		local off_flag = ns.createInputbox("tooltip", 50, 20, LolzenUIcfg.tooltip["tip_statusflag_off"])
 		off_flag:SetPoint("LEFT", off_flag_text, "RIGHT", 10, 0)
 
-		local color_off_text = ns.createFonstring("tooltip", "Color:")
+		local color_off_text = ns.createFontstring("tooltip", "Color:")
 		color_off_text:SetPoint("LEFT", off_flag, "RIGHT", 10, 0)
 
 		local color_off = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_off_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
@@ -117,7 +117,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb4 = ns.createCheckBox("tooltip", "tip_global_guild_color", "|cff5599ffuse guild color for any guild (not only your guild)|r", LolzenUIcfg.tooltip["tip_use_guild_color_globally"])
 		cb4:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
 
-		local color_text = ns.createFonstring("tooltip", "Color:")
+		local color_text = ns.createFontstring("tooltip", "Color:")
 		color_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
 
 		local color = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_own_guild_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])

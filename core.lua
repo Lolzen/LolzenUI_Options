@@ -49,7 +49,7 @@ ns.createHeader = function(module, text)
 end
 
 -- generic fontstring
-ns.createFonstring = function(module, text)
+ns.createFontstring = function(module, text)
 	local genstr = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
 	genstr:SetText(text)
 	return genstr

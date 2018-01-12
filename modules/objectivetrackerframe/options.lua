@@ -15,28 +15,28 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb1 = ns.createCheckBox("objectivetracker", "combatcollapse", "|cff5599ffcombat auto collapse|r", LolzenUIcfg.objectivetracker["objectivetracker_combatcollapse"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
-		local cb1_desc = ns.createFonstring("objectivetracker", "auto collapse infight and auto expand out of combat")
+		local cb1_desc = ns.createFontstring("objectivetracker", "auto collapse infight and auto expand out of combat")
 		cb1_desc:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, 0)
 
 		local cb2 = ns.createCheckBox("objectivetracker", "logincollapse", "|cff5599ffauto login collapse|r", LolzenUIcfg.objectivetracker["objectivetracker_logincollapse"])
 		cb2:SetPoint("TOPLEFT", cb1_desc, "BOTTOMLEFT", 0, -8)
 
-		local cb2_desc = ns.createFonstring("objectivetracker", "auto collapse on login")
+		local cb2_desc = ns.createFontstring("objectivetracker", "auto collapse on login")
 		cb2_desc:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, 0)
 
-		local pos_x_text = ns.createFonstring("objectivetracker", "PosX:")
+		local pos_x_text = ns.createFontstring("objectivetracker", "PosX:")
 		pos_x_text:SetPoint("TOPLEFT", cb2_desc, "BOTTOMLEFT", 0, -20)
 
 		local pos_x = ns.createInputbox("objectivetracker", 30, 20, LolzenUIcfg.objectivetracker["objectivetracker_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
 
-		local pos_y_text = ns.createFonstring("objectivetracker", "PosY:")
+		local pos_y_text = ns.createFontstring("objectivetracker", "PosY:")
 		pos_y_text:SetPoint("LEFT", pos_x, "RIGHT", 5, 0)
 
 		local pos_y = ns.createInputbox("objectivetracker", 30, 20, LolzenUIcfg.objectivetracker["objectivetracker_posy"])
 		pos_y:SetPoint("LEFT", pos_y_text, "RIGHT", 10, 0)
 
-		local anchor_text = ns.createFonstring("objectivetracker", "Anchor:")
+		local anchor_text = ns.createFontstring("objectivetracker", "Anchor:")
 		anchor_text:SetPoint("LEFT", pos_y, "RIGHT", 5, 0)
 
 		local anchor = ns.createPicker("objectivetracker", "anchor", "objectivetracker_anchor", 110, LolzenUIcfg.objectivetracker["objectivetracker_anchor"])

@@ -24,25 +24,25 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header = ns.createHeader("itemlevel", "iLvL text:")
 		header:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -13)
 
-		local pos_x_text = ns.createFonstring("itemlevel", "PosX:")
+		local pos_x_text = ns.createFontstring("itemlevel", "PosX:")
 		pos_x_text:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, -10)
 
 		local pos_x = ns.createInputbox("itemlevel", 30, 20, LolzenUIcfg.itemlevel["ilvl_font_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
 
-		local pos_y_text = ns.createFonstring("itemlevel", "PosY:")
+		local pos_y_text = ns.createFontstring("itemlevel", "PosY:")
 		pos_y_text:SetPoint("LEFT", pos_x, "RIGHT", 5, 0)
 
 		local pos_y = ns.createInputbox("itemlevel", 30, 20, LolzenUIcfg.itemlevel["ilvl_font_posy"])
 		pos_y:SetPoint("LEFT", pos_y_text, "RIGHT", 10, 0)
 
-		local anchor_text = ns.createFonstring("itemlevel", "Anchor:")
+		local anchor_text = ns.createFontstring("itemlevel", "Anchor:")
 		anchor_text:SetPoint("LEFT", pos_y, "RIGHT", 5, 0)
 
 		local anchor = ns.createPicker("itemlevel", "anchor", "ilvl_anchor_1", 110, LolzenUIcfg.itemlevel["ilvl_anchor"])
 		anchor:SetPoint("LEFT", anchor_text, "RIGHT", -10, -3)
 
-		local color_text = ns.createFonstring("itemlevel", "Font color:")
+		local color_text = ns.createFontstring("itemlevel", "Font color:")
 		color_text:SetPoint("LEFT", anchor, "RIGHT", -5, 3)
 
 		local color = ns.createColorTexture("itemlevel", 16, 16, LolzenUIcfg.itemlevel["ilvl_font_color"], "LolzenUI Standard")
@@ -51,19 +51,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_f = ns.createColorPicker("itemlevel", color, LolzenUIcfg.itemlevel["ilvl_font_color"])
 		color_f:SetAllPoints(color)
 
-		local font_text = ns.createFonstring("itemlevel", "Font:")
+		local font_text = ns.createFontstring("itemlevel", "Font:")
 		font_text:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		local font = ns.createPicker("itemlevel", "font", "itemlevel_font", 120, LolzenUIcfg.itemlevel["ilvl_font"])
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
 
-		local font_size_text = ns.createFonstring("itemlevel", "Size:")
+		local font_size_text = ns.createFontstring("itemlevel", "Size:")
 		font_size_text:SetPoint("LEFT", font, "RIGHT", -5, 3)
 
 		local font_size = ns.createInputbox("itemlevel", 30, 20, LolzenUIcfg.itemlevel["ilvl_font_size"])
 		font_size:SetPoint("LEFT", font_size_text, "RIGHT", 10, 0)
 
-		local font_flag_text = ns.createFonstring("itemlevel", "Flag:")
+		local font_flag_text = ns.createFontstring("itemlevel", "Flag:")
 		font_flag_text:SetPoint("LEFT", font_size, "RIGHT", 5, 0)
 
 		local font_flag = ns.createPicker("itemlevel", "flag", "itemlevel_font_flag", 120, LolzenUIcfg.itemlevel["ilvl_font_flag"])

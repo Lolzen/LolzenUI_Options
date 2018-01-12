@@ -15,35 +15,114 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"])
 		ns.unitframes.cb1:SetPoint("TOPLEFT", ns.unitframes.about, "BOTTOMLEFT", 0, -20)
 
-		ns.unitframes.cb2 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
+		ns.unitframes.cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ffuse both value and percent (reenables the options below)|r", LolzenUIcfg.unitframes["uf_use_val_and_perc"])
 		ns.unitframes.cb2:SetPoint("TOPLEFT", ns.unitframes.cb1, "BOTTOMLEFT", 0, -0)
 
-		ns.unitframes.cb3 = ns.createCheckBox("unitframes", "uf_siVal_dot", "|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r", LolzenUIcfg.unitframes["uf_use_dot_format"])
+		ns.unitframes.perc_val_divider_text = ns.createFontstring("unitframes", "Percent & Value divider:")
+		ns.unitframes.perc_val_divider_text:SetPoint("LEFT", uf_hp_val_and_percText, "RIGHT", 10, 0)
+
+		ns.unitframes.perc_val_divider = ns.createInputbox("unitframes", 20, 20, LolzenUIcfg.unitframes["uf_val_perc_divider"])
+		ns.unitframes.perc_val_divider:SetPoint("LEFT", ns.unitframes.perc_val_divider_text, "RIGHT", 10, 0)
+
+		ns.unitframes.cb3 = ns.createCheckBox("unitframes", "uf_perc_first", "|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r", LolzenUIcfg.unitframes["uf_perc_first"])
 		ns.unitframes.cb3:SetPoint("TOPLEFT", ns.unitframes.cb2, "BOTTOMLEFT", 0, -0)
+
+		ns.unitframes.cb4 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
+		ns.unitframes.cb4:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -0)
+
+		ns.unitframes.cb5 = ns.createCheckBox("unitframes", "uf_siVal_dot", "|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r", LolzenUIcfg.unitframes["uf_use_dot_format"])
+		ns.unitframes.cb5:SetPoint("TOPLEFT", ns.unitframes.cb4, "BOTTOMLEFT", 0, -0)
 
 		ns.unitframes.cb1:SetScript("OnClick", function(self)
 			if ns.unitframes.cb1:GetChecked() == true then
-				ns.unitframes.cb2:Disable()
-				ns.unitframes.cb3:Disable()
+				ns.unitframes.cb2:Enable()
+				ns.unitframes.cb4:Disable()
+				ns.unitframes.cb5:Disable()
+				uf_hp_val_and_percText:SetText("|cff5599ffuse both value and percent (reenables the options below)|r")
+				if ns.unitframes.cb2:GetChecked() == true then
+					ns.unitframes.cb3:Enable()
+					uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r")
+				else
+					ns.unitframes.cb3:Disable()
+					uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable 'both value and percent'|r")
+				end
+				if ns.unitframes.cb2:GetChecked() == true then
+					ns.unitframes.perc_val_divider_text:Show()
+					ns.unitframes.perc_val_divider:Show()
+				else
+					ns.unitframes.perc_val_divider_text:Hide()
+					ns.unitframes.perc_val_divider:Hide()
+				end
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
 				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r |cffff5555disable hp percentage for this option|r")
 			else
-				ns.unitframes.cb2:Enable()
-				ns.unitframes.cb3:Enable()
+				ns.unitframes.cb2:Disable()
+				ns.unitframes.cb3:Disable()
+				ns.unitframes.cb4:Enable()
+				ns.unitframes.cb5:Enable()
+				ns.unitframes.perc_val_divider_text:Hide()
+				ns.unitframes.perc_val_divider:Hide()
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
+				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable hp percentage for this option|r")
 				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r")
+				uf_hp_val_and_percText:SetText("|cff5599ffuse both value and percent|r |cffff5555enable hp percentage for this option|r")
 			end
 		end)
 
 		if ns.unitframes.cb1:GetChecked() == true then
-			ns.unitframes.cb2:Disable()
-			uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
+			if ns.unitframes.cb2:GetChecked() == true then
+				ns.unitframes.cb3:Enable()
+				ns.unitframes.cb4:Enable()
+				ns.unitframes.cb5:Enable()
+			else
+				ns.unitframes.cb2:Disable()
+				ns.unitframes.cb3:Disable()
+				ns.unitframes.cb4:Disable()
+				ns.unitframes.cb5:Disable()
+				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable 'both value and percent'|r")
+				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
+			end
 		else
-			ns.unitframes.cb2:Enable()
+			ns.unitframes.cb2:Disable()
+			ns.unitframes.cb3:Disable()
+			ns.unitframes.cb4:Enable()
+			ns.unitframes.cb5:Enable()
+			uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable hp percentage for this option|r")
+			uf_hp_val_and_percText:SetText("|cff5599ffuse both value and percent|r |cffff5555enable hp percentage for this option|r")
+		end
+
+		ns.unitframes.cb2:SetScript("OnClick", function(self)
+			if ns.unitframes.cb2:GetChecked() == true then
+				ns.unitframes.cb3:Enable()
+				ns.unitframes.cb4:Enable()
+				ns.unitframes.cb5:Enable()
+				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r")
+				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
+				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r")
+				ns.unitframes.perc_val_divider_text:Show()
+				ns.unitframes.perc_val_divider:Show()
+			else
+				ns.unitframes.cb3:Disable()
+				ns.unitframes.cb4:Disable()
+				ns.unitframes.cb5:Disable()
+				ns.unitframes.perc_val_divider_text:Hide()
+				ns.unitframes.perc_val_divider:Hide()
+				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable 'both value and percent'|r")
+				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
+				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r |cffff5555disable hp percentage for this option|r")
+			end
+		end)
+
+		if ns.unitframes.cb3:GetChecked() == true then
+			ns.unitframes.perc_val_divider_text:Show()
+			ns.unitframes.perc_val_divider:Show()
+		else
+			ns.unitframes.perc_val_divider_text:Hide()
+			ns.unitframes.perc_val_divider:Hide()
 		end
 
 		ns.unitframes.texture_text = ns.createFontstring("unitframes", "Texture:")
-		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -15)
+		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb5, "BOTTOMLEFT", 0, -15)
 
 		ns.unitframes.texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.unitframes.texture:SetPoint("LEFT", ns.unitframes.texture_text, "RIGHT", -10, -3)
@@ -111,11 +190,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.header3 = ns.createHeader("unitframes", "Fadeout")
 		ns.unitframes.header3:SetPoint("TOPLEFT", ns.unitframes.lead_size_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.cb4 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
-		ns.unitframes.cb4:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.cb6 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
+		ns.unitframes.cb6:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
 
 		ns.unitframes.fadeout_alpha_text = ns.createFontstring("unitframes", "out of reach alpha (party/raid members):")
-		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb4, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb6, "BOTTOMLEFT", 0, -8)
 
 		ns.unitframes.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
 		ns.unitframes.fadeout_alpha:SetPoint("LEFT", ns.unitframes.fadeout_alpha_text, "RIGHT", -10, -3)
@@ -1298,8 +1377,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["unitframes"].okay = function(self)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = ns.unitframes.cb1:GetChecked()
-			LolzenUIcfg.unitframes["uf_use_sivalue"] = ns.unitframes.cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_use_dot_format"] = ns.unitframes.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_val_and_perc"] = ns.unitframes.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_perc_first"] = ns.unitframes.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_val_perc_divider"] = ns.unitframes.perc_val_divider:GetText()
+			LolzenUIcfg.unitframes["uf_use_sivalue"] = ns.unitframes.cb4:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_dot_format"] = ns.unitframes.cb5:GetChecked()
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(ns.unitframes.texture)
 			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(ns.unitframes.border)
 			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(ns.unitframes.rt_size:GetText())
@@ -1310,7 +1392,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_lead_posx"] = tonumber(ns.unitframes.lead_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_lead_posy"] = tonumber(ns.unitframes.lead_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.lead_anchor)]
-			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb4:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb6:GetChecked()
 			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.fadeout_alpha)])
 			LolzenUIcfg.unitframes["uf_general_hpfont_size"] = tonumber(ns.unitframes.general_font_size_health:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_font"] = UIDropDownMenu_GetSelectedName(ns.unitframes.general_hp_font)
@@ -1323,6 +1405,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["unitframes"].default = function(self)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = false
+			LolzenUIcfg.unitframes["uf_use_val_and_perc"] = false
+			LolzenUIcfg.unitframes["uf_perc_first"] = false
+			LolzenUIcfg.unitframes["uf_val_perc_divider"] = "."
 			LolzenUIcfg.unitframes["uf_use_sivalue"] = true
 			LolzenUIcfg.unitframes["uf_use_dot_format"] = false
 			LolzenUIcfg.unitframes["uf_statusbar_texture"] = "LolzenUI Standard"

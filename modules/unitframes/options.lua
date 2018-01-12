@@ -241,11 +241,62 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.hp_font_flag = ns.createPicker("uf_player_options", "flag", "uf_player_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_player_hp_font_flag"])
 		ns.uf_player_options.hp_font_flag:SetPoint("LEFT", ns.uf_player_options.hp_font_flag_text, "RIGHT", -10, -3)
 
-		ns.uf_player_options.header2 = ns.createHeader("uf_player_options", "Class Power & Runes")
+		ns.uf_player_options.header2 = ns.createHeader("uf_player_options", "Powerpoints")
 		ns.uf_player_options.header2:SetPoint("TOPLEFT", ns.uf_player_options.hp_font_text, 0, -30)
 
+		ns.uf_player_options.pp_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
+		ns.uf_player_options.pp_pos_x_text:SetPoint("TOPLEFT", ns.uf_player_options.header2, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_player_options.pp_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_pp_posx"])
+		ns.uf_player_options.pp_pos_x:SetPoint("LEFT", ns.uf_player_options.pp_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.pp_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
+		ns.uf_player_options.pp_pos_y_text:SetPoint("LEFT", ns.uf_player_options.pp_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_player_options.pp_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_pp_posy"])
+		ns.uf_player_options.pp_pos_y:SetPoint("LEFT", ns.uf_player_options.pp_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.pp_anchor_text = ns.createFontstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.pp_anchor_text:SetPoint("LEFT", ns.uf_player_options.pp_pos_y, "RIGHT", 5, 0)
+
+		ns.uf_player_options.pp_anchor = ns.createPicker("uf_player_options", "anchor", "uf_player_pp_anchor", 90, LolzenUIcfg.unitframes["uf_player_pp_anchor"])
+		ns.uf_player_options.pp_anchor:SetPoint("LEFT", ns.uf_player_options.pp_anchor_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.pp_parent_text = ns.createFontstring("uf_player_options", "Parent:")
+		ns.uf_player_options.pp_parent_text:SetPoint("LEFT", ns.uf_player_options.pp_anchor, "RIGHT", -10, 3)
+
+		ns.uf_player_options.pp_parent = ns.createPicker("uf_player_options", "uf_parent", "uf_player_pp_parent", 50, LolzenUIcfg.unitframes["uf_player_pp_parent"])
+		ns.uf_player_options.pp_parent:SetPoint("LEFT", ns.uf_player_options.pp_parent_text, "RIGHT", -10, -3)
+		
+		ns.uf_player_options.pp_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.pp_anchor2_text:SetPoint("LEFT", ns.uf_player_options.pp_parent, "RIGHT", -10, 3)
+
+		ns.uf_player_options.pp_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_pp_anchor2", 90, LolzenUIcfg.unitframes["uf_player_pp_anchor2"])
+		ns.uf_player_options.pp_anchor2:SetPoint("LEFT", ns.uf_player_options.pp_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.pp_font_text = ns.createFontstring("uf_player_options", "Font:")
+		ns.uf_player_options.pp_font_text:SetPoint("TOPLEFT", ns.uf_player_options.pp_pos_x_text, "BOTTOMLEFT", 0, -15)
+
+		ns.uf_player_options.pp_font = ns.createPicker("uf_player_options", "font", "uf_player_pp_font", 120, LolzenUIcfg.unitframes["uf_player_pp_font"])
+		ns.uf_player_options.pp_font:SetPoint("LEFT", ns.uf_player_options.pp_font_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.pp_font_size_text = ns.createFontstring("uf_player_options", "Font size:")
+		ns.uf_player_options.pp_font_size_text:SetPoint("LEFT", ns.uf_player_options.pp_font, "RIGHT", -5, 3)
+
+		ns.uf_player_options.pp_font_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_pp_font_size"])
+		ns.uf_player_options.pp_font_size:SetPoint("LEFT", ns.uf_player_options.pp_font_size_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.pp_font_flag_text = ns.createFontstring("uf_player_options", "Font flag:")
+		ns.uf_player_options.pp_font_flag_text:SetPoint("LEFT", ns.uf_player_options.pp_font_size, "RIGHT", 10, 0)
+
+		ns.uf_player_options.pp_font_flag = ns.createPicker("uf_player_options", "flag", "uf_player_pp_font_flag", 120, LolzenUIcfg.unitframes["uf_player_pp_font_flag"])
+		ns.uf_player_options.pp_font_flag:SetPoint("LEFT", ns.uf_player_options.pp_font_flag_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.header3 = ns.createHeader("uf_player_options", "Class Power & Runes")
+		ns.uf_player_options.header3:SetPoint("TOPLEFT", ns.uf_player_options.pp_font_text, 0, -30)
+
 		ns.uf_player_options.classpower_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
-		ns.uf_player_options.classpower_anchor1_text:SetPoint("TOPLEFT", ns.uf_player_options.header2, "BOTTOMLEFT", 0, -13)
+		ns.uf_player_options.classpower_anchor1_text:SetPoint("TOPLEFT", ns.uf_player_options.header3, "BOTTOMLEFT", 0, -13)
 
 		ns.uf_player_options.classpower_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor1", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor1"])
 		ns.uf_player_options.classpower_anchor1:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1_text, "RIGHT", -10, -3)
@@ -361,6 +412,57 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns.uf_target_options.hp_font_flag = ns.createPicker("uf_target_options", "flag", "uf_target_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_target_hp_font_flag"])
 		ns.uf_target_options.hp_font_flag:SetPoint("LEFT", ns.uf_target_options.hp_font_flag_text, "RIGHT", -10, -3)
+		
+		ns.uf_target_options.header2 = ns.createHeader("uf_target_options", "Powerpoints")
+		ns.uf_target_options.header2:SetPoint("TOPLEFT", ns.uf_target_options.hp_font_text, 0, -30)
+
+		ns.uf_target_options.pp_pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
+		ns.uf_target_options.pp_pos_x_text:SetPoint("TOPLEFT", ns.uf_target_options.header2, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_target_options.pp_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_pp_posx"])
+		ns.uf_target_options.pp_pos_x:SetPoint("LEFT", ns.uf_target_options.pp_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_target_options.pp_pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
+		ns.uf_target_options.pp_pos_y_text:SetPoint("LEFT", ns.uf_target_options.pp_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_target_options.pp_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_pp_posy"])
+		ns.uf_target_options.pp_pos_y:SetPoint("LEFT", ns.uf_target_options.pp_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_target_options.pp_anchor_text = ns.createFontstring("uf_target_options", "Anchor1:")
+		ns.uf_target_options.pp_anchor_text:SetPoint("LEFT", ns.uf_target_options.pp_pos_y, "RIGHT", 5, 0)
+
+		ns.uf_target_options.pp_anchor = ns.createPicker("uf_target_options", "anchor", "uf_target_pp_anchor", 90, LolzenUIcfg.unitframes["uf_target_pp_anchor"])
+		ns.uf_target_options.pp_anchor:SetPoint("LEFT", ns.uf_target_options.pp_anchor_text, "RIGHT", -10, -3)
+
+		ns.uf_target_options.pp_parent_text = ns.createFontstring("uf_target_options", "Parent:")
+		ns.uf_target_options.pp_parent_text:SetPoint("LEFT", ns.uf_target_options.pp_anchor, "RIGHT", -10, 3)
+
+		ns.uf_target_options.pp_parent = ns.createPicker("uf_target_options", "uf_parent", "uf_target_pp_parent", 50, LolzenUIcfg.unitframes["uf_target_pp_parent"])
+		ns.uf_target_options.pp_parent:SetPoint("LEFT", ns.uf_target_options.pp_parent_text, "RIGHT", -10, -3)
+		
+		ns.uf_target_options.pp_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:")
+		ns.uf_target_options.pp_anchor2_text:SetPoint("LEFT", ns.uf_target_options.pp_parent, "RIGHT", -10, 3)
+
+		ns.uf_target_options.pp_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_pp_anchor2", 90, LolzenUIcfg.unitframes["uf_target_pp_anchor2"])
+		ns.uf_target_options.pp_anchor2:SetPoint("LEFT", ns.uf_target_options.pp_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_target_options.pp_font_text = ns.createFontstring("uf_target_options", "Font:")
+		ns.uf_target_options.pp_font_text:SetPoint("TOPLEFT", ns.uf_target_options.pp_pos_x_text, "BOTTOMLEFT", 0, -15)
+
+		ns.uf_target_options.pp_font = ns.createPicker("uf_target_options", "font", "uf_target_pp_font", 120, LolzenUIcfg.unitframes["uf_target_pp_font"])
+		ns.uf_target_options.pp_font:SetPoint("LEFT", ns.uf_target_options.pp_font_text, "RIGHT", -10, -3)
+
+		ns.uf_target_options.pp_font_size_text = ns.createFontstring("uf_target_options", "Font size:")
+		ns.uf_target_options.pp_font_size_text:SetPoint("LEFT", ns.uf_target_options.pp_font, "RIGHT", -5, 3)
+
+		ns.uf_target_options.pp_font_size = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_pp_font_size"])
+		ns.uf_target_options.pp_font_size:SetPoint("LEFT", ns.uf_target_options.pp_font_size_text, "RIGHT", 10, 0)
+
+		ns.uf_target_options.pp_font_flag_text = ns.createFontstring("uf_target_options", "Font flag:")
+		ns.uf_target_options.pp_font_flag_text:SetPoint("LEFT", ns.uf_target_options.pp_font_size, "RIGHT", 10, 0)
+
+		ns.uf_target_options.pp_font_flag = ns.createPicker("uf_target_options", "flag", "uf_target_pp_font_flag", 120, LolzenUIcfg.unitframes["uf_target_pp_font_flag"])
+		ns.uf_target_options.pp_font_flag:SetPoint("LEFT", ns.uf_target_options.pp_font_flag_text, "RIGHT", -10, -3)
 
 		-- // Create a subcategory panel for Targettarget // --
 		ns.uf_targettarget_options = CreateFrame("Frame", "unitframe_targettargetpanel", ns["unitframes"])
@@ -1123,6 +1225,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_hp_posx"] = tonumber(ns.uf_player_options.hp_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_player_hp_posy"] = tonumber(ns.uf_player_options.hp_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_player_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.hp_anchor)]
+			LolzenUIcfg.unitframes["uf_player_pp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_player_options.pp_font)
+			LolzenUIcfg.unitframes["uf_player_pp_font_size"] = tonumber(ns.uf_player_options.pp_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_player_pp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_player_options.pp_font_flag)]
+			LolzenUIcfg.unitframes["uf_player_pp_posx"] = tonumber(ns.uf_player_options.pp_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_pp_posy"] = tonumber(ns.uf_player_options.pp_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_pp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.pp_anchor)]
+			LolzenUIcfg.unitframes["uf_player_pp_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.pp_anchor2)]
+			LolzenUIcfg.unitframes["uf_player_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(ns.uf_player_options.pp_parent)]
 			LolzenUIcfg.unitframes["uf_player_width"] = tonumber(ns.uf_player_options.width:GetText())
 			LolzenUIcfg.unitframes["uf_player_height"] = tonumber(ns.uf_player_options.height:GetText())
 			LolzenUIcfg.unitframes["uf_player_classpower_border"] = UIDropDownMenu_GetSelectedName(ns.uf_player_options.classpower_border)
@@ -1144,6 +1254,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_hp_posx"] = -2
 			LolzenUIcfg.unitframes["uf_player_hp_posy"] = 8
 			LolzenUIcfg.unitframes["uf_player_hp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_player_pp_font"] = "DroidSansBold"
+			LolzenUIcfg.unitframes["uf_player_pp_font_size"] = 18
+			LolzenUIcfg.unitframes["uf_player_pp_font_flag"] = "THINOUTLINE"
+			LolzenUIcfg.unitframes["uf_player_pp_posx"] = 0
+			LolzenUIcfg.unitframes["uf_player_pp_posy"] = 0
+			LolzenUIcfg.unitframes["uf_player_pp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_player_pp_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_player_pp_parent"] = "hp"
 			LolzenUIcfg.unitframes["uf_player_width"] = 220
 			LolzenUIcfg.unitframes["uf_player_height"] = 21
 			LolzenUIcfg.unitframes["uf_player_classpower_border"] = "Blizzard Tooltip"
@@ -1166,6 +1284,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_hp_posx"] = tonumber(ns.uf_target_options.hp_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_target_hp_posy"] = tonumber(ns.uf_target_options.hp_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_target_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.hp_anchor)]
+			LolzenUIcfg.unitframes["uf_target_pp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_target_options.pp_font)
+			LolzenUIcfg.unitframes["uf_target_pp_font_size"] = tonumber(ns.uf_target_options.pp_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_target_pp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_target_options.pp_font_flag)]
+			LolzenUIcfg.unitframes["uf_target_pp_posx"] = tonumber(ns.uf_target_options.pp_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_target_pp_posy"] = tonumber(ns.uf_target_options.pp_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_target_pp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.pp_anchor)]
+			LolzenUIcfg.unitframes["uf_target_pp_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.pp_anchor2)]
+			LolzenUIcfg.unitframes["uf_target_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(ns.uf_target_options.pp_parent)]
 			LolzenUIcfg.unitframes["uf_target_width"] = tonumber(ns.uf_target_options.width:GetText())
 			LolzenUIcfg.unitframes["uf_target_height"] = tonumber(ns.uf_target_options.height:GetText())
 		end
@@ -1181,6 +1307,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_hp_posx"] = -2
 			LolzenUIcfg.unitframes["uf_target_hp_posy"] = 8
 			LolzenUIcfg.unitframes["uf_target_hp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_target_pp_font"] = "DroidSansBold"
+			LolzenUIcfg.unitframes["uf_target_pp_font_size"] = 18
+			LolzenUIcfg.unitframes["uf_target_pp_font_flag"] = "THINOUTLINE"
+			LolzenUIcfg.unitframes["uf_target_pp_posx"] = 0
+			LolzenUIcfg.unitframes["uf_target_pp_posy"] = 0
+			LolzenUIcfg.unitframes["uf_target_pp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_target_pp_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_target_pp_parent"] = "hp"
 			LolzenUIcfg.unitframes["uf_target_width"] = 220
 			LolzenUIcfg.unitframes["uf_target_height"] = 21
 			ReloadUI()

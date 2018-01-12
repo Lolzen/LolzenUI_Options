@@ -1,18 +1,22 @@
 ﻿--// core //--
 
-local _, ns = ...
+local addon, ns = ...
+_G[addon] = ns
+
 local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 
 -- create the module specific options
-local function createOptionPanels()
+function ns.createOptionPanels()
 	for i=1, #LolzenUI.modules do
 		if LolzenUIcfg.modules[LolzenUI.modules[i]] == true then
-			ns[LolzenUI.modules[i]] = CreateFrame("Frame", LolzenUI.modules[i].."panel", LolzenUI.panel)
-			ns[LolzenUI.modules[i]].name = LolzenUI.modules[i]
-			ns[LolzenUI.modules[i]].parent = LolzenUI.panel.name
-			InterfaceOptions_AddCategory(ns[LolzenUI.modules[i]])
+			if not ns[LolzenUI.modules[i]] then
+				ns[LolzenUI.modules[i]] = CreateFrame("Frame", LolzenUI.modules[i].."panel", LolzenUI.panel)
+				ns[LolzenUI.modules[i]].name = LolzenUI.modules[i]
+				ns[LolzenUI.modules[i]].parent = LolzenUI.panel.name
+				InterfaceOptions_AddCategory(ns[LolzenUI.modules[i]])
+			end
 		end
 	end
 end
@@ -20,7 +24,7 @@ end
 f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, addon)
 	if addon == "LolzenUI_Options" then
-		createOptionPanels()
+		ns.createOptionPanels()
 	end
 end)
 

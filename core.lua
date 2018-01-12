@@ -147,6 +147,11 @@ ns.picker_growth = {
 	"RIGHT",
 }
 
+ns.picker_uf_parent = {
+	"hp",
+	"self",
+}
+
 ns.createPicker = function(module, pickertype, name, width, selected)
 	local t
 	if pickertype == "alpha" then
@@ -161,6 +166,8 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 		t = ns.picker_bin
 	elseif pickertype == "growth" then
 		t = ns.picker_growth
+	elseif pickertype == "uf_parent" then
+		t = ns.picker_uf_parent
 	elseif pickertype == "statusbar" then
 		t = LSM:List(LSM.MediaType.STATUSBAR)
 	elseif pickertype == "background" then

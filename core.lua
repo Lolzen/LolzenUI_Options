@@ -152,6 +152,23 @@ ns.picker_uf_parent = {
 	"self",
 }
 
+ns.picker_uf_auratype = {
+	"Buffs",
+	"Debuffs",
+	"Both",
+	"None",
+}
+
+ns.picker_uf_auragrowth_x = {
+	"LEFT",
+	"RIGHT",
+}
+
+ns.picker_uf_auragrowth_y = {
+	"UP",
+	"DOWN",
+}
+
 ns.createPicker = function(module, pickertype, name, width, selected)
 	local t
 	if pickertype == "alpha" then
@@ -168,6 +185,12 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 		t = ns.picker_growth
 	elseif pickertype == "uf_parent" then
 		t = ns.picker_uf_parent
+	elseif pickertype == "uf_auratype" then
+		t = ns.picker_uf_auratype
+	elseif pickertype == "uf_auragrowth_x" then
+		t = ns.picker_uf_auragrowth_x
+	elseif pickertype == "uf_auragrowth_y" then
+		t = ns.picker_uf_auragrowth_y
 	elseif pickertype == "statusbar" then
 		t = LSM:List(LSM.MediaType.STATUSBAR)
 	elseif pickertype == "background" then

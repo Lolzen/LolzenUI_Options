@@ -661,8 +661,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.scrollbar = CreateFrame("Slider", nil, ns.uf_target_options.scrollframe, "UIPanelScrollBarTemplate")
 		ns.uf_target_options.scrollbar:SetPoint("TOPLEFT", ns.uf_target_options, "TOPRIGHT", -20, -20)
 		ns.uf_target_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_target_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 10, else the title would be misaligned with the other subpanle titles
-		ns.uf_target_options.scrollbar:SetMinMaxValues(10, 200) 
+		-- min value: 10, else the title would be misaligned with the other subpanel titles
+		ns.uf_target_options.scrollbar:SetMinMaxValues(10, 80) 
 		ns.uf_target_options.scrollbar:SetValueStep(1) 
 		ns.uf_target_options.scrollbar.scrollStep = 1
 		ns.uf_target_options.scrollbar:SetValue(0) 
@@ -672,7 +672,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 		
 		ns.uf_target_options.content = CreateFrame("Frame", nil, ns.uf_target_options.scrollframe) 
-		ns.uf_target_options.content:SetSize(128, 128) 
+		ns.uf_target_options.content:SetSize(128, 80) 
 		ns.uf_target_options.scrollframe.content = ns.uf_target_options.content 
  
 		ns.uf_target_options.scrollframe:SetScrollChild(ns.uf_target_options.content)
@@ -884,7 +884,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.content.cb3 = ns.createCheckBox("uf_target_options", "uf_target_desature_nonplayer_auras", "|cff5599ffdesature nonplayer auras|r", LolzenUIcfg.unitframes["uf_target_aura_desature_nonplayer_auras"], "content")
 		ns.uf_target_options.content.cb3:SetPoint("TOPLEFT", ns.uf_target_options.content.cb2, "BOTTOMLEFT", 0, 0)
 
-		ns.uf_target_options.content.header4 = ns.createHeader("uf_target_options", "Castbar")
+		ns.uf_target_options.content.header4 = ns.createHeader("uf_target_options", "Castbar", "content")
 		
 		ns.uf_target_options.content.cb2:SetScript("OnClick", function(self)
 			if ns.uf_target_options.content.cb2:GetChecked() == true then
@@ -904,60 +904,60 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_target_options.content.header4:SetPoint("TOPLEFT", ns.uf_target_options.content.cb3, 0, -30)
 		end
 
-		ns.uf_target_options.content.cb4 = ns.createCheckBox("uf_target_options", "uf_target_use_castbar_standalone", "|cff5599ffuse standalone castbar (independent placement & size)|r", LolzenUIcfg.unitframes["uf_target_cb_standalone"])
+		ns.uf_target_options.content.cb4 = ns.createCheckBox("uf_target_options", "uf_target_use_castbar_standalone", "|cff5599ffuse standalone castbar (independent placement & size)|r", LolzenUIcfg.unitframes["uf_target_cb_standalone"], "content")
 		ns.uf_target_options.content.cb4:SetPoint("TOPLEFT", ns.uf_target_options.content.header4, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_target_options.content.cb_pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
+		ns.uf_target_options.content.cb_pos_x_text = ns.createFontstring("uf_target_options", "PosX:", "content")
 		ns.uf_target_options.content.cb_pos_x_text:SetPoint("TOPLEFT", ns.uf_target_options.content.cb4, "BOTTOMLEFT", 0, -5)
 
-		ns.uf_target_options.content.cb_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_posx"])
+		ns.uf_target_options.content.cb_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_posx"], "content")
 		ns.uf_target_options.content.cb_pos_x:SetPoint("LEFT", ns.uf_target_options.content.cb_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
+		ns.uf_target_options.content.cb_pos_y_text = ns.createFontstring("uf_target_options", "PosY:", "content")
 		ns.uf_target_options.content.cb_pos_y_text:SetPoint("LEFT", ns.uf_target_options.content.cb_pos_x, "RIGHT", 5, 0)
 
-		ns.uf_target_options.content.cb_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_posy"])
+		ns.uf_target_options.content.cb_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_posy"], "content")
 		ns.uf_target_options.content.cb_pos_y:SetPoint("LEFT", ns.uf_target_options.content.cb_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:")
+		ns.uf_target_options.content.cb_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:", "content")
 		ns.uf_target_options.content.cb_anchor1_text:SetPoint("LEFT", ns.uf_target_options.content.cb_pos_y, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_anchor1", 110, LolzenUIcfg.unitframes["uf_target_cb_anchor1"])
+		ns.uf_target_options.content.cb_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_anchor1", 110, LolzenUIcfg.unitframes["uf_target_cb_anchor1"], "content")
 		ns.uf_target_options.content.cb_anchor1:SetPoint("LEFT", ns.uf_target_options.content.cb_anchor1_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:")
+		ns.uf_target_options.content.cb_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:", "content")
 		ns.uf_target_options.content.cb_anchor2_text:SetPoint("LEFT", ns.uf_target_options.content.cb_anchor1, "RIGHT", -5, 3)
 
-		ns.uf_target_options.content.cb_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_anchor2", 110, LolzenUIcfg.unitframes["uf_target_cb_anchor2"])
+		ns.uf_target_options.content.cb_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_anchor2", 110, LolzenUIcfg.unitframes["uf_target_cb_anchor2"], "content")
 		ns.uf_target_options.content.cb_anchor2:SetPoint("LEFT", ns.uf_target_options.content.cb_anchor2_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_width_text = ns.createFontstring("uf_target_options", "Width:")
+		ns.uf_target_options.content.cb_width_text = ns.createFontstring("uf_target_options", "Width:", "content")
 		ns.uf_target_options.content.cb_width_text:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_pos_x_text, "BOTTOMLEFT", 0, -15)
 
-		ns.uf_target_options.content.cb_width = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_width"])
+		ns.uf_target_options.content.cb_width = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_width"], "content")
 		ns.uf_target_options.content.cb_width:SetPoint("LEFT", ns.uf_target_options.content.cb_width_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_height_text = ns.createFontstring("uf_target_options", "Height:")
+		ns.uf_target_options.content.cb_height_text = ns.createFontstring("uf_target_options", "Height:", "content")
 		ns.uf_target_options.content.cb_height_text:SetPoint("LEFT", ns.uf_target_options.content.cb_width, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_height = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_height"])
+		ns.uf_target_options.content.cb_height = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_height"], "content")
 		ns.uf_target_options.content.cb_height:SetPoint("LEFT", ns.uf_target_options.content.cb_height_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_color_text = ns.createFontstring("uf_target_options", "Color:")
+		ns.uf_target_options.content.cb_color_text = ns.createFontstring("uf_target_options", "Color:", "content")
 
-		ns.uf_target_options.content.cb_color = ns.createColorTexture("uf_target_options", 16, 16, LolzenUIcfg.unitframes["uf_target_cb_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_target_options.content.cb_color = ns.createColorTexture("uf_target_options", 16, 16, LolzenUIcfg.unitframes["uf_target_cb_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"], "content")
 		ns.uf_target_options.content.cb_color:SetPoint("LEFT", ns.uf_target_options.content.cb_color_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_color_f = ns.createColorPicker("uf_target_options", ns.uf_target_options.content.cb_color, LolzenUIcfg.unitframes["uf_target_cb_color"])
+		ns.uf_target_options.content.cb_color_f = ns.createColorPicker("uf_target_options", ns.uf_target_options.content.cb_color, LolzenUIcfg.unitframes["uf_target_cb_color"], "content")
 		ns.uf_target_options.content.cb_color_f:SetAllPoints(ns.uf_target_options.content.cb_color)
 
-		ns.uf_target_options.content.cb_alpha_text = ns.createFontstring("uf_target_options", "Alpha:")
+		ns.uf_target_options.content.cb_alpha_text = ns.createFontstring("uf_target_options", "Alpha:", "content")
 		ns.uf_target_options.content.cb_alpha_text:SetPoint("LEFT", ns.uf_target_options.content.cb_color, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_alpha = ns.createPicker("uf_target_options", "alpha", "uf_target_cb_alpha", 45, LolzenUIcfg.unitframes["uf_target_cb_alpha"])
+		ns.uf_target_options.content.cb_alpha = ns.createPicker("uf_target_options", "alpha", "uf_target_cb_alpha", 45, LolzenUIcfg.unitframes["uf_target_cb_alpha"], "content")
 		ns.uf_target_options.content.cb_alpha:SetPoint("LEFT", ns.uf_target_options.content.cb_alpha_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.header5 = ns.createHeader("uf_target_options", "Icon:")
+		ns.uf_target_options.content.header5 = ns.createHeader("uf_target_options", "Icon:", "content")
 
 		ns.uf_target_options.content.cb4:SetScript("OnClick", function(self)
 			if ns.uf_target_options.content.cb4:GetChecked() == true then
@@ -1027,115 +1027,115 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_color_text, "BOTTOMLEFT", 0, -13)
 		end
 
-		ns.uf_target_options.content.cb_icon_size_text = ns.createFontstring("uf_target_options", "Size:")
+		ns.uf_target_options.content.cb_icon_size_text = ns.createFontstring("uf_target_options", "Size:", "content")
 		ns.uf_target_options.content.cb_icon_size_text:SetPoint("LEFT", ns.uf_target_options.content.header5, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_icon_size = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_icon_size"])
+		ns.uf_target_options.content.cb_icon_size = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_icon_size"], "content")
 		ns.uf_target_options.content.cb_icon_size:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_size_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_icon_pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
+		ns.uf_target_options.content.cb_icon_pos_x_text = ns.createFontstring("uf_target_options", "PosX:", "content")
 		ns.uf_target_options.content.cb_icon_pos_x_text:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_size, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_icon_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_icon_posx"])
+		ns.uf_target_options.content.cb_icon_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_icon_posx"], "content")
 		ns.uf_target_options.content.cb_icon_pos_x:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_icon_pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
+		ns.uf_target_options.content.cb_icon_pos_y_text = ns.createFontstring("uf_target_options", "PosY:", "content")
 		ns.uf_target_options.content.cb_icon_pos_y_text:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_pos_x, "RIGHT", 5, 0)
 
-		ns.uf_target_options.content.cb_icon_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_icon_posy"])
+		ns.uf_target_options.content.cb_icon_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_icon_posy"], "content")
 		ns.uf_target_options.content.cb_icon_pos_y:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_icon_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:")
+		ns.uf_target_options.content.cb_icon_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:", "content")
 		ns.uf_target_options.content.cb_icon_anchor1_text:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_pos_y, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_icon_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_icon_anchor1", 70, LolzenUIcfg.unitframes["uf_target_cb_icon_anchor1"])
+		ns.uf_target_options.content.cb_icon_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_icon_anchor1", 70, LolzenUIcfg.unitframes["uf_target_cb_icon_anchor1"], "content")
 		ns.uf_target_options.content.cb_icon_anchor1:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_anchor1_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_icon_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:")
+		ns.uf_target_options.content.cb_icon_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:", "content")
 		ns.uf_target_options.content.cb_icon_anchor2_text:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_anchor1, "RIGHT", -5, 3)
 
-		ns.uf_target_options.content.cb_icon_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_icon_anchor2", 70, LolzenUIcfg.unitframes["uf_target_cb_icon_anchor2"])
+		ns.uf_target_options.content.cb_icon_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_icon_anchor2", 70, LolzenUIcfg.unitframes["uf_target_cb_icon_anchor2"], "content")
 		ns.uf_target_options.content.cb_icon_anchor2:SetPoint("LEFT", ns.uf_target_options.content.cb_icon_anchor2_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.header6 = ns.createHeader("uf_target_options", "Time:")
+		ns.uf_target_options.content.header6 = ns.createHeader("uf_target_options", "Time:", "content")
 		ns.uf_target_options.content.header6:SetPoint("TOPLEFT", ns.uf_target_options.content.header5, "BOTTOMLEFT", 0, -13)
 
-		ns.uf_target_options.content.cb_time_pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
+		ns.uf_target_options.content.cb_time_pos_x_text = ns.createFontstring("uf_target_options", "PosX:", "content")
 		ns.uf_target_options.content.cb_time_pos_x_text:SetPoint("LEFT", ns.uf_target_options.content.header6, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_time_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_time_posx"])
+		ns.uf_target_options.content.cb_time_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_time_posx"], "content")
 		ns.uf_target_options.content.cb_time_pos_x:SetPoint("LEFT", ns.uf_target_options.content.cb_time_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_time_pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
+		ns.uf_target_options.content.cb_time_pos_y_text = ns.createFontstring("uf_target_options", "PosY:", "content")
 		ns.uf_target_options.content.cb_time_pos_y_text:SetPoint("LEFT", ns.uf_target_options.content.cb_time_pos_x, "RIGHT", 5, 0)
 
-		ns.uf_target_options.content.cb_time_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_time_posy"])
+		ns.uf_target_options.content.cb_time_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_time_posy"], "content")
 		ns.uf_target_options.content.cb_time_pos_y:SetPoint("LEFT", ns.uf_target_options.content.cb_time_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_time_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:")
+		ns.uf_target_options.content.cb_time_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:", "content")
 		ns.uf_target_options.content.cb_time_anchor1_text:SetPoint("LEFT", ns.uf_target_options.content.cb_time_pos_y, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_time_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_time_anchor1", 110, LolzenUIcfg.unitframes["uf_target_cb_time_anchor1"])
+		ns.uf_target_options.content.cb_time_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_time_anchor1", 110, LolzenUIcfg.unitframes["uf_target_cb_time_anchor1"], "content")
 		ns.uf_target_options.content.cb_time_anchor1:SetPoint("LEFT", ns.uf_target_options.content.cb_time_anchor1_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_time_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:")
+		ns.uf_target_options.content.cb_time_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:", "content")
 		ns.uf_target_options.content.cb_time_anchor2_text:SetPoint("LEFT", ns.uf_target_options.content.cb_time_anchor1, "RIGHT", -5, 3)
 
-		ns.uf_target_options.content.cb_time_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_time_anchor2", 110, LolzenUIcfg.unitframes["uf_target_cb_time_anchor2"])
+		ns.uf_target_options.content.cb_time_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_time_anchor2", 110, LolzenUIcfg.unitframes["uf_target_cb_time_anchor2"], "content")
 		ns.uf_target_options.content.cb_time_anchor2:SetPoint("LEFT", ns.uf_target_options.content.cb_time_anchor2_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.header7 = ns.createHeader("uf_target_options", "Text:")
+		ns.uf_target_options.content.header7 = ns.createHeader("uf_target_options", "Text:", "content")
 		ns.uf_target_options.content.header7:SetPoint("TOPLEFT", ns.uf_target_options.content.header6, "BOTTOMLEFT", 0, -13)
 
-		ns.uf_target_options.content.cb_text_pos_x_text = ns.createFontstring("uf_target_options", "PosX:")
+		ns.uf_target_options.content.cb_text_pos_x_text = ns.createFontstring("uf_target_options", "PosX:", "content")
 		ns.uf_target_options.content.cb_text_pos_x_text:SetPoint("LEFT", ns.uf_target_options.content.header7, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_text_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_text_posx"])
+		ns.uf_target_options.content.cb_text_pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_text_posx"], "content")
 		ns.uf_target_options.content.cb_text_pos_x:SetPoint("LEFT", ns.uf_target_options.content.cb_text_pos_x_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_text_pos_y_text = ns.createFontstring("uf_target_options", "PosY:")
+		ns.uf_target_options.content.cb_text_pos_y_text = ns.createFontstring("uf_target_options", "PosY:", "content")
 		ns.uf_target_options.content.cb_text_pos_y_text:SetPoint("LEFT", ns.uf_target_options.content.cb_text_pos_x, "RIGHT", 5, 0)
 
-		ns.uf_target_options.content.cb_text_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_text_posy"])
+		ns.uf_target_options.content.cb_text_pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_text_posy"], "content")
 		ns.uf_target_options.content.cb_text_pos_y:SetPoint("LEFT", ns.uf_target_options.content.cb_text_pos_y_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_text_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:")
+		ns.uf_target_options.content.cb_text_anchor1_text = ns.createFontstring("uf_target_options", "Anchor1:", "content")
 		ns.uf_target_options.content.cb_text_anchor1_text:SetPoint("LEFT", ns.uf_target_options.content.cb_text_pos_y, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_text_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_text_anchor1", 110, LolzenUIcfg.unitframes["uf_target_cb_text_anchor1"])
+		ns.uf_target_options.content.cb_text_anchor1 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_text_anchor1", 110, LolzenUIcfg.unitframes["uf_target_cb_text_anchor1"], "content")
 		ns.uf_target_options.content.cb_text_anchor1:SetPoint("LEFT", ns.uf_target_options.content.cb_text_anchor1_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_text_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:")
+		ns.uf_target_options.content.cb_text_anchor2_text = ns.createFontstring("uf_target_options", "Anchor2:", "content")
 		ns.uf_target_options.content.cb_text_anchor2_text:SetPoint("LEFT", ns.uf_target_options.content.cb_text_anchor1, "RIGHT", -5, 3)
 
-		ns.uf_target_options.content.cb_text_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_text_anchor2", 110, LolzenUIcfg.unitframes["uf_target_cb_text_anchor2"])
+		ns.uf_target_options.content.cb_text_anchor2 = ns.createPicker("uf_target_options", "anchor", "uf_target_cb_text_anchor2", 110, LolzenUIcfg.unitframes["uf_target_cb_text_anchor2"], "content")
 		ns.uf_target_options.content.cb_text_anchor2:SetPoint("LEFT", ns.uf_target_options.content.cb_text_anchor2_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.header8 = ns.createHeader("uf_target_options", "Time/Text Font:")
+		ns.uf_target_options.content.header8 = ns.createHeader("uf_target_options", "Time/Text Font:", "content")
 		ns.uf_target_options.content.header8:SetPoint("TOPLEFT", ns.uf_target_options.content.header7, "BOTTOMLEFT", 0, -13)
 
-		ns.uf_target_options.content.cb_font = ns.createPicker("uf_target_options", "font", "uf_target_cb_font", 120, LolzenUIcfg.unitframes["uf_target_cb_font"])
+		ns.uf_target_options.content.cb_font = ns.createPicker("uf_target_options", "font", "uf_target_cb_font", 120, LolzenUIcfg.unitframes["uf_target_cb_font"], "content")
 		ns.uf_target_options.content.cb_font:SetPoint("LEFT", ns.uf_target_options.content.header8, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_font_size_text = ns.createFontstring("uf_target_options", "Size:")
+		ns.uf_target_options.content.cb_font_size_text = ns.createFontstring("uf_target_options", "Size:", "content")
 		ns.uf_target_options.content.cb_font_size_text:SetPoint("LEFT", ns.uf_target_options.content.cb_font, "RIGHT", -5, 3)
 
-		ns.uf_target_options.content.cb_font_size = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_font_size"])
+		ns.uf_target_options.content.cb_font_size = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_cb_font_size"], "content")
 		ns.uf_target_options.content.cb_font_size:SetPoint("LEFT", ns.uf_target_options.content.cb_font_size_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_font_flag_text = ns.createFontstring("uf_target_options", "Flag:")
+		ns.uf_target_options.content.cb_font_flag_text = ns.createFontstring("uf_target_options", "Flag:", "content")
 		ns.uf_target_options.content.cb_font_flag_text:SetPoint("LEFT", ns.uf_target_options.content.cb_font_size, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_font_flag = ns.createPicker("uf_target_options", "flag", "uf_target_cb_font_flag", 120, LolzenUIcfg.unitframes["uf_target_cb_font_flag"])
+		ns.uf_target_options.content.cb_font_flag = ns.createPicker("uf_target_options", "flag", "uf_target_cb_font_flag", 120, LolzenUIcfg.unitframes["uf_target_cb_font_flag"], "content")
 		ns.uf_target_options.content.cb_font_flag:SetPoint("LEFT", ns.uf_target_options.content.cb_font_flag_text, "RIGHT", -10, -3)
 
-		ns.uf_target_options.content.cb_font_color_text = ns.createFontstring("uf_target_options", "Color:")
+		ns.uf_target_options.content.cb_font_color_text = ns.createFontstring("uf_target_options", "Color:", "content")
 		ns.uf_target_options.content.cb_font_color_text:SetPoint("LEFT", ns.uf_target_options.content.cb_font_flag, "RIGHT", -10, 3)
 
-		ns.uf_target_options.content.cb_font_color = ns.createColorTexture("uf_target_options", 16, 16, LolzenUIcfg.unitframes["uf_target_cb_font_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_target_options.content.cb_font_color = ns.createColorTexture("uf_target_options", 16, 16, LolzenUIcfg.unitframes["uf_target_cb_font_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"], "content")
 		ns.uf_target_options.content.cb_font_color:SetPoint("LEFT", ns.uf_target_options.content.cb_font_color_text, "RIGHT", 10, 0)
 
-		ns.uf_target_options.content.cb_font_color_f = ns.createColorPicker("uf_target_options", ns.uf_target_options.content.cb_font_color, LolzenUIcfg.unitframes["uf_target_cb_font_color"])
+		ns.uf_target_options.content.cb_font_color_f = ns.createColorPicker("uf_target_options", ns.uf_target_options.content.cb_font_color, LolzenUIcfg.unitframes["uf_target_cb_font_color"], "content")
 		ns.uf_target_options.content.cb_font_color_f:SetAllPoints(ns.uf_target_options.content.cb_font_color)
 
 		-- // Create a subcategory panel for Targettarget // --
@@ -2055,7 +2055,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.classpower_anchor1)]
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.classpower_anchor2)]
 			LolzenUIcfg.unitframes["uf_player_cb_standalone"] = ns.uf_player_options.cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = tonumber(ns.uf_player_options.cb_size:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_posx"] = tonumber(ns.uf_player_options.cb_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_posy"] = tonumber(ns.uf_player_options.cb_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_anchor1)]
@@ -2064,6 +2063,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_cb_height"] = tonumber(ns.uf_player_options.cb_height:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_color"] = {ns.uf_player_options.cb_color:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_player_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_alpha)])
+			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = tonumber(ns.uf_player_options.cb_size:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_icon_posx"] = tonumber(ns.uf_player_options.cb_icon_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_icon_posy"] = tonumber(ns.uf_player_options.cb_icon_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_icon_anchor1)]
@@ -2110,7 +2110,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor1"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor2"] = "BOTTOMLEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_standalone"] = false
-			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = 33
 			LolzenUIcfg.unitframes["uf_player_cb_posx"] = 0
 			LolzenUIcfg.unitframes["uf_player_cb_posy"] = -320
 			LolzenUIcfg.unitframes["uf_player_cb_anchor1"] = "CENTER"
@@ -2119,6 +2118,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_cb_height"] = 21
 			LolzenUIcfg.unitframes["uf_player_cb_color"] = {0.8, 0, 0}
 			LolzenUIcfg.unitframes["uf_player_cb_alpha"] = 0.2
+			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = 33
 			LolzenUIcfg.unitframes["uf_player_cb_icon_posx"] = -14
 			LolzenUIcfg.unitframes["uf_player_cb_icon_posy"] = 6
 			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor1"] = "RIGHT"
@@ -2171,6 +2171,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.aura_growthy)]
 			LolzenUIcfg.unitframes["uf_target_aura_show_only_player"] = ns.uf_target_options.content.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_target_aura_desature_nonplayer_auras"] = ns.uf_target_options.content.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_target_cb_standalone"] = ns.uf_target_options.content.cb4:GetChecked()
+			LolzenUIcfg.unitframes["uf_target_cb_posx"] = tonumber(ns.uf_target_options.content.cb_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_posy"] = tonumber(ns.uf_target_options.content.cb_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_anchor1)]
+			LolzenUIcfg.unitframes["uf_target_cb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_anchor2)]
+			LolzenUIcfg.unitframes["uf_target_cb_width"] = tonumber(ns.uf_target_options.content.cb_width:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_height"] = tonumber(ns.uf_target_options.content.cb_height:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_color"] = {ns.uf_target_options.content.cb_color:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_target_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_alpha)])
+			LolzenUIcfg.unitframes["uf_target_cb_icon_size"] = tonumber(ns.uf_target_options.content.cb_icon_size:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_icon_posx"] = tonumber(ns.uf_target_options.content.cb_icon_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_icon_posy"] = tonumber(ns.uf_target_options.content.cb_icon_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_icon_anchor1)]
+			LolzenUIcfg.unitframes["uf_target_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_icon_anchor2)]
+			LolzenUIcfg.unitframes["uf_target_cb_time_posx"] = tonumber(ns.uf_target_options.content.cb_time_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_time_posy"] = tonumber(ns.uf_target_options.content.cb_time_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_time_anchor1)]
+			LolzenUIcfg.unitframes["uf_target_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_time_anchor2)]
+			LolzenUIcfg.unitframes["uf_target_cb_text_posx"] = tonumber(ns.uf_target_options.content.cb_text_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_text_posy"] = tonumber(ns.uf_target_options.content.cb_text_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_text_anchor1)]
+			LolzenUIcfg.unitframes["uf_target_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_text_anchor2)]
+			LolzenUIcfg.unitframes["uf_target_cb_font"] = UIDropDownMenu_GetSelectedName(ns.uf_target_options.content.cb_font)
+			LolzenUIcfg.unitframes["uf_target_cb_font_size"] = tonumber(ns.uf_target_options.content.cb_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_target_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_font_flag)]
+			LolzenUIcfg.unitframes["uf_target_cb_font_color"] = {ns.uf_target_options.content.cb_font_color:GetVertexColor()}
 		end
 
 		ns["uf_target_options"].default = function(self)
@@ -2206,6 +2232,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_aura_growth_y"] = "DOWN"
 			LolzenUIcfg.unitframes["uf_target_aura_show_only_player"] = true
 			LolzenUIcfg.unitframes["uf_target_aura_desature_nonplayer_auras"] = true
+			LolzenUIcfg.unitframes["uf_target_cb_standalone"] = false
+			LolzenUIcfg.unitframes["uf_target_cb_posx"] = 0
+			LolzenUIcfg.unitframes["uf_target_cb_posy"] = -275
+			LolzenUIcfg.unitframes["uf_target_cb_anchor1"] = "CENTER"
+			LolzenUIcfg.unitframes["uf_target_cb_anchor2"] = "CENTER"
+			LolzenUIcfg.unitframes["uf_target_cb_width"] = 220
+			LolzenUIcfg.unitframes["uf_target_cb_height"] = 21
+			LolzenUIcfg.unitframes["uf_target_cb_color"] = {0.8, 0, 0}
+			LolzenUIcfg.unitframes["uf_target_cb_alpha"] = 0.2
+			LolzenUIcfg.unitframes["uf_target_cb_icon_size"] = 33
+			LolzenUIcfg.unitframes["uf_target_cb_icon_posx"] = -14
+			LolzenUIcfg.unitframes["uf_target_cb_icon_posy"] = 6
+			LolzenUIcfg.unitframes["uf_target_cb_icon_anchor1"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_target_cb_icon_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_target_cb_time_posx"] = 13
+			LolzenUIcfg.unitframes["uf_target_cb_time_posy"] = 2
+			LolzenUIcfg.unitframes["uf_target_cb_time_anchor1"] = "TOPLEFT"
+			LolzenUIcfg.unitframes["uf_target_cb_time_anchor2"] = "TOPRIGHT"
+			LolzenUIcfg.unitframes["uf_target_cb_text_posx"] = 2
+			LolzenUIcfg.unitframes["uf_target_cb_text_posy"] = 0
+			LolzenUIcfg.unitframes["uf_target_cb_text_anchor1"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_target_cb_text_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_target_cb_font"] = "DroidSansBold"
+			LolzenUIcfg.unitframes["uf_target_cb_font_size"] = 12
+			LolzenUIcfg.unitframes["uf_target_cb_font_flag"] = "OUTLINE"
+			LolzenUIcfg.unitframes["uf_target_cb_font_color"] = {1, 1, 1}
 			ReloadUI()
 		end
 

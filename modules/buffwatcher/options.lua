@@ -20,7 +20,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			if spellicon ~= nil then
 				return name, spellicon
 			else
-				return GetSpellInfo(212812), select(3, GetSpellInfo(212812))
+				return GetSpellInfo(212812), GetSpellTexture(212812)
 			end
 		end
 
@@ -52,11 +52,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local previewicon = ns["buffwatcher"]:CreateTexture(nil, "OVERLAY")
 		previewicon:SetTexCoord(.04, .94, .04, .94)
-		previewicon:SetTexture(select(3, GetSpellInfo(212812)))
+		previewicon:SetTexture(GetSpellTexture(212812))
 		previewicon:SetSize(16, 16)
 		previewicon:SetPoint("LEFT", eb, "RIGHT", 5, 0)
 
-		local prevname = ns.createFontstring("buffwatcher", GetSpellInfo(212812))
+		local prevname = ns.createFontstring("buffwatcher", "???")
 		prevname:SetPoint("LEFT", previewicon, "RIGHT", 5, 0)
 
 		eb:SetScript("OnTextChanged", function(self)

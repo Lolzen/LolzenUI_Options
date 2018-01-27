@@ -387,7 +387,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.classpower_pos_y:SetPoint("LEFT", ns.uf_player_options.classpower_pos_y_text, "RIGHT", 10, 0)
 
 		ns.uf_player_options.classpower_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
-		ns.uf_player_options.classpower_anchor1_text:SetPoint("LEFT", ns.uf_player_options.classpower_pos_y, "RIGHT", -5, 3)
+		ns.uf_player_options.classpower_anchor1_text:SetPoint("LEFT", ns.uf_player_options.classpower_pos_y, "RIGHT", 10, 0)
 
 		ns.uf_player_options.classpower_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor1", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor1"])
 		ns.uf_player_options.classpower_anchor1:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1_text, "RIGHT", -10, -3)

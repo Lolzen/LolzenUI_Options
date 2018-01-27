@@ -233,7 +233,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb_prev_np_spark:SetBlendMode("ADD")
 		cb_prev_np_spark:SetTexture('Interface\\CastingBar\\UI-CastingBar-Spark')
 
-		local cb_prev_np_icon = ns.createButtonTexture("np_castbar_options", LolzenUIcfg.nameplates["np_cbicon_size"]*LolzenUIcfg.nameplates["np_selected_scale"], select(3, GetSpellInfo(214815)))
+		local cb_prev_np_icon = ns.createButtonTexture("np_castbar_options", LolzenUIcfg.nameplates["np_cbicon_size"]*LolzenUIcfg.nameplates["np_selected_scale"], GetSpellTexture(214815), nil)
 		cb_prev_np_icon:SetPoint(LolzenUIcfg.nameplates["np_cbicon_anchor"], cb_prev_np_frame, LolzenUIcfg.nameplates["np_cbicon_anchor2"], LolzenUIcfg.nameplates["np_cbicon_posx"], LolzenUIcfg.nameplates["np_cbicon_posy"])
 
 		local cb_prev_np_shield = cb_prev_np_frame:CreateTexture(nil, "BACKGROUND")

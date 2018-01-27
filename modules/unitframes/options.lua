@@ -373,21 +373,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns.uf_player_options.header3 = ns.createHeader("uf_player_options", "Class Power & Runes")
 		ns.uf_player_options.header3:SetPoint("TOPLEFT", ns.uf_player_options.pp_font_text, 0, -30)
-
-		ns.uf_player_options.classpower_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
-		ns.uf_player_options.classpower_anchor1_text:SetPoint("TOPLEFT", ns.uf_player_options.header3, "BOTTOMLEFT", 0, -13)
-
-		ns.uf_player_options.classpower_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor1", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor1"])
-		ns.uf_player_options.classpower_anchor1:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1_text, "RIGHT", -10, -3)
-
-		ns.uf_player_options.classpower_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
-		ns.uf_player_options.classpower_anchor2_text:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1, "RIGHT", -5, 3)
-
-		ns.uf_player_options.classpower_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor2", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor2"])
-		ns.uf_player_options.classpower_anchor2:SetPoint("LEFT", ns.uf_player_options.classpower_anchor2_text, "RIGHT", -10, -3)
-
+		
 		ns.uf_player_options.classpower_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
-		ns.uf_player_options.classpower_pos_x_text:SetPoint("LEFT", ns.uf_player_options.classpower_anchor2, "RIGHT", -5, 3)
+		ns.uf_player_options.classpower_pos_x_text:SetPoint("TOPLEFT", ns.uf_player_options.header3, "BOTTOMLEFT", 0, -13)
 
 		ns.uf_player_options.classpower_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_posx"])
 		ns.uf_player_options.classpower_pos_x:SetPoint("LEFT", ns.uf_player_options.classpower_pos_x_text, "RIGHT", 10, 0)
@@ -398,8 +386,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.classpower_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_posy"])
 		ns.uf_player_options.classpower_pos_y:SetPoint("LEFT", ns.uf_player_options.classpower_pos_y_text, "RIGHT", 10, 0)
 
+		ns.uf_player_options.classpower_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.classpower_anchor1_text:SetPoint("LEFT", ns.uf_player_options.classpower_pos_y, "RIGHT", -5, 3)
+
+		ns.uf_player_options.classpower_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor1", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor1"])
+		ns.uf_player_options.classpower_anchor1:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.classpower_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.classpower_anchor2_text:SetPoint("LEFT", ns.uf_player_options.classpower_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_player_options.classpower_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_classpower_anchor2", 110, LolzenUIcfg.unitframes["uf_player_classpower_anchor2"])
+		ns.uf_player_options.classpower_anchor2:SetPoint("LEFT", ns.uf_player_options.classpower_anchor2_text, "RIGHT", -10, -3)
+
 		ns.uf_player_options.classpower_border_text = ns.createFontstring("uf_player_options", "Border:")
-		ns.uf_player_options.classpower_border_text:SetPoint("TOPLEFT", ns.uf_player_options.classpower_anchor1_text, "BOTTOMLEFT", 0, -15)
+		ns.uf_player_options.classpower_border_text:SetPoint("TOPLEFT", ns.uf_player_options.classpower_pos_x_text, "BOTTOMLEFT", 0, -15)
 
 		ns.uf_player_options.classpower_border = ns.createPicker("uf_player_options", "border", "uf_player_classbar_border", 120, LolzenUIcfg.unitframes["uf_player_classpower_border"])
 		ns.uf_player_options.classpower_border:SetPoint("LEFT", ns.uf_player_options.classpower_border_text, "RIGHT", -10, -3)

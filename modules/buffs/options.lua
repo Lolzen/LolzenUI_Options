@@ -16,7 +16,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("buffs", "Preview:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
-		local button = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_size"], select(3, GetSpellInfo(546)))
+		local button = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_size"], GetSpellTexture(546), nil)
 		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
 		local bufftex = ns.createButtonOverlay("buffs", button, LolzenUIcfg.buffs["buff_aura_texture"])
@@ -37,7 +37,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		buttoncount:SetFont(LSM:Fetch("font", LolzenUIcfg.buffs["buff_counter_font"]), LolzenUIcfg.buffs["buff_counter_size"], LolzenUIcfg.buffs["buff_counter_font_flag"])
 		buttoncount:SetDrawLayer("OVERLAY")
 
-		local button2 = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_debuff_size"], select(3, GetSpellInfo(192423)))
+		local button2 = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_debuff_size"], GetSpellTexture(192423), nil)
 		button2:SetPoint("LEFT", button, "RIGHT", 5, 0)
 		
 		local debufftex = ns.createButtonOverlay("buffs", button2, LolzenUIcfg.buffs["buff_debuff_texture"])

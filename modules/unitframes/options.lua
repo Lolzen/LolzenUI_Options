@@ -410,6 +410,243 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.classpower_spacing = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_classpower_spacing"])
 		ns.uf_player_options.classpower_spacing:SetPoint("LEFT", ns.uf_player_options.classpower_spacing_text, "RIGHT", 10, 0)
 
+		ns.uf_player_options.header4 = ns.createHeader("uf_player_options", "Castbar")
+		ns.uf_player_options.header4:SetPoint("TOPLEFT", ns.uf_player_options.classpower_border_text, 0, -30)
+
+		ns.uf_player_options.cb2 = ns.createCheckBox("uf_player_options", "uf_player_use_castbar_standalone", "|cff5599ffuse standalone castbar (independent placement & size)|r", LolzenUIcfg.unitframes["uf_player_cb_standalone"])
+		ns.uf_player_options.cb2:SetPoint("TOPLEFT", ns.uf_player_options.header4, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_player_options.cb_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
+		ns.uf_player_options.cb_pos_x_text:SetPoint("TOPLEFT", ns.uf_player_options.cb2, "BOTTOMLEFT", 0, -5)
+
+		ns.uf_player_options.cb_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_posx"])
+		ns.uf_player_options.cb_pos_x:SetPoint("LEFT", ns.uf_player_options.cb_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
+		ns.uf_player_options.cb_pos_y_text:SetPoint("LEFT", ns.uf_player_options.cb_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_player_options.cb_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_posy"])
+		ns.uf_player_options.cb_pos_y:SetPoint("LEFT", ns.uf_player_options.cb_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.cb_anchor1_text:SetPoint("LEFT", ns.uf_player_options.cb_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_anchor1", 110, LolzenUIcfg.unitframes["uf_player_cb_anchor1"])
+		ns.uf_player_options.cb_anchor1:SetPoint("LEFT", ns.uf_player_options.cb_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.cb_anchor2_text:SetPoint("LEFT", ns.uf_player_options.cb_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_player_options.cb_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_anchor2", 110, LolzenUIcfg.unitframes["uf_player_cb_anchor2"])
+		ns.uf_player_options.cb_anchor2:SetPoint("LEFT", ns.uf_player_options.cb_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_width_text = ns.createFontstring("uf_player_options", "Width:")
+		ns.uf_player_options.cb_width_text:SetPoint("TOPLEFT", ns.uf_player_options.cb_pos_x_text, "BOTTOMLEFT", 0, -15)
+
+		ns.uf_player_options.cb_width = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_width"])
+		ns.uf_player_options.cb_width:SetPoint("LEFT", ns.uf_player_options.cb_width_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_height_text = ns.createFontstring("uf_player_options", "Height:")
+		ns.uf_player_options.cb_height_text:SetPoint("LEFT", ns.uf_player_options.cb_width, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_height = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_height"])
+		ns.uf_player_options.cb_height:SetPoint("LEFT", ns.uf_player_options.cb_height_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_color_text = ns.createFontstring("uf_player_options", "Color:")
+
+		ns.uf_player_options.cb_color = ns.createColorTexture("uf_player_options", 16, 16, LolzenUIcfg.unitframes["uf_player_cb_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_player_options.cb_color:SetPoint("LEFT", ns.uf_player_options.cb_color_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_color_f = ns.createColorPicker("uf_player_options", ns.uf_player_options.cb_color, LolzenUIcfg.unitframes["uf_player_cb_color"])
+		ns.uf_player_options.cb_color_f:SetAllPoints(ns.uf_player_options.cb_color)
+
+		ns.uf_player_options.cb_alpha_text = ns.createFontstring("uf_player_options", "Alpha:")
+		ns.uf_player_options.cb_alpha_text:SetPoint("LEFT", ns.uf_player_options.cb_color, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_alpha = ns.createPicker("uf_player_options", "alpha", "uf_player_cb_alpha", 45, LolzenUIcfg.unitframes["uf_player_cb_alpha"])
+		ns.uf_player_options.cb_alpha:SetPoint("LEFT", ns.uf_player_options.cb_alpha_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.header5 = ns.createHeader("uf_player_options", "Icon:")
+
+		ns.uf_player_options.cb2:SetScript("OnClick", function(self)
+			if ns.uf_player_options.cb2:GetChecked() == true then
+				ns.uf_player_options.cb_pos_x_text:Show()
+				ns.uf_player_options.cb_pos_x:Show()
+				ns.uf_player_options.cb_pos_y_text:Show()
+				ns.uf_player_options.cb_pos_y:Show()
+				ns.uf_player_options.cb_anchor1_text:Show()
+				ns.uf_player_options.cb_anchor1:Show()
+				ns.uf_player_options.cb_anchor2_text:Show()
+				ns.uf_player_options.cb_anchor2:Show()
+				ns.uf_player_options.cb_width_text:Show()
+				ns.uf_player_options.cb_width:Show()
+				ns.uf_player_options.cb_height_text:Show()
+				ns.uf_player_options.cb_height:Show()
+				ns.uf_player_options.cb_color_text:ClearAllPoints()
+				ns.uf_player_options.cb_color_text:SetPoint("LEFT", ns.uf_player_options.cb_height, "RIGHT", 10, 0)
+				ns.uf_player_options.header5:SetPoint("TOPLEFT", ns.uf_player_options.cb_width_text, "BOTTOMLEFT", 0, -12)
+			else
+				ns.uf_player_options.cb_pos_x_text:Hide()
+				ns.uf_player_options.cb_pos_x:Hide()
+				ns.uf_player_options.cb_pos_y_text:Hide()
+				ns.uf_player_options.cb_pos_y:Hide()
+				ns.uf_player_options.cb_anchor1_text:Hide()
+				ns.uf_player_options.cb_anchor1:Hide()
+				ns.uf_player_options.cb_anchor2_text:Hide()
+				ns.uf_player_options.cb_anchor2:Hide()
+				ns.uf_player_options.cb_width_text:Hide()
+				ns.uf_player_options.cb_width:Hide()
+				ns.uf_player_options.cb_height_text:Hide()
+				ns.uf_player_options.cb_height:Hide()
+				ns.uf_player_options.cb_color_text:ClearAllPoints()
+				ns.uf_player_options.cb_color_text:SetPoint("TOPLEFT", ns.uf_player_options.cb2, "BOTTOMLEFT", 0, -5)
+				ns.uf_player_options.header5:SetPoint("TOPLEFT", ns.uf_player_options.cb_color_text, "BOTTOMLEFT", 0, -12)
+			end
+		end)
+
+		if ns.uf_player_options.cb2:GetChecked() == true then
+			ns.uf_player_options.cb_pos_x_text:Show()
+			ns.uf_player_options.cb_pos_x:Show()
+			ns.uf_player_options.cb_pos_y_text:Show()
+			ns.uf_player_options.cb_pos_y:Show()
+			ns.uf_player_options.cb_anchor1_text:Show()
+			ns.uf_player_options.cb_anchor1:Show()
+			ns.uf_player_options.cb_anchor2_text:Show()
+			ns.uf_player_options.cb_anchor2:Show()
+			ns.uf_player_options.cb_width_text:Show()
+			ns.uf_player_options.cb_width:Show()
+			ns.uf_player_options.cb_height_text:Show()
+			ns.uf_player_options.cb_height:Show()
+			ns.uf_player_options.cb_color_text:SetPoint("LEFT", ns.uf_player_options.cb_height, "RIGHT", 10, 0)
+			ns.uf_player_options.header5:SetPoint("TOPLEFT", ns.uf_player_options.cb_width_text, "BOTTOMLEFT", 0, -13)
+		else
+			ns.uf_player_options.cb_pos_x_text:Hide()
+			ns.uf_player_options.cb_pos_x:Hide()
+			ns.uf_player_options.cb_pos_y_text:Hide()
+			ns.uf_player_options.cb_pos_y:Hide()
+			ns.uf_player_options.cb_anchor1_text:Hide()
+			ns.uf_player_options.cb_anchor1:Hide()
+			ns.uf_player_options.cb_anchor2_text:Hide()
+			ns.uf_player_options.cb_anchor2:Hide()
+			ns.uf_player_options.cb_width_text:Hide()
+			ns.uf_player_options.cb_width:Hide()
+			ns.uf_player_options.cb_height_text:Hide()
+			ns.uf_player_options.cb_height:Hide()
+			ns.uf_player_options.cb_color_text:SetPoint("TOPLEFT", ns.uf_player_options.cb2, "BOTTOMLEFT", 0, -5)
+			ns.uf_player_options.header5:SetPoint("TOPLEFT", ns.uf_player_options.cb_color_text, "BOTTOMLEFT", 0, -13)
+		end
+
+		ns.uf_player_options.cb_icon_size_text = ns.createFontstring("uf_player_options", "Size:")
+		ns.uf_player_options.cb_icon_size_text:SetPoint("LEFT", ns.uf_player_options.header5, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_icon_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_icon_size"])
+		ns.uf_player_options.cb_icon_size:SetPoint("LEFT", ns.uf_player_options.cb_icon_size_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_icon_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
+		ns.uf_player_options.cb_icon_pos_x_text:SetPoint("LEFT", ns.uf_player_options.cb_icon_size, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_icon_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_icon_posx"])
+		ns.uf_player_options.cb_icon_pos_x:SetPoint("LEFT", ns.uf_player_options.cb_icon_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_icon_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
+		ns.uf_player_options.cb_icon_pos_y_text:SetPoint("LEFT", ns.uf_player_options.cb_icon_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_player_options.cb_icon_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_icon_posy"])
+		ns.uf_player_options.cb_icon_pos_y:SetPoint("LEFT", ns.uf_player_options.cb_icon_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_icon_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.cb_icon_anchor1_text:SetPoint("LEFT", ns.uf_player_options.cb_icon_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_icon_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_icon_anchor1", 70, LolzenUIcfg.unitframes["uf_player_cb_icon_anchor1"])
+		ns.uf_player_options.cb_icon_anchor1:SetPoint("LEFT", ns.uf_player_options.cb_icon_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_icon_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.cb_icon_anchor2_text:SetPoint("LEFT", ns.uf_player_options.cb_icon_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_player_options.cb_icon_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_icon_anchor2", 70, LolzenUIcfg.unitframes["uf_player_cb_icon_anchor2"])
+		ns.uf_player_options.cb_icon_anchor2:SetPoint("LEFT", ns.uf_player_options.cb_icon_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.header6 = ns.createHeader("uf_player_options", "Time:")
+		ns.uf_player_options.header6:SetPoint("TOPLEFT", ns.uf_player_options.header5, "BOTTOMLEFT", 0, -13)
+
+		ns.uf_player_options.cb_time_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
+		ns.uf_player_options.cb_time_pos_x_text:SetPoint("LEFT", ns.uf_player_options.header6, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_time_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_time_posx"])
+		ns.uf_player_options.cb_time_pos_x:SetPoint("LEFT", ns.uf_player_options.cb_time_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_time_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
+		ns.uf_player_options.cb_time_pos_y_text:SetPoint("LEFT", ns.uf_player_options.cb_time_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_player_options.cb_time_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_time_posy"])
+		ns.uf_player_options.cb_time_pos_y:SetPoint("LEFT", ns.uf_player_options.cb_time_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_time_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.cb_time_anchor1_text:SetPoint("LEFT", ns.uf_player_options.cb_time_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_time_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_time_anchor1", 110, LolzenUIcfg.unitframes["uf_player_cb_time_anchor1"])
+		ns.uf_player_options.cb_time_anchor1:SetPoint("LEFT", ns.uf_player_options.cb_time_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_time_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.cb_time_anchor2_text:SetPoint("LEFT", ns.uf_player_options.cb_time_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_player_options.cb_time_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_time_anchor2", 110, LolzenUIcfg.unitframes["uf_player_cb_time_anchor2"])
+		ns.uf_player_options.cb_time_anchor2:SetPoint("LEFT", ns.uf_player_options.cb_time_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.header7 = ns.createHeader("uf_player_options", "Text:")
+		ns.uf_player_options.header7:SetPoint("TOPLEFT", ns.uf_player_options.header6, "BOTTOMLEFT", 0, -13)
+
+		ns.uf_player_options.cb_text_pos_x_text = ns.createFontstring("uf_player_options", "PosX:")
+		ns.uf_player_options.cb_text_pos_x_text:SetPoint("LEFT", ns.uf_player_options.header7, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_text_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_text_posx"])
+		ns.uf_player_options.cb_text_pos_x:SetPoint("LEFT", ns.uf_player_options.cb_text_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_text_pos_y_text = ns.createFontstring("uf_player_options", "PosY:")
+		ns.uf_player_options.cb_text_pos_y_text:SetPoint("LEFT", ns.uf_player_options.cb_text_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_player_options.cb_text_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_text_posy"])
+		ns.uf_player_options.cb_text_pos_y:SetPoint("LEFT", ns.uf_player_options.cb_text_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_text_anchor1_text = ns.createFontstring("uf_player_options", "Anchor1:")
+		ns.uf_player_options.cb_text_anchor1_text:SetPoint("LEFT", ns.uf_player_options.cb_text_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_text_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_text_anchor1", 110, LolzenUIcfg.unitframes["uf_player_cb_text_anchor1"])
+		ns.uf_player_options.cb_text_anchor1:SetPoint("LEFT", ns.uf_player_options.cb_text_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_text_anchor2_text = ns.createFontstring("uf_player_options", "Anchor2:")
+		ns.uf_player_options.cb_text_anchor2_text:SetPoint("LEFT", ns.uf_player_options.cb_text_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_player_options.cb_text_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_text_anchor2", 110, LolzenUIcfg.unitframes["uf_player_cb_text_anchor2"])
+		ns.uf_player_options.cb_text_anchor2:SetPoint("LEFT", ns.uf_player_options.cb_text_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.header8 = ns.createHeader("uf_player_options", "Time/Text Font:")
+		ns.uf_player_options.header8:SetPoint("TOPLEFT", ns.uf_player_options.header7, "BOTTOMLEFT", 0, -13)
+
+		ns.uf_player_options.cb_font = ns.createPicker("uf_player_options", "font", "uf_player_cb_font", 120, LolzenUIcfg.unitframes["uf_player_cb_font"])
+		ns.uf_player_options.cb_font:SetPoint("LEFT", ns.uf_player_options.header8, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_font_size_text = ns.createFontstring("uf_player_options", "Size:")
+		ns.uf_player_options.cb_font_size_text:SetPoint("LEFT", ns.uf_player_options.cb_font, "RIGHT", -5, 3)
+
+		ns.uf_player_options.cb_font_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_cb_font_size"])
+		ns.uf_player_options.cb_font_size:SetPoint("LEFT", ns.uf_player_options.cb_font_size_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_font_flag_text = ns.createFontstring("uf_player_options", "Flag:")
+		ns.uf_player_options.cb_font_flag_text:SetPoint("LEFT", ns.uf_player_options.cb_font_size, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_font_flag = ns.createPicker("uf_player_options", "flag", "uf_player_cb_font_flag", 120, LolzenUIcfg.unitframes["uf_player_cb_font_flag"])
+		ns.uf_player_options.cb_font_flag:SetPoint("LEFT", ns.uf_player_options.cb_font_flag_text, "RIGHT", -10, -3)
+
+		ns.uf_player_options.cb_font_color_text = ns.createFontstring("uf_player_options", "Color:")
+		ns.uf_player_options.cb_font_color_text:SetPoint("LEFT", ns.uf_player_options.cb_font_flag, "RIGHT", -10, 3)
+
+		ns.uf_player_options.cb_font_color = ns.createColorTexture("uf_player_options", 16, 16, LolzenUIcfg.unitframes["uf_player_cb_font_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_player_options.cb_font_color:SetPoint("LEFT", ns.uf_player_options.cb_font_color_text, "RIGHT", 10, 0)
+
+		ns.uf_player_options.cb_font_color_f = ns.createColorPicker("uf_player_options", ns.uf_player_options.cb_font_color, LolzenUIcfg.unitframes["uf_player_cb_font_color"])
+		ns.uf_player_options.cb_font_color_f:SetAllPoints(ns.uf_player_options.cb_font_color)
+
 		-- // Create a subcategory panel for Target // --
 		ns.uf_target_options = CreateFrame("Frame", "unitframe_targetpanel", ns["unitframes"])
 		ns.uf_target_options.name = "   Target"
@@ -1542,6 +1779,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_classpower_posy"] = tonumber(ns.uf_player_options.classpower_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.classpower_anchor1)]
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.classpower_anchor2)]
+			LolzenUIcfg.unitframes["uf_player_cb_standalone"] = ns.uf_player_options.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = tonumber(ns.uf_player_options.cb_size:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_posx"] = tonumber(ns.uf_player_options.cb_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_posy"] = tonumber(ns.uf_player_options.cb_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_anchor1)]
+			LolzenUIcfg.unitframes["uf_player_cb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_anchor2)]
+			LolzenUIcfg.unitframes["uf_player_cb_width"] = tonumber(ns.uf_player_options.cb_width:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_height"] = tonumber(ns.uf_player_options.cb_height:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_color"] = {ns.uf_player_options.cb_color:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_player_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_alpha)])
+			LolzenUIcfg.unitframes["uf_player_cb_icon_posx"] = tonumber(ns.uf_player_options.cb_icon_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_icon_posy"] = tonumber(ns.uf_player_options.cb_icon_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_icon_anchor1)]
+			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_icon_anchor2)]
+			LolzenUIcfg.unitframes["uf_player_cb_time_posx"] = tonumber(ns.uf_player_options.cb_time_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_time_posy"] = tonumber(ns.uf_player_options.cb_time_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_time_anchor1)]
+			LolzenUIcfg.unitframes["uf_player_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_time_anchor2)]
+			LolzenUIcfg.unitframes["uf_player_cb_text_posx"] = tonumber(ns.uf_player_options.cb_text_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_text_posy"] = tonumber(ns.uf_player_options.cb_text_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_text_anchor1)]
+			LolzenUIcfg.unitframes["uf_player_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_text_anchor2)]
+			LolzenUIcfg.unitframes["uf_player_cb_font"] = UIDropDownMenu_GetSelectedName(ns.uf_player_options.cb_font)
+			LolzenUIcfg.unitframes["uf_player_cb_font_size"] = tonumber(ns.uf_player_options.cb_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_font_flag)]
+			LolzenUIcfg.unitframes["uf_player_cb_font_color"] = {ns.uf_player_options.cb_font_color:GetVertexColor()}
 		end
 
 		ns["uf_player_options"].default = function(self)
@@ -1571,6 +1834,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_classpower_posy"] = -5
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor1"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_player_classpower_anchor2"] = "BOTTOMLEFT"
+			LolzenUIcfg.unitframes["uf_player_cb_standalone"] = false
+			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = 33
+			LolzenUIcfg.unitframes["uf_player_cb_posx"] = 0
+			LolzenUIcfg.unitframes["uf_player_cb_posy"] = -320
+			LolzenUIcfg.unitframes["uf_player_cb_anchor1"] = "CENTER"
+			LolzenUIcfg.unitframes["uf_player_cb_anchor2"] = "CENTER"
+			LolzenUIcfg.unitframes["uf_player_cb_width"] = 220
+			LolzenUIcfg.unitframes["uf_player_cb_height"] = 21
+			LolzenUIcfg.unitframes["uf_player_cb_color"] = {0.8, 0, 0}
+			LolzenUIcfg.unitframes["uf_player_cb_alpha"] = 0.2
+			LolzenUIcfg.unitframes["uf_player_cb_icon_posx"] = -14
+			LolzenUIcfg.unitframes["uf_player_cb_icon_posy"] = 6
+			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor1"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_player_cb_time_posx"] = 13
+			LolzenUIcfg.unitframes["uf_player_cb_time_posy"] = 2
+			LolzenUIcfg.unitframes["uf_player_cb_time_anchor1"] = "TOPLEFT"
+			LolzenUIcfg.unitframes["uf_player_cb_time_anchor2"] = "TOPRIGHT"
+			LolzenUIcfg.unitframes["uf_player_cb_text_posx"] = 2
+			LolzenUIcfg.unitframes["uf_player_cb_text_posy"] = 0
+			LolzenUIcfg.unitframes["uf_player_cb_text_anchor1"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_player_cb_text_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_player_cb_font"] = "DroidSansBold"
+			LolzenUIcfg.unitframes["uf_player_cb_font_size"] = 12
+			LolzenUIcfg.unitframes["uf_player_cb_font_flag"] = "OUTLINE"
+			LolzenUIcfg.unitframes["uf_player_cb_font_color"] = {1, 1, 1}
 			ReloadUI()
 		end
 

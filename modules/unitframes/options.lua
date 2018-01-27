@@ -655,8 +655,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		
 		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
 		ns.uf_target_options.scrollframe = CreateFrame("ScrollFrame", nil, ns.uf_target_options)
-		ns.uf_target_options.scrollframe:SetPoint("TOPLEFT", 0, -10) 
-		ns.uf_target_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 10)
+		ns.uf_target_options.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.uf_target_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 		
 		ns.uf_target_options.scrollbar = CreateFrame("Slider", nil, ns.uf_target_options.scrollframe, "UIPanelScrollBarTemplate")
 		ns.uf_target_options.scrollbar:SetPoint("TOPLEFT", ns.uf_target_options, "TOPRIGHT", -20, -20)

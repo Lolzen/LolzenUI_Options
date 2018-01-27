@@ -31,37 +31,62 @@ end)
 --/ Provide functions to easily create options for modules /--
 
 -- title
-ns.createTitle = function(module)
-	local title = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+ns.createTitle = function(module, sub)
+	local title
+	if sub ~= nil then
+		title = ns[module][sub]:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+	else
+		title = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+	end
 	title:SetPoint("TOPLEFT", ns[module], 16, -16)
 	title:SetText("|cff5599ff"..string.upper(string.sub(ns[module].name, 1, 1))..string.sub(ns[module].name, 2).." module Options|r")
 	return title
 end
 
 -- description
-ns.createDescription = function(module, text)
-	local desc = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+ns.createDescription = function(module, text, sub)
+	local desc
+	if sub ~= nil then
+		desc = ns[module][sub]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+	else
+		desc = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+	end
 	desc:SetText(text)
 	return desc
 end
 
 -- header
-ns.createHeader = function(module, text)
-	local header = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+ns.createHeader = function(module, text, sub)
+	local header
+	if sub ~= nil then
+		header = ns[module][sub]:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+	else
+		header = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+	end
 	header:SetText("|cff5599ff"..text.."|r")
 	return header
 end
 
 -- generic fontstring
-ns.createFontstring = function(module, text)
-	local genstr = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+ns.createFontstring = function(module, text, sub)
+	local genstr
+	if sub ~= nil then
+		genstr = ns[module][sub]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+	else
+		genstr = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+	end
 	genstr:SetText(text)
 	return genstr
 end
 
 -- inputbox
-ns.createInputbox = function(module, width, height, num)
-	local box = CreateFrame("EditBox", nil, ns[module], "InputBoxTemplate")
+ns.createInputbox = function(module, width, height, num, sub)
+	local box
+	if sub ~= nil then
+		box = CreateFrame("EditBox", nil, ns[module][sub], "InputBoxTemplate")	
+	else
+		box = CreateFrame("EditBox", nil, ns[module], "InputBoxTemplate")
+	end
 	box:SetSize(width, height)
 	box:SetAutoFocus(false)
 	box:ClearFocus()
@@ -73,8 +98,13 @@ ns.createInputbox = function(module, width, height, num)
 end
 
 -- checkbox
-ns.createCheckBox = function(module, name, text, checkedVar)
-	local checkbox = CreateFrame("CheckButton", name, ns[module], "ChatConfigCheckButtonTemplate")
+ns.createCheckBox = function(module, name, text, checkedVar, sub)
+	local checkbox
+	if sub ~= nil then
+		checkbox = CreateFrame("CheckButton", name, ns[module][sub], "ChatConfigCheckButtonTemplate")
+	else
+		checkbox = CreateFrame("CheckButton", name, ns[module], "ChatConfigCheckButtonTemplate")
+	end
 	_G[checkbox:GetName().."Text"]:SetText(text)
 	if checkedVar == true then
 		checkbox:SetChecked(true)
@@ -85,8 +115,13 @@ ns.createCheckBox = function(module, name, text, checkedVar)
 end
 
 -- button texture
-ns.createButtonTexture = function(module, size, texture)
-	local buttonTex = ns[module]:CreateTexture(nil, "TEXTURE")
+ns.createButtonTexture = function(module, size, texture, sub)
+	local buttonTex
+	if sub ~= nil then
+		buttonTex = ns[module][sub]:CreateTexture(nil, "TEXTURE")
+	else
+		buttonTex = ns[module]:CreateTexture(nil, "TEXTURE")
+	end
 	buttonTex:SetSize(size, size)
 	buttonTex:SetTexture(texture)
 	buttonTex:SetTexCoord(.04, .94, .04, .94)
@@ -94,8 +129,13 @@ ns.createButtonTexture = function(module, size, texture)
 end
 
 -- button overlay texture
-ns.createButtonOverlay = function(module, parent, texture)
-	local buttonOverlay = ns[module]:CreateTexture(nil, "OVERLAY")
+ns.createButtonOverlay = function(module, parent, texture, sub)
+	local buttonOverlay
+	if sub ~= nil then
+		buttonOverlay = ns[module][sub]:CreateTexture(nil, "OVERLAY")
+	else
+		buttonOverlay = ns[module]:CreateTexture(nil, "OVERLAY")
+	end
 	buttonOverlay:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..texture)
 	buttonOverlay:SetPoint("TOPLEFT", parent, "TOPLEFT", -2, 2)
 	buttonOverlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", 2, -2)
@@ -169,7 +209,7 @@ ns.picker_uf_auragrowth_y = {
 	"DOWN",
 }
 
-ns.createPicker = function(module, pickertype, name, width, selected)
+ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	local t
 	if pickertype == "alpha" then
 		t = ns.picker_alpha
@@ -199,7 +239,12 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 		t = LSM:List(LSM.MediaType.BORDER)
 	end
 	local selectedNum, selectedName
-	local picker = CreateFrame("Button", name, ns[module], "UIDropDownMenuTemplate")
+	local picker
+	if sub ~= nil then
+		picker = CreateFrame("Button", name, ns[module][sub], "UIDropDownMenuTemplate")
+	else
+		picker = CreateFrame("Button", name, ns[module], "UIDropDownMenuTemplate")
+	end
 	picker:Show()
 	local function OnClick(name)
 		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" then
@@ -235,8 +280,13 @@ ns.createPicker = function(module, pickertype, name, width, selected)
 end
 
 -- color texture
-ns.createColorTexture = function(module, width, height, colorVars, texture)
-	local colorTex = ns[module]:CreateTexture(nil, "ARTWORK")
+ns.createColorTexture = function(module, width, height, colorVars, texture, sub)
+	local colorTex
+	if sub ~= nil then
+		colorTex = ns[module][sub]:CreateTexture(nil, "ARTWORK")
+	else
+		colorTex = ns[module]:CreateTexture(nil, "ARTWORK")
+	end
 	colorTex:SetSize(width, height)
 	colorTex:SetVertexColor(unpack(colorVars))
 	colorTex:SetTexture(LSM:Fetch("statusbar", texture))
@@ -244,7 +294,7 @@ ns.createColorTexture = function(module, width, height, colorVars, texture)
 end
 
 -- colorPicker
-ns.createColorPicker = function(module, colorRect, colorVars)
+ns.createColorPicker = function(module, colorRect, colorVars, sub)
 	local function afbarSetNewColor()
 		r, g, b = ColorPickerFrame:GetColorRGB()
 		colorRect:SetVertexColor(r, g, b)
@@ -254,7 +304,12 @@ ns.createColorPicker = function(module, colorRect, colorVars)
 		colorRect:SetVertexColor(unpack(ColorPickerFrame.previousValues))
 	end
 
-	local colorpickerframe = CreateFrame("Frame", nil, ns[module])
+	local colorpickerframe
+	if sub ~= nil then
+		colorpickerframe = CreateFrame("Frame", nil, ns[module][sub])
+	else
+		colorpickerframe = CreateFrame("Frame", nil, ns[module])
+	end
 	colorpickerframe:SetFrameStrata("HIGH")
 	colorpickerframe:EnableMouse(true)
 	colorpickerframe:SetScript("OnMouseDown", function(self)

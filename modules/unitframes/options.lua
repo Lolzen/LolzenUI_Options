@@ -1641,7 +1641,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.growth_spacing = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_additional_spacing"])
 		ns.uf_boss_options.growth_spacing:SetPoint("LEFT", ns.uf_boss_options.growth_spacing_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.cb1 = ns.createCheckBox("uf_boss_options", "uf_boss_show_power", "|cff5599ffshow power bar|r", LolzenUIcfg.unitframes["uf_boss_show_power"])
+		ns.uf_boss_options.cb1 = ns.createCheckBox("uf_boss_options", "uf_boss_show_power", "|cff5599ffshow power bar & power points|r", LolzenUIcfg.unitframes["uf_boss_show_power"])
 		ns.uf_boss_options.cb1:SetPoint("TOPLEFT", ns.uf_boss_options.growth_text, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_boss_options.header1 = ns.createHeader("uf_boss_options", "Healthpoints")
@@ -1685,6 +1685,134 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns.uf_boss_options.hp_font_flag = ns.createPicker("uf_boss_options", "flag", "uf_boss_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_boss_hp_font_flag"])
 		ns.uf_boss_options.hp_font_flag:SetPoint("LEFT", ns.uf_boss_options.hp_font_flag_text, "RIGHT", -10, -3)
+
+		ns.uf_boss_options.header2 = ns.createHeader("uf_boss_options", "Powerpoints")
+		ns.uf_boss_options.header2:SetPoint("TOPLEFT", ns.uf_boss_options.hp_font_text, 0, -30)
+
+		ns.uf_boss_options.pp_pos_x_text = ns.createFontstring("uf_boss_options", "PosX:")
+		ns.uf_boss_options.pp_pos_x_text:SetPoint("TOPLEFT", ns.uf_boss_options.header2, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_boss_options.pp_pos_x = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_pp_posx"])
+		ns.uf_boss_options.pp_pos_x:SetPoint("LEFT", ns.uf_boss_options.pp_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_boss_options.pp_pos_y_text = ns.createFontstring("uf_boss_options", "PosY:")
+		ns.uf_boss_options.pp_pos_y_text:SetPoint("LEFT", ns.uf_boss_options.pp_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_boss_options.pp_pos_y = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_pp_posy"])
+		ns.uf_boss_options.pp_pos_y:SetPoint("LEFT", ns.uf_boss_options.pp_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_boss_options.pp_anchor_text = ns.createFontstring("uf_boss_options", "Anchor1:")
+		ns.uf_boss_options.pp_anchor_text:SetPoint("LEFT", ns.uf_boss_options.pp_pos_y, "RIGHT", 5, 0)
+
+		ns.uf_boss_options.pp_anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_pp_anchor", 90, LolzenUIcfg.unitframes["uf_boss_pp_anchor"])
+		ns.uf_boss_options.pp_anchor:SetPoint("LEFT", ns.uf_boss_options.pp_anchor_text, "RIGHT", -10, -3)
+
+		ns.uf_boss_options.pp_parent_text = ns.createFontstring("uf_boss_options", "Parent:")
+		ns.uf_boss_options.pp_parent_text:SetPoint("LEFT", ns.uf_boss_options.pp_anchor, "RIGHT", -10, 3)
+
+		ns.uf_boss_options.pp_parent = ns.createPicker("uf_boss_options", "uf_parent", "uf_boss_pp_parent", 50, LolzenUIcfg.unitframes["uf_boss_pp_parent"])
+		ns.uf_boss_options.pp_parent:SetPoint("LEFT", ns.uf_boss_options.pp_parent_text, "RIGHT", -10, -3)
+
+		ns.uf_boss_options.pp_anchor2_text = ns.createFontstring("uf_boss_options", "Anchor2:")
+		ns.uf_boss_options.pp_anchor2_text:SetPoint("LEFT", ns.uf_boss_options.pp_parent, "RIGHT", -10, 3)
+
+		ns.uf_boss_options.pp_anchor2 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_pp_anchor2", 90, LolzenUIcfg.unitframes["uf_boss_pp_anchor2"])
+		ns.uf_boss_options.pp_anchor2:SetPoint("LEFT", ns.uf_boss_options.pp_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_boss_options.pp_font_text = ns.createFontstring("uf_boss_options", "Font:")
+		ns.uf_boss_options.pp_font_text:SetPoint("TOPLEFT", ns.uf_boss_options.pp_pos_x_text, "BOTTOMLEFT", 0, -15)
+
+		ns.uf_boss_options.pp_font = ns.createPicker("uf_boss_options", "font", "uf_boss_pp_font", 120, LolzenUIcfg.unitframes["uf_boss_pp_font"])
+		ns.uf_boss_options.pp_font:SetPoint("LEFT", ns.uf_boss_options.pp_font_text, "RIGHT", -10, -3)
+
+		ns.uf_boss_options.pp_font_size_text = ns.createFontstring("uf_boss_options", "Font size:")
+		ns.uf_boss_options.pp_font_size_text:SetPoint("LEFT", ns.uf_boss_options.pp_font, "RIGHT", -5, 3)
+
+		ns.uf_boss_options.pp_font_size = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_pp_font_size"])
+		ns.uf_boss_options.pp_font_size:SetPoint("LEFT", ns.uf_boss_options.pp_font_size_text, "RIGHT", 10, 0)
+
+		ns.uf_boss_options.pp_font_flag_text = ns.createFontstring("uf_boss_options", "Font flag:")
+		ns.uf_boss_options.pp_font_flag_text:SetPoint("LEFT", ns.uf_boss_options.pp_font_size, "RIGHT", 10, 0)
+
+		ns.uf_boss_options.pp_font_flag = ns.createPicker("uf_boss_options", "flag", "uf_boss_pp_font_flag", 120, LolzenUIcfg.unitframes["uf_boss_pp_font_flag"])
+		ns.uf_boss_options.pp_font_flag:SetPoint("LEFT", ns.uf_boss_options.pp_font_flag_text, "RIGHT", -10, -3)
+
+		ns.uf_boss_options.cb1:SetScript("OnClick", function(self)
+			if ns.uf_boss_options.cb1:GetChecked() == true then
+				ns.uf_boss_options.header2:Show()
+				ns.uf_boss_options.pp_pos_x_text:Show()
+				ns.uf_boss_options.pp_pos_x:Show()
+				ns.uf_boss_options.pp_pos_y_text:Show()
+				ns.uf_boss_options.pp_pos_y:Show()
+				ns.uf_boss_options.pp_anchor_text:Show()
+				ns.uf_boss_options.pp_anchor:Show()
+				ns.uf_boss_options.pp_parent_text:Show()
+				ns.uf_boss_options.pp_parent:Show()
+				ns.uf_boss_options.pp_anchor2_text:Show()
+				ns.uf_boss_options.pp_anchor2:Show()
+				ns.uf_boss_options.pp_font_text:Show()
+				ns.uf_boss_options.pp_font:Show()
+				ns.uf_boss_options.pp_font_size_text:Show()
+				ns.uf_boss_options.pp_font_size:Show()
+				ns.uf_boss_options.pp_font_flag_text:Show()
+				ns.uf_boss_options.pp_font_flag:Show()
+			else
+				ns.uf_boss_options.header2:Hide()
+				ns.uf_boss_options.pp_pos_x_text:Hide()
+				ns.uf_boss_options.pp_pos_x:Hide()
+				ns.uf_boss_options.pp_pos_y_text:Hide()
+				ns.uf_boss_options.pp_pos_y:Hide()
+				ns.uf_boss_options.pp_anchor_text:Hide()
+				ns.uf_boss_options.pp_anchor:Hide()
+				ns.uf_boss_options.pp_parent_text:Hide()
+				ns.uf_boss_options.pp_parent:Hide()
+				ns.uf_boss_options.pp_anchor2_text:Hide()
+				ns.uf_boss_options.pp_anchor2:Hide()
+				ns.uf_boss_options.pp_font_text:Hide()
+				ns.uf_boss_options.pp_font:Hide()
+				ns.uf_boss_options.pp_font_size_text:Hide()
+				ns.uf_boss_options.pp_font_size:Hide()
+				ns.uf_boss_options.pp_font_flag_text:Hide()
+				ns.uf_boss_options.pp_font_flag:Hide()
+			end
+		end)
+
+		if ns.uf_boss_options.cb1:GetChecked() == true then
+			ns.uf_boss_options.header2:Show()
+			ns.uf_boss_options.pp_pos_x_text:Show()
+			ns.uf_boss_options.pp_pos_x:Show()
+			ns.uf_boss_options.pp_pos_y_text:Show()
+			ns.uf_boss_options.pp_pos_y:Show()
+			ns.uf_boss_options.pp_anchor_text:Show()
+			ns.uf_boss_options.pp_anchor:Show()
+			ns.uf_boss_options.pp_parent_text:Show()
+			ns.uf_boss_options.pp_parent:Show()
+			ns.uf_boss_options.pp_anchor2_text:Show()
+			ns.uf_boss_options.pp_anchor2:Show()
+			ns.uf_boss_options.pp_font_text:Show()
+			ns.uf_boss_options.pp_font:Show()
+			ns.uf_boss_options.pp_font_size_text:Show()
+			ns.uf_boss_options.pp_font_size:Show()
+			ns.uf_boss_options.pp_font_flag_text:Show()
+			ns.uf_boss_options.pp_font_flag:Show()
+		else
+			ns.uf_boss_options.pp_pos_x_text:Hide()
+			ns.uf_boss_options.pp_pos_x:Hide()
+			ns.uf_boss_options.pp_pos_y_text:Hide()
+			ns.uf_boss_options.pp_pos_y:Hide()
+			ns.uf_boss_options.pp_anchor_text:Hide()
+			ns.uf_boss_options.pp_anchor:Hide()
+			ns.uf_boss_options.pp_parent_text:Hide()
+			ns.uf_boss_options.pp_parent:Hide()
+			ns.uf_boss_options.pp_anchor2_text:Hide()
+			ns.uf_boss_options.pp_anchor2:Hide()
+			ns.uf_boss_options.pp_font_text:Hide()
+			ns.uf_boss_options.pp_font:Hide()
+			ns.uf_boss_options.pp_font_size_text:Hide()
+			ns.uf_boss_options.pp_font_size:Hide()
+			ns.uf_boss_options.pp_font_flag_text:Hide()
+			ns.uf_boss_options.pp_font_flag:Hide()
+		end
 		
 		-- // Create a subcategory panel for focus // --
 		ns.uf_focus_options = CreateFrame("Frame", "unitframe_focuspanel", ns["unitframes"])
@@ -2446,10 +2574,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_hp_posx"] = tonumber(ns.uf_boss_options.hp_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_boss_hp_posy"] = tonumber(ns.uf_boss_options.hp_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_boss_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.hp_anchor)]
+			LolzenUIcfg.unitframes["uf_boss_pp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_boss_options.pp_font)
+			LolzenUIcfg.unitframes["uf_boss_pp_font_size"] = tonumber(ns.uf_boss_options.pp_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_boss_pp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.pp_font_flag)]
+			LolzenUIcfg.unitframes["uf_boss_pp_posx"] = tonumber(ns.uf_boss_options.pp_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_boss_pp_posy"] = tonumber(ns.uf_boss_options.pp_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_boss_pp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.pp_anchor)]
+			LolzenUIcfg.unitframes["uf_boss_pp_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.pp_anchor2)]
+			LolzenUIcfg.unitframes["uf_boss_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.pp_parent)]
 		end
 
 		ns["uf_boss_options"].default = function(self)
-			
 			LolzenUIcfg.unitframes["uf_boss_posx"] = 0
 			LolzenUIcfg.unitframes["uf_boss_posy"] = -200
 			LolzenUIcfg.unitframes["uf_boss_anchor"] = "CENTER"
@@ -2465,6 +2600,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_hp_posx"] = -2
 			LolzenUIcfg.unitframes["uf_boss_hp_posy"] = 8
 			LolzenUIcfg.unitframes["uf_boss_hp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_boss_pp_font"] = "DroidSansBold"
+			LolzenUIcfg.unitframes["uf_boss_pp_font_size"] = 18
+			LolzenUIcfg.unitframes["uf_boss_pp_font_flag"] = "THINOUTLINE"
+			LolzenUIcfg.unitframes["uf_boss_pp_posx"] = 0
+			LolzenUIcfg.unitframes["uf_boss_pp_posy"] = 0
+			LolzenUIcfg.unitframes["uf_boss_pp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_boss_pp_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_boss_pp_parent"] = "hp"
 			ReloadUI()
 		end
 

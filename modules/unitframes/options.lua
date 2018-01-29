@@ -2428,28 +2428,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_boss_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.growth)]
-			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = tonumber(ns.uf_boss_options.growth_spacing:GetText())
 			LolzenUIcfg.unitframes["uf_boss_posx"] = tonumber(ns.uf_boss_options.pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_boss_posy"] = tonumber(ns.uf_boss_options.pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_boss_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.anchor)]
-			LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"] = ns.uf_boss_options.cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_boss_width"] = tonumber(ns.uf_boss_options.width:GetText())
+			LolzenUIcfg.unitframes["uf_boss_height"] = tonumber(ns.uf_boss_options.height:GetText())
+			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.growth)]
+			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = tonumber(ns.uf_boss_options.growth_spacing:GetText())
+			LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"] = ns.uf_boss_options.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_boss_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_boss_options.hp_font)
 			LolzenUIcfg.unitframes["uf_boss_hp_font_size"] = tonumber(ns.uf_boss_options.hp_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_boss_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.hp_font_flag)]
 			LolzenUIcfg.unitframes["uf_boss_hp_posx"] = tonumber(ns.uf_boss_options.hp_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_boss_hp_posy"] = tonumber(ns.uf_boss_options.hp_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_boss_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.hp_anchor)]
-			LolzenUIcfg.unitframes["uf_boss_width"] = tonumber(ns.uf_boss_options.width:GetText())
-			LolzenUIcfg.unitframes["uf_boss_height"] = tonumber(ns.uf_boss_options.height:GetText())
 		end
 
 		ns["uf_boss_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = "ABOVE"
-			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = 5
+			
 			LolzenUIcfg.unitframes["uf_boss_posx"] = 0
 			LolzenUIcfg.unitframes["uf_boss_posy"] = -200
 			LolzenUIcfg.unitframes["uf_boss_anchor"] = "CENTER"
+			LolzenUIcfg.unitframes["uf_boss_width"] = 220
+			LolzenUIcfg.unitframes["uf_boss_height"] = 21
+			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = "ABOVE"
+			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = 5
 			LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_boss_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_boss_hp_font_size"] = 24
@@ -2457,8 +2460,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_hp_posx"] = -2
 			LolzenUIcfg.unitframes["uf_boss_hp_posy"] = 8
 			LolzenUIcfg.unitframes["uf_boss_hp_anchor"] = "RIGHT"
-			LolzenUIcfg.unitframes["uf_boss_width"] = 220
-			LolzenUIcfg.unitframes["uf_boss_height"] = 21
 			ReloadUI()
 		end
 

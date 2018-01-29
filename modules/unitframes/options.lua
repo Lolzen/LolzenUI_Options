@@ -2280,7 +2280,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_cb_height"] = tonumber(ns.uf_player_options.cb_height:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_color"] = {ns.uf_player_options.cb_color:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_player_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_alpha)])
-			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = tonumber(ns.uf_player_options.cb_size:GetText())
+			LolzenUIcfg.unitframes["uf_player_cb_icon_size"] = tonumber(ns.uf_player_options.cb_icon_size:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_icon_posx"] = tonumber(ns.uf_player_options.cb_icon_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_icon_posy"] = tonumber(ns.uf_player_options.cb_icon_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.cb_icon_anchor1)]

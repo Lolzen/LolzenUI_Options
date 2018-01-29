@@ -1635,20 +1635,23 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.growth = ns.createPicker("uf_boss_options", "growth", "uf_boss_additional_boss_anchor", 110, LolzenUIcfg.unitframes["uf_boss_additional_pos"])
 		ns.uf_boss_options.growth:SetPoint("LEFT", ns.uf_boss_options.growth_text, "RIGHT", -10, -3)
 
-		ns.uf_boss_options.growth_spacing_text = ns.createFontstring("uf_boss_options", "Spacing:") --ns.uf_boss_options.growth
+		ns.uf_boss_options.growth_spacing_text = ns.createFontstring("uf_boss_options", "Spacing:")
 		ns.uf_boss_options.growth_spacing_text:SetPoint("LEFT", ns.uf_boss_options.growth, "RIGHT", -10, 3)
 
 		ns.uf_boss_options.growth_spacing = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_additional_spacing"])
 		ns.uf_boss_options.growth_spacing:SetPoint("LEFT", ns.uf_boss_options.growth_spacing_text, "RIGHT", 10, 0)
 
-		ns.uf_boss_options.header1 = ns.createHeader("uf_boss_options", "Healthpoints")
-		ns.uf_boss_options.header1:SetPoint("TOPLEFT", ns.uf_boss_options.growth_text, 0, -30)
+		ns.uf_boss_options.cb1 = ns.createCheckBox("uf_boss_options", "uf_boss_show_power", "|cff5599ffshow power bar|r", LolzenUIcfg.unitframes["uf_boss_show_power"])
+		ns.uf_boss_options.cb1:SetPoint("TOPLEFT", ns.uf_boss_options.growth_text, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_boss_options.cb1 = ns.createCheckBox("uf_boss_options", "uf_boss_use_custom_font_hp", "|cff5599ffoverwrite the general font options for boss healthpoints|r", LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"])
-		ns.uf_boss_options.cb1:SetPoint("TOPLEFT", ns.uf_boss_options.header1, "BOTTOMLEFT", 0, -8)
+		ns.uf_boss_options.header1 = ns.createHeader("uf_boss_options", "Healthpoints")
+		ns.uf_boss_options.header1:SetPoint("TOPLEFT", ns.uf_boss_options.cb1, 0, -30)
+
+		ns.uf_boss_options.cb2 = ns.createCheckBox("uf_boss_options", "uf_boss_use_custom_font_hp", "|cff5599ffoverwrite the general font options for boss healthpoints|r", LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"])
+		ns.uf_boss_options.cb2:SetPoint("TOPLEFT", ns.uf_boss_options.header1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_boss_options.hp_pos_x_text = ns.createFontstring("uf_boss_options", "PosX:")
-		ns.uf_boss_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_boss_options.cb1, "BOTTOMLEFT", 0, -8)
+		ns.uf_boss_options.hp_pos_x_text:SetPoint("TOPLEFT", ns.uf_boss_options.cb2, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_boss_options.hp_pos_x = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_hp_posx"])
 		ns.uf_boss_options.hp_pos_x:SetPoint("LEFT", ns.uf_boss_options.hp_pos_x_text, "RIGHT", 10, 0)
@@ -2435,6 +2438,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_height"] = tonumber(ns.uf_boss_options.height:GetText())
 			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.growth)]
 			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = tonumber(ns.uf_boss_options.growth_spacing:GetText())
+			LolzenUIcfg.unitframes["uf_boss_show_power"] = ns.uf_boss_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"] = ns.uf_boss_options.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_boss_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_boss_options.hp_font)
 			LolzenUIcfg.unitframes["uf_boss_hp_font_size"] = tonumber(ns.uf_boss_options.hp_font_size:GetText())
@@ -2453,6 +2457,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_height"] = 21
 			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = "ABOVE"
 			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = 5
+			LolzenUIcfg.unitframes["uf_boss_show_power"] = false
 			LolzenUIcfg.unitframes["uf_boss_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_boss_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_boss_hp_font_size"] = 24

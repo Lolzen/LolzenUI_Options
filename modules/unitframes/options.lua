@@ -1801,6 +1801,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_boss_options.pp_font_flag:Show()
 			ns.uf_boss_options.header3:SetPoint("TOPLEFT", ns.uf_boss_options.pp_font_text, 0, -30)
 		else
+			ns.uf_boss_options.header2:Hide()
 			ns.uf_boss_options.pp_pos_x_text:Hide()
 			ns.uf_boss_options.pp_pos_x:Hide()
 			ns.uf_boss_options.pp_pos_y_text:Hide()

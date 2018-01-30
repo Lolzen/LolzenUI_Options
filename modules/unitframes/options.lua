@@ -2686,8 +2686,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_posx"] = 0
 			LolzenUIcfg.unitframes["uf_boss_posy"] = -200
 			LolzenUIcfg.unitframes["uf_boss_anchor"] = "CENTER"
-			LolzenUIcfg.unitframes["uf_boss_width"] = 220
-			LolzenUIcfg.unitframes["uf_boss_height"] = 21
+			LolzenUIcfg.unitframes["uf_boss_width"] = 160
+			LolzenUIcfg.unitframes["uf_boss_height"] = 11
 			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = "ABOVE"
 			LolzenUIcfg.unitframes["uf_boss_additional_spacing"] = 30
 			LolzenUIcfg.unitframes["uf_boss_show_power"] = false

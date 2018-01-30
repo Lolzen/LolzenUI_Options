@@ -1595,6 +1595,41 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.parent = "unitframes"
 		InterfaceOptions_AddCategory(ns.uf_boss_options)
 
+		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
+		ns.uf_boss_options.scrollframe = CreateFrame("ScrollFrame", nil, ns.uf_boss_options)
+		ns.uf_boss_options.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.uf_boss_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
+		
+		ns.uf_boss_options.scrollbar = CreateFrame("Slider", nil, ns.uf_boss_options.scrollframe, "UIPanelScrollBarTemplate")
+		ns.uf_boss_options.scrollbar:SetPoint("TOPLEFT", ns.uf_boss_options, "TOPRIGHT", -20, -20)
+		ns.uf_boss_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_boss_options, "BOTTOMRIGHT", -20, 20)
+		-- min value: 10, else the title would be misaligned with the other subpanel titles
+		ns.uf_boss_options.scrollbar:SetMinMaxValues(10, 80) 
+		ns.uf_boss_options.scrollbar:SetValueStep(1) 
+		ns.uf_boss_options.scrollbar.scrollStep = 1
+		ns.uf_boss_options.scrollbar:SetValue(0) 
+		ns.uf_boss_options.scrollbar:SetWidth(16) 
+		ns.uf_boss_options.scrollbar:SetScript("OnValueChanged", function (self, value) 
+			self:GetParent():SetVerticalScroll(value) 
+		end)
+		
+		ns.uf_boss_options.content = CreateFrame("Frame", nil, ns.uf_boss_options.scrollframe) 
+		ns.uf_boss_options.content:SetSize(128, 80) 
+		ns.uf_boss_options.scrollframe.content = ns.uf_boss_options.content 
+ 
+		ns.uf_boss_options.scrollframe:SetScrollChild(ns.uf_boss_options.content)
+		
+		-- enable mousewheel scrolling
+		ns.uf_boss_options.scrollframe:EnableMouseWheel(true)
+		ns.uf_boss_options.scrollframe:SetScript("OnMouseWheel", function(self, direction)
+			local current = ns.uf_boss_options.scrollbar:GetValue()
+			if direction == 1 then -- "up"
+				ns.uf_boss_options.scrollbar:SetValue(current - 20)
+			elseif direction == -1 then -- "down"
+				ns.uf_boss_options.scrollbar:SetValue(current + 20)
+			end
+		end)
+
 		ns.uf_boss_options.title = ns.uf_boss_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 		ns.uf_boss_options.title:SetPoint("TOPLEFT", ns.uf_boss_options, 16, -16)
 		ns.uf_boss_options.title:SetText("|cff5599ffUnitframes module: Boss Options|r")

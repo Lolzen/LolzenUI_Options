@@ -673,8 +673,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.scrollbar = CreateFrame("Slider", nil, ns.uf_target_options.scrollframe, "UIPanelScrollBarTemplate")
 		ns.uf_target_options.scrollbar:SetPoint("TOPLEFT", ns.uf_target_options, "TOPRIGHT", -20, -20)
 		ns.uf_target_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_target_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 10, else the title would be misaligned with the other subpanel titles
-		ns.uf_target_options.scrollbar:SetMinMaxValues(10, 23) 
+		-- min value: 5, else the title would be misaligned with the other subpanel titles
+		ns.uf_target_options.scrollbar:SetMinMaxValues(5, 23) 
 		ns.uf_target_options.scrollbar:SetValueStep(1) 
 		ns.uf_target_options.scrollbar.scrollStep = 1
 		ns.uf_target_options.scrollbar:SetValue(0) 
@@ -1621,8 +1621,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.scrollbar = CreateFrame("Slider", nil, ns.uf_boss_options.scrollframe, "UIPanelScrollBarTemplate")
 		ns.uf_boss_options.scrollbar:SetPoint("TOPLEFT", ns.uf_boss_options, "TOPRIGHT", -20, -20)
 		ns.uf_boss_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_boss_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 10, else the title would be misaligned with the other subpanel titles
-		ns.uf_boss_options.scrollbar:SetMinMaxValues(10, 20) 
+		-- min value: 5, else the title would be misaligned with the other subpanel titles
+		ns.uf_boss_options.scrollbar:SetMinMaxValues(5, 20) 
 		ns.uf_boss_options.scrollbar:SetValueStep(1) 
 		ns.uf_boss_options.scrollbar.scrollStep = 1
 		ns.uf_boss_options.scrollbar:SetValue(0) 
@@ -1813,6 +1813,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_boss_options.content.pp_font_flag:Show()
 				ns.uf_boss_options.content.header3:SetPoint("TOPLEFT", ns.uf_boss_options.content.pp_font_text, 0, -30)
 				ChangeScrollbarMinMax("uf_boss_options", "+", 11)
+				ns.uf_boss_options.scrollbar:Show()
+				ns.uf_boss_options.scrollframe:EnableMouseWheel(true)
 			else
 				ns.uf_boss_options.content.header2:Hide()
 				ns.uf_boss_options.content.pp_pos_x_text:Hide()
@@ -1833,6 +1835,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_boss_options.content.pp_font_flag:Hide()
 				ns.uf_boss_options.content.header3:SetPoint("TOPLEFT", ns.uf_boss_options.content.hp_font_text, 0, -30)
 				ChangeScrollbarMinMax("uf_boss_options", "-", 11)
+				ns.uf_boss_options.scrollbar:Hide()
+				ns.uf_boss_options.scrollbar:SetValue(0)
+				ns.uf_boss_options.scrollframe:EnableMouseWheel(false)
 			end
 		end)
 
@@ -1875,6 +1880,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_boss_options.content.pp_font_flag_text:Hide()
 			ns.uf_boss_options.content.pp_font_flag:Hide()
 			ns.uf_boss_options.content.header3:SetPoint("TOPLEFT", ns.uf_boss_options.content.hp_font_text, 0, -30)
+			ns.uf_boss_options.scrollbar:Hide()
+			ns.uf_boss_options.scrollframe:EnableMouseWheel(false)
 		end
 
 		ns.uf_boss_options.content.aura_type_text = ns.createFontstring("uf_boss_options", "Show:", "content")

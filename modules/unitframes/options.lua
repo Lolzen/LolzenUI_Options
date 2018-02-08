@@ -7,6 +7,18 @@ f:RegisterEvent("ADDON_LOADED")
 f:SetScript("OnEvent", function(self, event, addon)
 	if addon == "LolzenUI_Options" and LolzenUIcfg.modules["unitframes"] == true then
 
+		-- function to change scrollable content size on demand
+		local function ChangeScrollbarMinMax(parent, operator, num)
+			local min, max = ns[parent].scrollbar:GetMinMaxValues()
+			local newmax
+			if operator == "-" then
+				newmax = max - num
+			else
+				newmax = max + num
+			end
+			ns[parent].scrollbar:SetMinMaxValues(min, newmax)
+		end
+
 		ns.unitframes.title = ns.createTitle("unitframes")
 
 		ns.unitframes.about = ns.createDescription("unitframes", "General Unitframe Options")
@@ -662,7 +674,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.scrollbar:SetPoint("TOPLEFT", ns.uf_target_options, "TOPRIGHT", -20, -20)
 		ns.uf_target_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_target_options, "BOTTOMRIGHT", -20, 20)
 		-- min value: 10, else the title would be misaligned with the other subpanel titles
-		ns.uf_target_options.scrollbar:SetMinMaxValues(10, 80) 
+		ns.uf_target_options.scrollbar:SetMinMaxValues(10, 23) 
 		ns.uf_target_options.scrollbar:SetValueStep(1) 
 		ns.uf_target_options.scrollbar.scrollStep = 1
 		ns.uf_target_options.scrollbar:SetValue(0) 
@@ -682,9 +694,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.scrollframe:SetScript("OnMouseWheel", function(self, direction)
 			local current = ns.uf_target_options.scrollbar:GetValue()
 			if direction == 1 then -- "up"
-				ns.uf_target_options.scrollbar:SetValue(current - 20)
+				ns.uf_target_options.scrollbar:SetValue(current - 10)
 			elseif direction == -1 then -- "down"
-				ns.uf_target_options.scrollbar:SetValue(current + 20)
+				ns.uf_target_options.scrollbar:SetValue(current + 10)
 			end
 		end)
 
@@ -890,9 +902,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			if ns.uf_target_options.content.cb2:GetChecked() == true then
 				ns.uf_target_options.content.cb3:Hide()
 				ns.uf_target_options.content.header4:SetPoint("TOPLEFT", ns.uf_target_options.content.cb2, 0, -30)
+				ChangeScrollbarMinMax("uf_target_options", "-", 24)
 			else
 				ns.uf_target_options.content.cb3:Show()
 				ns.uf_target_options.content.header4:SetPoint("TOPLEFT", ns.uf_target_options.content.cb3, 0, -30)
+				ChangeScrollbarMinMax("uf_target_options", "+", 24)
 			end
 		end)
 
@@ -902,6 +916,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		else
 			ns.uf_target_options.content.cb3:Show()
 			ns.uf_target_options.content.header4:SetPoint("TOPLEFT", ns.uf_target_options.content.cb3, 0, -30)
+			ChangeScrollbarMinMax("uf_target_options", "+", 24)
 		end
 
 		ns.uf_target_options.content.cb4 = ns.createCheckBox("uf_target_options", "uf_target_use_castbar_standalone", "|cff5599ffuse standalone castbar (independent placement & size)|r", LolzenUIcfg.unitframes["uf_target_cb_standalone"], "content")
@@ -976,6 +991,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_target_options.content.cb_color_text:ClearAllPoints()
 				ns.uf_target_options.content.cb_color_text:SetPoint("LEFT", ns.uf_target_options.content.cb_height, "RIGHT", 10, 0)
 				ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_width_text, "BOTTOMLEFT", 0, -12)
+				ChangeScrollbarMinMax("uf_target_options", "+", 25)
 			else
 				ns.uf_target_options.content.cb_pos_x_text:Hide()
 				ns.uf_target_options.content.cb_pos_x:Hide()
@@ -992,6 +1008,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_target_options.content.cb_color_text:ClearAllPoints()
 				ns.uf_target_options.content.cb_color_text:SetPoint("TOPLEFT", ns.uf_target_options.content.cb4, "BOTTOMLEFT", 0, -5)
 				ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_color_text, "BOTTOMLEFT", 0, -12)
+				ChangeScrollbarMinMax("uf_target_options", "-", 25)
 			end
 		end)
 
@@ -1010,6 +1027,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_target_options.content.cb_height:Show()
 			ns.uf_target_options.content.cb_color_text:SetPoint("LEFT", ns.uf_target_options.content.cb_height, "RIGHT", 10, 0)
 			ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_width_text, "BOTTOMLEFT", 0, -13)
+			ChangeScrollbarMinMax("uf_target_options", "+", 25)
 		else
 			ns.uf_target_options.content.cb_pos_x_text:Hide()
 			ns.uf_target_options.content.cb_pos_x:Hide()
@@ -1604,7 +1622,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.scrollbar:SetPoint("TOPLEFT", ns.uf_boss_options, "TOPRIGHT", -20, -20)
 		ns.uf_boss_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_boss_options, "BOTTOMRIGHT", -20, 20)
 		-- min value: 10, else the title would be misaligned with the other subpanel titles
-		ns.uf_boss_options.scrollbar:SetMinMaxValues(10, 80) 
+		ns.uf_boss_options.scrollbar:SetMinMaxValues(10, 20) 
 		ns.uf_boss_options.scrollbar:SetValueStep(1) 
 		ns.uf_boss_options.scrollbar.scrollStep = 1
 		ns.uf_boss_options.scrollbar:SetValue(0) 
@@ -1624,9 +1642,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.scrollframe:SetScript("OnMouseWheel", function(self, direction)
 			local current = ns.uf_boss_options.scrollbar:GetValue()
 			if direction == 1 then -- "up"
-				ns.uf_boss_options.scrollbar:SetValue(current - 20)
+				ns.uf_boss_options.scrollbar:SetValue(current - 10)
 			elseif direction == -1 then -- "down"
-				ns.uf_boss_options.scrollbar:SetValue(current + 20)
+				ns.uf_boss_options.scrollbar:SetValue(current + 10)
 			end
 		end)
 
@@ -1794,6 +1812,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_boss_options.content.pp_font_flag_text:Show()
 				ns.uf_boss_options.content.pp_font_flag:Show()
 				ns.uf_boss_options.content.header3:SetPoint("TOPLEFT", ns.uf_boss_options.content.pp_font_text, 0, -30)
+				ChangeScrollbarMinMax("uf_boss_options", "+", 11)
 			else
 				ns.uf_boss_options.content.header2:Hide()
 				ns.uf_boss_options.content.pp_pos_x_text:Hide()
@@ -1813,6 +1832,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_boss_options.content.pp_font_flag_text:Hide()
 				ns.uf_boss_options.content.pp_font_flag:Hide()
 				ns.uf_boss_options.content.header3:SetPoint("TOPLEFT", ns.uf_boss_options.content.hp_font_text, 0, -30)
+				ChangeScrollbarMinMax("uf_boss_options", "-", 11)
 			end
 		end)
 
@@ -1835,6 +1855,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_boss_options.content.pp_font_flag_text:Show()
 			ns.uf_boss_options.content.pp_font_flag:Show()
 			ns.uf_boss_options.content.header3:SetPoint("TOPLEFT", ns.uf_boss_options.content.pp_font_text, 0, -30)
+			ChangeScrollbarMinMax("uf_boss_options", "+", 11)
 		else
 			ns.uf_boss_options.content.header2:Hide()
 			ns.uf_boss_options.content.pp_pos_x_text:Hide()
@@ -1916,30 +1937,33 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.content.aura_growthy = ns.createPicker("uf_boss_options", "uf_auragrowth_y", "uf_boss_aura_growthy", 70, LolzenUIcfg.unitframes["uf_boss_aura_growth_y"], "content")
 		ns.uf_boss_options.content.aura_growthy:SetPoint("LEFT", ns.uf_boss_options.content.aura_growthy_text, "RIGHT", -10, -3)
 
-		ns.uf_boss_options.content.cb2 = ns.createCheckBox("uf_boss_options", "uf_boss_show_only_player_auras", "|cff5599ffshow only player's auras|r", LolzenUIcfg.unitframes["uf_boss_aura_show_only_player"], "content")
-		ns.uf_boss_options.content.cb2:SetPoint("TOPLEFT", ns.uf_boss_options.content.aura_growthx_text, "BOTTOMLEFT", 0, -8)
+		ns.uf_boss_options.content.cb3 = ns.createCheckBox("uf_boss_options", "uf_boss_show_only_player_auras", "|cff5599ffshow only player's auras|r", LolzenUIcfg.unitframes["uf_boss_aura_show_only_player"], "content")
+		ns.uf_boss_options.content.cb3:SetPoint("TOPLEFT", ns.uf_boss_options.content.aura_growthx_text, "BOTTOMLEFT", 0, -8)
 
-		ns.uf_boss_options.content.cb3 = ns.createCheckBox("uf_boss_options", "uf_boss_desature_nonplayer_auras", "|cff5599ffdesature nonplayer auras|r", LolzenUIcfg.unitframes["uf_boss_aura_desature_nonplayer_auras"], "content")
-		ns.uf_boss_options.content.cb3:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb2, "BOTTOMLEFT", 0, 0)
+		ns.uf_boss_options.content.cb4 = ns.createCheckBox("uf_boss_options", "uf_boss_desature_nonplayer_auras", "|cff5599ffdesature nonplayer auras|r", LolzenUIcfg.unitframes["uf_boss_aura_desature_nonplayer_auras"], "content")
+		ns.uf_boss_options.content.cb4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb3, "BOTTOMLEFT", 0, 0)
 
 		ns.uf_boss_options.content.header4 = ns.createHeader("uf_boss_options", "Castbar", "content")
 
-		ns.uf_boss_options.content.cb2:SetScript("OnClick", function(self)
-			if ns.uf_boss_options.content.cb2:GetChecked() == true then
-				ns.uf_boss_options.content.cb3:Hide()
-				ns.uf_boss_options.content.header4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb2, 0, -30)
-			else
-				ns.uf_boss_options.content.cb3:Show()
+		ns.uf_boss_options.content.cb3:SetScript("OnClick", function(self)
+			if ns.uf_boss_options.content.cb3:GetChecked() == true then
+				ns.uf_boss_options.content.cb4:Hide()
 				ns.uf_boss_options.content.header4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb3, 0, -30)
+				ChangeScrollbarMinMax("uf_boss_options", "-", 24)
+			else
+				ns.uf_boss_options.content.cb4:Show()
+				ns.uf_boss_options.content.header4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb4, 0, -30)
+				ChangeScrollbarMinMax("uf_boss_options", "+", 24)
 			end
 		end)
 
-		if ns.uf_boss_options.content.cb2:GetChecked() == true then
-			ns.uf_boss_options.content.cb3:Hide()
-			ns.uf_boss_options.content.header4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb2, 0, -30)
-		else
-			ns.uf_boss_options.content.cb3:Show()
+		if ns.uf_boss_options.content.cb3:GetChecked() == true then
+			ns.uf_boss_options.content.cb4:Hide()
 			ns.uf_boss_options.content.header4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb3, 0, -30)
+		else
+			ns.uf_boss_options.content.cb4:Show()
+			ns.uf_boss_options.content.header4:SetPoint("TOPLEFT", ns.uf_boss_options.content.cb4, 0, -30)
+			ChangeScrollbarMinMax("uf_boss_options", "+", 24)
 		end
 
 		ns.uf_boss_options.content.cb_color_text = ns.createFontstring("uf_boss_options", "Color:", "content")
@@ -2849,8 +2873,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_aura_size"] = tonumber(ns.uf_boss_options.content.aura_size:GetText())
 			LolzenUIcfg.unitframes["uf_boss_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.aura_growthx)]
 			LolzenUIcfg.unitframes["uf_boss_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.aura_growthy)]
-			LolzenUIcfg.unitframes["uf_boss_aura_show_only_player"] = ns.uf_boss_options.content.cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_boss_aura_desature_nonplayer_auras"] = ns.uf_boss_options.content.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_boss_aura_show_only_player"] = ns.uf_boss_options.content.cb4:GetChecked()
+			LolzenUIcfg.unitframes["uf_boss_aura_desature_nonplayer_auras"] = ns.uf_boss_options.content.cb4:GetChecked()
 			LolzenUIcfg.unitframes["uf_boss_cb_color"] = {ns.uf_boss_options.content.cb_color:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_boss_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.cb_alpha)])
 			LolzenUIcfg.unitframes["uf_boss_cb_icon_size"] = tonumber(ns.uf_boss_options.content.cb_icon_size:GetText())

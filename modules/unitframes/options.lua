@@ -2235,6 +2235,88 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_focus_options.pp_font_flag = ns.createPicker("uf_focus_options", "flag", "uf_focus_pp_font_flag", 120, LolzenUIcfg.unitframes["uf_focus_pp_font_flag"])
 		ns.uf_focus_options.pp_font_flag:SetPoint("LEFT", ns.uf_focus_options.pp_font_flag_text, "RIGHT", -10, -3)
 
+		ns.uf_focus_options.header2 = ns.createHeader("uf_focus_options", "Auras")
+		ns.uf_focus_options.header2:SetPoint("TOPLEFT", ns.uf_focus_options.pp_font_text, 0, -30)
+
+		ns.uf_focus_options.aura_type_text = ns.createFontstring("uf_focus_options", "Show:")
+		ns.uf_focus_options.aura_type_text:SetPoint("TOPLEFT", ns.uf_focus_options.header2, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_focus_options.aura_type = ns.createPicker("uf_focus_options", "uf_auratype", "uf_focus_aura_type", 70, LolzenUIcfg.unitframes["uf_focus_aura_show_type"])
+		ns.uf_focus_options.aura_type:SetPoint("LEFT", ns.uf_focus_options.aura_type_text, "RIGHT", -10, -3)
+
+		ns.uf_focus_options.aura_maxnum_text = ns.createFontstring("uf_focus_options", "Show max (0-40):")
+		ns.uf_focus_options.aura_maxnum_text:SetPoint("LEFT", ns.uf_focus_options.aura_type, "RIGHT", -5, 3)
+
+		ns.uf_focus_options.aura_maxnum = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_aura_maxnum"])
+		ns.uf_focus_options.aura_maxnum:SetPoint("LEFT", ns.uf_focus_options.aura_maxnum_text, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_spacing_text = ns.createFontstring("uf_focus_options", "Spacing:")
+		ns.uf_focus_options.aura_spacing_text:SetPoint("LEFT", ns.uf_focus_options.aura_maxnum, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_spacing = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_aura_spacing"])
+		ns.uf_focus_options.aura_spacing:SetPoint("LEFT", ns.uf_focus_options.aura_spacing_text, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_size_text = ns.createFontstring("uf_focus_options", "Size:")
+		ns.uf_focus_options.aura_size_text:SetPoint("LEFT", ns.uf_focus_options.aura_spacing, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_size = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_aura_size"])
+		ns.uf_focus_options.aura_size:SetPoint("LEFT", ns.uf_focus_options.aura_size_text, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_pos_x_text = ns.createFontstring("uf_focus_options", "PosX:")
+		ns.uf_focus_options.aura_pos_x_text:SetPoint("TOPLEFT", ns.uf_focus_options.aura_type_text, "BOTTOMLEFT", 0, -15)
+
+		ns.uf_focus_options.aura_pos_x = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_aura_posx"])
+		ns.uf_focus_options.aura_pos_x:SetPoint("LEFT", ns.uf_focus_options.aura_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_pos_y_text = ns.createFontstring("uf_focus_options", "PosY:")
+		ns.uf_focus_options.aura_pos_y_text:SetPoint("LEFT", ns.uf_focus_options.aura_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_focus_options.aura_pos_y = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_aura_posy"])
+		ns.uf_focus_options.aura_pos_y:SetPoint("LEFT", ns.uf_focus_options.aura_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_focus_options.aura_anchor_text = ns.createFontstring("uf_focus_options", "Anchor1:")
+		ns.uf_focus_options.aura_anchor_text:SetPoint("LEFT", ns.uf_focus_options.aura_pos_y, "RIGHT", 5, 0)
+
+		ns.uf_focus_options.aura_anchor = ns.createPicker("uf_focus_options", "anchor", "uf_focus_aura_anchor", 90, LolzenUIcfg.unitframes["uf_focus_aura_anchor1"])
+		ns.uf_focus_options.aura_anchor:SetPoint("LEFT", ns.uf_focus_options.aura_anchor_text, "RIGHT", -10, -3)
+
+		ns.uf_focus_options.aura_anchor2_text = ns.createFontstring("uf_focus_options", "Anchor2:")
+		ns.uf_focus_options.aura_anchor2_text:SetPoint("LEFT", ns.uf_focus_options.aura_anchor, "RIGHT", -10, 3)
+
+		ns.uf_focus_options.aura_anchor2 = ns.createPicker("uf_focus_options", "anchor", "uf_focus_aura_anchor2", 90, LolzenUIcfg.unitframes["uf_focus_aura_anchor2"])
+		ns.uf_focus_options.aura_anchor2:SetPoint("LEFT", ns.uf_focus_options.aura_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_focus_options.aura_growthx_text = ns.createFontstring("uf_focus_options", "GrowthX:")
+		ns.uf_focus_options.aura_growthx_text:SetPoint("TOPLEFT", ns.uf_focus_options.aura_pos_x_text, "BOTTOMLEFT", 0, -15)
+
+		ns.uf_focus_options.aura_growthx = ns.createPicker("uf_focus_options", "uf_auragrowth_x", "uf_focus_aura_growthx", 70, LolzenUIcfg.unitframes["uf_focus_aura_growth_x"])
+		ns.uf_focus_options.aura_growthx:SetPoint("LEFT", ns.uf_focus_options.aura_growthx_text, "RIGHT", -10, -3)
+
+		ns.uf_focus_options.aura_growthy_text = ns.createFontstring("uf_focus_options", "GrowthY:")
+		ns.uf_focus_options.aura_growthy_text:SetPoint("LEFT", ns.uf_focus_options.aura_growthx, "RIGHT", -5, 3)
+
+		ns.uf_focus_options.aura_growthy = ns.createPicker("uf_focus_options", "uf_auragrowth_y", "uf_focus_aura_growthy", 70, LolzenUIcfg.unitframes["uf_focus_aura_growth_y"])
+		ns.uf_focus_options.aura_growthy:SetPoint("LEFT", ns.uf_focus_options.aura_growthy_text, "RIGHT", -10, -3)
+
+		ns.uf_focus_options.cb2 = ns.createCheckBox("uf_focus_options", "uf_focus_show_only_player_auras", "|cff5599ffshow only player's auras|r", LolzenUIcfg.unitframes["uf_focus_aura_show_only_player"])
+		ns.uf_focus_options.cb2:SetPoint("TOPLEFT", ns.uf_focus_options.aura_growthx_text, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_focus_options.cb3 = ns.createCheckBox("uf_focus_options", "uf_focus_desature_nonplayer_auras", "|cff5599ffdesature nonplayer auras|r", LolzenUIcfg.unitframes["uf_focus_aura_desature_nonplayer_auras"])
+		ns.uf_focus_options.cb3:SetPoint("TOPLEFT", ns.uf_focus_options.cb2, "BOTTOMLEFT", 0, 0)
+
+		ns.uf_focus_options.cb2:SetScript("OnClick", function(self)
+			if ns.uf_focus_options.cb2:GetChecked() == true then
+				ns.uf_focus_options.cb3:Hide()
+			else
+				ns.uf_focus_options.cb3:Show()
+			end
+		end)
+
+		if ns.uf_focus_options.cb2:GetChecked() == true then
+			ns.uf_focus_options.cb3:Hide()
+		else
+			ns.uf_focus_options.cb3:Show()
+		end
 		-- // Create a subcategory panel for Power Colors // --
 		ns.uf_powercolor_options = CreateFrame("Frame", "unitframe_bosspanel", ns["unitframes"])
 		ns.uf_powercolor_options.name = "   Power Colors"
@@ -2982,6 +3064,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_focus_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.pp_parent)]
 			LolzenUIcfg.unitframes["uf_focus_width"] = tonumber(ns.uf_focus_options.width:GetText())
 			LolzenUIcfg.unitframes["uf_focus_height"] = tonumber(ns.uf_focus_options.height:GetText())
+			LolzenUIcfg.unitframes["uf_focus_aura_show_type"] = ns.picker_uf_auratype[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.aura_type)]
+			LolzenUIcfg.unitframes["uf_focus_aura_posx"] = tonumber(ns.uf_focus_options.aura_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_focus_aura_posy"] = tonumber(ns.uf_focus_options.aura_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_focus_aura_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.aura_anchor)]
+			LolzenUIcfg.unitframes["uf_focus_aura_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.aura_anchor2)]
+			LolzenUIcfg.unitframes["uf_focus_aura_maxnum"] = tonumber(ns.uf_focus_options.aura_maxnum:GetText())
+			LolzenUIcfg.unitframes["uf_focus_aura_spacing"] = tonumber(ns.uf_focus_options.aura_spacing:GetText())
+			LolzenUIcfg.unitframes["uf_focus_aura_size"] = tonumber(ns.uf_focus_options.aura_size:GetText())
+			LolzenUIcfg.unitframes["uf_focus_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.aura_growthx)]
+			LolzenUIcfg.unitframes["uf_focus_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.aura_growthy)]
+			LolzenUIcfg.unitframes["uf_focus_aura_show_only_player"] = ns.uf_focus_options.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_focus_aura_desature_nonplayer_auras"] = ns.uf_focus_options.cb3:GetChecked()
 		end
 
 		ns["uf_focus_options"].default = function(self)
@@ -3005,6 +3099,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_focus_pp_parent"] = "hp"
 			LolzenUIcfg.unitframes["uf_focus_width"] = 220
 			LolzenUIcfg.unitframes["uf_focus_height"] = 11
+			LolzenUIcfg.unitframes["uf_focus_aura_show_type"] = "Both"
+			LolzenUIcfg.unitframes["uf_focus_aura_posx"] = 0
+			LolzenUIcfg.unitframes["uf_focus_aura_posy"] = -30
+			LolzenUIcfg.unitframes["uf_focus_aura_anchor1"] = "TOP"
+			LolzenUIcfg.unitframes["uf_focus_aura_anchor2"] = "BOTTOM"
+			LolzenUIcfg.unitframes["uf_focus_aura_maxnum"] = 8
+			LolzenUIcfg.unitframes["uf_focus_aura_spacing"] = 4
+			LolzenUIcfg.unitframes["uf_focus_aura_size"] = 23
+			LolzenUIcfg.unitframes["uf_focus_aura_growth_x"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_focus_aura_growth_y"] = "DOWN"
+			LolzenUIcfg.unitframes["uf_focus_aura_show_only_player"] = false
+			LolzenUIcfg.unitframes["uf_focus_aura_desature_nonplayer_auras"] = false
 			ReloadUI()
 		end
 

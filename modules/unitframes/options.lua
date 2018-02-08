@@ -2880,7 +2880,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_aura_size"] = tonumber(ns.uf_boss_options.content.aura_size:GetText())
 			LolzenUIcfg.unitframes["uf_boss_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.aura_growthx)]
 			LolzenUIcfg.unitframes["uf_boss_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.aura_growthy)]
-			LolzenUIcfg.unitframes["uf_boss_aura_show_only_player"] = ns.uf_boss_options.content.cb4:GetChecked()
+			LolzenUIcfg.unitframes["uf_boss_aura_show_only_player"] = ns.uf_boss_options.content.cb3:GetChecked()
 			LolzenUIcfg.unitframes["uf_boss_aura_desature_nonplayer_auras"] = ns.uf_boss_options.content.cb4:GetChecked()
 			LolzenUIcfg.unitframes["uf_boss_cb_color"] = {ns.uf_boss_options.content.cb_color:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_boss_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.cb_alpha)])

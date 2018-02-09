@@ -250,6 +250,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.general_hp_font_flag = ns.createPicker("unitframes", "flag", "uf_general_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_general_hp_font_flag"])
 		ns.unitframes.general_hp_font_flag:SetPoint("LEFT", ns.unitframes.general_hp_font_flag_text, "RIGHT", -10, -3)
 
+		ns.unitframes.cb7 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"])
+		ns.unitframes.cb7:SetPoint("TOPLEFT", ns.unitframes.general_hp_font_text, "BOTTOMLEFT", 0, -18)
+		
 		-- // Create a subcategory panel for Player // --
 		ns.uf_player_options = CreateFrame("Frame", "unitframe_playerpanel", ns["unitframes"])
 		ns.uf_player_options.name = "   Player"
@@ -2667,13 +2670,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.lead_anchor)]
 			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb6:GetChecked()
 			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.fadeout_alpha)])
-			LolzenUIcfg.unitframes["uf_general_hpfont_size"] = tonumber(ns.unitframes.general_font_size_health:GetText())
+			LolzenUIcfg.unitframes["uf_general_hp_font_size"] = tonumber(ns.unitframes.general_hp_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_font"] = UIDropDownMenu_GetSelectedName(ns.unitframes.general_hp_font)
-			LolzenUIcfg.unitframes["uf_general_powerfont_size"] = tonumber(ns.unitframes.general_font_size_power:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.unitframes.general_hp_font_flag)]
 			LolzenUIcfg.unitframes["uf_general_hp_posx"] = tonumber(ns.unitframes.general_hp_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_posy"] = tonumber(ns.unitframes.general_hp_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.general_hp_anchor)]
+			LolzenUIcfg.unitframes["uf_testmode"] = ns.unitframes.cb7:GetChecked()
 		end
 
 		ns["unitframes"].default = function(self)
@@ -2695,13 +2698,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_lead_anchor"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_fade_outofreach"] = true
 			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = 0.5
-			LolzenUIcfg.unitframes["uf_general_hpfont_size"] = 24
+			LolzenUIcfg.unitframes["uf_general_hp_font_size"] = 24
 			LolzenUIcfg.unitframes["uf_general_hp_font"] = "DroidSansBold"
-			LolzenUIcfg.unitframes["uf_general_powerfont_size"] = 18
 			LolzenUIcfg.unitframes["uf_general_hp_font_flag"] = "THINOUTLINE"
 			LolzenUIcfg.unitframes["uf_general_hp_posx"] = -2
 			LolzenUIcfg.unitframes["uf_general_hp_posy"] = 8
 			LolzenUIcfg.unitframes["uf_general_hp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_testmode"] = false
 			ReloadUI()
 		end
 

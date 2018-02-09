@@ -195,6 +195,89 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local rt_anchor = ns.createPicker("nameplates", "anchor", "nameplates_raidmark_anchor", 110, LolzenUIcfg.nameplates["np_raidmark_anchor"])
 		rt_anchor:SetPoint("LEFT", rt_anchor_text, "RIGHT", -10, -3)
 
+		local header5 = ns.createHeader("nameplates", "Auras")
+		header5:SetPoint("TOPLEFT", rt_size_text, 0, -30)
+
+		local aura_type_text = ns.createFontstring("nameplates", "Show:")
+		aura_type_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 0, -8)
+
+		local aura_type = ns.createPicker("nameplates", "uf_auratype", "np_aura_type", 70, LolzenUIcfg.nameplates["np_aura_show_type"])
+		aura_type:SetPoint("LEFT", aura_type_text, "RIGHT", -10, -3)
+
+		local aura_maxnum_text = ns.createFontstring("nameplates", "Show max (0-40):")
+		aura_maxnum_text:SetPoint("LEFT", aura_type, "RIGHT", -5, 3)
+
+		local aura_maxnum = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates["np_aura_maxnum"])
+		aura_maxnum:SetPoint("LEFT", aura_maxnum_text, "RIGHT", 10, 0)
+
+		local aura_spacing_text = ns.createFontstring("nameplates", "Spacing:")
+		aura_spacing_text:SetPoint("LEFT", aura_maxnum, "RIGHT", 10, 0)
+
+		local aura_spacing = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates["np_aura_spacing"])
+		aura_spacing:SetPoint("LEFT", aura_spacing_text, "RIGHT", 10, 0)
+
+		local aura_size_text = ns.createFontstring("nameplates", "Size:")
+		aura_size_text:SetPoint("LEFT", aura_spacing, "RIGHT", 10, 0)
+
+		local aura_size = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates["np_aura_size"])
+		aura_size:SetPoint("LEFT", aura_size_text, "RIGHT", 10, 0)
+
+		local aura_pos_x_text = ns.createFontstring("nameplates", "PosX:")
+		aura_pos_x_text:SetPoint("TOPLEFT", aura_type_text, "BOTTOMLEFT", 0, -15)
+
+		local aura_pos_x = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates["np_aura_posx"])
+		aura_pos_x:SetPoint("LEFT", aura_pos_x_text, "RIGHT", 10, 0)
+
+		local aura_pos_y_text = ns.createFontstring("nameplates", "PosY:")
+		aura_pos_y_text:SetPoint("LEFT", aura_pos_x, "RIGHT", 5, 0)
+
+		local aura_pos_y = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates["np_aura_posy"])
+		aura_pos_y:SetPoint("LEFT", aura_pos_y_text, "RIGHT", 10, 0)
+
+		local aura_anchor_text = ns.createFontstring("nameplates", "Anchor1:")
+		aura_anchor_text:SetPoint("LEFT", aura_pos_y, "RIGHT", 5, 0)
+
+		local aura_anchor = ns.createPicker("nameplates", "anchor", "np_aura_anchor", 90, LolzenUIcfg.nameplates["np_aura_anchor1"])
+		aura_anchor:SetPoint("LEFT", aura_anchor_text, "RIGHT", -10, -3)
+
+		local aura_anchor2_text = ns.createFontstring("nameplates", "Anchor2:")
+		aura_anchor2_text:SetPoint("LEFT", aura_anchor, "RIGHT", -10, 3)
+
+		local aura_anchor2 = ns.createPicker("nameplates", "anchor", "np_aura_anchor2", 90, LolzenUIcfg.nameplates["np_aura_anchor2"])
+		aura_anchor2:SetPoint("LEFT", aura_anchor2_text, "RIGHT", -10, -3)
+
+		local aura_growthx_text = ns.createFontstring("nameplates", "GrowthX:")
+		aura_growthx_text:SetPoint("TOPLEFT", aura_pos_x_text, "BOTTOMLEFT", 0, -15)
+
+		local aura_growthx = ns.createPicker("nameplates", "uf_auragrowth_x", "np_aura_growthx", 70, LolzenUIcfg.nameplates["np_aura_growth_x"])
+		aura_growthx:SetPoint("LEFT", aura_growthx_text, "RIGHT", -10, -3)
+
+		local aura_growthy_text = ns.createFontstring("nameplates", "GrowthY:")
+		aura_growthy_text:SetPoint("LEFT", aura_growthx, "RIGHT", -5, 3)
+
+		local aura_growthy = ns.createPicker("nameplates", "uf_auragrowth_y", "np_aura_growthy", 70, LolzenUIcfg.nameplates["np_aura_growth_y"])
+		aura_growthy:SetPoint("LEFT", aura_growthy_text, "RIGHT", -10, -3)
+
+		local cb5 = ns.createCheckBox("nameplates", "np_show_only_player_auras", "|cff5599ffshow only player's auras|r", LolzenUIcfg.nameplates["np_aura_show_only_player"])
+		cb5:SetPoint("TOPLEFT", aura_growthx_text, "BOTTOMLEFT", 0, -8)
+
+		local cb6 = ns.createCheckBox("nameplates", "np_desature_nonplayer_auras", "|cff5599ffdesature nonplayer auras|r", LolzenUIcfg.nameplates["np_aura_desature_nonplayer_auras"])
+		cb6:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 0, 0)
+
+		cb5:SetScript("OnClick", function(self)
+			if cb5:GetChecked() == true then
+				cb6:Hide()
+			else
+				cb6:Show()
+			end
+		end)
+
+		if cb5:GetChecked() == true then
+			cb6:Hide()
+		else
+			cb6:Show()
+		end
+
 		-- // Create a subcategory panel for Castbar // --
 		ns.np_castbar_options = CreateFrame("Frame", "nameplates_castbarpanel", ns["nameplates"])
 		ns.np_castbar_options.name = "   Castbar"
@@ -447,6 +530,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_raidmark_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(rt_anchor)]
 			LolzenUIcfg.nameplates["np_raidmark_posx"] = tonumber(rt_pos_x:GetText())
 			LolzenUIcfg.nameplates["np_raidmark_posy"] = tonumber(rt_pos_y:GetText())
+			LolzenUIcfg.nameplates["np_aura_show_type"] = ns.picker_uf_auratype[UIDropDownMenu_GetSelectedID(aura_type)]
+			LolzenUIcfg.nameplates["np_aura_maxnum"] = tonumber(aura_maxnum:GetText())
+			LolzenUIcfg.nameplates["np_aura_spacing"] = tonumber(aura_spacing:GetText())
+			LolzenUIcfg.nameplates["np_aura_size"] = tonumber(aura_size:GetText())
+			LolzenUIcfg.nameplates["np_aura_posx"] = tonumber(aura_pos_x:GetText())
+			LolzenUIcfg.nameplates["np_aura_posy"] = tonumber(aura_pos_y:GetText())
+			LolzenUIcfg.nameplates["np_aura_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor)]
+			LolzenUIcfg.nameplates["np_aura_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor2)]
+			LolzenUIcfg.nameplates["np_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(aura_growthx)]
+			LolzenUIcfg.nameplates["np_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(aura_growthy)]
+			LolzenUIcfg.nameplates["np_aura_show_only_player"] = cb5:GetChecked()
+			LolzenUIcfg.nameplates["np_aura_desature_nonplayer_auras"] = cb6:GetChecked()
 		end
 
 		ns["nameplates"].default = function(self)
@@ -467,6 +562,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_raidmark_anchor"] = "TOPRIGHT"
 			LolzenUIcfg.nameplates["np_raidmark_posx"] = -2
 			LolzenUIcfg.nameplates["np_raidmark_posy"] = 14
+			LolzenUIcfg.nameplates["np_aura_show_type"] = "None"
+			LolzenUIcfg.nameplates["np_aura_maxnum"] = 8
+			LolzenUIcfg.nameplates["np_aura_spacing"] = 4
+			LolzenUIcfg.nameplates["np_aura_size"] = 14
+			LolzenUIcfg.nameplates["np_aura_posx"] = 0
+			LolzenUIcfg.nameplates["np_aura_posy"] = 10
+			LolzenUIcfg.nameplates["np_aura_anchor1"] = "BOTTOM"
+			LolzenUIcfg.nameplates["np_aura_anchor2"] = "TOP"
+			LolzenUIcfg.nameplates["np_aura_growth_x"] = "RIGHT"
+			LolzenUIcfg.nameplates["np_aura_growth_y"] = "UP"
+			LolzenUIcfg.nameplates["np_aura_show_only_player"] = true
+			LolzenUIcfg.nameplates["np_aura_desature_nonplayer_auras"] = true
 			ReloadUI()
 		end
 

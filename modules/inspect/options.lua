@@ -12,6 +12,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local about = ns.createDescription("inspect", "Fixes unit inspection on Mouseover targets (with keybind)")
 		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
+		local smallnotice = ns.createFontstring("inspect", "You can set the Keybind on ESC -> Keybinds -> Other -> INSPECT")
+		smallnotice:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -30)
+
 		local bignotice = ns["inspect"]:CreateFontString(nil, "ARTWORK")
 		bignotice:SetPoint("CENTER", ns["inspect"], "CENTER", 0, -8)
 		bignotice:SetFont("Interface\\AddOns\\LolzenUI\\fonts\\DroidSansBold.ttf", 28, "OUTLINE")

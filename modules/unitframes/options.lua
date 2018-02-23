@@ -2809,7 +2809,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_cb_time_anchor1"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_time_anchor2"] = "TOPRIGHT"
 			LolzenUIcfg.unitframes["uf_player_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_player_cb_text_posy"] = 0
+			LolzenUIcfg.unitframes["uf_player_cb_text_posy"] = 1
 			LolzenUIcfg.unitframes["uf_player_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_font"] = "DroidSansBold"
@@ -2932,7 +2932,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_cb_time_anchor1"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_target_cb_time_anchor2"] = "TOPRIGHT"
 			LolzenUIcfg.unitframes["uf_target_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_target_cb_text_posy"] = 0
+			LolzenUIcfg.unitframes["uf_target_cb_text_posy"] = 1
 			LolzenUIcfg.unitframes["uf_target_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_target_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_target_cb_font"] = "DroidSansBold"
@@ -3209,15 +3209,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_cb_icon_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_boss_cb_icon_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_time_posx"] = -5
-			LolzenUIcfg.unitframes["uf_boss_cb_time_posy"] = 0
+			LolzenUIcfg.unitframes["uf_boss_cb_time_posy"] = 1
 			LolzenUIcfg.unitframes["uf_boss_cb_time_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_boss_cb_time_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_boss_cb_text_posy"] = 0
+			LolzenUIcfg.unitframes["uf_boss_cb_text_posy"] = 1
 			LolzenUIcfg.unitframes["uf_boss_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_font"] = "DroidSansBold"
-			LolzenUIcfg.unitframes["uf_boss_cb_font_size"] = 12
+			LolzenUIcfg.unitframes["uf_boss_cb_font_size"] = 10
 			LolzenUIcfg.unitframes["uf_boss_cb_font_flag"] = "OUTLINE"
 			LolzenUIcfg.unitframes["uf_boss_cb_font_color"] = {1, 1, 1}
 			ReloadUI()
@@ -3318,15 +3318,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_focus_cb_icon_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_focus_cb_icon_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_time_posx"] = -5
-			LolzenUIcfg.unitframes["uf_focus_cb_time_posy"] = 0
+			LolzenUIcfg.unitframes["uf_focus_cb_time_posy"] = 1
 			LolzenUIcfg.unitframes["uf_focus_cb_time_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_focus_cb_time_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_focus_cb_text_posy"] = 0
+			LolzenUIcfg.unitframes["uf_focus_cb_text_posy"] = 1
 			LolzenUIcfg.unitframes["uf_focus_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_font"] = "DroidSansBold"
-			LolzenUIcfg.unitframes["uf_focus_cb_font_size"] = 12
+			LolzenUIcfg.unitframes["uf_focus_cb_font_size"] = 10
 			LolzenUIcfg.unitframes["uf_focus_cb_font_flag"] = "OUTLINE"
 			LolzenUIcfg.unitframes["uf_focus_cb_font_color"] = {1, 1, 1}
 			ReloadUI()

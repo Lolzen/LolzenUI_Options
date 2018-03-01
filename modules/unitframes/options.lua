@@ -2510,145 +2510,145 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.mana_text = ns.createFontstring("uf_powercolor_options", "Mana:")
 		ns.uf_powercolor_options.mana_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.title, "BOTTOMLEFT", 0, -30)
 
-		ns.uf_powercolor_options.mana = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["0"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.mana = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][0], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.mana:SetPoint("LEFT", ns.uf_powercolor_options.mana_text, "RIGHT", 62, 0)
 
-		ns.uf_powercolor_options.mana_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.mana, LolzenUIcfg.unitframes["uf_power_colors"]["0"])
+		ns.uf_powercolor_options.mana_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.mana, LolzenUIcfg.unitframes["uf_power_colors"][0])
 		ns.uf_powercolor_options.mana_f:SetAllPoints(ns.uf_powercolor_options.mana)
 
 		ns.uf_powercolor_options.rage_text = ns.createFontstring("uf_powercolor_options", "Rage:")
 		ns.uf_powercolor_options.rage_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.mana_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.rage = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["1"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.rage = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][1], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.rage:SetPoint("LEFT", ns.uf_powercolor_options.rage_text, "RIGHT", 65, 0)
 
-		ns.uf_powercolor_options.rage_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.rage, LolzenUIcfg.unitframes["uf_power_colors"]["1"])
+		ns.uf_powercolor_options.rage_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.rage, LolzenUIcfg.unitframes["uf_power_colors"][1])
 		ns.uf_powercolor_options.rage_f:SetAllPoints(ns.uf_powercolor_options.rage)
 
 		ns.uf_powercolor_options.focus_text = ns.createFontstring("uf_powercolor_options", "Focus:")
 		ns.uf_powercolor_options.focus_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.rage_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.focus = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["2"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.focus = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][2], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.focus:SetPoint("LEFT", ns.uf_powercolor_options.focus_text, "RIGHT", 62, 0)
 
-		ns.uf_powercolor_options.focus_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.focus, LolzenUIcfg.unitframes["uf_power_colors"]["2"])
+		ns.uf_powercolor_options.focus_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.focus, LolzenUIcfg.unitframes["uf_power_colors"][2])
 		ns.uf_powercolor_options.focus_f:SetAllPoints(ns.uf_powercolor_options.focus)
 
 		ns.uf_powercolor_options.energy_text = ns.createFontstring("uf_powercolor_options", "Energy:")
 		ns.uf_powercolor_options.energy_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.focus_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.energy = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["3"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.energy = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][3], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.energy:SetPoint("LEFT", ns.uf_powercolor_options.energy_text, "RIGHT", 56, 0)
 
-		ns.uf_powercolor_options.energy_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.energy, LolzenUIcfg.unitframes["uf_power_colors"]["3"])
+		ns.uf_powercolor_options.energy_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.energy, LolzenUIcfg.unitframes["uf_power_colors"][3])
 		ns.uf_powercolor_options.energy_f:SetAllPoints(ns.uf_powercolor_options.energy)
 
 		ns.uf_powercolor_options.cp_text = ns.createFontstring("uf_powercolor_options", "Combo Points:")
 		ns.uf_powercolor_options.cp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.energy_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.cp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["4"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.cp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][4], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.cp:SetPoint("LEFT", ns.uf_powercolor_options.cp_text, "RIGHT", 20, 0)
 
-		ns.uf_powercolor_options.cp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.cp, LolzenUIcfg.unitframes["uf_power_colors"]["4"])
+		ns.uf_powercolor_options.cp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.cp, LolzenUIcfg.unitframes["uf_power_colors"][4])
 		ns.uf_powercolor_options.cp_f:SetAllPoints(ns.uf_powercolor_options.cp)
 
 		ns.uf_powercolor_options.runes_text = ns.createFontstring("uf_powercolor_options", "Runes:")
 		ns.uf_powercolor_options.runes_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.cp_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.runes = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["5"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.runes = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][5], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.runes:SetPoint("LEFT", ns.uf_powercolor_options.runes_text, "RIGHT", 61, 0)
 
-		ns.uf_powercolor_options.runes_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.runes, LolzenUIcfg.unitframes["uf_power_colors"]["5"])
+		ns.uf_powercolor_options.runes_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.runes, LolzenUIcfg.unitframes["uf_power_colors"][5])
 		ns.uf_powercolor_options.runes_f:SetAllPoints(ns.uf_powercolor_options.runes)
 
 		ns.uf_powercolor_options.rp_text = ns.createFontstring("uf_powercolor_options", "Runic Power:")
 		ns.uf_powercolor_options.rp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.runes_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.rp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["6"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.rp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][6], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.rp:SetPoint("LEFT", ns.uf_powercolor_options.rp_text, "RIGHT", 28, 0)
 
-		ns.uf_powercolor_options.rp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.rp, LolzenUIcfg.unitframes["uf_power_colors"]["6"])
+		ns.uf_powercolor_options.rp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.rp, LolzenUIcfg.unitframes["uf_power_colors"][6])
 		ns.uf_powercolor_options.rp_f:SetAllPoints(ns.uf_powercolor_options.rp)
 
 		ns.uf_powercolor_options.soulshards_text = ns.createFontstring("uf_powercolor_options", "Soul Shards:")
 		ns.uf_powercolor_options.soulshards_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.rp_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.soulshards = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["7"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.soulshards = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][7], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.soulshards:SetPoint("LEFT", ns.uf_powercolor_options.soulshards_text, "RIGHT", 32, 0)
 
-		ns.uf_powercolor_options.soulshards_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.soulshards, LolzenUIcfg.unitframes["uf_power_colors"]["7"])
+		ns.uf_powercolor_options.soulshards_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.soulshards, LolzenUIcfg.unitframes["uf_power_colors"][7])
 		ns.uf_powercolor_options.soulshards_f:SetAllPoints(ns.uf_powercolor_options.soulshards)
 
 		ns.uf_powercolor_options.lp_text = ns.createFontstring("uf_powercolor_options", "Lunar Power:")
 		ns.uf_powercolor_options.lp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.soulshards_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.lp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["8"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.lp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][8], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.lp:SetPoint("LEFT", ns.uf_powercolor_options.lp_text, "RIGHT", 28, 0)
 
-		ns.uf_powercolor_options.lp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.lp, LolzenUIcfg.unitframes["uf_power_colors"]["8"])
+		ns.uf_powercolor_options.lp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.lp, LolzenUIcfg.unitframes["uf_power_colors"][8])
 		ns.uf_powercolor_options.lp_f:SetAllPoints(ns.uf_powercolor_options.lp)
 
 		ns.uf_powercolor_options.hp_text = ns.createFontstring("uf_powercolor_options", "Holy Power:")
 		ns.uf_powercolor_options.hp_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.lp_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.hp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["9"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.hp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][9], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.hp:SetPoint("LEFT", ns.uf_powercolor_options.hp_text, "RIGHT", 32, 0)
 
-		ns.uf_powercolor_options.hp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.hp, LolzenUIcfg.unitframes["uf_power_colors"]["9"])
+		ns.uf_powercolor_options.hp_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.hp, LolzenUIcfg.unitframes["uf_power_colors"][9])
 		ns.uf_powercolor_options.hp_f:SetAllPoints(ns.uf_powercolor_options.hp)
 
 		ns.uf_powercolor_options.maelstrom_text = ns.createFontstring("uf_powercolor_options", "Maelstrom:")
 		ns.uf_powercolor_options.maelstrom_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.hp_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.maelstrom = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["11"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.maelstrom = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][11], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.maelstrom:SetPoint("LEFT", ns.uf_powercolor_options.maelstrom_text, "RIGHT", 35, 0)
 
-		ns.uf_powercolor_options.maelstrom_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.maelstrom, LolzenUIcfg.unitframes["uf_power_colors"]["11"])
+		ns.uf_powercolor_options.maelstrom_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.maelstrom, LolzenUIcfg.unitframes["uf_power_colors"][11])
 		ns.uf_powercolor_options.maelstrom_f:SetAllPoints(ns.uf_powercolor_options.maelstrom)
 
 		ns.uf_powercolor_options.chi_text = ns.createFontstring("uf_powercolor_options", "Chi:")
 		ns.uf_powercolor_options.chi_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.maelstrom_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.chi = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["12"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.chi = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][12], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.chi:SetPoint("LEFT", ns.uf_powercolor_options.chi_text, "RIGHT", 75, 0)
 
-		ns.uf_powercolor_options.chi_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.chi, LolzenUIcfg.unitframes["uf_power_colors"]["12"])
+		ns.uf_powercolor_options.chi_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.chi, LolzenUIcfg.unitframes["uf_power_colors"][12])
 		ns.uf_powercolor_options.chi_f:SetAllPoints(ns.uf_powercolor_options.chi)
 
 		ns.uf_powercolor_options.insanity_text = ns.createFontstring("uf_powercolor_options", "Insanity:")
 		ns.uf_powercolor_options.insanity_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.chi_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.insanity = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["13"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.insanity = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][13], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.insanity:SetPoint("LEFT", ns.uf_powercolor_options.insanity_text, "RIGHT", 51, 0)
 
-		ns.uf_powercolor_options.insanity_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.insanity, LolzenUIcfg.unitframes["uf_power_colors"]["13"])
+		ns.uf_powercolor_options.insanity_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.insanity, LolzenUIcfg.unitframes["uf_power_colors"][13])
 		ns.uf_powercolor_options.insanity_f:SetAllPoints(ns.uf_powercolor_options.insanity)
 
 		ns.uf_powercolor_options.ac_text = ns.createFontstring("uf_powercolor_options", "Arcane Charges:")
 		ns.uf_powercolor_options.ac_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.insanity_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.ac = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["16"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.ac = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][16], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.ac:SetPoint("LEFT", ns.uf_powercolor_options.ac_text, "RIGHT", 11, 0)
 
-		ns.uf_powercolor_options.ac_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.ac, LolzenUIcfg.unitframes["uf_power_colors"]["16"])
+		ns.uf_powercolor_options.ac_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.ac, LolzenUIcfg.unitframes["uf_power_colors"][16])
 		ns.uf_powercolor_options.ac_f:SetAllPoints(ns.uf_powercolor_options.ac)
 
 		ns.uf_powercolor_options.fury_text = ns.createFontstring("uf_powercolor_options", "Fury:")
 		ns.uf_powercolor_options.fury_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.ac_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.fury = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["17"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.fury = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][17], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.fury:SetPoint("LEFT", ns.uf_powercolor_options.fury_text, "RIGHT", 70, 0)
 
-		ns.uf_powercolor_options.fury_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.fury, LolzenUIcfg.unitframes["uf_power_colors"]["17"])
+		ns.uf_powercolor_options.fury_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.fury, LolzenUIcfg.unitframes["uf_power_colors"][17])
 		ns.uf_powercolor_options.fury_f:SetAllPoints(ns.uf_powercolor_options.fury)
 
 		ns.uf_powercolor_options.pain_text = ns.createFontstring("uf_powercolor_options", "Pain:")
 		ns.uf_powercolor_options.pain_text:SetPoint("TOPLEFT", ns.uf_powercolor_options.fury_text, "BOTTOMLEFT", 0, -10)
 
-		ns.uf_powercolor_options.pain = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"]["18"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_powercolor_options.pain = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes["uf_power_colors"][18], LolzenUIcfg.unitframes["uf_statusbar_texture"])
 		ns.uf_powercolor_options.pain:SetPoint("LEFT", ns.uf_powercolor_options.pain_text, "RIGHT", 70, 0)
 
-		ns.uf_powercolor_options.pain_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.pain, LolzenUIcfg.unitframes["uf_power_colors"]["18"])
+		ns.uf_powercolor_options.pain_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.pain, LolzenUIcfg.unitframes["uf_power_colors"][18])
 		ns.uf_powercolor_options.pain_f:SetAllPoints(ns.uf_powercolor_options.pain)
 
 		ns["unitframes"].okay = function(self)
@@ -2809,7 +2809,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_cb_time_anchor1"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_time_anchor2"] = "TOPRIGHT"
 			LolzenUIcfg.unitframes["uf_player_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_player_cb_text_posy"] = 1
+			LolzenUIcfg.unitframes["uf_player_cb_text_posy"] = 0
 			LolzenUIcfg.unitframes["uf_player_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_player_cb_font"] = "DroidSansBold"
@@ -2932,7 +2932,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_cb_time_anchor1"] = "TOPLEFT"
 			LolzenUIcfg.unitframes["uf_target_cb_time_anchor2"] = "TOPRIGHT"
 			LolzenUIcfg.unitframes["uf_target_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_target_cb_text_posy"] = 1
+			LolzenUIcfg.unitframes["uf_target_cb_text_posy"] = 0
 			LolzenUIcfg.unitframes["uf_target_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_target_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_target_cb_font"] = "DroidSansBold"
@@ -3209,15 +3209,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_cb_icon_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_boss_cb_icon_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_time_posx"] = -5
-			LolzenUIcfg.unitframes["uf_boss_cb_time_posy"] = 1
+			LolzenUIcfg.unitframes["uf_boss_cb_time_posy"] = 0
 			LolzenUIcfg.unitframes["uf_boss_cb_time_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_boss_cb_time_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_boss_cb_text_posy"] = 1
+			LolzenUIcfg.unitframes["uf_boss_cb_text_posy"] = 0
 			LolzenUIcfg.unitframes["uf_boss_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_boss_cb_font"] = "DroidSansBold"
-			LolzenUIcfg.unitframes["uf_boss_cb_font_size"] = 10
+			LolzenUIcfg.unitframes["uf_boss_cb_font_size"] = 12
 			LolzenUIcfg.unitframes["uf_boss_cb_font_flag"] = "OUTLINE"
 			LolzenUIcfg.unitframes["uf_boss_cb_font_color"] = {1, 1, 1}
 			ReloadUI()
@@ -3318,56 +3318,56 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_focus_cb_icon_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_focus_cb_icon_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_time_posx"] = -5
-			LolzenUIcfg.unitframes["uf_focus_cb_time_posy"] = 1
+			LolzenUIcfg.unitframes["uf_focus_cb_time_posy"] = 0
 			LolzenUIcfg.unitframes["uf_focus_cb_time_anchor1"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_focus_cb_time_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_text_posx"] = 2
-			LolzenUIcfg.unitframes["uf_focus_cb_text_posy"] = 1
+			LolzenUIcfg.unitframes["uf_focus_cb_text_posy"] = 0
 			LolzenUIcfg.unitframes["uf_focus_cb_text_anchor1"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_text_anchor2"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_focus_cb_font"] = "DroidSansBold"
-			LolzenUIcfg.unitframes["uf_focus_cb_font_size"] = 10
+			LolzenUIcfg.unitframes["uf_focus_cb_font_size"] = 12
 			LolzenUIcfg.unitframes["uf_focus_cb_font_flag"] = "OUTLINE"
 			LolzenUIcfg.unitframes["uf_focus_cb_font_color"] = {1, 1, 1}
 			ReloadUI()
 		end
 
 		ns["uf_powercolor_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_power_colors"]["0"] = {ns.uf_powercolor_options.mana:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["1"] = {ns.uf_powercolor_options.rage:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["2"] = {ns.uf_powercolor_options.focus:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["3"] = {ns.uf_powercolor_options.energy:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["4"] = {ns.uf_powercolor_options.cp:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["5"] = {ns.uf_powercolor_options.runes:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["6"] = {ns.uf_powercolor_options.rp:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["7"] = {ns.uf_powercolor_options.soulshards:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["8"] = {ns.uf_powercolor_options.lp:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["9"] = {ns.uf_powercolor_options.hp:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["11"] = {ns.uf_powercolor_options.maelstrom:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["12"] = {ns.uf_powercolor_options.chi:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["13"] = {ns.uf_powercolor_options.insanity:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["16"] = {ns.uf_powercolor_options.ac:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["17"] = {ns.uf_powercolor_options.fury:GetVertexColor()}
-			LolzenUIcfg.unitframes["uf_power_colors"]["18"] = {ns.uf_powercolor_options.pain:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][0] = {ns.uf_powercolor_options.mana:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][1] = {ns.uf_powercolor_options.rage:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][2] = {ns.uf_powercolor_options.focus:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][3] = {ns.uf_powercolor_options.energy:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][4] = {ns.uf_powercolor_options.cp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][5] = {ns.uf_powercolor_options.runes:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][6] = {ns.uf_powercolor_options.rp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][7] = {ns.uf_powercolor_options.soulshards:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][8] = {ns.uf_powercolor_options.lp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][9] = {ns.uf_powercolor_options.hp:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][11] = {ns.uf_powercolor_options.maelstrom:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][12] = {ns.uf_powercolor_options.chi:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][13] = {ns.uf_powercolor_options.insanity:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][16] = {ns.uf_powercolor_options.ac:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][17] = {ns.uf_powercolor_options.fury:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_power_colors"][18] = {ns.uf_powercolor_options.pain:GetVertexColor()}
 		end
 		
 		ns["uf_powercolor_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_power_colors"]["0"] = {48/255, 113/255, 191/255}
-			LolzenUIcfg.unitframes["uf_power_colors"]["1"] = {1, 0, 0}
-			LolzenUIcfg.unitframes["uf_power_colors"]["2"] = {255/255, 178/255, 0}
-			LolzenUIcfg.unitframes["uf_power_colors"]["3"] = {1.00, 1.00, 34/255}
-			LolzenUIcfg.unitframes["uf_power_colors"]["4"] = {1.00, 0.96, 0.41}
-			LolzenUIcfg.unitframes["uf_power_colors"]["5"] = {0.50, 0.50, 0.50}
-			LolzenUIcfg.unitframes["uf_power_colors"]["6"] = {0.00, 0.82, 1.00}
-			LolzenUIcfg.unitframes["uf_power_colors"]["7"] = {0.50, 0.32, 0.55}
-			LolzenUIcfg.unitframes["uf_power_colors"]["8"] = {0.30, 0.52, 0.90}
-			LolzenUIcfg.unitframes["uf_power_colors"]["9"] = {0.95, 0.90, 0.60}
-			LolzenUIcfg.unitframes["uf_power_colors"]["11"] = {51/255, 181/255, 229/225}
-			LolzenUIcfg.unitframes["uf_power_colors"]["12"] = {0.71, 1.00, 0.92}
-			LolzenUIcfg.unitframes["uf_power_colors"]["13"] = {0.84, 0.1, 0.87}
-			LolzenUIcfg.unitframes["uf_power_colors"]["16"] = {0.10, 0.10, 0.98}
-			LolzenUIcfg.unitframes["uf_power_colors"]["17"] = {0.788, 0.259, 0.992}
-			LolzenUIcfg.unitframes["uf_power_colors"]["18"] = {1.00, 0.61, 0.00}
+			LolzenUIcfg.unitframes["uf_power_colors"][0] = {48/255, 113/255, 191/255}
+			LolzenUIcfg.unitframes["uf_power_colors"][1] = {1, 0, 0}
+			LolzenUIcfg.unitframes["uf_power_colors"][2] = {255/255, 178/255, 0}
+			LolzenUIcfg.unitframes["uf_power_colors"][3] = {1.00, 1.00, 34/255}
+			LolzenUIcfg.unitframes["uf_power_colors"][4] = {1.00, 0.96, 0.41}
+			LolzenUIcfg.unitframes["uf_power_colors"][5] = {0.50, 0.50, 0.50}
+			LolzenUIcfg.unitframes["uf_power_colors"][6] = {0.00, 0.82, 1.00}
+			LolzenUIcfg.unitframes["uf_power_colors"][7] = {0.50, 0.32, 0.55}
+			LolzenUIcfg.unitframes["uf_power_colors"][8] = {0.30, 0.52, 0.90}
+			LolzenUIcfg.unitframes["uf_power_colors"][9] = {0.95, 0.90, 0.60}
+			LolzenUIcfg.unitframes["uf_power_colors"][11] = {51/255, 181/255, 229/225}
+			LolzenUIcfg.unitframes["uf_power_colors"][12] = {0.71, 1.00, 0.92}
+			LolzenUIcfg.unitframes["uf_power_colors"][13] = {0.84, 0.1, 0.87}
+			LolzenUIcfg.unitframes["uf_power_colors"][16] = {0.10, 0.10, 0.98}
+			LolzenUIcfg.unitframes["uf_power_colors"][17] = {0.788, 0.259, 0.992}
+			LolzenUIcfg.unitframes["uf_power_colors"][18] = {1.00, 0.61, 0.00}
 			ReloadUI()
 		end
 	end

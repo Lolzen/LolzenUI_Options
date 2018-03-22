@@ -1653,6 +1653,141 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_pet_options.hp_font_flag = ns.createPicker("uf_pet_options", "flag", "uf_pet_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_pet_hp_font_flag"])
 		ns.uf_pet_options.hp_font_flag:SetPoint("LEFT", ns.uf_pet_options.hp_font_flag_text, "RIGHT", -10, -3)
 
+		ns.uf_pet_options.header2 = ns.createHeader("uf_pet_options", "Castbar")
+		ns.uf_pet_options.header2:SetPoint("TOPLEFT", ns.uf_pet_options.hp_font_text, 0, -30)
+
+		ns.uf_pet_options.cb_color_text = ns.createFontstring("uf_pet_options", "Color:")
+		ns.uf_pet_options.cb_color_text:SetPoint("TOPLEFT", ns.uf_pet_options.header2, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_pet_options.cb_color = ns.createColorTexture("uf_pet_options", 16, 16, LolzenUIcfg.unitframes["uf_pet_cb_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_pet_options.cb_color:SetPoint("LEFT", ns.uf_pet_options.cb_color_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_color_f = ns.createColorPicker("uf_pet_options", ns.uf_pet_options.cb_color, LolzenUIcfg.unitframes["uf_pet_cb_color"])
+		ns.uf_pet_options.cb_color_f:SetAllPoints(ns.uf_pet_options.cb_color)
+
+		ns.uf_pet_options.cb_alpha_text = ns.createFontstring("uf_pet_options", "Alpha:")
+		ns.uf_pet_options.cb_alpha_text:SetPoint("LEFT", ns.uf_pet_options.cb_color, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_alpha = ns.createPicker("uf_pet_options", "alpha", "uf_pet_cb_alpha", 45, LolzenUIcfg.unitframes["uf_pet_cb_alpha"])
+		ns.uf_pet_options.cb_alpha:SetPoint("LEFT", ns.uf_pet_options.cb_alpha_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.header3 = ns.createHeader("uf_pet_options", "Icon:")
+		ns.uf_pet_options.header3:SetPoint("TOPLEFT", ns.uf_pet_options.cb_color_text, "BOTTOMLEFT", 0, -12)
+
+		ns.uf_pet_options.cb_icon_size_text = ns.createFontstring("uf_pet_options", "Size:")
+		ns.uf_pet_options.cb_icon_size_text:SetPoint("LEFT", ns.uf_pet_options.header3, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_icon_size = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_icon_size"])
+		ns.uf_pet_options.cb_icon_size:SetPoint("LEFT", ns.uf_pet_options.cb_icon_size_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_icon_pos_x_text = ns.createFontstring("uf_pet_options", "PosX:")
+		ns.uf_pet_options.cb_icon_pos_x_text:SetPoint("LEFT", ns.uf_pet_options.cb_icon_size, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_icon_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_icon_posx"])
+		ns.uf_pet_options.cb_icon_pos_x:SetPoint("LEFT", ns.uf_pet_options.cb_icon_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_icon_pos_y_text = ns.createFontstring("uf_pet_options", "PosY:")
+		ns.uf_pet_options.cb_icon_pos_y_text:SetPoint("LEFT", ns.uf_pet_options.cb_icon_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_pet_options.cb_icon_pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_icon_posy"])
+		ns.uf_pet_options.cb_icon_pos_y:SetPoint("LEFT", ns.uf_pet_options.cb_icon_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_icon_anchor1_text = ns.createFontstring("uf_pet_options", "Anchor1:")
+		ns.uf_pet_options.cb_icon_anchor1_text:SetPoint("LEFT", ns.uf_pet_options.cb_icon_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_icon_anchor1 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_icon_anchor1", 70, LolzenUIcfg.unitframes["uf_pet_cb_icon_anchor1"])
+		ns.uf_pet_options.cb_icon_anchor1:SetPoint("LEFT", ns.uf_pet_options.cb_icon_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.cb_icon_anchor2_text = ns.createFontstring("uf_pet_options", "Anchor2:")
+		ns.uf_pet_options.cb_icon_anchor2_text:SetPoint("LEFT", ns.uf_pet_options.cb_icon_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_pet_options.cb_icon_anchor2 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_icon_anchor2", 70, LolzenUIcfg.unitframes["uf_pet_cb_icon_anchor2"])
+		ns.uf_pet_options.cb_icon_anchor2:SetPoint("LEFT", ns.uf_pet_options.cb_icon_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.cb2 = ns.createCheckBox("uf_pet_options", "uf_pet_use_castbar_icon_cut", "|cff5599fftrim castbar icon (only use if icon size is bigger than unitframe height)|r", LolzenUIcfg.unitframes["uf_pet_cb_icon_cut"])
+		ns.uf_pet_options.cb2:SetPoint("TOPLEFT", ns.uf_pet_options.header3, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_pet_options.header4 = ns.createHeader("uf_pet_options", "Time:")
+		ns.uf_pet_options.header4:SetPoint("TOPLEFT", ns.uf_pet_options.cb2, "BOTTOMLEFT", 0, -8)
+
+		ns.uf_pet_options.cb_time_pos_x_text = ns.createFontstring("uf_pet_options", "PosX:")
+		ns.uf_pet_options.cb_time_pos_x_text:SetPoint("LEFT", ns.uf_pet_options.header4, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_time_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_time_posx"])
+		ns.uf_pet_options.cb_time_pos_x:SetPoint("LEFT", ns.uf_pet_options.cb_time_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_time_pos_y_text = ns.createFontstring("uf_pet_options", "PosY:")
+		ns.uf_pet_options.cb_time_pos_y_text:SetPoint("LEFT", ns.uf_pet_options.cb_time_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_pet_options.cb_time_pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_time_posy"])
+		ns.uf_pet_options.cb_time_pos_y:SetPoint("LEFT", ns.uf_pet_options.cb_time_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_time_anchor1_text = ns.createFontstring("uf_pet_options", "Anchor1:")
+		ns.uf_pet_options.cb_time_anchor1_text:SetPoint("LEFT", ns.uf_pet_options.cb_time_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_time_anchor1 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_time_anchor1", 110, LolzenUIcfg.unitframes["uf_pet_cb_time_anchor1"])
+		ns.uf_pet_options.cb_time_anchor1:SetPoint("LEFT", ns.uf_pet_options.cb_time_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.cb_time_anchor2_text = ns.createFontstring("uf_pet_options", "Anchor2:")
+		ns.uf_pet_options.cb_time_anchor2_text:SetPoint("LEFT", ns.uf_pet_options.cb_time_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_pet_options.cb_time_anchor2 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_time_anchor2", 110, LolzenUIcfg.unitframes["uf_pet_cb_time_anchor2"])
+		ns.uf_pet_options.cb_time_anchor2:SetPoint("LEFT", ns.uf_pet_options.cb_time_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.header5 = ns.createHeader("uf_pet_options", "Text:")
+		ns.uf_pet_options.header5:SetPoint("TOPLEFT", ns.uf_pet_options.header4, "BOTTOMLEFT", 0, -13)
+
+		ns.uf_pet_options.cb_text_pos_x_text = ns.createFontstring("uf_pet_options", "PosX:")
+		ns.uf_pet_options.cb_text_pos_x_text:SetPoint("LEFT", ns.uf_pet_options.header5, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_text_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_text_posx"])
+		ns.uf_pet_options.cb_text_pos_x:SetPoint("LEFT", ns.uf_pet_options.cb_text_pos_x_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_text_pos_y_text = ns.createFontstring("uf_pet_options", "PosY:")
+		ns.uf_pet_options.cb_text_pos_y_text:SetPoint("LEFT", ns.uf_pet_options.cb_text_pos_x, "RIGHT", 5, 0)
+
+		ns.uf_pet_options.cb_text_pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_text_posy"])
+		ns.uf_pet_options.cb_text_pos_y:SetPoint("LEFT", ns.uf_pet_options.cb_text_pos_y_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_text_anchor1_text = ns.createFontstring("uf_pet_options", "Anchor1:")
+		ns.uf_pet_options.cb_text_anchor1_text:SetPoint("LEFT", ns.uf_pet_options.cb_text_pos_y, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_text_anchor1 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_text_anchor1", 110, LolzenUIcfg.unitframes["uf_pet_cb_text_anchor1"])
+		ns.uf_pet_options.cb_text_anchor1:SetPoint("LEFT", ns.uf_pet_options.cb_text_anchor1_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.cb_text_anchor2_text = ns.createFontstring("uf_pet_options", "Anchor2:")
+		ns.uf_pet_options.cb_text_anchor2_text:SetPoint("LEFT", ns.uf_pet_options.cb_text_anchor1, "RIGHT", -5, 3)
+
+		ns.uf_pet_options.cb_text_anchor2 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_text_anchor2", 110, LolzenUIcfg.unitframes["uf_pet_cb_text_anchor2"])
+		ns.uf_pet_options.cb_text_anchor2:SetPoint("LEFT", ns.uf_pet_options.cb_text_anchor2_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.header6 = ns.createHeader("uf_pet_options", "Time/Text Font:")
+		ns.uf_pet_options.header6:SetPoint("TOPLEFT", ns.uf_pet_options.header5, "BOTTOMLEFT", 0, -13)
+
+		ns.uf_pet_options.cb_font = ns.createPicker("uf_pet_options", "font", "uf_pet_cb_font", 120, LolzenUIcfg.unitframes["uf_pet_cb_font"])
+		ns.uf_pet_options.cb_font:SetPoint("LEFT", ns.uf_pet_options.header6, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.cb_font_size_text = ns.createFontstring("uf_pet_options", "Size:")
+		ns.uf_pet_options.cb_font_size_text:SetPoint("LEFT", ns.uf_pet_options.cb_font, "RIGHT", -5, 3)
+
+		ns.uf_pet_options.cb_font_size = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_cb_font_size"])
+		ns.uf_pet_options.cb_font_size:SetPoint("LEFT", ns.uf_pet_options.cb_font_size_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_font_flag_text = ns.createFontstring("uf_pet_options", "Flag:")
+		ns.uf_pet_options.cb_font_flag_text:SetPoint("LEFT", ns.uf_pet_options.cb_font_size, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_font_flag = ns.createPicker("uf_pet_options", "flag", "uf_pet_cb_font_flag", 120, LolzenUIcfg.unitframes["uf_pet_cb_font_flag"])
+		ns.uf_pet_options.cb_font_flag:SetPoint("LEFT", ns.uf_pet_options.cb_font_flag_text, "RIGHT", -10, -3)
+
+		ns.uf_pet_options.cb_font_color_text = ns.createFontstring("uf_pet_options", "Color:")
+		ns.uf_pet_options.cb_font_color_text:SetPoint("LEFT", ns.uf_pet_options.cb_font_flag, "RIGHT", -10, 3)
+
+		ns.uf_pet_options.cb_font_color = ns.createColorTexture("uf_pet_options", 16, 16, LolzenUIcfg.unitframes["uf_pet_cb_font_color"], LolzenUIcfg.unitframes["uf_statusbar_texture"])
+		ns.uf_pet_options.cb_font_color:SetPoint("LEFT", ns.uf_pet_options.cb_font_color_text, "RIGHT", 10, 0)
+
+		ns.uf_pet_options.cb_font_color_f = ns.createColorPicker("uf_pet_options", ns.uf_pet_options.cb_font_color, LolzenUIcfg.unitframes["uf_pet_cb_font_color"])
+		ns.uf_pet_options.cb_font_color_f:SetAllPoints(ns.uf_pet_options.cb_font_color)
+
 		-- // Create a subcategory panel for Boss // --
 		ns.uf_boss_options = CreateFrame("Frame", "unitframe_bosspanel", ns["unitframes"])
 		ns.uf_boss_options.name = "   Boss"
@@ -3143,6 +3278,26 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_pet_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.hp_anchor)]
 			LolzenUIcfg.unitframes["uf_pet_width"] = tonumber(ns.uf_pet_options.width:GetText())
 			LolzenUIcfg.unitframes["uf_pet_height"] = tonumber(ns.uf_pet_options.height:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_color"] = {ns.uf_pet_options.cb_color:GetVertexColor()}
+			LolzenUIcfg.unitframes["uf_pet_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_alpha)])
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_cut"] = ns.uf_pet_options.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_size"] = tonumber(ns.uf_pet_options.cb_icon_size:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_posx"] = tonumber(ns.uf_pet_options.cb_icon_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_posy"] = tonumber(ns.uf_pet_options.cb_icon_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_icon_anchor1)]
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_icon_anchor2)]
+			LolzenUIcfg.unitframes["uf_pet_cb_time_posx"] = tonumber(ns.uf_pet_options.cb_time_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_time_posy"] = tonumber(ns.uf_pet_options.cb_time_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_time_anchor1)]
+			LolzenUIcfg.unitframes["uf_pet_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_time_anchor2)]
+			LolzenUIcfg.unitframes["uf_pet_cb_text_posx"] = tonumber(ns.uf_pet_options.cb_text_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_text_posy"] = tonumber(ns.uf_pet_options.cb_text_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_text_anchor1)]
+			LolzenUIcfg.unitframes["uf_pet_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_text_anchor2)]
+			LolzenUIcfg.unitframes["uf_pet_cb_font"] = UIDropDownMenu_GetSelectedName(ns.uf_pet_options.cb_font)
+			LolzenUIcfg.unitframes["uf_pet_cb_font_size"] = tonumber(ns.uf_pet_options.cb_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_pet_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_font_flag)]
+			LolzenUIcfg.unitframes["uf_pet_cb_font_color"] = {ns.uf_pet_options.cb_font_color:GetVertexColor()}
 		end
 
 		ns["uf_pet_options"].default = function(self)
@@ -3158,6 +3313,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_pet_hp_anchor"] = "RIGHT"
 			LolzenUIcfg.unitframes["uf_pet_width"] = 120
 			LolzenUIcfg.unitframes["uf_pet_height"] = 18
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_cut"] = true
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_size"] = 28
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_posx"] = 5
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_posy"] = 0
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_anchor1"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_pet_cb_icon_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_pet_cb_time_posx"] = -3
+			LolzenUIcfg.unitframes["uf_pet_cb_time_posy"] = 1
+			LolzenUIcfg.unitframes["uf_pet_cb_time_anchor1"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_pet_cb_time_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_pet_cb_text_posx"] = 43
+			LolzenUIcfg.unitframes["uf_pet_cb_text_posy"] = 1
+			LolzenUIcfg.unitframes["uf_pet_cb_text_anchor1"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_pet_cb_text_anchor2"] = "LEFT"
+			LolzenUIcfg.unitframes["uf_pet_cb_font"] = "DroidSansBold"
+			LolzenUIcfg.unitframes["uf_pet_cb_font_size"] = 12
+			LolzenUIcfg.unitframes["uf_pet_cb_font_flag"] = "OUTLINE"
+			LolzenUIcfg.unitframes["uf_pet_cb_font_color"] = {1, 1, 1}
 			ReloadUI()
 		end
 

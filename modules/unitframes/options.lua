@@ -211,8 +211,23 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
 		ns.unitframes.fadeout_alpha:SetPoint("LEFT", ns.unitframes.fadeout_alpha_text, "RIGHT", -10, -3)
 
+		ns.unitframes.cb7 = ns.createCheckBox("unitframes", "uf_combatfade", "|cff5599ffenable combatFade for unitframes|r", LolzenUIcfg.unitframes["uf_fade_combat"])
+		ns.unitframes.cb7:SetPoint("TOPLEFT", ns.unitframes.fadeout_alpha_text, "BOTTOMLEFT", 0, -8)
+
+		ns.unitframes.combatfadeout_alpha_text = ns.createFontstring("unitframes", "in combat alpha:")
+		ns.unitframes.combatfadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb7, "BOTTOMLEFT", 0, -8)
+
+		ns.unitframes.combatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_incombat", 45, LolzenUIcfg.unitframes["uf_fade_combat_incombat"])
+		ns.unitframes.combatfadeout_alpha:SetPoint("LEFT", ns.unitframes.combatfadeout_alpha_text, "RIGHT", -10, -3)
+
+		ns.unitframes.outofcombatfadeout_alpha_text = ns.createFontstring("unitframes", "out of combat alpha:")
+		ns.unitframes.outofcombatfadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.combatfadeout_alpha_text, "BOTTOMLEFT", 0, -15)
+
+		ns.unitframes.outofcombatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_outofcombat", 45, LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"])
+		ns.unitframes.outofcombatfadeout_alpha:SetPoint("LEFT", ns.unitframes.outofcombatfadeout_alpha_text, "RIGHT", -10, -3)
+
 		ns.unitframes.header4 = ns.createHeader("unitframes", "General Healthpoints Font options (can be overwritten per unit specific settings)")
-		ns.unitframes.header4:SetPoint("TOPLEFT", ns.unitframes.fadeout_alpha_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.header4:SetPoint("TOPLEFT", ns.unitframes.outofcombatfadeout_alpha_text, "BOTTOMLEFT", 0, -30)
 
 		ns.unitframes.general_hp_pos_x_text = ns.createFontstring("unitframes", "PosX:")
 		ns.unitframes.general_hp_pos_x_text:SetPoint("TOPLEFT", ns.unitframes.header4, "BOTTOMLEFT", 0, -10)
@@ -250,8 +265,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.general_hp_font_flag = ns.createPicker("unitframes", "flag", "uf_general_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_general_hp_font_flag"])
 		ns.unitframes.general_hp_font_flag:SetPoint("LEFT", ns.unitframes.general_hp_font_flag_text, "RIGHT", -10, -3)
 
-		ns.unitframes.cb7 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"])
-		ns.unitframes.cb7:SetPoint("TOPLEFT", ns.unitframes.general_hp_font_text, "BOTTOMLEFT", 0, -18)
+		ns.unitframes.cb8 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"])
+		ns.unitframes.cb8:SetPoint("TOPLEFT", ns.unitframes.general_hp_font_text, "BOTTOMLEFT", 0, -18)
 		
 		-- // Create a subcategory panel for Player // --
 		ns.uf_player_options = CreateFrame("Frame", "unitframe_playerpanel", ns["unitframes"])
@@ -2860,7 +2875,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_general_hp_posx"] = tonumber(ns.unitframes.general_hp_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_posy"] = tonumber(ns.unitframes.general_hp_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_general_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.general_hp_anchor)]
-			LolzenUIcfg.unitframes["uf_testmode"] = ns.unitframes.cb7:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_combat"] = ns.unitframes.cb7:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.combatfadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.outofcombatfadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_testmode"] = ns.unitframes.cb8:GetChecked()
 		end
 
 		ns["unitframes"].default = function(self)
@@ -2888,6 +2906,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_general_hp_posx"] = -2
 			LolzenUIcfg.unitframes["uf_general_hp_posy"] = 8
 			LolzenUIcfg.unitframes["uf_general_hp_anchor"] = "RIGHT"
+			LolzenUIcfg.unitframes["uf_fade_combat"] = true
+			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = 1
+			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = 0.3
 			LolzenUIcfg.unitframes["uf_testmode"] = false
 			ReloadUI()
 		end

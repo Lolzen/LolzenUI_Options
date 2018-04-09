@@ -19,61 +19,98 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns[parent].scrollbar:SetMinMaxValues(min, newmax)
 		end
 
-		ns.unitframes.title = ns.createTitle("unitframes")
+		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
+		ns.unitframes.scrollframe = CreateFrame("ScrollFrame", nil, ns["unitframes"])
+		ns.unitframes.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.unitframes.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
+		
+		ns.unitframes.scrollbar = CreateFrame("Slider", nil, ns.unitframes.scrollframe, "UIPanelScrollBarTemplate")
+		ns.unitframes.scrollbar:SetPoint("TOPLEFT", ns.unitframes, "TOPRIGHT", -20, -20)
+		ns.unitframes.scrollbar:SetPoint("BOTTOMLEFT", ns.unitframes, "BOTTOMRIGHT", -20, 20)
+		-- min value: 5, else the title would be misaligned with the other subpanel titles
+		ns.unitframes.scrollbar:SetMinMaxValues(5, 44) 
+		ns.unitframes.scrollbar:SetValueStep(1) 
+		ns.unitframes.scrollbar.scrollStep = 1
+		ns.unitframes.scrollbar:SetValue(0) 
+		ns.unitframes.scrollbar:SetWidth(16) 
+		ns.unitframes.scrollbar:SetScript("OnValueChanged", function (self, value) 
+			self:GetParent():SetVerticalScroll(value) 
+		end)
+		
+		ns.unitframes.content = CreateFrame("Frame", nil, ns.unitframes.scrollframe) 
+		ns.unitframes.content:SetSize(128, 80) 
+		ns.unitframes.scrollframe.content = ns.unitframes.content 
+ 
+		ns.unitframes.scrollframe:SetScrollChild(ns.unitframes.content)
+		
+		-- enable mousewheel scrolling
+		ns.unitframes.scrollframe:EnableMouseWheel(true)
+		ns.unitframes.scrollframe:SetScript("OnMouseWheel", function(self, direction)
+			local current = ns.unitframes.scrollbar:GetValue()
+			if direction == 1 then -- "up"
+				ns.unitframes.scrollbar:SetValue(current - 10)
+			elseif direction == -1 then -- "down"
+				ns.unitframes.scrollbar:SetValue(current + 10)
+			end
+		end)
 
-		ns.unitframes.about = ns.createDescription("unitframes", "General Unitframe Options")
-		ns.unitframes.about:SetPoint("TOPLEFT", ns.unitframes.title, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.content.title = ns.unitframes.content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		ns.unitframes.content.title:SetPoint("TOPLEFT", ns.unitframes.content, 16, -16)
+		ns.unitframes.content.title:SetText("|cff5599ffUnitframes module Options|r")
 
-		ns.unitframes.cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"])
-		ns.unitframes.cb1:SetPoint("TOPLEFT", ns.unitframes.about, "BOTTOMLEFT", 0, -20)
+		ns.unitframes.content.about = ns.createDescription("unitframes", "General Unitframe Options", "content")
+		ns.unitframes.content.about:SetPoint("TOPLEFT", ns.unitframes.content.title, "BOTTOMLEFT", 0, -8)
 
-		ns.unitframes.cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ffuse both value and percent (reenables the options below)|r", LolzenUIcfg.unitframes["uf_use_val_and_perc"])
-		ns.unitframes.cb2:SetPoint("TOPLEFT", ns.unitframes.cb1, "BOTTOMLEFT", 0, -0)
+		ns.unitframes.content.cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"], "content")
+		ns.unitframes.content.cb1:SetPoint("TOPLEFT", ns.unitframes.content.about, "BOTTOMLEFT", 0, -20)
 
-		ns.unitframes.perc_val_divider_text = ns.createFontstring("unitframes", "Percent & Value divider:")
-		ns.unitframes.perc_val_divider_text:SetPoint("LEFT", uf_hp_val_and_percText, "RIGHT", 10, 0)
+		ns.unitframes.content.cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ffuse both value and percent (reenables the options below)|r", LolzenUIcfg.unitframes["uf_use_val_and_perc"], "content")
+		ns.unitframes.content.cb2:SetPoint("TOPLEFT", ns.unitframes.content.cb1, "BOTTOMLEFT", 0, -0)
 
-		ns.unitframes.perc_val_divider = ns.createInputbox("unitframes", 20, 20, LolzenUIcfg.unitframes["uf_val_perc_divider"])
-		ns.unitframes.perc_val_divider:SetPoint("LEFT", ns.unitframes.perc_val_divider_text, "RIGHT", 10, 0)
+		ns.unitframes.content.perc_val_divider_text = ns.createFontstring("unitframes", "Percent & Value divider:", "content")
+		ns.unitframes.content.perc_val_divider_text:SetPoint("LEFT", uf_hp_val_and_percText, "RIGHT", 10, 0)
 
-		ns.unitframes.cb3 = ns.createCheckBox("unitframes", "uf_perc_first", "|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r", LolzenUIcfg.unitframes["uf_perc_first"])
-		ns.unitframes.cb3:SetPoint("TOPLEFT", ns.unitframes.cb2, "BOTTOMLEFT", 0, -0)
+		ns.unitframes.content.perc_val_divider = ns.createInputbox("unitframes", 20, 20, LolzenUIcfg.unitframes["uf_val_perc_divider"], "content")
+		ns.unitframes.content.perc_val_divider:SetPoint("LEFT", ns.unitframes.content.perc_val_divider_text, "RIGHT", 10, 0)
 
-		ns.unitframes.cb4 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"])
-		ns.unitframes.cb4:SetPoint("TOPLEFT", ns.unitframes.cb3, "BOTTOMLEFT", 0, -0)
+		ns.unitframes.content.cb3 = ns.createCheckBox("unitframes", "uf_perc_first", "|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r", LolzenUIcfg.unitframes["uf_perc_first"], "content")
+		ns.unitframes.content.cb3:SetPoint("TOPLEFT", ns.unitframes.content.cb2, "BOTTOMLEFT", 0, -0)
 
-		ns.unitframes.cb5 = ns.createCheckBox("unitframes", "uf_siVal_dot", "|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r", LolzenUIcfg.unitframes["uf_use_dot_format"])
-		ns.unitframes.cb5:SetPoint("TOPLEFT", ns.unitframes.cb4, "BOTTOMLEFT", 0, -0)
+		ns.unitframes.content.cb4 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ffuse short values (34m5, 3k2, etc)|r", LolzenUIcfg.unitframes["uf_use_sivalue"], "content")
+		ns.unitframes.content.cb4:SetPoint("TOPLEFT", ns.unitframes.content.cb3, "BOTTOMLEFT", 0, -0)
 
-		ns.unitframes.cb1:SetScript("OnClick", function(self)
-			if ns.unitframes.cb1:GetChecked() == true then
-				ns.unitframes.cb2:Enable()
-				ns.unitframes.cb4:Disable()
-				ns.unitframes.cb5:Disable()
+		ns.unitframes.content.cb5 = ns.createCheckBox("unitframes", "uf_siVal_dot", "|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r", LolzenUIcfg.unitframes["uf_use_dot_format"], "content")
+		ns.unitframes.content.cb5:SetPoint("TOPLEFT", ns.unitframes.content.cb4, "BOTTOMLEFT", 0, -0)
+
+		ns.unitframes.content.cb1:SetScript("OnClick", function(self)
+			if ns.unitframes.content.cb1:GetChecked() == true then
+				ns.unitframes.content.cb2:Enable()
+				ns.unitframes.content.cb4:Disable()
+				ns.unitframes.content.cb5:Disable()
 				uf_hp_val_and_percText:SetText("|cff5599ffuse both value and percent (reenables the options below)|r")
-				if ns.unitframes.cb2:GetChecked() == true then
-					ns.unitframes.cb3:Enable()
+				if ns.unitframes.content.cb2:GetChecked() == true then
+					ns.unitframes.content.cb3:Enable()
 					uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r")
 				else
-					ns.unitframes.cb3:Disable()
+					ns.unitframes.content.cb3:Disable()
 					uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable 'both value and percent'|r")
 				end
-				if ns.unitframes.cb2:GetChecked() == true then
-					ns.unitframes.perc_val_divider_text:Show()
-					ns.unitframes.perc_val_divider:Show()
+				if ns.unitframes.content.cb2:GetChecked() == true then
+					ns.unitframes.content.perc_val_divider_text:Show()
+					ns.unitframes.content.perc_val_divider:Show()
 				else
-					ns.unitframes.perc_val_divider_text:Hide()
-					ns.unitframes.perc_val_divider:Hide()
+					ns.unitframes.content.perc_val_divider_text:Hide()
+					ns.unitframes.content.perc_val_divider:Hide()
 				end
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
 				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r |cffff5555disable hp percentage for this option|r")
 			else
-				ns.unitframes.cb2:Disable()
-				ns.unitframes.cb3:Disable()
-				ns.unitframes.cb4:Enable()
-				ns.unitframes.cb5:Enable()
-				ns.unitframes.perc_val_divider_text:Hide()
-				ns.unitframes.perc_val_divider:Hide()
+				ns.unitframes.content.cb2:Disable()
+				ns.unitframes.content.cb3:Disable()
+				ns.unitframes.content.cb4:Enable()
+				ns.unitframes.content.cb5:Enable()
+				ns.unitframes.content.perc_val_divider_text:Hide()
+				ns.unitframes.content.perc_val_divider:Hide()
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
 				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable hp percentage for this option|r")
 				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r")
@@ -81,29 +118,29 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		if ns.unitframes.cb1:GetChecked() == true then
-			if ns.unitframes.cb2:GetChecked() == true then
-				ns.unitframes.cb3:Enable()
-				ns.unitframes.cb4:Enable()
-				ns.unitframes.cb5:Enable()
+		if ns.unitframes.content.cb1:GetChecked() == true then
+			if ns.unitframes.content.cb2:GetChecked() == true then
+				ns.unitframes.content.cb3:Enable()
+				ns.unitframes.content.cb4:Enable()
+				ns.unitframes.content.cb5:Enable()
 			else
-				ns.unitframes.cb2:Disable()
-				ns.unitframes.cb3:Disable()
-				ns.unitframes.cb4:Disable()
-				ns.unitframes.cb5:Disable()
+				ns.unitframes.content.cb2:Disable()
+				ns.unitframes.content.cb3:Disable()
+				ns.unitframes.content.cb4:Disable()
+				ns.unitframes.content.cb5:Disable()
 				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable 'both value and percent'|r")
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
 			end
 		else
-			ns.unitframes.cb2:Disable()
-			ns.unitframes.cb3:Disable()
-			ns.unitframes.cb4:Enable()
-			ns.unitframes.cb5:Enable()
+			ns.unitframes.content.cb2:Disable()
+			ns.unitframes.content.cb3:Disable()
+			ns.unitframes.content.cb4:Enable()
+			ns.unitframes.content.cb5:Enable()
 			uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable hp percentage for this option|r")
 			uf_hp_val_and_percText:SetText("|cff5599ffuse both value and percent|r |cffff5555enable hp percentage for this option|r")
 		end
 
-		ns.unitframes.cb2:SetScript("OnClick", function(self)
+		ns.unitframes.content.cb2:SetScript("OnClick", function(self)
 			if ns.unitframes.cb2:GetChecked() == true then
 				ns.unitframes.cb3:Enable()
 				ns.unitframes.cb4:Enable()
@@ -125,148 +162,148 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		if ns.unitframes.cb2:GetChecked() == true then
-			ns.unitframes.perc_val_divider_text:Show()
-			ns.unitframes.perc_val_divider:Show()
+		if ns.unitframes.content.cb2:GetChecked() == true then
+			ns.unitframes.content.perc_val_divider_text:Show()
+			ns.unitframes.content.perc_val_divider:Show()
 		else
-			ns.unitframes.perc_val_divider_text:Hide()
-			ns.unitframes.perc_val_divider:Hide()
+			ns.unitframes.content.perc_val_divider_text:Hide()
+			ns.unitframes.content.perc_val_divider:Hide()
 		end
 
-		ns.unitframes.texture_text = ns.createFontstring("unitframes", "Texture:")
-		ns.unitframes.texture_text:SetPoint("TOPLEFT", ns.unitframes.cb5, "BOTTOMLEFT", 0, -15)
+		ns.unitframes.content.texture_text = ns.createFontstring("unitframes", "Texture:", "content")
+		ns.unitframes.content.texture_text:SetPoint("TOPLEFT", ns.unitframes.content.cb5, "BOTTOMLEFT", 0, -15)
 
-		ns.unitframes.texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"])
-		ns.unitframes.texture:SetPoint("LEFT", ns.unitframes.texture_text, "RIGHT", -10, -3)
+		ns.unitframes.content.texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes["uf_statusbar_texture"], "content")
+		ns.unitframes.content.texture:SetPoint("LEFT", ns.unitframes.content.texture_text, "RIGHT", -10, -3)
 
-		ns.unitframes.border_text = ns.createFontstring("unitframes", "Border:")
-		ns.unitframes.border_text:SetPoint("LEFT", ns.unitframes.texture, "RIGHT", -5, 3)
+		ns.unitframes.content.border_text = ns.createFontstring("unitframes", "Border:", "content")
+		ns.unitframes.content.border_text:SetPoint("LEFT", ns.unitframes.content.texture, "RIGHT", -5, 3)
 
-		ns.unitframes.border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes["uf_border"])
-		ns.unitframes.border:SetPoint("LEFT", ns.unitframes.border_text, "RIGHT", -10, -3)
+		ns.unitframes.content.border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes["uf_border"], "content")
+		ns.unitframes.content.border:SetPoint("LEFT", ns.unitframes.content.border_text, "RIGHT", -10, -3)
 
-		ns.unitframes.header1 = ns.createHeader("unitframes", "Raidmark indicator")
-		ns.unitframes.header1:SetPoint("TOPLEFT", ns.unitframes.texture_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.content.header1 = ns.createHeader("unitframes", "Raidmark indicator", "content")
+		ns.unitframes.content.header1:SetPoint("TOPLEFT", ns.unitframes.content.texture_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.rt_size_text = ns.createFontstring("unitframes", "Size:")
-		ns.unitframes.rt_size_text:SetPoint("TOPLEFT", ns.unitframes.header1, "BOTTOMLEFT", 0, -10)
+		ns.unitframes.content.rt_size_text = ns.createFontstring("unitframes", "Size:", "content")
+		ns.unitframes.content.rt_size_text:SetPoint("TOPLEFT", ns.unitframes.content.header1, "BOTTOMLEFT", 0, -10)
 
-		ns.unitframes.rt_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_size"])
-		ns.unitframes.rt_size:SetPoint("LEFT", ns.unitframes.rt_size_text, "RIGHT", 10, 0)
+		ns.unitframes.content.rt_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_size"], "content")
+		ns.unitframes.content.rt_size:SetPoint("LEFT", ns.unitframes.content.rt_size_text, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_pos_x_text = ns.createFontstring("unitframes", "PosX:")
-		ns.unitframes.rt_pos_x_text:SetPoint("LEFT", ns.unitframes.rt_size, "RIGHT", 10, 0)
+		ns.unitframes.content.rt_pos_x_text = ns.createFontstring("unitframes", "PosX:", "content")
+		ns.unitframes.content.rt_pos_x_text:SetPoint("LEFT", ns.unitframes.content.rt_size, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posx"])
-		ns.unitframes.rt_pos_x:SetPoint("LEFT", ns.unitframes.rt_pos_x_text, "RIGHT", 10, 0)
+		ns.unitframes.content.rt_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posx"], "content")
+		ns.unitframes.content.rt_pos_x:SetPoint("LEFT", ns.unitframes.content.rt_pos_x_text, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_pos_y_text = ns.createFontstring("unitframes", "PosY:")
-		ns.unitframes.rt_pos_y_text:SetPoint("LEFT", ns.unitframes.rt_pos_x, "RIGHT", 10, 0)
+		ns.unitframes.content.rt_pos_y_text = ns.createFontstring("unitframes", "PosY:", "content")
+		ns.unitframes.content.rt_pos_y_text:SetPoint("LEFT", ns.unitframes.content.rt_pos_x, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posy"])
-		ns.unitframes.rt_pos_y:SetPoint("LEFT", ns.unitframes.rt_pos_y_text, "RIGHT", 10, 0)
+		ns.unitframes.content.rt_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_ri_posy"], "content")
+		ns.unitframes.content.rt_pos_y:SetPoint("LEFT", ns.unitframes.content.rt_pos_y_text, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_anchor_text = ns.createFontstring("unitframes", "Anchor:")
-		ns.unitframes.rt_anchor_text:SetPoint("LEFT", ns.unitframes.rt_pos_y, "RIGHT", 10, 0)
+		ns.unitframes.content.rt_anchor_text = ns.createFontstring("unitframes", "Anchor:", "content")
+		ns.unitframes.content.rt_anchor_text:SetPoint("LEFT", ns.unitframes.content.rt_pos_y, "RIGHT", 10, 0)
 
-		ns.unitframes.rt_anchor = ns.createPicker("unitframes", "anchor", "uf_rt_anchor", 110, LolzenUIcfg.unitframes["uf_ri_anchor"])
-		ns.unitframes.rt_anchor:SetPoint("LEFT", ns.unitframes.rt_anchor_text, "RIGHT", -10, -3)
+		ns.unitframes.content.rt_anchor = ns.createPicker("unitframes", "anchor", "uf_rt_anchor", 110, LolzenUIcfg.unitframes["uf_ri_anchor"], "content")
+		ns.unitframes.content.rt_anchor:SetPoint("LEFT", ns.unitframes.content.rt_anchor_text, "RIGHT", -10, -3)
 
-		ns.unitframes.header2 = ns.createHeader("unitframes", "Lead indicator")
-		ns.unitframes.header2:SetPoint("TOPLEFT", ns.unitframes.rt_size_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.content.header2 = ns.createHeader("unitframes", "Lead indicator", "content")
+		ns.unitframes.content.header2:SetPoint("TOPLEFT", ns.unitframes.content.rt_size_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.lead_size_text = ns.createFontstring("unitframes", "Size:")
-		ns.unitframes.lead_size_text:SetPoint("TOPLEFT", ns.unitframes.header2, "BOTTOMLEFT", 0, -10)
+		ns.unitframes.content.lead_size_text = ns.createFontstring("unitframes", "Size:", "content")
+		ns.unitframes.content.lead_size_text:SetPoint("TOPLEFT", ns.unitframes.content.header2, "BOTTOMLEFT", 0, -10)
 
-		ns.unitframes.lead_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_size"])
-		ns.unitframes.lead_size:SetPoint("LEFT", ns.unitframes.lead_size_text, "RIGHT", 10, 0)
+		ns.unitframes.content.lead_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_size"], "content")
+		ns.unitframes.content.lead_size:SetPoint("LEFT", ns.unitframes.content.lead_size_text, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_pos_x_text = ns.createFontstring("unitframes", "PosX:")
-		ns.unitframes.lead_pos_x_text:SetPoint("LEFT", ns.unitframes.lead_size, "RIGHT", 10, 0)
+		ns.unitframes.content.lead_pos_x_text = ns.createFontstring("unitframes", "PosX:", "content")
+		ns.unitframes.content.lead_pos_x_text:SetPoint("LEFT", ns.unitframes.content.lead_size, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posx"])
-		ns.unitframes.lead_pos_x:SetPoint("LEFT", ns.unitframes.lead_pos_x_text, "RIGHT", 10, 0)
+		ns.unitframes.content.lead_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posx"], "content")
+		ns.unitframes.content.lead_pos_x:SetPoint("LEFT", ns.unitframes.content.lead_pos_x_text, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_pos_y_text = ns.createFontstring("unitframes", "PosY:")
-		ns.unitframes.lead_pos_y_text:SetPoint("LEFT", ns.unitframes.lead_pos_x, "RIGHT", 10, 0)
+		ns.unitframes.content.lead_pos_y_text = ns.createFontstring("unitframes", "PosY:", "content")
+		ns.unitframes.content.lead_pos_y_text:SetPoint("LEFT", ns.unitframes.content.lead_pos_x, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posy"])
-		ns.unitframes.lead_pos_y:SetPoint("LEFT", ns.unitframes.lead_pos_y_text, "RIGHT", 10, 0)
+		ns.unitframes.content.lead_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_lead_posy"], "content")
+		ns.unitframes.content.lead_pos_y:SetPoint("LEFT", ns.unitframes.content.lead_pos_y_text, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_anchor_text = ns.createFontstring("unitframes", "Anchor:")
-		ns.unitframes.lead_anchor_text:SetPoint("LEFT", ns.unitframes.lead_pos_y, "RIGHT", 10, 0)
+		ns.unitframes.content.lead_anchor_text = ns.createFontstring("unitframes", "Anchor:", "content")
+		ns.unitframes.content.lead_anchor_text:SetPoint("LEFT", ns.unitframes.content.lead_pos_y, "RIGHT", 10, 0)
 
-		ns.unitframes.lead_anchor = ns.createPicker("unitframes", "anchor", "uf_lead_anchor", 110, LolzenUIcfg.unitframes["uf_lead_anchor"])
-		ns.unitframes.lead_anchor:SetPoint("LEFT", ns.unitframes.lead_anchor_text, "RIGHT", -10, -3)
+		ns.unitframes.content.lead_anchor = ns.createPicker("unitframes", "anchor", "uf_lead_anchor", 110, LolzenUIcfg.unitframes["uf_lead_anchor"], "content")
+		ns.unitframes.content.lead_anchor:SetPoint("LEFT", ns.unitframes.content.lead_anchor_text, "RIGHT", -10, -3)
 
-		ns.unitframes.header3 = ns.createHeader("unitframes", "Fadeout")
-		ns.unitframes.header3:SetPoint("TOPLEFT", ns.unitframes.lead_size_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.content.header3 = ns.createHeader("unitframes", "Fadeout", "content")
+		ns.unitframes.content.header3:SetPoint("TOPLEFT", ns.unitframes.content.lead_size_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.cb6 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"])
-		ns.unitframes.cb6:SetPoint("TOPLEFT", ns.unitframes.header3, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.content.cb6 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599fffadeout out of reach unitframes|r", LolzenUIcfg.unitframes["uf_fade_outofreach"], "content")
+		ns.unitframes.content.cb6:SetPoint("TOPLEFT", ns.unitframes.content.header3, "BOTTOMLEFT", 0, -8)
 
-		ns.unitframes.fadeout_alpha_text = ns.createFontstring("unitframes", "out of reach alpha (party/raid members):")
-		ns.unitframes.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb6, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.content.fadeout_alpha_text = ns.createFontstring("unitframes", "out of reach alpha (party/raid members):", "content")
+		ns.unitframes.content.fadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.content.cb6, "BOTTOMLEFT", 0, -8)
 
-		ns.unitframes.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"])
-		ns.unitframes.fadeout_alpha:SetPoint("LEFT", ns.unitframes.fadeout_alpha_text, "RIGHT", -10, -3)
+		ns.unitframes.content.fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"], "content")
+		ns.unitframes.content.fadeout_alpha:SetPoint("LEFT", ns.unitframes.content.fadeout_alpha_text, "RIGHT", -10, -3)
 
-		ns.unitframes.cb7 = ns.createCheckBox("unitframes", "uf_combatfade", "|cff5599ffenable combatFade for unitframes|r", LolzenUIcfg.unitframes["uf_fade_combat"])
-		ns.unitframes.cb7:SetPoint("TOPLEFT", ns.unitframes.fadeout_alpha_text, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.content.cb7 = ns.createCheckBox("unitframes", "uf_combatfade", "|cff5599ffenable combatFade for unitframes|r", LolzenUIcfg.unitframes["uf_fade_combat"], "content")
+		ns.unitframes.content.cb7:SetPoint("TOPLEFT", ns.unitframes.content.fadeout_alpha_text, "BOTTOMLEFT", 0, -8)
 
-		ns.unitframes.combatfadeout_alpha_text = ns.createFontstring("unitframes", "in combat alpha:")
-		ns.unitframes.combatfadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.cb7, "BOTTOMLEFT", 0, -8)
+		ns.unitframes.content.combatfadeout_alpha_text = ns.createFontstring("unitframes", "in combat alpha:", "content")
+		ns.unitframes.content.combatfadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.content.cb7, "BOTTOMLEFT", 0, -8)
 
-		ns.unitframes.combatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_incombat", 45, LolzenUIcfg.unitframes["uf_fade_combat_incombat"])
-		ns.unitframes.combatfadeout_alpha:SetPoint("LEFT", ns.unitframes.combatfadeout_alpha_text, "RIGHT", -10, -3)
+		ns.unitframes.content.combatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_incombat", 45, LolzenUIcfg.unitframes["uf_fade_combat_incombat"], "content")
+		ns.unitframes.content.combatfadeout_alpha:SetPoint("LEFT", ns.unitframes.content.combatfadeout_alpha_text, "RIGHT", -10, -3)
 
-		ns.unitframes.outofcombatfadeout_alpha_text = ns.createFontstring("unitframes", "out of combat alpha:")
-		ns.unitframes.outofcombatfadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.combatfadeout_alpha_text, "BOTTOMLEFT", 0, -15)
+		ns.unitframes.content.outofcombatfadeout_alpha_text = ns.createFontstring("unitframes", "out of combat alpha:", "content")
+		ns.unitframes.content.outofcombatfadeout_alpha_text:SetPoint("TOPLEFT", ns.unitframes.content.combatfadeout_alpha_text, "BOTTOMLEFT", 0, -15)
 
-		ns.unitframes.outofcombatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_outofcombat", 45, LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"])
-		ns.unitframes.outofcombatfadeout_alpha:SetPoint("LEFT", ns.unitframes.outofcombatfadeout_alpha_text, "RIGHT", -10, -3)
+		ns.unitframes.content.outofcombatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_outofcombat", 45, LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"], "content")
+		ns.unitframes.content.outofcombatfadeout_alpha:SetPoint("LEFT", ns.unitframes.content.outofcombatfadeout_alpha_text, "RIGHT", -10, -3)
 
-		ns.unitframes.header4 = ns.createHeader("unitframes", "General Healthpoints Font options (can be overwritten per unit specific settings)")
-		ns.unitframes.header4:SetPoint("TOPLEFT", ns.unitframes.outofcombatfadeout_alpha_text, "BOTTOMLEFT", 0, -30)
+		ns.unitframes.content.header4 = ns.createHeader("unitframes", "General Healthpoints Font options (can be overwritten per unit specific settings)", "content")
+		ns.unitframes.content.header4:SetPoint("TOPLEFT", ns.unitframes.content.outofcombatfadeout_alpha_text, "BOTTOMLEFT", 0, -30)
 
-		ns.unitframes.general_hp_pos_x_text = ns.createFontstring("unitframes", "PosX:")
-		ns.unitframes.general_hp_pos_x_text:SetPoint("TOPLEFT", ns.unitframes.header4, "BOTTOMLEFT", 0, -10)
+		ns.unitframes.content.general_hp_pos_x_text = ns.createFontstring("unitframes", "PosX:", "content")
+		ns.unitframes.content.general_hp_pos_x_text:SetPoint("TOPLEFT", ns.unitframes.content.header4, "BOTTOMLEFT", 0, -10)
 
-		ns.unitframes.general_hp_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_posx"])
-		ns.unitframes.general_hp_pos_x:SetPoint("LEFT", ns.unitframes.general_hp_pos_x_text, "RIGHT", 10, 0)
+		ns.unitframes.content.general_hp_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_posx"], "content")
+		ns.unitframes.content.general_hp_pos_x:SetPoint("LEFT", ns.unitframes.content.general_hp_pos_x_text, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_pos_y_text = ns.createFontstring("unitframes", "PosY:")
-		ns.unitframes.general_hp_pos_y_text:SetPoint("LEFT", ns.unitframes.general_hp_pos_x, "RIGHT", 5, 0)
+		ns.unitframes.content.general_hp_pos_y_text = ns.createFontstring("unitframes", "PosY:", "content")
+		ns.unitframes.content.general_hp_pos_y_text:SetPoint("LEFT", ns.unitframes.content.general_hp_pos_x, "RIGHT", 5, 0)
 
-		ns.unitframes.general_hp_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_posy"])
-		ns.unitframes.general_hp_pos_y:SetPoint("LEFT", ns.unitframes.general_hp_pos_y_text, "RIGHT", 10, 0)
+		ns.unitframes.content.general_hp_pos_y = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_posy"], "content")
+		ns.unitframes.content.general_hp_pos_y:SetPoint("LEFT", ns.unitframes.content.general_hp_pos_y_text, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_anchor_text = ns.createFontstring("unitframes", "Anchor:")
-		ns.unitframes.general_hp_anchor_text:SetPoint("LEFT", ns.unitframes.general_hp_pos_y, "RIGHT", 5, 0)
+		ns.unitframes.content.general_hp_anchor_text = ns.createFontstring("unitframes", "Anchor:", "content")
+		ns.unitframes.content.general_hp_anchor_text:SetPoint("LEFT", ns.unitframes.content.general_hp_pos_y, "RIGHT", 5, 0)
 
-		ns.unitframes.general_hp_anchor = ns.createPicker("unitframes", "anchor", "uf_general_hp_anchor", 110, LolzenUIcfg.unitframes["uf_general_hp_anchor"])
-		ns.unitframes.general_hp_anchor:SetPoint("LEFT", ns.unitframes.general_hp_anchor_text, "RIGHT", -10, -3)
+		ns.unitframes.content.general_hp_anchor = ns.createPicker("unitframes", "anchor", "uf_general_hp_anchor", 110, LolzenUIcfg.unitframes["uf_general_hp_anchor"], "content")
+		ns.unitframes.content.general_hp_anchor:SetPoint("LEFT", ns.unitframes.content.general_hp_anchor_text, "RIGHT", -10, -3)
 
-		ns.unitframes.general_hp_font_text = ns.createFontstring("unitframes", "Font:")
-		ns.unitframes.general_hp_font_text:SetPoint("TOPLEFT", ns.unitframes.general_hp_pos_x_text, "BOTTOMLEFT", 0, -15)
+		ns.unitframes.content.general_hp_font_text = ns.createFontstring("unitframes", "Font:", "content")
+		ns.unitframes.content.general_hp_font_text:SetPoint("TOPLEFT", ns.unitframes.content.general_hp_pos_x_text, "BOTTOMLEFT", 0, -15)
 
-		ns.unitframes.general_hp_font = ns.createPicker("unitframes", "font", "uf_general_hp_font", 120, LolzenUIcfg.unitframes["uf_general_hp_font"])
-		ns.unitframes.general_hp_font:SetPoint("LEFT", ns.unitframes.general_hp_font_text, "RIGHT", -10, -3)
+		ns.unitframes.content.general_hp_font = ns.createPicker("unitframes", "font", "uf_general_hp_font", 120, LolzenUIcfg.unitframes["uf_general_hp_font"], "content")
+		ns.unitframes.content.general_hp_font:SetPoint("LEFT", ns.unitframes.content.general_hp_font_text, "RIGHT", -10, -3)
 
-		ns.unitframes.general_hp_font_size_text = ns.createFontstring("unitframes", "Font size:")
-		ns.unitframes.general_hp_font_size_text:SetPoint("LEFT", ns.unitframes.general_hp_font, "RIGHT", -5, 3)
+		ns.unitframes.content.general_hp_font_size_text = ns.createFontstring("unitframes", "Font size:", "content")
+		ns.unitframes.content.general_hp_font_size_text:SetPoint("LEFT", ns.unitframes.content.general_hp_font, "RIGHT", -5, 3)
 
-		ns.unitframes.general_hp_font_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_font_size"])
-		ns.unitframes.general_hp_font_size:SetPoint("LEFT", ns.unitframes.general_hp_font_size_text, "RIGHT", 10, 0)
+		ns.unitframes.content.general_hp_font_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes["uf_general_hp_font_size"], "content")
+		ns.unitframes.content.general_hp_font_size:SetPoint("LEFT", ns.unitframes.content.general_hp_font_size_text, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_font_flag_text = ns.createFontstring("unitframes", "Font flag:")
-		ns.unitframes.general_hp_font_flag_text:SetPoint("LEFT", ns.unitframes.general_hp_font_size, "RIGHT", 10, 0)
+		ns.unitframes.content.general_hp_font_flag_text = ns.createFontstring("unitframes", "Font flag:", "content")
+		ns.unitframes.content.general_hp_font_flag_text:SetPoint("LEFT", ns.unitframes.content.general_hp_font_size, "RIGHT", 10, 0)
 
-		ns.unitframes.general_hp_font_flag = ns.createPicker("unitframes", "flag", "uf_general_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_general_hp_font_flag"])
-		ns.unitframes.general_hp_font_flag:SetPoint("LEFT", ns.unitframes.general_hp_font_flag_text, "RIGHT", -10, -3)
+		ns.unitframes.content.general_hp_font_flag = ns.createPicker("unitframes", "flag", "uf_general_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_general_hp_font_flag"], "content")
+		ns.unitframes.content.general_hp_font_flag:SetPoint("LEFT", ns.unitframes.content.general_hp_font_flag_text, "RIGHT", -10, -3)
 
-		ns.unitframes.cb8 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"])
-		ns.unitframes.cb8:SetPoint("TOPLEFT", ns.unitframes.general_hp_font_text, "BOTTOMLEFT", 0, -18)
+		ns.unitframes.content.cb8 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"], "content")
+		ns.unitframes.content.cb8:SetPoint("TOPLEFT", ns.unitframes.content.general_hp_font_text, "BOTTOMLEFT", 0, -18)
 		
 		-- // Create a subcategory panel for Player // --
 		ns.uf_player_options = CreateFrame("Frame", "unitframe_playerpanel", ns["unitframes"])
@@ -2851,34 +2888,34 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.pain_f:SetAllPoints(ns.uf_powercolor_options.pain)
 
 		ns["unitframes"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_use_hp_percent"] = ns.unitframes.cb1:GetChecked()
-			LolzenUIcfg.unitframes["uf_use_val_and_perc"] = ns.unitframes.cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_perc_first"] = ns.unitframes.cb3:GetChecked()
-			LolzenUIcfg.unitframes["uf_val_perc_divider"] = ns.unitframes.perc_val_divider:GetText()
-			LolzenUIcfg.unitframes["uf_use_sivalue"] = ns.unitframes.cb4:GetChecked()
-			LolzenUIcfg.unitframes["uf_use_dot_format"] = ns.unitframes.cb5:GetChecked()
-			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(ns.unitframes.texture)
-			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(ns.unitframes.border)
-			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(ns.unitframes.rt_size:GetText())
-			LolzenUIcfg.unitframes["uf_ri_posx"] = tonumber(ns.unitframes.rt_pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_ri_posy"] = tonumber(ns.unitframes.rt_pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.rt_anchor)]
-			LolzenUIcfg.unitframes["uf_lead_size"] = tonumber(ns.unitframes.lead_size:GetText())
-			LolzenUIcfg.unitframes["uf_lead_posx"] = tonumber(ns.unitframes.lead_pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_lead_posy"] = tonumber(ns.unitframes.lead_pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.lead_anchor)]
-			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.cb6:GetChecked()
-			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.fadeout_alpha)])
-			LolzenUIcfg.unitframes["uf_general_hp_font_size"] = tonumber(ns.unitframes.general_hp_font_size:GetText())
-			LolzenUIcfg.unitframes["uf_general_hp_font"] = UIDropDownMenu_GetSelectedName(ns.unitframes.general_hp_font)
-			LolzenUIcfg.unitframes["uf_general_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.unitframes.general_hp_font_flag)]
-			LolzenUIcfg.unitframes["uf_general_hp_posx"] = tonumber(ns.unitframes.general_hp_pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_general_hp_posy"] = tonumber(ns.unitframes.general_hp_pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_general_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.general_hp_anchor)]
-			LolzenUIcfg.unitframes["uf_fade_combat"] = ns.unitframes.cb7:GetChecked()
-			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.combatfadeout_alpha)])
-			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.outofcombatfadeout_alpha)])
-			LolzenUIcfg.unitframes["uf_testmode"] = ns.unitframes.cb8:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_hp_percent"] = ns.unitframes.content.cb1:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_val_and_perc"] = ns.unitframes.content.cb2:GetChecked()
+			LolzenUIcfg.unitframes["uf_perc_first"] = ns.unitframes.content.cb3:GetChecked()
+			LolzenUIcfg.unitframes["uf_val_perc_divider"] = ns.unitframes.content.perc_val_divider:GetText()
+			LolzenUIcfg.unitframes["uf_use_sivalue"] = ns.unitframes.content.cb4:GetChecked()
+			LolzenUIcfg.unitframes["uf_use_dot_format"] = ns.unitframes.content.cb5:GetChecked()
+			LolzenUIcfg.unitframes["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(ns.unitframes.content.texture)
+			LolzenUIcfg.unitframes["uf_border"] = UIDropDownMenu_GetSelectedName(ns.unitframes.content.border)
+			LolzenUIcfg.unitframes["uf_ri_size"] = tonumber(ns.unitframes.content.rt_size:GetText())
+			LolzenUIcfg.unitframes["uf_ri_posx"] = tonumber(ns.unitframes.content.rt_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_ri_posy"] = tonumber(ns.unitframes.content.rt_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.content.rt_anchor)]
+			LolzenUIcfg.unitframes["uf_lead_size"] = tonumber(ns.unitframes.content.lead_size:GetText())
+			LolzenUIcfg.unitframes["uf_lead_posx"] = tonumber(ns.unitframes.content.lead_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_lead_posy"] = tonumber(ns.unitframes.content.lead_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.content.lead_anchor)]
+			LolzenUIcfg.unitframes["uf_fade_outofreach"] = ns.unitframes.content.cb6:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_outofreach_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.fadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_general_hp_font_size"] = tonumber(ns.unitframes.content.general_hp_font_size:GetText())
+			LolzenUIcfg.unitframes["uf_general_hp_font"] = UIDropDownMenu_GetSelectedName(ns.unitframes.content.general_hp_font)
+			LolzenUIcfg.unitframes["uf_general_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.unitframes.content.general_hp_font_flag)]
+			LolzenUIcfg.unitframes["uf_general_hp_posx"] = tonumber(ns.unitframes.content.general_hp_pos_x:GetText())
+			LolzenUIcfg.unitframes["uf_general_hp_posy"] = tonumber(ns.unitframes.content.general_hp_pos_y:GetText())
+			LolzenUIcfg.unitframes["uf_general_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.unitframes.content.general_hp_anchor)]
+			LolzenUIcfg.unitframes["uf_fade_combat"] = ns.unitframes.content.cb7:GetChecked()
+			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.combatfadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.outofcombatfadeout_alpha)])
+			LolzenUIcfg.unitframes["uf_testmode"] = ns.unitframes.content.cb8:GetChecked()
 		end
 
 		ns["unitframes"].default = function(self)

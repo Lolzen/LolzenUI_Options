@@ -28,7 +28,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.scrollbar:SetPoint("TOPLEFT", ns.unitframes, "TOPRIGHT", -20, -20)
 		ns.unitframes.scrollbar:SetPoint("BOTTOMLEFT", ns.unitframes, "BOTTOMRIGHT", -20, 20)
 		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.unitframes.scrollbar:SetMinMaxValues(5, 44) 
+		ns.unitframes.scrollbar:SetMinMaxValues(5, 80) 
 		ns.unitframes.scrollbar:SetValueStep(1) 
 		ns.unitframes.scrollbar.scrollStep = 1
 		ns.unitframes.scrollbar:SetValue(0) 

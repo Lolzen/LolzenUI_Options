@@ -304,7 +304,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns.unitframes.content.cb8 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"], "content")
 		ns.unitframes.content.cb8:SetPoint("TOPLEFT", ns.unitframes.content.general_hp_font_text, "BOTTOMLEFT", 0, -18)
-		
+
+		-- // Create a subcategory panel for Positions (oUF_MovableFrames) // --
+		LolzenUI.omf()
+
 		-- // Create a subcategory panel for Player // --
 		ns.uf_player_options = CreateFrame("Frame", "unitframe_playerpanel", ns["unitframes"])
 		ns.uf_player_options.name = "   Player"

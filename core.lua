@@ -209,6 +209,7 @@ ns.picker_uf_auragrowth_y = {
 	"DOWN",
 }
 
+local LolzenFontObjects = {}
 ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	local t
 	if pickertype == "alpha" then
@@ -264,6 +265,14 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 			info.text = v
 			info.value = v
 			info.func = OnClick
+			if pickertype == "font" then
+				--create new fontobjects
+				LolzenFontObjects[v] = CreateFont(v)
+				LolzenFontObjects[v]:SetTextColor(1, 1, 1)
+				LolzenFontObjects[v]:SetFont(LSM:Fetch("font", v), 14, "")
+				--now use created fontObjects to distinguish the fonts in the picker
+				info.fontObject = LolzenFontObjects[v]
+			end
 			UIDropDownMenu_AddButton(info, level)
 		end
 	end

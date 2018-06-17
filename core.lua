@@ -269,9 +269,9 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 				--create new fontobjects
 				LolzenFontObjects[v] = CreateFont(v)
 				LolzenFontObjects[v]:SetTextColor(1, 1, 1)
-				LolzenFontObjects[v]:SetFont(LSM:Fetch("font", v), 14, "")
+				LolzenFontObjects[v]:SetFont(LSM:Fetch("font", v), 12, "")
 				--now use created fontObjects to distinguish the fonts in the picker
-				info.fontObject = LolzenFontObjects[v]
+				info.fontObject = v
 			end
 			UIDropDownMenu_AddButton(info, level)
 		end

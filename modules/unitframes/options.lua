@@ -28,7 +28,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.unitframes.scrollbar:SetPoint("TOPLEFT", ns.unitframes, "TOPRIGHT", -20, -20)
 		ns.unitframes.scrollbar:SetPoint("BOTTOMLEFT", ns.unitframes, "BOTTOMRIGHT", -20, 20)
 		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.unitframes.scrollbar:SetMinMaxValues(5, 80) 
+		ns.unitframes.scrollbar:SetMinMaxValues(5, 46) 
 		ns.unitframes.scrollbar:SetValueStep(1) 
 		ns.unitframes.scrollbar.scrollStep = 1
 		ns.unitframes.scrollbar:SetValue(0) 
@@ -301,9 +301,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns.unitframes.content.general_hp_font_flag = ns.createPicker("unitframes", "flag", "uf_general_hp_font_flag", 120, LolzenUIcfg.unitframes["uf_general_hp_font_flag"], "content")
 		ns.unitframes.content.general_hp_font_flag:SetPoint("LEFT", ns.unitframes.content.general_hp_font_flag_text, "RIGHT", -10, -3)
-
-		ns.unitframes.content.cb8 = ns.createCheckBox("unitframes", "uf_testmode", "|cffff0000tesmode: shows every unitframe at all times|r", LolzenUIcfg.unitframes["uf_testmode"], "content")
-		ns.unitframes.content.cb8:SetPoint("TOPLEFT", ns.unitframes.content.general_hp_font_text, "BOTTOMLEFT", 0, -18)
 
 		-- // Create a subcategory panel for Positions (oUF_MovableFrames) // --
 		LolzenUI.omf()
@@ -2918,7 +2915,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_fade_combat"] = ns.unitframes.content.cb7:GetChecked()
 			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.combatfadeout_alpha)])
 			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.outofcombatfadeout_alpha)])
-			LolzenUIcfg.unitframes["uf_testmode"] = ns.unitframes.content.cb8:GetChecked()
 		end
 
 		ns["unitframes"].default = function(self)
@@ -2949,7 +2945,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_fade_combat"] = true
 			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = 1
 			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = 0.3
-			LolzenUIcfg.unitframes["uf_testmode"] = false
 			ReloadUI()
 		end
 

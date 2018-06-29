@@ -141,21 +141,21 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns.unitframes.content.cb2:SetScript("OnClick", function(self)
-			if ns.unitframes.cb2:GetChecked() == true then
-				ns.unitframes.cb3:Enable()
-				ns.unitframes.cb4:Enable()
-				ns.unitframes.cb5:Enable()
+			if ns.unitframes.content.cb2:GetChecked() == true then
+				ns.unitframes.content.cb3:Enable()
+				ns.unitframes.content.cb4:Enable()
+				ns.unitframes.content.cb5:Enable()
 				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r")
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r")
 				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r")
-				ns.unitframes.perc_val_divider_text:Show()
-				ns.unitframes.perc_val_divider:Show()
+				ns.unitframes.content.perc_val_divider_text:Show()
+				ns.unitframes.content.perc_val_divider:Show()
 			else
-				ns.unitframes.cb3:Disable()
-				ns.unitframes.cb4:Disable()
-				ns.unitframes.cb5:Disable()
-				ns.unitframes.perc_val_divider_text:Hide()
-				ns.unitframes.perc_val_divider:Hide()
+				ns.unitframes.content.cb3:Disable()
+				ns.unitframes.content.cb4:Disable()
+				ns.unitframes.content.cb5:Disable()
+				ns.unitframes.content.perc_val_divider_text:Hide()
+				ns.unitframes.content.perc_val_divider:Hide()
 				uf_perc_firstText:SetText("|cff5599ffuse [percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[value] instead of [value]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[percent]|r |cffff5555enable 'both value and percent'|r")
 				uf_siValText:SetText("|cff5599ffuse short values (34m5, 3k2, etc)|r |cffff5555disable hp percentage for this option|r")
 				uf_siVal_dotText:SetText("|cff5599ffuse dot divider for short values (34.5m, 3.2k, etc)|r |cffff5555disable hp percentage for this option|r")
@@ -350,26 +350,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.content.title:SetPoint("TOPLEFT", ns.uf_player_options.content, 16, -16)
 		ns.uf_player_options.content.title:SetText("|cff5599ffUnitframes module: Player Options|r")
 
-		ns.uf_player_options.content.pos_x_text = ns.createFontstring("uf_player_options", "PosX:", "content")
-		ns.uf_player_options.content.pos_x_text:SetPoint("TOPLEFT", ns.uf_player_options.content.title, "BOTTOMLEFT", 0, -30)
-
-		ns.uf_player_options.content.pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_posx"], "content")
-		ns.uf_player_options.content.pos_x:SetPoint("LEFT", ns.uf_player_options.content.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_player_options.content.pos_y_text = ns.createFontstring("uf_player_options", "PosY:", "content")
-		ns.uf_player_options.content.pos_y_text:SetPoint("LEFT", ns.uf_player_options.content.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_player_options.content.pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes["uf_player_posy"], "content")
-		ns.uf_player_options.content.pos_y:SetPoint("LEFT", ns.uf_player_options.content.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_player_options.content.anchor_text = ns.createFontstring("uf_player_options", "Anchor:", "content")
-		ns.uf_player_options.content.anchor_text:SetPoint("LEFT", ns.uf_player_options.content.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_player_options.content.anchor = ns.createPicker("uf_player_options", "anchor", "uf_player_anchor", 110, LolzenUIcfg.unitframes["uf_player_anchor"], "content")
-		ns.uf_player_options.content.anchor:SetPoint("LEFT", ns.uf_player_options.content.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_player_options.content.width_text = ns.createFontstring("uf_player_options", "Width:", "content")
-		ns.uf_player_options.content.width_text:SetPoint("TOPLEFT", ns.uf_player_options.content.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_player_options.content.width_text:SetPoint("TOPLEFT", ns.uf_player_options.content.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_player_options.content.width = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes["uf_player_width"], "content")
 		ns.uf_player_options.content.width:SetPoint("LEFT", ns.uf_player_options.content.width_text, "RIGHT", 10, 0)
@@ -799,26 +781,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.content.title:SetPoint("TOPLEFT", ns.uf_target_options.content, 16, -16)
 		ns.uf_target_options.content.title:SetText("|cff5599ffUnitframes module: Target Options|r")
 
-		ns.uf_target_options.content.pos_x_text = ns.createFontstring("uf_target_options", "PosX:", "content")
-		ns.uf_target_options.content.pos_x_text:SetPoint("TOPLEFT", ns.uf_target_options.content.title, "BOTTOMLEFT", 0, -30)
-
-		ns.uf_target_options.content.pos_x = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_posx"], "content")
-		ns.uf_target_options.content.pos_x:SetPoint("LEFT", ns.uf_target_options.content.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_target_options.content.pos_y_text = ns.createFontstring("uf_target_options", "PosY:", "content")
-		ns.uf_target_options.content.pos_y_text:SetPoint("LEFT", ns.uf_target_options.content.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_target_options.content.pos_y = ns.createInputbox("uf_target_options", 30, 20, LolzenUIcfg.unitframes["uf_target_posy"], "content")
-		ns.uf_target_options.content.pos_y:SetPoint("LEFT", ns.uf_target_options.content.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_target_options.content.anchor_text = ns.createFontstring("uf_target_options", "Anchor:", "content")
-		ns.uf_target_options.content.anchor_text:SetPoint("LEFT", ns.uf_target_options.content.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_target_options.content.anchor = ns.createPicker("uf_target_options", "anchor", "uf_target_anchor", 110, LolzenUIcfg.unitframes["uf_target_anchor"], "content")
-		ns.uf_target_options.content.anchor:SetPoint("LEFT", ns.uf_target_options.content.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_target_options.content.width_text = ns.createFontstring("uf_target_options", "Width:", "content")
-		ns.uf_target_options.content.width_text:SetPoint("TOPLEFT", ns.uf_target_options.content.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_target_options.content.width_text:SetPoint("TOPLEFT", ns.uf_target_options.content.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_target_options.content.width = ns.createInputbox("uf_target_options", 40, 20, LolzenUIcfg.unitframes["uf_target_width"], "content")
 		ns.uf_target_options.content.width:SetPoint("LEFT", ns.uf_target_options.content.width_text, "RIGHT", 10, 0)
@@ -1264,26 +1228,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_targettarget_options.title:SetPoint("TOPLEFT", ns.uf_targettarget_options, 16, -16)
 		ns.uf_targettarget_options.title:SetText("|cff5599ffUnitframes module: Targettarget Options|r")
 
-		ns.uf_targettarget_options.pos_x_text = ns.createFontstring("uf_targettarget_options", "PosX:")
-		ns.uf_targettarget_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.title, "BOTTOMLEFT", 0, -30)
-
-		ns.uf_targettarget_options.pos_x = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_posx"])
-		ns.uf_targettarget_options.pos_x:SetPoint("LEFT", ns.uf_targettarget_options.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_targettarget_options.pos_y_text = ns.createFontstring("uf_targettarget_options", "PosY:")
-		ns.uf_targettarget_options.pos_y_text:SetPoint("LEFT", ns.uf_targettarget_options.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_targettarget_options.pos_y = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes["uf_targettarget_posy"])
-		ns.uf_targettarget_options.pos_y:SetPoint("LEFT", ns.uf_targettarget_options.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_targettarget_options.anchor_text = ns.createFontstring("uf_targettarget_options", "Anchor:")
-		ns.uf_targettarget_options.anchor_text:SetPoint("LEFT", ns.uf_targettarget_options.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_targettarget_options.anchor = ns.createPicker("uf_targettarget_options", "anchor", "uf_targettarget_anchor", 110, LolzenUIcfg.unitframes["uf_targettarget_anchor"])
-		ns.uf_targettarget_options.anchor:SetPoint("LEFT", ns.uf_targettarget_options.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_targettarget_options.width_text = ns.createFontstring("uf_targettarget_options", "Width:")
-		ns.uf_targettarget_options.width_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_targettarget_options.width_text:SetPoint("TOPLEFT", ns.uf_targettarget_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_targettarget_options.width = ns.createInputbox("uf_targettarget_options", 40, 20, LolzenUIcfg.unitframes["uf_targettarget_width"])
 		ns.uf_targettarget_options.width:SetPoint("LEFT", ns.uf_targettarget_options.width_text, "RIGHT", 10, 0)
@@ -1352,26 +1298,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_party_options.cb2 = ns.createCheckBox("uf_party_options", "uf_party_vertical", "|cff5599ffuse vertical Layout|r", LolzenUIcfg.unitframes["uf_party_use_vertical_layout"])
 		ns.uf_party_options.cb2:SetPoint("TOPLEFT", ns.uf_party_options.cb1, "BOTTOMLEFT", 0, 0)
 
-		ns.uf_party_options.pos_x_text = ns.createFontstring("uf_party_options", "PosX:")
-		ns.uf_party_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_party_options.cb2, "BOTTOMLEFT", 0, -8)
-
-		ns.uf_party_options.pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posx"])
-		ns.uf_party_options.pos_x:SetPoint("LEFT", ns.uf_party_options.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_party_options.pos_y_text = ns.createFontstring("uf_party_options", "PosY:")
-		ns.uf_party_options.pos_y_text:SetPoint("LEFT", ns.uf_party_options.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_party_options.pos_y = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes["uf_party_posy"])
-		ns.uf_party_options.pos_y:SetPoint("LEFT", ns.uf_party_options.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_party_options.anchor_text = ns.createFontstring("uf_party_options", "Anchor:")
-		ns.uf_party_options.anchor_text:SetPoint("LEFT", ns.uf_party_options.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_party_options.anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_anchor", 110, LolzenUIcfg.unitframes["uf_party_anchor"])
-		ns.uf_party_options.anchor:SetPoint("LEFT", ns.uf_party_options.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_party_options.width_text = ns.createFontstring("uf_party_options", "Width:")
-		ns.uf_party_options.width_text:SetPoint("TOPLEFT", ns.uf_party_options.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_party_options.width_text:SetPoint("TOPLEFT", ns.uf_party_options.cb2, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_party_options.width = ns.createInputbox("uf_party_options", 40, 20, LolzenUIcfg.unitframes["uf_party_width"])
 		ns.uf_party_options.width:SetPoint("LEFT", ns.uf_party_options.width_text, "RIGHT", 10, 0)
@@ -1494,26 +1422,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_raid_options.cb1 = ns.createCheckBox("uf_raid_options", "uf_raid_enabled", "|cff5599ffuse LolzenUI raidframes (disable for alternatives/blizzard default)|r", LolzenUIcfg.unitframes["uf_raid_enabled"])
 		ns.uf_raid_options.cb1:SetPoint("TOPLEFT", ns.uf_raid_options.title, "BOTTOMLEFT", 0, -30)
 
-		ns.uf_raid_options.pos_x_text = ns.createFontstring("uf_raid_options", "PosX:")
-		ns.uf_raid_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_raid_options.cb1, "BOTTOMLEFT", 0, -8)
-
-		ns.uf_raid_options.pos_x = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_posx"])
-		ns.uf_raid_options.pos_x:SetPoint("LEFT", ns.uf_raid_options.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_raid_options.pos_y_text = ns.createFontstring("uf_raid_options", "PosY:")
-		ns.uf_raid_options.pos_y_text:SetPoint("LEFT", ns.uf_raid_options.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_raid_options.pos_y = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes["uf_raid_posy"])
-		ns.uf_raid_options.pos_y:SetPoint("LEFT", ns.uf_raid_options.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_raid_options.anchor_text = ns.createFontstring("uf_raid_options", "Anchor:")
-		ns.uf_raid_options.anchor_text:SetPoint("LEFT", ns.uf_raid_options.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_raid_options.anchor = ns.createPicker("uf_raid_options", "anchor", "uf_raid_anchor", 110, LolzenUIcfg.unitframes["uf_raid_anchor"])
-		ns.uf_raid_options.anchor:SetPoint("LEFT", ns.uf_raid_options.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_raid_options.width_text = ns.createFontstring("uf_raid_options", "Width:")
-		ns.uf_raid_options.width_text:SetPoint("TOPLEFT", ns.uf_raid_options.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_raid_options.width_text:SetPoint("TOPLEFT", ns.uf_raid_options.cb1, "BOTTOMLEFT", 0, -8)
 
 		ns.uf_raid_options.width = ns.createInputbox("uf_raid_options", 40, 20, LolzenUIcfg.unitframes["uf_raid_width"])
 		ns.uf_raid_options.width:SetPoint("LEFT", ns.uf_raid_options.width_text, "RIGHT", 10, 0)
@@ -1633,26 +1543,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_pet_options.title:SetPoint("TOPLEFT", ns.uf_pet_options, 16, -16)
 		ns.uf_pet_options.title:SetText("|cff5599ffUnitframes module: Pet Options|r")
 
-		ns.uf_pet_options.pos_x_text = ns.createFontstring("uf_pet_options", "PosX:")
-		ns.uf_pet_options.pos_x_text:SetPoint("TOPLEFT", ns.uf_pet_options.title, "BOTTOMLEFT", 0, -30)
-
-		ns.uf_pet_options.pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_posx"])
-		ns.uf_pet_options.pos_x:SetPoint("LEFT", ns.uf_pet_options.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_pet_options.pos_y_text = ns.createFontstring("uf_pet_options", "PosY:")
-		ns.uf_pet_options.pos_y_text:SetPoint("LEFT", ns.uf_pet_options.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_pet_options.pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes["uf_pet_posy"])
-		ns.uf_pet_options.pos_y:SetPoint("LEFT", ns.uf_pet_options.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_pet_options.anchor_text = ns.createFontstring("uf_pet_options", "Anchor:")
-		ns.uf_pet_options.anchor_text:SetPoint("LEFT", ns.uf_pet_options.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_pet_options.anchor = ns.createPicker("uf_pet_options", "anchor", "uf_pet_anchor", 110, LolzenUIcfg.unitframes["uf_pet_anchor"])
-		ns.uf_pet_options.anchor:SetPoint("LEFT", ns.uf_pet_options.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_pet_options.width_text = ns.createFontstring("uf_pet_options", "Width:")
-		ns.uf_pet_options.width_text:SetPoint("TOPLEFT", ns.uf_pet_options.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_pet_options.width_text:SetPoint("TOPLEFT", ns.uf_pet_options.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_pet_options.width = ns.createInputbox("uf_pet_options", 40, 20, LolzenUIcfg.unitframes["uf_pet_width"])
 		ns.uf_pet_options.width:SetPoint("LEFT", ns.uf_pet_options.width_text, "RIGHT", 10, 0)
@@ -1885,26 +1777,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.content.title:SetPoint("TOPLEFT", ns.uf_boss_options.content, 16, -16)
 		ns.uf_boss_options.content.title:SetText("|cff5599ffUnitframes module: Boss Options|r")
 
-		ns.uf_boss_options.content.pos_x_text = ns.createFontstring("uf_boss_options", "PosX:", "content")
-		ns.uf_boss_options.content.pos_x_text:SetPoint("TOPLEFT", ns.uf_boss_options.content.title, "BOTTOMLEFT", 0, -30)
-
-		ns.uf_boss_options.content.pos_x = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_posx"], "content")
-		ns.uf_boss_options.content.pos_x:SetPoint("LEFT", ns.uf_boss_options.content.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_boss_options.content.pos_y_text = ns.createFontstring("uf_boss_options", "PosY:", "content")
-		ns.uf_boss_options.content.pos_y_text:SetPoint("LEFT", ns.uf_boss_options.content.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_boss_options.content.pos_y = ns.createInputbox("uf_boss_options", 30, 20, LolzenUIcfg.unitframes["uf_boss_posy"], "content")
-		ns.uf_boss_options.content.pos_y:SetPoint("LEFT", ns.uf_boss_options.content.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_boss_options.content.anchor_text = ns.createFontstring("uf_boss_options", "Anchor:", "content")
-		ns.uf_boss_options.content.anchor_text:SetPoint("LEFT", ns.uf_boss_options.content.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_boss_options.content.anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_anchor", 110, LolzenUIcfg.unitframes["uf_boss_anchor"], "content")
-		ns.uf_boss_options.content.anchor:SetPoint("LEFT", ns.uf_boss_options.content.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_boss_options.content.width_text = ns.createFontstring("uf_boss_options", "Width:", "content")
-		ns.uf_boss_options.content.width_text:SetPoint("TOPLEFT", ns.uf_boss_options.content.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_boss_options.content.width_text:SetPoint("TOPLEFT", ns.uf_boss_options.content.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_boss_options.content.width = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_width"], "content")
 		ns.uf_boss_options.content.width:SetPoint("LEFT", ns.uf_boss_options.content.width_text, "RIGHT", 10, 0)
@@ -2383,26 +2257,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_focus_options.content.title:SetPoint("TOPLEFT", ns.uf_focus_options.content, 16, -16)
 		ns.uf_focus_options.content.title:SetText("|cff5599ffUnitframes module: Focus Options|r")
 
-		ns.uf_focus_options.content.pos_x_text = ns.createFontstring("uf_focus_options", "PosX:", "content")
-		ns.uf_focus_options.content.pos_x_text:SetPoint("TOPLEFT", ns.uf_focus_options.content.title, "BOTTOMLEFT", 0, -30)
-
-		ns.uf_focus_options.content.pos_x = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_posx"], "content")
-		ns.uf_focus_options.content.pos_x:SetPoint("LEFT", ns.uf_focus_options.content.pos_x_text, "RIGHT", 10, 0)
-
-		ns.uf_focus_options.content.pos_y_text = ns.createFontstring("uf_focus_options", "PosY:", "content")
-		ns.uf_focus_options.content.pos_y_text:SetPoint("LEFT", ns.uf_focus_options.content.pos_x, "RIGHT", 5, 0)
-
-		ns.uf_focus_options.content.pos_y = ns.createInputbox("uf_focus_options", 30, 20, LolzenUIcfg.unitframes["uf_focus_posy"], "content")
-		ns.uf_focus_options.content.pos_y:SetPoint("LEFT", ns.uf_focus_options.content.pos_y_text, "RIGHT", 10, 0)
-
-		ns.uf_focus_options.content.anchor_text = ns.createFontstring("uf_focus_options", "Anchor:", "content")
-		ns.uf_focus_options.content.anchor_text:SetPoint("LEFT", ns.uf_focus_options.content.pos_y, "RIGHT", 5, 0)
-
-		ns.uf_focus_options.content.anchor = ns.createPicker("uf_focus_options", "anchor", "uf_focus_anchor", 110, LolzenUIcfg.unitframes["uf_focus_anchor"], "content")
-		ns.uf_focus_options.content.anchor:SetPoint("LEFT", ns.uf_focus_options.content.anchor_text, "RIGHT", -10, -3)
-
 		ns.uf_focus_options.content.width_text = ns.createFontstring("uf_focus_options", "Width:", "content")
-		ns.uf_focus_options.content.width_text:SetPoint("TOPLEFT", ns.uf_focus_options.content.pos_x_text, "BOTTOMLEFT", 0, -10)
+		ns.uf_focus_options.content.width_text:SetPoint("TOPLEFT", ns.uf_focus_options.content.title, "BOTTOMLEFT", 0, -30)
 
 		ns.uf_focus_options.content.width = ns.createInputbox("uf_focus_options", 40, 20, LolzenUIcfg.unitframes["uf_focus_width"], "content")
 		ns.uf_focus_options.content.width:SetPoint("LEFT", ns.uf_focus_options.content.width_text, "RIGHT", 10, 0)
@@ -2949,9 +2805,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_player_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_player_posx"] = tonumber(ns.uf_player_options.content.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_player_posy"] = tonumber(ns.uf_player_options.content.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_player_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_player_options.content.anchor)]
 			LolzenUIcfg.unitframes["uf_player_use_own_hp_font_settings"] = ns.uf_player_options.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_player_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_player_options.content.hp_font)
 			LolzenUIcfg.unitframes["uf_player_hp_font_size"] = tonumber(ns.uf_player_options.content.hp_font_size:GetText())
@@ -3005,9 +2858,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_player_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_player_posx"] = -250
-			LolzenUIcfg.unitframes["uf_player_posy"] = -200
-			LolzenUIcfg.unitframes["uf_player_anchor"] = "CENTER"
 			LolzenUIcfg.unitframes["uf_player_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_player_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_player_hp_font_size"] = 24
@@ -3062,9 +2912,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_target_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_target_posx"] = tonumber(ns.uf_target_options.content.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_target_posy"] = tonumber(ns.uf_target_options.content.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_target_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.anchor)]
 			LolzenUIcfg.unitframes["uf_target_use_own_hp_font_settings"] = ns.uf_target_options.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_target_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_target_options.content.hp_font)
 			LolzenUIcfg.unitframes["uf_target_hp_font_size"] = tonumber(ns.uf_target_options.content.hp_font_size:GetText())
@@ -3124,9 +2971,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_target_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_target_posx"] = 250
-			LolzenUIcfg.unitframes["uf_target_posy"] = -200
-			LolzenUIcfg.unitframes["uf_target_anchor"] = "CENTER"
 			LolzenUIcfg.unitframes["uf_target_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_target_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_target_hp_font_size"] = 24
@@ -3187,9 +3031,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_targettarget_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_targettarget_posx"] = tonumber(ns.uf_targettarget_options.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_targettarget_posy"] = tonumber(ns.uf_targettarget_options.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_targettarget_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_targettarget_options.anchor)]
 			LolzenUIcfg.unitframes["uf_targettarget_use_own_hp_font_settings"] = ns.uf_targettarget_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_targettarget_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_targettarget_options.hp_font)
 			LolzenUIcfg.unitframes["uf_targettarget_hp_font_size"] = tonumber(ns.uf_targettarget_options.hp_font_size:GetText())
@@ -3202,9 +3043,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_targettarget_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_targettarget_posx"] = 300
-			LolzenUIcfg.unitframes["uf_targettarget_posy"] = -177
-			LolzenUIcfg.unitframes["uf_targettarget_anchor"] = "CENTER"
 			LolzenUIcfg.unitframes["uf_targettarget_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_targettarget_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_targettarget_hp_font_size"] = 18
@@ -3220,9 +3058,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns["uf_party_options"].okay = function(self)
 			LolzenUIcfg.unitframes["uf_party_enabled"] = ns.uf_party_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_use_vertical_layout"] = ns.uf_party_options.cb2:GetChecked()
-			LolzenUIcfg.unitframes["uf_party_posx"] = tonumber(ns.uf_party_options.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_party_posy"] = tonumber(ns.uf_party_options.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_party_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_party_options.anchor)]
 			LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"] = ns.uf_party_options.cb3:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_party_options.hp_font)
 			LolzenUIcfg.unitframes["uf_party_hp_font_size"] = tonumber(ns.uf_party_options.hp_font_size:GetText())
@@ -3246,9 +3081,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns["uf_party_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_party_enabled"] = true
 			LolzenUIcfg.unitframes["uf_party_use_vertical_layout"] = false
-			LolzenUIcfg.unitframes["uf_party_posx"] = 0
-			LolzenUIcfg.unitframes["uf_party_posy"] = 140
-			LolzenUIcfg.unitframes["uf_party_anchor"] = "BOTTOM"
 			LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_party_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_party_hp_font_size"] = 13
@@ -3272,9 +3104,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["uf_raid_options"].okay = function(self)
 			LolzenUIcfg.unitframes["uf_raid_enabled"] = ns.uf_raid_options.cb1:GetChecked()
-			LolzenUIcfg.unitframes["uf_raid_posx"] = tonumber(ns.uf_raid_options.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_raid_posy"] = tonumber(ns.uf_raid_options.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_raid_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_raid_options.anchor)]
 			LolzenUIcfg.unitframes["uf_raid_use_own_hp_font_settings"] = ns.uf_raid_options.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_raid_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_raid_options.hp_font)
 			LolzenUIcfg.unitframes["uf_raid_hp_font_size"] = tonumber(ns.uf_raid_options.hp_font_size:GetText())
@@ -3297,9 +3126,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["uf_raid_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_raid_enabled"] = true
-			LolzenUIcfg.unitframes["uf_raid_posx"] = 20
-			LolzenUIcfg.unitframes["uf_raid_posy"] = 0
-			LolzenUIcfg.unitframes["uf_raid_anchor"] = "LEFT"
 			LolzenUIcfg.unitframes["uf_raid_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_raid_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_raid_hp_font_size"] = 13
@@ -3322,9 +3148,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_pet_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_pet_posx"] = tonumber(ns.uf_pet_options.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_pet_posy"] = tonumber(ns.uf_pet_options.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_pet_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.anchor)]
 			LolzenUIcfg.unitframes["uf_pet_use_own_hp_font_settings"] = ns.uf_pet_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_pet_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_pet_options.hp_font)
 			LolzenUIcfg.unitframes["uf_pet_hp_font_size"] = tonumber(ns.uf_pet_options.hp_font_size:GetText())
@@ -3357,9 +3180,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_pet_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_pet_posx"] = -300
-			LolzenUIcfg.unitframes["uf_pet_posy"] = -177
-			LolzenUIcfg.unitframes["uf_pet_anchor"] = "CENTER"
 			LolzenUIcfg.unitframes["uf_pet_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_pet_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_pet_hp_font_size"] = 18
@@ -3391,9 +3211,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_boss_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_boss_posx"] = tonumber(ns.uf_boss_options.content.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_boss_posy"] = tonumber(ns.uf_boss_options.content.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_boss_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.anchor)]
 			LolzenUIcfg.unitframes["uf_boss_width"] = tonumber(ns.uf_boss_options.content.width:GetText())
 			LolzenUIcfg.unitframes["uf_boss_height"] = tonumber(ns.uf_boss_options.content.height:GetText())
 			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.growth)]
@@ -3449,9 +3266,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_boss_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_boss_posx"] = 0
-			LolzenUIcfg.unitframes["uf_boss_posy"] = -200
-			LolzenUIcfg.unitframes["uf_boss_anchor"] = "CENTER"
 			LolzenUIcfg.unitframes["uf_boss_width"] = 160
 			LolzenUIcfg.unitframes["uf_boss_height"] = 11
 			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = "ABOVE"
@@ -3508,9 +3322,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_focus_options"].okay = function(self)
-			LolzenUIcfg.unitframes["uf_focus_posx"] = tonumber(ns.uf_focus_options.content.pos_x:GetText())
-			LolzenUIcfg.unitframes["uf_focus_posy"] = tonumber(ns.uf_focus_options.content.pos_y:GetText())
-			LolzenUIcfg.unitframes["uf_focus_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.content.anchor)]
 			LolzenUIcfg.unitframes["uf_focus_use_own_hp_font_settings"] = ns.uf_focus_options.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_focus_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_focus_options.content.hp_font)
 			LolzenUIcfg.unitframes["uf_focus_hp_font_size"] = tonumber(ns.uf_focus_options.content.hp_font_size:GetText())
@@ -3563,9 +3374,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		ns["uf_focus_options"].default = function(self)
-			LolzenUIcfg.unitframes["uf_focus_posx"] = -250
-			LolzenUIcfg.unitframes["uf_focus_posy"] = -230
-			LolzenUIcfg.unitframes["uf_focus_anchor"] = "CENTER"
 			LolzenUIcfg.unitframes["uf_focus_use_own_hp_font_settings"] = true
 			LolzenUIcfg.unitframes["uf_focus_hp_font"] = "DroidSansBold"
 			LolzenUIcfg.unitframes["uf_focus_hp_font_size"] = 18

@@ -10,12 +10,12 @@ local f = CreateFrame("Frame")
 -- create the module specific options
 function ns.createOptionPanels()
 	for i=1, #LolzenUI.modules do
-		if LolzenUIcfg.modules[LolzenUI.modules[i]] == true then
-			if not ns[LolzenUI.modules[i]] then
-				ns[LolzenUI.modules[i]] = CreateFrame("Frame", LolzenUI.modules[i].."panel", LolzenUI.panel)
-				ns[LolzenUI.modules[i]].name = LolzenUI.modules[i]
-				ns[LolzenUI.modules[i]].parent = LolzenUI.panel.name
-				InterfaceOptions_AddCategory(ns[LolzenUI.modules[i]])
+		if LolzenUIcfg.modules[LolzenUI.modules[i].name] == true and LolzenUI.modules[i].hasOptions == true then
+			if not ns[LolzenUI.modules[i].name] then
+				ns[LolzenUI.modules[i].name] = CreateFrame("Frame", LolzenUI.modules[i].name.."panel", LolzenUI.panel)
+				ns[LolzenUI.modules[i].name].name = LolzenUI.modules[i].name
+				ns[LolzenUI.modules[i].name].parent = LolzenUI.panel.name
+				InterfaceOptions_AddCategory(ns[LolzenUI.modules[i].name])
 			end
 		end
 	end

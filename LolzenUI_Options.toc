@@ -16,7 +16,6 @@ modules/chat/options.lua
 modules/clock/options.lua
 modules/fonts/options.lua
 modules/itemlevel/options.lua
-modules/inspect/options.lua
 modules/interruptannouncer/options.lua
 modules/minimap/options.lua
 modules/nameplates/options.lua

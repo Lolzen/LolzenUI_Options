@@ -377,7 +377,7 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 	-- Create editboxes so we can enter colors manually if desired
 	if not ColorPickerFrame.r then
 		local letter_r = ColorPickerFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-		letter_r:SetPoint("BOTTOMLEFT", 225, 120)
+		letter_r:SetPoint("BOTTOMLEFT", 225, 110)
 		letter_r: SetText("r:")
 		ColorPickerFrame.r = CreateFrame("EditBox", nil, ColorPickerFrame, "InputBoxTemplate")
 		ColorPickerFrame.r:SetSize(30, 20)
@@ -394,7 +394,7 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 
 	if not ColorPickerFrame.g then
 		local letter_g = ColorPickerFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-		letter_g:SetPoint("BOTTOMLEFT", 225, 105)
+		letter_g:SetPoint("BOTTOMLEFT", 225, 90)
 		letter_g: SetText("g:")
 		ColorPickerFrame.g = CreateFrame("EditBox", nil, ColorPickerFrame, "InputBoxTemplate")
 		ColorPickerFrame.g:SetSize(30, 20)
@@ -411,7 +411,7 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 
 	if not ColorPickerFrame.b then
 		local letter_b = ColorPickerFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
-		letter_b:SetPoint("BOTTOMLEFT", 225, 90)
+		letter_b:SetPoint("BOTTOMLEFT", 225, 70)
 		letter_b:SetText("b:")
 		ColorPickerFrame.b = CreateFrame("EditBox", nil, ColorPickerFrame, "InputBoxTemplate")
 		ColorPickerFrame.b:SetSize(30, 20)

@@ -359,6 +359,7 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 		ColorPickerFrame.r:SetText(math.floor(r*255+0.5))
 		ColorPickerFrame.g:SetText(math.floor(g*255+0.5))
 		ColorPickerFrame.b:SetText(math.floor(b*255+0.5))
+		ColorPickerFrame.previousValues = {r, g, b}
 	end
 
 	local function restorePreviousColor()
@@ -432,7 +433,9 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 		ColorPickerFrame.cancelFunc = nil
 		ColorPickerFrame.func = nil
 		-- and fill with the relevant ones
-		ColorPickerFrame.previousValues = colorVars
+		if not ColorPickerFrame.previousValues then
+			ColorPickerFrame.previousValues = colorVars
+		end
 		ColorPickerFrame:SetColorRGB(unpack(colorVars))
 		ColorPickerFrame.r:SetText(math.floor(colorVars[1]*255+0.5))
 		ColorPickerFrame.g:SetText(math.floor(colorVars[2]*255+0.5))
@@ -443,3 +446,17 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 	end)
 	return colorpickerframe
 end
+
+-- popup notice of changes that need a /reload
+StaticPopupDialogs["LolzenUI_Options_reloadnotice"] = {
+	text = "One or more setting that changed require a \n/reload\nWould you like to perform it now?",
+	button1 = "Yes",
+	button2 = "No",
+	OnAccept = function()
+		ReloadUI()
+	end,
+	timeout = 0,
+	whileDead = true,
+	hideOnEscape = true,
+	preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
+}

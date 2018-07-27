@@ -235,6 +235,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			color2:SetVertexColor(46/255, 103/255, 208/255)
 			color3:SetVertexColor(1, 0.4, 0)
 			color4:SetVertexColor(0, 187/255, 255/255)
+			text_color:SetVertexColor(1, 1, 1)
 		end
 	end
 end)

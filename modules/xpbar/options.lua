@@ -190,7 +190,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.xpbar["xpbar_bg_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(bg_alpha)])
 			LolzenUIcfg.xpbar["xpbar_xp_color"] = {color:GetVertexColor()}
-			LolzenUIcfg.xpbar["xpbar_xp_restedcolor"] = {color2:GetVertexColor()}
+			LolzenUIcfg.xpbar["xpbar_xp_rested_color"] = {color2:GetVertexColor()}
 			LolzenUIcfg.xpbar["xpbar_pvp_color"] = {color3:GetVertexColor()}
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {color4:GetVertexColor()}
 			LolzenUIcfg.xpbar["xpbar_1px_border"] = cb1:GetChecked()
@@ -216,7 +216,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_alpha"] = 0.4
 			LolzenUIcfg.xpbar["xpbar_bg_alpha"] = 0.5
 			LolzenUIcfg.xpbar["xpbar_xp_color"] = {0.6, 0, 0.6}
-			LolzenUIcfg.xpbar["xpbar_xp_restedcolor"] = {46/255, 103/255, 208/255}
+			LolzenUIcfg.xpbar["xpbar_xp_rested_color"] = {46/255, 103/255, 208/255}
 			LolzenUIcfg.xpbar["xpbar_pvp_color"] = {1, 0.4, 0}
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {0, 187/255, 255/255}
 			LolzenUIcfg.xpbar["xpbar_1px_border"] = true

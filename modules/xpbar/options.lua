@@ -203,6 +203,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_text_posx"] = tonumber(text_pos_x:GetText())
 			LolzenUIcfg.xpbar["xpbar_text_posy"] = tonumber(text_pos_y:GetText())
 			LolzenUIcfg.xpbar["xpbar_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(text_anchor)]
+			LolzenUI.UpdateVariables_xpbar()
 		end
 
 		ns["xpbar"].default = function(self)
@@ -229,7 +230,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_text_posx"] = 0
 			LolzenUIcfg.xpbar["xpbar_text_posy"] = 8
 			LolzenUIcfg.xpbar["xpbar_text_anchor1"] = "TOP"
-			ReloadUI()
+			LolzenUI.UpdateVariables_xpbar()
+			color:SetVertexColor(0.6, 0, 0.6)
+			color2:SetVertexColor(46/255, 103/255, 208/255)
+			color3:SetVertexColor(1, 0.4, 0)
+			color4:SetVertexColor(0, 187/255, 255/255)
 		end
 	end
 end)

@@ -232,7 +232,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			-- update xpbar
 			LolzenUI.UpdateVariables_xpbar()
 		end
-		
 
 		ns["xpbar"].default = function(self)
 			LolzenUIcfg.xpbar["xpbar_height"] = 4

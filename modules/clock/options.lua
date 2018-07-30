@@ -102,6 +102,28 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local anchor2 = ns.createPicker("clock", "anchor", "clock_text_anchor_2", 110, LolzenUIcfg.clock["clock_anchor2"])
 		anchor2:SetPoint("LEFT", anchor_text2, "RIGHT", -10, -3)
 
+		LolzenUI_Options.UpdateOptionPanel_clock = function(self)
+			cb1:SetChecked(LolzenUIcfg.clock["clock_seconds_enabled"])
+			color:SetVertexColor(unpack(LolzenUIcfg.clock["clock_color"]))
+			seconds_color:SetVertexColor(unpack(LolzenUIcfg.clock["clock_seconds_color"]))
+			UIDropDownMenu_SetSelectedName(font, LolzenUIcfg.clock["clock_font"])
+			UIDropDownMenu_SetText(font, LolzenUIcfg.clock["clock_font"])
+			UIDropDownMenu_SetSelectedName(seconds_font, LolzenUIcfg.clock["clock_font_seconds"])
+			UIDropDownMenu_SetText(seconds_font, LolzenUIcfg.clock["clock_font_seconds"])
+			font_size:SetText(LolzenUIcfg.clock["clock_font_size"])
+			seconds_font_size:SetText(LolzenUIcfg.clock["clock_seconds_font_size"])
+			UIDropDownMenu_SetSelectedID(font_flag, LolzenUIcfg.clock["clock_font_flag"])
+			UIDropDownMenu_SetText(font_flag, LolzenUIcfg.clock["clock_font_flag"])
+			UIDropDownMenu_SetSelectedID(seconds_font_flag, LolzenUIcfg.clock["clock_seconds_font_flag"])
+			UIDropDownMenu_SetText(seconds_font_flag, LolzenUIcfg.clock["clock_seconds_font_flag"])
+			UIDropDownMenu_SetSelectedID(anchor, LolzenUIcfg.clock["clock_anchor1"])
+			UIDropDownMenu_SetText(anchor, LolzenUIcfg.clock["clock_anchor1"])
+			UIDropDownMenu_SetSelectedID(anchor2, LolzenUIcfg.clock["clock_anchor2"])
+			UIDropDownMenu_SetText(anchor2, LolzenUIcfg.clock["clock_anchor2"])
+			pos_x:SetText(LolzenUIcfg.clock["clock_posx"])
+			pos_y:SetText(LolzenUIcfg.clock["clock_posy"])
+		end
+
 		ns["clock"].okay = function(self)
 			LolzenUIcfg.clock["clock_seconds_enabled"] = cb1:GetChecked()
 			LolzenUIcfg.clock["clock_color"] = {color:GetVertexColor()}
@@ -116,6 +138,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.clock["clock_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)]
 			LolzenUIcfg.clock["clock_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.clock["clock_posy"] = tonumber(pos_y:GetText())
+			-- update clock
+			LolzenUI.UpdateVariables_clock()
 		end
 
 		ns["clock"].default = function(self)
@@ -132,7 +156,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.clock["clock_anchor2"] = "TOPRIGHT"
 			LolzenUIcfg.clock["clock_posx"] = -5
 			LolzenUIcfg.clock["clock_posy"] = -9
-			ReloadUI()
+			-- set the optionpanel's options to default
+			LolzenUI_Options.UpdateOptionPanel_clock()
+			-- update clock
+			LolzenUI.UpdateVariables_clock()
 		end
 	end
 end)

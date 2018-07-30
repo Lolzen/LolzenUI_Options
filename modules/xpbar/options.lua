@@ -179,6 +179,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local text_anchor = ns.createPicker("xpbar", "anchor", "xpbar_text_anchor_1", 110, LolzenUIcfg.xpbar["xpbar_text_anchor1"])
 		text_anchor:SetPoint("LEFT", text_anchor_text, "RIGHT", -10, -3)
 
+		LolzenUI_Options.UpdateOptionPanel_xpbar = function(self)
+			height:SetText(LolzenUIcfg.xpbar["xpbar_height"])
+			width:SetText(LolzenUIcfg.xpbar["xpbar_width"])
+			UIDropDownMenu_SetSelectedName(anchor, LolzenUIcfg.xpbar["xpbar_anchor"])
+			parent:SetText(LolzenUIcfg.xpbar["xpbar_parent"])
+			pos_x:SetText(LolzenUIcfg.xpbar["xpbar_posx"])
+			pos_y:SetText(LolzenUIcfg.xpbar["xpbar_posy"])
+			UIDropDownMenu_SetSelectedName(texture, LolzenUIcfg.xpbar["xpbar_texture"])
+			UIDropDownMenu_SetSelectedName(alpha, LolzenUIcfg.xpbar["xpbar_alpha"])
+			UIDropDownMenu_SetSelectedName(bg_alpha, LolzenUIcfg.xpbar["xpbar_bg_alpha"])
+			color:SetVertexColor(unpack(LolzenUIcfg.xpbar["xpbar_xp_color"]))
+			color2:SetVertexColor(unpack(LolzenUIcfg.xpbar["xpbar_xp_rested_color"]))
+			color3:SetVertexColor(unpack(LolzenUIcfg.xpbar["xpbar_pvp_color"]))
+			color4:SetVertexColor(unpack(LolzenUIcfg.xpbar["xpbar_paragon_color"]))
+			cb1:SetChecked(LolzenUIcfg.xpbar["xpbar_1px_border"])
+			cb2:SetChecked(LolzenUIcfg.xpbar["xpbar_1px_border_round"])
+			cb3:SetChecked(LolzenUIcfg.xpbar["xpbar_mouseover_text"])
+			UIDropDownMenu_SetSelectedName(font, LolzenUIcfg.xpbar["xpbar_font"])
+			font_size:SetText(LolzenUIcfg.xpbar["xpbar_font_size"])
+			UIDropDownMenu_SetSelectedName(font_flag, LolzenUIcfg.xpbar["xpbar_font_flag"])
+			text_color:SetVertexColor(unpack(LolzenUIcfg.xpbar["xpbar_font_color"]))
+			text_pos_x:SetText(LolzenUIcfg.xpbar["xpbar_text_posx"])
+			text_pos_y:SetText(LolzenUIcfg.xpbar["xpbar_text_posy"])
+			UIDropDownMenu_SetSelectedName(text_anchor, LolzenUIcfg.xpbar["xpbar_text_anchor1"])
+		end
+
 		ns["xpbar"].okay = function(self)
 			LolzenUIcfg.xpbar["xpbar_height"] = tonumber(height:GetText())
 			LolzenUIcfg.xpbar["xpbar_width"] = tonumber(width:GetText())
@@ -203,8 +229,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_text_posx"] = tonumber(text_pos_x:GetText())
 			LolzenUIcfg.xpbar["xpbar_text_posy"] = tonumber(text_pos_y:GetText())
 			LolzenUIcfg.xpbar["xpbar_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(text_anchor)]
+			-- update xpbar
 			LolzenUI.UpdateVariables_xpbar()
 		end
+		
 
 		ns["xpbar"].default = function(self)
 			LolzenUIcfg.xpbar["xpbar_height"] = 4
@@ -230,12 +258,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_text_posx"] = 0
 			LolzenUIcfg.xpbar["xpbar_text_posy"] = 8
 			LolzenUIcfg.xpbar["xpbar_text_anchor1"] = "TOP"
+			-- set the optionpanel's options to default
+			LolzenUI_Options.UpdateOptionPanel_xpbar()
+			-- update xpbar
 			LolzenUI.UpdateVariables_xpbar()
-			color:SetVertexColor(0.6, 0, 0.6)
-			color2:SetVertexColor(46/255, 103/255, 208/255)
-			color3:SetVertexColor(1, 0.4, 0)
-			color4:SetVertexColor(0, 187/255, 255/255)
-			text_color:SetVertexColor(1, 1, 1)
 		end
 	end
 end)

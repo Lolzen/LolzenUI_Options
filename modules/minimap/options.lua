@@ -17,11 +17,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		ns["minimap"].okay = function(self)
 			LolzenUIcfg.minimap["minimap_square"] = cb1:GetChecked()
+			-- update minimap
+			LolzenUI.UpdateVariables_minimap()
 		end
 
 		ns["minimap"].default = function(self)
 			LolzenUIcfg.minimap["minimap_square"] = true
-			ReloadUI()
+			-- update minimap
+			LolzenUI.UpdateVariables_minimap()
 		end
 	end
 end)

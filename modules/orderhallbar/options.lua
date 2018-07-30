@@ -78,6 +78,21 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local icon_size = ns.createInputbox("orderhallbar", 30, 20, LolzenUIcfg.orderhallbar["ohb_currency_icon_size"])
 		icon_size:SetPoint("LEFT", icon_size_text, "RIGHT", 10, 0)
 
+		LolzenUI_Options.UpdateOptionPanel_ohb = function(self)
+			icon_size:SetText(LolzenUIcfg.orderhallbar["ohb_currency_icon_size"])
+			UIDropDownMenu_SetSelectedName(font, LolzenUIcfg.orderhallbar["ohb_currency_font"])
+			UIDropDownMenu_SetText(font, LolzenUIcfg.orderhallbar["ohb_currency_font"])
+			font_size:SetText(LolzenUIcfg.orderhallbar["ohb_currency_font_size"])
+			UIDropDownMenu_SetSelectedID(font_flag, LolzenUIcfg.orderhallbar["ohb_currency_font_flag"])
+			UIDropDownMenu_SetText(font_flag, LolzenUIcfg.orderhallbar["ohb_currency_font_flag"])
+			zone_color:SetVertexColor(unpack(LolzenUIcfg.orderhallbar["ohb_zone_color"]))
+			UIDropDownMenu_SetSelectedName(ohb_bg, LolzenUIcfg.orderhallbar["ohb_background"])
+			UIDropDownMenu_SetText(ohb_bg, LolzenUIcfg.orderhallbar["ohb_background"])
+			color:SetVertexColor(unpack(LolzenUIcfg.orderhallbar["ohb_background_color"]))
+			alpha:SetText(LolzenUIcfg.orderhallbar["ohb_background_alpha"])
+			cb1:SetChecked(LolzenUIcfg.orderhallbar["ohb_always_show"])
+		end
+
 		ns["orderhallbar"].okay = function(self)
 			LolzenUIcfg.orderhallbar["ohb_currency_icon_size"] = tonumber(icon_size:GetText())
 			LolzenUIcfg.orderhallbar["ohb_currency_font"] = UIDropDownMenu_GetSelectedName(font)
@@ -88,6 +103,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(alpha:GetText())
 			LolzenUIcfg.orderhallbar["ohb_always_show"] = cb1:GetChecked()
+			-- update ohb
+			LolzenUI.UpdateVariables_ohb()
 		end
 
 		ns["orderhallbar"].default = function(self)
@@ -100,7 +117,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {0, 0, 0}
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = 0.5
 			LolzenUIcfg.orderhallbar["ohb_always_show"] = true
-			ReloadUI()
+			-- set the optionpanel's options to default
+			LolzenUI_Options.UpdateOptionPanel_ohb()
+			-- update ohb
+			LolzenUI.UpdateVariables_ohb()
 		end
 	end
 end)

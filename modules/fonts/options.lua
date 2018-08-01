@@ -48,7 +48,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			
 			UIDropDownMenu_SetSelectedName(standard, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
 			UIDropDownMenu_SetText(standard, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
-		--end
 		end
 
 		ns["fonts"].okay = function(self)

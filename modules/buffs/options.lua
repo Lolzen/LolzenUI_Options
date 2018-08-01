@@ -28,7 +28,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		if LolzenUIcfg.buffs["buff_duration_detailed"] == true then
 			buttondur:SetText("7:46")
 		else
-			buttondur:SetText("|c2200ff2m|r")
+			buttondur:SetText("|cffffd1002m|r")
 		end
 		buttondur:SetDrawLayer("OVERLAY")
 
@@ -199,6 +199,122 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local count_font_flag = ns.createPicker("buffs", "flag", "buffs_count_font_flag_picker", 100, LolzenUIcfg.buffs["buff_counter_font_flag"])
 		count_font_flag:SetPoint("LEFT", count_font_flag_text, "RIGHT", -10, -3)
 
+		-- //preview scripts// --
+		-- textures
+		bufftex_path:SetScript("OnTextChanged", function(self)
+			bufftex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..bufftex_path:GetText())
+		end)
+
+		debufftex_path:SetScript("OnTextChanged", function(self)
+			debufftex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..debufftex_path:GetText())
+		end)
+
+		-- duration
+		dur_pos_x:SetScript("OnTextChanged", function(self)
+			buttondur:ClearAllPoints()
+			buttondur:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor)], button, ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor2)], tonumber(dur_pos_x:GetText()), tonumber(dur_pos_y:GetText()))
+		end)
+
+		dur_pos_y:SetScript("OnTextChanged", function(self)
+			buttondur:ClearAllPoints()
+			buttondur:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor)], button, ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor2)], tonumber(dur_pos_x:GetText()), tonumber(dur_pos_y:GetText()))
+		end)
+
+		dur_anchor.postClick = function(self)
+			buttondur:ClearAllPoints()
+			buttondur:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor)], button, ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor2)], tonumber(dur_pos_x:GetText()), tonumber(dur_pos_y:GetText()))
+		end
+
+		dur_anchor2.postClick = function(self)
+			buttondur:ClearAllPoints()
+			buttondur:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor)], button, ns.picker_anchor[UIDropDownMenu_GetSelectedID(dur_anchor2)], tonumber(dur_pos_x:GetText()), tonumber(dur_pos_y:GetText()))
+		end
+
+		dur_font.postClick = function(self)
+			buttondur:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(dur_font)), tonumber(dur_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)])
+		end
+
+		dur_font_size:SetScript("OnTextChanged", function(self)
+			buttondur:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(dur_font)), tonumber(dur_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)])
+		end)
+
+		dur_font_flag.postClick = function(self)
+			buttondur:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(dur_font)), tonumber(dur_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)])
+		end
+
+		-- deteiled bufftimer checkbox
+		cb1:SetScript("OnClick", function(self)
+			if cb1:GetChecked() then
+				buttondur:SetText("7:46")
+			else
+				buttondur:SetText("|cffffd1002m|r")
+			end
+		end)
+
+		-- count
+		count_pos_x:SetScript("OnTextChanged", function(self)
+			buttoncount:ClearAllPoints()
+			buttoncount:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(count_anchor)], button, tonumber(count_pos_x:GetText()), tonumber(count_pos_y:GetText()))
+		end)
+
+		count_pos_y:SetScript("OnTextChanged", function(self)
+			buttoncount:ClearAllPoints()
+			buttoncount:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(count_anchor)], button, tonumber(count_pos_x:GetText()), tonumber(count_pos_y:GetText()))
+		end)
+
+		count_anchor.postClick = function(self)
+			buttoncount:ClearAllPoints()
+			buttoncount:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(count_anchor)], button, tonumber(count_pos_x:GetText()), tonumber(count_pos_y:GetText()))
+		end
+
+		count_font.postClick = function(self)
+			buttoncount:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(count_font)), tonumber(count_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)])
+		end
+
+		count_font_size:SetScript("OnTextChanged", function(self)
+			buttoncount:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(count_font)), tonumber(count_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)])
+		end)
+
+		count_font_flag.postClick = function(self)
+			buttoncount:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(count_font)), tonumber(count_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)])
+		end
+
+		LolzenUI_Options.UpdateOptionPanel_buffs = function(self)
+			buff_size:SetText(LolzenUIcfg.buffs["buff_size"])
+			debuff_size:SetText(LolzenUIcfg.buffs["buff_debuff_size"])
+			tempenchant_size:SetText(LolzenUIcfg.buffs["buff_tempenchant_size"])
+			UIDropDownMenu_SetSelectedID(anchor, 6)
+			UIDropDownMenu_SetText(anchor, LolzenUIcfg.buffs["buff_anchor1"])
+			parent:SetText(LolzenUIcfg.buffs["buff_parent"])
+			UIDropDownMenu_SetSelectedID(anchor2, 5)
+			UIDropDownMenu_SetText(anchor2, LolzenUIcfg.buffs["buff_anchor2"])
+			pos_x:SetText(LolzenUIcfg.buffs["buff_posx"])
+			pos_y:SetText(LolzenUIcfg.buffs["buff_posy"])
+			UIDropDownMenu_SetSelectedID(dur_anchor, 7)
+			UIDropDownMenu_SetText(dur_anchor, LolzenUIcfg.buffs["buff_duration_anchor1"])
+			UIDropDownMenu_SetSelectedID(dur_anchor2, 1)
+			UIDropDownMenu_SetText(dur_anchor2, LolzenUIcfg.buffs["buff_duration_anchor2"])
+			dur_pos_x:SetText(LolzenUIcfg.buffs["buff_duration_posx"])
+			dur_pos_y:SetText(LolzenUIcfg.buffs["buff_duration_posy"])
+			cb1:SetChecked(LolzenUIcfg.buffs["buff_duration_detailed"])
+			UIDropDownMenu_SetSelectedName(dur_font, LolzenUIcfg.buffs["buff_duration_font"])
+			UIDropDownMenu_SetText(dur_font, LolzenUIcfg.buffs["buff_duration_font"])
+			dur_font_size:SetText(LolzenUIcfg.buffs["buff_duration_font_size"])
+			UIDropDownMenu_SetSelectedID(dur_font_flag, 1)
+			UIDropDownMenu_SetText(dur_font_flag, LolzenUIcfg.buffs["buff_duration_font_flag"])
+			UIDropDownMenu_SetSelectedID(count_anchor, 6)
+			UIDropDownMenu_SetText(count_anchor, LolzenUIcfg.buffs["buff_counter_anchor"])
+			count_pos_x:SetText(LolzenUIcfg.buffs["buff_counter_posx"])
+			count_pos_y:SetText(LolzenUIcfg.buffs["buff_counter_posy"])
+			UIDropDownMenu_SetSelectedName(count_font, LolzenUIcfg.buffs["buff_counter_font"])
+			UIDropDownMenu_SetText(count_font, LolzenUIcfg.buffs["buff_counter_font"])
+			count_font_size:SetText(LolzenUIcfg.buffs["buff_counter_size"])
+			UIDropDownMenu_SetSelectedID(count_font_flag, 1)
+			UIDropDownMenu_SetText(count_font_flag, LolzenUIcfg.buffs["buff_counter_font_flag"])
+			bufftex_path:SetText(LolzenUIcfg.buffs["buff_aura_texture"])
+			debufftex_path:SetText(LolzenUIcfg.buffs["buff_debuff_texture"])
+		end
+
 		ns["buffs"].okay = function(self)
 			LolzenUIcfg.buffs["buff_size"] = tonumber(buff_size:GetText())
 			LolzenUIcfg.buffs["buff_debuff_size"] = tonumber(debuff_size:GetText())
@@ -224,6 +340,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.buffs["buff_counter_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)]
 			LolzenUIcfg.buffs["buff_aura_texture"] = bufftex_path:GetText()
 			LolzenUIcfg.buffs["buff_debuff_texture"] = debufftex_path:GetText()
+			-- update buffs
+			LolzenUI.UpdateVariables_buffs()
 		end
 
 		ns["buffs"].default = function(self)
@@ -251,7 +369,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.buffs["buff_counter_font_flag"] = "OUTLINE"
 			LolzenUIcfg.buffs["buff_aura_texture"] = "auraborder"
 			LolzenUIcfg.buffs["buff_debuff_texture"] = "debuffborder"
-			ReloadUI()
+			-- set the optionpanel's options to default
+			LolzenUI_Options.UpdateOptionPanel_buffs()
+			-- update buffs
+			LolzenUI.UpdateVariables_buffs()
 		end
 	end
 end)

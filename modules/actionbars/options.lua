@@ -22,12 +22,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local normaltex = ns.createButtonOverlay("actionbars", button, LolzenUIcfg.actionbar["actionbar_normal_texture"])
 
+		local buttonkb = ns.createFontstring("actionbars", "1")
+		buttonkb:SetPoint("TOPRIGHT", button, "TOPRIGHT", 0, 0)
+		buttonkb:SetDrawLayer("OVERLAY")
+
 		-- // flashtexture buttonpreview // --
 
 		local button2 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button2:SetPoint("LEFT", button, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
 		local flashtex = ns.createButtonOverlay("actionbars", button2, LolzenUIcfg.actionbar["actionbar_flash_texture"])
+
+		local button2kb = ns.createFontstring("actionbars", "2")
+		button2kb:SetPoint("TOPRIGHT", button2, "TOPRIGHT", 0, 0)
+		button2kb:SetDrawLayer("OVERLAY")
 
 		-- // checkedtexture buttonpreview // --
 
@@ -36,6 +44,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local checkedtex = ns.createButtonOverlay("actionbars", button3, LolzenUIcfg.actionbar["actionbar_checked_texture"])
 
+		local button3kb = ns.createFontstring("actionbars", "3")
+		button3kb:SetPoint("TOPRIGHT", button3, "TOPRIGHT", 0, 0)
+		button3kb:SetDrawLayer("OVERLAY")
+
 		-- // hovertexture buttonpreview // --
 
 		local button4 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
@@ -43,12 +55,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local hovertex = ns.createButtonOverlay("actionbars", button4, LolzenUIcfg.actionbar["actionbar_hover_texture"])
 
+		local button4kb = ns.createFontstring("actionbars", "4")
+		button4kb:SetPoint("TOPRIGHT", button4, "TOPRIGHT", 0, 0)
+		button4kb:SetDrawLayer("OVERLAY")
+
 		-- // pushedtexture buttonpreview // --
 
 		local button5 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button5:SetPoint("LEFT", button4, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
 		local pushedtex = ns.createButtonOverlay("actionbars", button5, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
+
+		local button5kb = ns.createFontstring("actionbars", "5")
+		button5kb:SetPoint("TOPRIGHT", button5, "TOPRIGHT", 0, 0)
+		button5kb:SetDrawLayer("OVERLAY")
 
 		local header2 = ns.createHeader("actionbars", "Textures & Size:")
 		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -20)
@@ -244,6 +264,77 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local pb_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_pb_posy"])
 		pb_pos_y:SetPoint("LEFT", pb_pos_x, "RIGHT", 10, 0)
+
+		-- // decide to show or hide keybinds on previewbuttons // --
+		if LolzenUIcfg.actionbar["actionbar_show_keybinds"] == true then
+			buttonkb:Show()
+			button2kb:Show()
+			button3kb:Show()
+			button4kb:Show()
+			button5kb:Show()
+		else
+			buttonkb:Hide()
+			button2kb:Hide()
+			button3kb:Hide()
+			button4kb:Hide()
+			button5kb:Hide()
+		end
+
+		-- // preview scripts // --
+		-- keybinds
+		cb1:SetScript("OnClick", function(self)
+			if cb1:GetChecked() then
+				buttonkb:Show()
+				button2kb:Show()
+				button3kb:Show()
+				button4kb:Show()
+				button5kb:Show()
+			else
+				buttonkb:Hide()
+				button2kb:Hide()
+				button3kb:Hide()
+				button4kb:Hide()
+				button5kb:Hide()
+			end
+		end)
+
+		-- textures
+		normaltex_path:SetScript("OnTextChanged", function(self)
+			normaltex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..normaltex_path:GetText())
+		end)
+
+		flashtex_path:SetScript("OnTextChanged", function(self)
+			flashtex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..flashtex_path:GetText())
+		end)
+
+		checkedtex_path:SetScript("OnTextChanged", function(self)
+			checkedtex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..checkedtex_path:GetText())
+		end)
+
+		hovertex_path:SetScript("OnTextChanged", function(self)
+			hovertex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..hovertex_path:GetText())
+		end)
+
+		pushedtex_path:SetScript("OnTextChanged", function(self)
+			pushedtex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..pushedtex_path:GetText())
+		end)
+
+		-- size & spacing
+		size:SetScript("OnTextChanged", function(self)
+			button:SetSize(tonumber(size:GetText()) or 1, tonumber(size:GetText()) or 1)
+			button2:SetSize(tonumber(size:GetText()) or 1, tonumber(size:GetText()) or 1)
+			button3:SetSize(tonumber(size:GetText()) or 1, tonumber(size:GetText()) or 1)
+			button4:SetSize(tonumber(size:GetText()) or 1, tonumber(size:GetText()) or 1)
+			button5:SetSize(tonumber(size:GetText()) or 1, tonumber(size:GetText()) or 1)
+		end)
+
+		spacing:SetScript("OnTextChanged", function(self)
+			--spacing:
+			button2:SetPoint("LEFT", button, "RIGHT", spacing:GetText(), 0)
+			button3:SetPoint("LEFT", button2, "RIGHT", spacing:GetText(), 0)
+			button4:SetPoint("LEFT", button3, "RIGHT", spacing:GetText(), 0)
+			button5:SetPoint("LEFT", button4, "RIGHT", spacing:GetText(), 0)
+		end)
 
 		LolzenUI_Options.UpdateOptionPanel_actionbars = function(self)
 			cb1:SetChecked(LolzenUIcfg.actionbar["actionbar_show_keybinds"])

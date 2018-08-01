@@ -36,11 +36,28 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local standard = ns.createPicker("fonts", "font", "fonts_standardfont", 120, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
 		standard:SetPoint("LEFT", standard_text, "RIGHT", -10, -3)
 
+		LolzenUI_Options.UpdateOptionPanel_fonts = function(self)
+			UIDropDownMenu_SetSelectedName(dmg, LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"])
+			UIDropDownMenu_SetText(dmg, LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"])
+			
+			UIDropDownMenu_SetSelectedName(unit, LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"])
+			UIDropDownMenu_SetText(unit, LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"])
+			
+			UIDropDownMenu_SetSelectedName(np, LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"])
+			UIDropDownMenu_SetText(np, LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"])
+			
+			UIDropDownMenu_SetSelectedName(standard, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
+			UIDropDownMenu_SetText(standard, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
+		--end
+		end
+
 		ns["fonts"].okay = function(self)
 			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = UIDropDownMenu_GetSelectedName(dmg)
 			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = UIDropDownMenu_GetSelectedName(unit)
 			LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"] = UIDropDownMenu_GetSelectedName(np)
 			LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"] = UIDropDownMenu_GetSelectedName(standard)
+			-- offer reload
+			StaticPopup_Show("LolzenUI_Options_reloadnotice")
 		end
 
 		ns["fonts"].default = function(self)
@@ -48,7 +65,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = "DroidSans"
 			LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"] = "DroidSans"
 			LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"] = "DroidSans"
-			ReloadUI()
+			-- update font settings
+			LolzenUI_Options.UpdateOptionPanel_fonts()
+			-- offer reload
+			StaticPopup_Show("LolzenUI_Options_reloadnotice")
 		end
 	end
 end)

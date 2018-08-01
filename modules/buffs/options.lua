@@ -199,7 +199,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local count_font_flag = ns.createPicker("buffs", "flag", "buffs_count_font_flag_picker", 100, LolzenUIcfg.buffs["buff_counter_font_flag"])
 		count_font_flag:SetPoint("LEFT", count_font_flag_text, "RIGHT", -10, -3)
 
-		-- //preview scripts// --
+		-- // preview scripts // --
 		-- textures
 		bufftex_path:SetScript("OnTextChanged", function(self)
 			bufftex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..bufftex_path:GetText())
@@ -242,7 +242,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			buttondur:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(dur_font)), tonumber(dur_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)])
 		end
 
-		-- deteiled bufftimer checkbox
+		-- detailed bufftimer checkbox
 		cb1:SetScript("OnClick", function(self)
 			if cb1:GetChecked() then
 				buttondur:SetText("7:46")

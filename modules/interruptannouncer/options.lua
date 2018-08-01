@@ -42,7 +42,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.interruptannouncer["interruptannoucer_party"] = true
 			LolzenUIcfg.interruptannouncer["interruptannoucer_say"] = true
 			LolzenUIcfg.interruptannouncer["interruptannouncer_msg"] = "Unterbrochen: !spell von >>!name<<"
-			ReloadUI()
+			-- update msg
+			msg:SetText(LolzenUIcfg.interruptannouncer["interruptannouncer_msg"])
 		end
 	end
 end)

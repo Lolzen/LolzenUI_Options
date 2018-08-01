@@ -296,6 +296,9 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 		else
 			UIDropDownMenu_SetSelectedID(picker, name:GetID())
 		end
+		if picker.postClick then
+			picker.postClick()
+		end
 	end
 	local function initialize(picker, level)
 		local info = UIDropDownMenu_CreateInfo()

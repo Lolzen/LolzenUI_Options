@@ -394,6 +394,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 			UIDropDownMenu_SetText(pb_anchor2, LolzenUIcfg.actionbar["actionbar_pb_anchor2"])
 			pb_pos_x:SetText(LolzenUIcfg.actionbar["actionbar_pb_posx"])
 			pb_pos_y:SetText(LolzenUIcfg.actionbar["actionbar_pb_posy"])
+			
+			if LolzenUIcfg.actionbar["actionbar_show_keybinds"] == true then
+				buttonkb:Show()
+				button2kb:Show()
+				button3kb:Show()
+				button4kb:Show()
+				button5kb:Show()
+			else
+				buttonkb:Hide()
+				button2kb:Hide()
+				button3kb:Hide()
+				button4kb:Hide()
+				button5kb:Hide()
+			end
 		end
 
 		ns["actionbars"].okay = function(self)

@@ -200,6 +200,105 @@ f:SetScript("OnEvent", function(self, event, addon)
 		count_font_flag:SetPoint("LEFT", count_font_flag_text, "RIGHT", -10, -3)
 
 		-- // preview scripts // --
+		-- size
+		buff_size:SetScript("OnTextChanged", function(self)
+			button:SetSize(tonumber(buff_size:GetText()) or 1, tonumber(buff_size:GetText()) or 1)
+		end)
+
+		debuff_size:SetScript("OnTextChanged", function(self)
+			button2:SetSize(tonumber(debuff_size:GetText()) or 1, tonumber(debuff_size:GetText()) or 1)
+		end)
+
+	--	tempenchant_size:SetScript("OnTextChanged", function(self)
+	--		button3:SetSize(tonumber(tempenchant_size:GetText()) or 1, tonumber(tempenchant_size:GetText()) or 1)
+	--	end)
+
+		-- position
+		pos_x:SetScript("OnTextChanged", function(self)
+			if BuffFrame.moving == true then return end
+			BuffFrame.moving = true
+			BuffFrame:SetMovable(true)
+			BuffFrame:SetUserPlaced(true)
+			BuffFrame:ClearAllPoints()
+			if type(parent:GetText()) == "frame" and not string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], parent:GetText(), ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			elseif string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], UIParent, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			else
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], Minimap, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			end
+			BuffFrame:SetMovable(false)
+			BuffFrame.moving = nil
+		end)
+
+		pos_y:SetScript("OnTextChanged", function(self)
+			if BuffFrame.moving == true then return end
+			BuffFrame.moving = true
+			BuffFrame:SetMovable(true)
+			BuffFrame:SetUserPlaced(true)
+			BuffFrame:ClearAllPoints()
+			if type(parent:GetText()) == "frame" and not string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], parent:GetText(), ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			elseif string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], UIParent, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			else
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], Minimap, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			end
+			BuffFrame:SetMovable(false)
+			BuffFrame.moving = nil
+		end)
+
+		anchor.postClick = function(self)
+			if BuffFrame.moving == true then return end
+			BuffFrame.moving = true
+			BuffFrame:SetMovable(true)
+			BuffFrame:SetUserPlaced(true)
+			BuffFrame:ClearAllPoints()
+			if type(parent:GetText()) == "frame" and not string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], parent:GetText(), ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			elseif string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], UIParent, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			else
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], Minimap, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			end
+			BuffFrame:SetMovable(false)
+			BuffFrame.moving = nil
+		end
+
+		parent:SetScript("OnTextChanged", function(self)
+			if BuffFrame.moving == true then return end
+			BuffFrame.moving = true
+			BuffFrame:SetMovable(true)
+			BuffFrame:SetUserPlaced(true)
+			BuffFrame:ClearAllPoints()
+			if type(parent:GetText()) == "frame" and not string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], parent:GetText(), ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			elseif string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], UIParent, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			else
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], Minimap, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			end
+			BuffFrame:SetMovable(false)
+			BuffFrame.moving = nil
+		end)
+
+		anchor2.postClick = function(self)
+			if BuffFrame.moving == true then return end
+			BuffFrame.moving = true
+			BuffFrame:SetMovable(true)
+			BuffFrame:SetUserPlaced(true)
+			BuffFrame:ClearAllPoints()
+			if type(parent:GetText()) == "frame" and not string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], parent:GetText(), ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			elseif string.lower(parent:GetText()) == string.match("uiparent", "%a+") then
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], UIParent, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			else
+				BuffFrame:SetPoint(ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)], Minimap, ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)], tonumber(pos_x:GetText()), tonumber(pos_y:GetText()))
+			end
+			BuffFrame:SetMovable(false)
+			BuffFrame.moving = nil
+		end
+
 		-- textures
 		bufftex_path:SetScript("OnTextChanged", function(self)
 			bufftex:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..bufftex_path:GetText())
@@ -234,6 +333,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			buttondur:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(dur_font)), tonumber(dur_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)])
 		end
 
+		-- font
 		dur_font_size:SetScript("OnTextChanged", function(self)
 			buttondur:SetFont(LSM:Fetch("font", UIDropDownMenu_GetSelectedName(dur_font)), tonumber(dur_font_size:GetText()), ns.picker_flags[UIDropDownMenu_GetSelectedID(dur_font_flag)])
 		end)

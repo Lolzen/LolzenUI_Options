@@ -152,6 +152,36 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local text_anchor = ns.createPicker("artifactbar", "anchor", "artifactbar_text_anchor_1", 110, LolzenUIcfg.artifactbar["artifactbar_text_anchor1"])
 		text_anchor:SetPoint("LEFT", text_anchor_text, "RIGHT", -10, -3)
 
+		LolzenUI_Options.UpdateOptionPanel_afbar = function(self)
+			height:SetText(LolzenUIcfg.artifactbar["artifactbar_height"])
+			width:SetText(LolzenUIcfg.artifactbar["artifactbar_width"])
+			UIDropDownMenu_SetSelectedName(anchor, LolzenUIcfg.artifactbar["artifactbar_anchor"])
+			UIDropDownMenu_SetText(anchor, LolzenUIcfg.artifactbar["artifactbar_anchor"])
+			parent:SetText(LolzenUIcfg.artifactbar["artifactbar_parent"])
+			pos_x:SetText(LolzenUIcfg.artifactbar["artifactbar_posx"])
+			pos_y:SetText(LolzenUIcfg.artifactbar["artifactbar_posy"])
+			UIDropDownMenu_SetSelectedName(texture, LolzenUIcfg.artifactbar["artifactbar_texture"])
+			UIDropDownMenu_SetText(texture, LolzenUIcfg.artifactbar["artifactbar_texture"])
+			UIDropDownMenu_SetSelectedName(alpha, LolzenUIcfg.artifactbar["artifactbar_alpha"])
+			UIDropDownMenu_SetText(alpha, LolzenUIcfg.artifactbar["artifactbar_alpha"])
+			UIDropDownMenu_SetSelectedName(bg_alpha, LolzenUIcfg.artifactbar["artifactbar_bg_alpha"])
+			UIDropDownMenu_SetText(bg_alpha, LolzenUIcfg.artifactbar["artifactbar_bg_alpha"])
+			color:SetVertexColor(unpack(LolzenUIcfg.artifactbar["artifactbar_xp_color"]))
+			cb1:SetChecked(LolzenUIcfg.artifactbar["artifactbar_1px_border"])
+			cb2:SetChecked(LolzenUIcfg.artifactbar["artifactbar_1px_border_round"])
+			cb3:SetChecked(LolzenUIcfg.artifactbar["artifactbar_mouseover_text"])
+			UIDropDownMenu_SetSelectedName(font, LolzenUIcfg.artifactbar["artifactbar_font"])
+			UIDropDownMenu_SetText(font, LolzenUIcfg.artifactbar["artifactbar_font"])
+			font_size:SetText(LolzenUIcfg.artifactbar["artifactbar_font_size"])
+			UIDropDownMenu_SetSelectedName(font_flag, LolzenUIcfg.artifactbar["artifactbar_font_flag"])
+			UIDropDownMenu_SetText(font_flag, LolzenUIcfg.artifactbar["artifactbar_font_flag"])
+			text_color:SetVertexColor(unpack(LolzenUIcfg.artifactbar["artifactbar_font_color"]))
+			text_pos_x:SetText(LolzenUIcfg.artifactbar["artifactbar_text_posx"])
+			text_pos_y:SetText(LolzenUIcfg.artifactbar["artifactbar_text_posy"])
+			UIDropDownMenu_SetSelectedName(text_anchor, LolzenUIcfg.artifactbar["artifactbar_text_anchor1"])
+			UIDropDownMenu_SetText(text_anchor, LolzenUIcfg.artifactbar["artifactbar_text_anchor1"])
+		end
+
 		ns["artifactbar"].okay = function(self)
 			LolzenUIcfg.artifactbar["artifactbar_height"] = tonumber(height:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_width"] = tonumber(width:GetText())
@@ -173,6 +203,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_text_posx"] = tonumber(text_pos_x:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_text_posy"] = tonumber(text_pos_y:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(text_anchor)]
+			-- update afbar
+			LolzenUI.UpdateVariables_afbar()
 		end
 
 		ns["artifactbar"].default = function(self)
@@ -196,7 +228,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_text_posx"] = 0
 			LolzenUIcfg.artifactbar["artifactbar_text_posy"] = 8
 			LolzenUIcfg.artifactbar["artifactbar_text_anchor1"] = "TOP"
-			ReloadUI()
+			-- set the optionpanel's options to default
+			LolzenUI_Options.UpdateOptionPanel_afbar()
+			-- update afbar
+			LolzenUI.UpdateVariables_afbar()
 		end
 	end
 end)

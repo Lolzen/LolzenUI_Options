@@ -19,16 +19,22 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns[parent].scrollbar:SetMinMaxValues(min, newmax)
 		end
 
+		ns.unitframes.title = ns.unitframes:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		ns.unitframes.title:SetPoint("TOPLEFT", ns.unitframes, 16, -16)
+		ns.unitframes.title:SetText("|cff5599ffUnitframes module Options|r")
+
+		ns.unitframes.about = ns.createDescription("unitframes", "General Unitframe Options")
+		ns.unitframes.about:SetPoint("TOPLEFT", ns.unitframes.title, "BOTTOMLEFT", 0, -8)
+
 		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
 		ns.unitframes.scrollframe = CreateFrame("ScrollFrame", nil, ns["unitframes"])
-		ns.unitframes.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.unitframes.scrollframe:SetPoint("TOPLEFT", ns.unitframes.about, -16, -30) 
 		ns.unitframes.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 		
 		ns.unitframes.scrollbar = CreateFrame("Slider", nil, ns.unitframes.scrollframe, "UIPanelScrollBarTemplate")
-		ns.unitframes.scrollbar:SetPoint("TOPLEFT", ns.unitframes, "TOPRIGHT", -20, -20)
-		ns.unitframes.scrollbar:SetPoint("BOTTOMLEFT", ns.unitframes, "BOTTOMRIGHT", -20, 20)
-		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.unitframes.scrollbar:SetMinMaxValues(5, 46) 
+		ns.unitframes.scrollbar:SetPoint("TOPRIGHT", ns.unitframes, -8, -84)
+		ns.unitframes.scrollbar:SetPoint("BOTTOMRIGHT", ns.unitframes, -8, 24)
+		ns.unitframes.scrollbar:SetMinMaxValues(0, 50) 
 		ns.unitframes.scrollbar:SetValueStep(1) 
 		ns.unitframes.scrollbar.scrollStep = 1
 		ns.unitframes.scrollbar:SetValue(0) 
@@ -54,15 +60,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		ns.unitframes.content.title = ns.unitframes.content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		ns.unitframes.content.title:SetPoint("TOPLEFT", ns.unitframes.content, 16, -16)
-		ns.unitframes.content.title:SetText("|cff5599ffUnitframes module Options|r")
-
-		ns.unitframes.content.about = ns.createDescription("unitframes", "General Unitframe Options", "content")
-		ns.unitframes.content.about:SetPoint("TOPLEFT", ns.unitframes.content.title, "BOTTOMLEFT", 0, -8)
-
 		ns.unitframes.content.cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ffuse hp percentage|r", LolzenUIcfg.unitframes["uf_use_hp_percent"], "content")
-		ns.unitframes.content.cb1:SetPoint("TOPLEFT", ns.unitframes.content.about, "BOTTOMLEFT", 0, -20)
+		ns.unitframes.content.cb1:SetPoint("TOPLEFT", ns.unitframes.content, 16, 0)
 
 		ns.unitframes.content.cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ffuse both value and percent (reenables the options below)|r", LolzenUIcfg.unitframes["uf_use_val_and_perc"], "content")
 		ns.unitframes.content.cb2:SetPoint("TOPLEFT", ns.unitframes.content.cb1, "BOTTOMLEFT", 0, -0)
@@ -311,16 +310,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_player_options.parent = "unitframes"
 		InterfaceOptions_AddCategory(ns.uf_player_options)
 
+		ns.uf_player_options.title = ns.uf_player_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		ns.uf_player_options.title:SetPoint("TOPLEFT", ns.uf_player_options, 16, -16)
+		ns.uf_player_options.title:SetText("|cff5599ffUnitframes module: Player Options|r")
+
 		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
 		ns.uf_player_options.scrollframe = CreateFrame("ScrollFrame", nil, ns.uf_player_options)
-		ns.uf_player_options.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.uf_player_options.scrollframe:SetPoint("TOPLEFT", ns.uf_player_options.title, -16, -30)
 		ns.uf_player_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 
 		ns.uf_player_options.scrollbar = CreateFrame("Slider", nil, ns.uf_player_options.scrollframe, "UIPanelScrollBarTemplate")
-		ns.uf_player_options.scrollbar:SetPoint("TOPLEFT", ns.uf_player_options, "TOPRIGHT", -20, -20)
-		ns.uf_player_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_player_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.uf_player_options.scrollbar:SetMinMaxValues(5, 12) 
+		ns.uf_player_options.scrollbar:SetPoint("TOPRIGHT", ns.uf_player_options, -8, -84)
+		ns.uf_player_options.scrollbar:SetPoint("BOTTOMRIGHT", ns.uf_player_options, -8, 24)
+		ns.uf_player_options.scrollbar:SetMinMaxValues(0, 0) 
 		ns.uf_player_options.scrollbar:SetValueStep(1) 
 		ns.uf_player_options.scrollbar.scrollStep = 1
 		ns.uf_player_options.scrollbar:SetValue(0) 
@@ -346,12 +348,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		ns.uf_player_options.content.title = ns.uf_player_options.content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		ns.uf_player_options.content.title:SetPoint("TOPLEFT", ns.uf_player_options.content, 16, -16)
-		ns.uf_player_options.content.title:SetText("|cff5599ffUnitframes module: Player Options|r")
-
 		ns.uf_player_options.content.width_text = ns.createFontstring("uf_player_options", "Width:", "content")
-		ns.uf_player_options.content.width_text:SetPoint("TOPLEFT", ns.uf_player_options.content.title, "BOTTOMLEFT", 0, -30)
+		ns.uf_player_options.content.width_text:SetPoint("TOPLEFT", ns.uf_player_options.content, 16, -16)
 
 		ns.uf_player_options.content.width = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes["uf_player_width"], "content")
 		ns.uf_player_options.content.width:SetPoint("LEFT", ns.uf_player_options.content.width_text, "RIGHT", 10, 0)
@@ -569,7 +567,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_player_options.content.cb_color_text:ClearAllPoints()
 				ns.uf_player_options.content.cb_color_text:SetPoint("LEFT", ns.uf_player_options.content.cb_height, "RIGHT", 10, 0)
 				ns.uf_player_options.content.header5:SetPoint("TOPLEFT", ns.uf_player_options.content.cb_width_text, "BOTTOMLEFT", 0, -12)
-				ChangeScrollbarMinMax("uf_player_options", "+", 24)
+				ChangeScrollbarMinMax("uf_player_options", "+", 20)
+				ns.uf_player_options.scrollbar:Show()
+				ns.uf_player_options.scrollframe:EnableMouseWheel(true)
 			else
 				ns.uf_player_options.content.cb_pos_x_text:Hide()
 				ns.uf_player_options.content.cb_pos_x:Hide()
@@ -586,7 +586,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_player_options.content.cb_color_text:ClearAllPoints()
 				ns.uf_player_options.content.cb_color_text:SetPoint("TOPLEFT", ns.uf_player_options.content.cb2, "BOTTOMLEFT", 0, -5)
 				ns.uf_player_options.content.header5:SetPoint("TOPLEFT", ns.uf_player_options.content.cb_color_text, "BOTTOMLEFT", 0, -12)
-				ChangeScrollbarMinMax("uf_player_options", "-", 24)
+				ChangeScrollbarMinMax("uf_player_options", "-", 20)
+				ns.uf_player_options.scrollbar:Hide()
+				ns.uf_player_options.scrollframe:EnableMouseWheel(false)
 			end
 		end)
 
@@ -605,6 +607,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_player_options.content.cb_height:Show()
 			ns.uf_player_options.content.cb_color_text:SetPoint("LEFT", ns.uf_player_options.content.cb_height, "RIGHT", 10, 0)
 			ns.uf_player_options.content.header5:SetPoint("TOPLEFT", ns.uf_player_options.content.cb_width_text, "BOTTOMLEFT", 0, -13)
+			ns.uf_player_options.scrollbar:Show()
+			ns.uf_player_options.scrollframe:EnableMouseWheel(true)
 		else
 			ns.uf_player_options.content.cb_pos_x_text:Hide()
 			ns.uf_player_options.content.cb_pos_x:Hide()
@@ -620,6 +624,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_player_options.content.cb_height:Hide()
 			ns.uf_player_options.content.cb_color_text:SetPoint("TOPLEFT", ns.uf_player_options.content.cb2, "BOTTOMLEFT", 0, -5)
 			ns.uf_player_options.content.header5:SetPoint("TOPLEFT", ns.uf_player_options.content.cb_color_text, "BOTTOMLEFT", 0, -13)
+			ns.uf_player_options.scrollbar:Hide()
+			ns.uf_player_options.scrollframe:EnableMouseWheel(false)
 		end
 
 		ns.uf_player_options.content.cb_icon_size_text = ns.createFontstring("uf_player_options", "Size:", "content")
@@ -741,17 +747,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_target_options.name = "   Target"
 		ns.uf_target_options.parent = "unitframes"
 		InterfaceOptions_AddCategory(ns.uf_target_options)
-		
+
+		ns.uf_target_options.title = ns.uf_target_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		ns.uf_target_options.title:SetPoint("TOPLEFT", ns.uf_target_options, 16, -16)
+		ns.uf_target_options.title:SetText("|cff5599ffUnitframes module: Target Options|r")
+
 		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
 		ns.uf_target_options.scrollframe = CreateFrame("ScrollFrame", nil, ns.uf_target_options)
-		ns.uf_target_options.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.uf_target_options.scrollframe:SetPoint("TOPLEFT", ns.uf_target_options.title, -16, -30) 
 		ns.uf_target_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 		
 		ns.uf_target_options.scrollbar = CreateFrame("Slider", nil, ns.uf_target_options.scrollframe, "UIPanelScrollBarTemplate")
-		ns.uf_target_options.scrollbar:SetPoint("TOPLEFT", ns.uf_target_options, "TOPRIGHT", -20, -20)
-		ns.uf_target_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_target_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.uf_target_options.scrollbar:SetMinMaxValues(5, 50) 
+		ns.uf_target_options.scrollbar:SetPoint("TOPRIGHT", ns.uf_target_options,  -8, -84)
+		ns.uf_target_options.scrollbar:SetPoint("BOTTOMRIGHT", ns.uf_target_options, -8, 24)
+		ns.uf_target_options.scrollbar:SetMinMaxValues(0, 34) 
 		ns.uf_target_options.scrollbar:SetValueStep(1) 
 		ns.uf_target_options.scrollbar.scrollStep = 1
 		ns.uf_target_options.scrollbar:SetValue(0) 
@@ -777,12 +786,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		ns.uf_target_options.content.title = ns.uf_target_options.content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		ns.uf_target_options.content.title:SetPoint("TOPLEFT", ns.uf_target_options.content, 16, -16)
-		ns.uf_target_options.content.title:SetText("|cff5599ffUnitframes module: Target Options|r")
-
 		ns.uf_target_options.content.width_text = ns.createFontstring("uf_target_options", "Width:", "content")
-		ns.uf_target_options.content.width_text:SetPoint("TOPLEFT", ns.uf_target_options.content.title, "BOTTOMLEFT", 0, -30)
+		ns.uf_target_options.content.width_text:SetPoint("TOPLEFT", ns.uf_target_options.content, 16, -16)
 
 		ns.uf_target_options.content.width = ns.createInputbox("uf_target_options", 40, 20, LolzenUIcfg.unitframes["uf_target_width"], "content")
 		ns.uf_target_options.content.width:SetPoint("LEFT", ns.uf_target_options.content.width_text, "RIGHT", 10, 0)
@@ -1050,7 +1055,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_target_options.content.cb_color_text:ClearAllPoints()
 				ns.uf_target_options.content.cb_color_text:SetPoint("LEFT", ns.uf_target_options.content.cb_height, "RIGHT", 10, 0)
 				ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_width_text, "BOTTOMLEFT", 0, -12)
-				ChangeScrollbarMinMax("uf_target_options", "+", 25)
+				ChangeScrollbarMinMax("uf_target_options", "+", 24)
 			else
 				ns.uf_target_options.content.cb_pos_x_text:Hide()
 				ns.uf_target_options.content.cb_pos_x:Hide()
@@ -1067,7 +1072,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				ns.uf_target_options.content.cb_color_text:ClearAllPoints()
 				ns.uf_target_options.content.cb_color_text:SetPoint("TOPLEFT", ns.uf_target_options.content.cb4, "BOTTOMLEFT", 0, -5)
 				ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_color_text, "BOTTOMLEFT", 0, -12)
-				ChangeScrollbarMinMax("uf_target_options", "-", 25)
+				ChangeScrollbarMinMax("uf_target_options", "-", 24)
 			end
 		end)
 
@@ -1086,7 +1091,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ns.uf_target_options.content.cb_height:Show()
 			ns.uf_target_options.content.cb_color_text:SetPoint("LEFT", ns.uf_target_options.content.cb_height, "RIGHT", 10, 0)
 			ns.uf_target_options.content.header5:SetPoint("TOPLEFT", ns.uf_target_options.content.cb_width_text, "BOTTOMLEFT", 0, -13)
-			ChangeScrollbarMinMax("uf_target_options", "+", 25)
+			ChangeScrollbarMinMax("uf_target_options", "+", 24)
 		else
 			ns.uf_target_options.content.cb_pos_x_text:Hide()
 			ns.uf_target_options.content.cb_pos_x:Hide()
@@ -1738,16 +1743,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_boss_options.parent = "unitframes"
 		InterfaceOptions_AddCategory(ns.uf_boss_options)
 
+		ns.uf_boss_options.title = ns.uf_boss_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		ns.uf_boss_options.title:SetPoint("TOPLEFT", ns.uf_boss_options, 16, -16)
+		ns.uf_boss_options.title:SetText("|cff5599ffUnitframes module: Boss Options|r")
+
 		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
 		ns.uf_boss_options.scrollframe = CreateFrame("ScrollFrame", nil, ns.uf_boss_options)
-		ns.uf_boss_options.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.uf_boss_options.scrollframe:SetPoint("TOPLEFT", ns.uf_boss_options.title, -16, -30) 
 		ns.uf_boss_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 		
 		ns.uf_boss_options.scrollbar = CreateFrame("Slider", nil, ns.uf_boss_options.scrollframe, "UIPanelScrollBarTemplate")
-		ns.uf_boss_options.scrollbar:SetPoint("TOPLEFT", ns.uf_boss_options, "TOPRIGHT", -20, -20)
-		ns.uf_boss_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_boss_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.uf_boss_options.scrollbar:SetMinMaxValues(5, 20) 
+		ns.uf_boss_options.scrollbar:SetPoint("TOPRIGHT", ns.uf_boss_options, -8, -84)
+		ns.uf_boss_options.scrollbar:SetPoint("BOTTOMRIGHT", ns.uf_boss_options, -8, 24)
+		ns.uf_boss_options.scrollbar:SetMinMaxValues(0, 4) 
 		ns.uf_boss_options.scrollbar:SetValueStep(1) 
 		ns.uf_boss_options.scrollbar.scrollStep = 1
 		ns.uf_boss_options.scrollbar:SetValue(0) 
@@ -1773,12 +1781,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		ns.uf_boss_options.content.title = ns.uf_boss_options.content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		ns.uf_boss_options.content.title:SetPoint("TOPLEFT", ns.uf_boss_options.content, 16, -16)
-		ns.uf_boss_options.content.title:SetText("|cff5599ffUnitframes module: Boss Options|r")
-
 		ns.uf_boss_options.content.width_text = ns.createFontstring("uf_boss_options", "Width:", "content")
-		ns.uf_boss_options.content.width_text:SetPoint("TOPLEFT", ns.uf_boss_options.content.title, "BOTTOMLEFT", 0, -30)
+		ns.uf_boss_options.content.width_text:SetPoint("TOPLEFT", ns.uf_boss_options.content, 16, -16)
 
 		ns.uf_boss_options.content.width = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes["uf_boss_width"], "content")
 		ns.uf_boss_options.content.width:SetPoint("LEFT", ns.uf_boss_options.content.width_text, "RIGHT", 10, 0)
@@ -2218,16 +2222,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_focus_options.parent = "unitframes"
 		InterfaceOptions_AddCategory(ns.uf_focus_options)
 
+		ns.uf_focus_options.title = ns.uf_focus_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+		ns.uf_focus_options.title:SetPoint("TOPLEFT", ns.uf_focus_options, 16, -16)
+		ns.uf_focus_options.title:SetText("|cff5599ffUnitframes module: Focus Options|r")
+
 		-- as the optionpanel space is sparse, create a scrollframe where we can put all the content in we want
 		ns.uf_focus_options.scrollframe = CreateFrame("ScrollFrame", nil, ns.uf_focus_options)
-		ns.uf_focus_options.scrollframe:SetPoint("TOPLEFT", 0, -5) 
+		ns.uf_focus_options.scrollframe:SetPoint("TOPLEFT", ns.uf_focus_options.title, -16, -30) 
 		ns.uf_focus_options.scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 		
 		ns.uf_focus_options.scrollbar = CreateFrame("Slider", nil, ns.uf_focus_options.scrollframe, "UIPanelScrollBarTemplate")
-		ns.uf_focus_options.scrollbar:SetPoint("TOPLEFT", ns.uf_focus_options, "TOPRIGHT", -20, -20)
-		ns.uf_focus_options.scrollbar:SetPoint("BOTTOMLEFT", ns.uf_focus_options, "BOTTOMRIGHT", -20, 20)
-		-- min value: 5, else the title would be misaligned with the other subpanel titles
-		ns.uf_focus_options.scrollbar:SetMinMaxValues(5, 44) 
+		ns.uf_focus_options.scrollbar:SetPoint("TOPRIGHT", ns.uf_focus_options, -8, -84)
+		ns.uf_focus_options.scrollbar:SetPoint("BOTTOMRIGHT", ns.uf_focus_options, -8, 24)
+		ns.uf_focus_options.scrollbar:SetMinMaxValues(0, 28) 
 		ns.uf_focus_options.scrollbar:SetValueStep(1) 
 		ns.uf_focus_options.scrollbar.scrollStep = 1
 		ns.uf_focus_options.scrollbar:SetValue(0) 
@@ -2253,12 +2260,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end)
 
-		ns.uf_focus_options.content.title = ns.uf_focus_options.content:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		ns.uf_focus_options.content.title:SetPoint("TOPLEFT", ns.uf_focus_options.content, 16, -16)
-		ns.uf_focus_options.content.title:SetText("|cff5599ffUnitframes module: Focus Options|r")
-
 		ns.uf_focus_options.content.width_text = ns.createFontstring("uf_focus_options", "Width:", "content")
-		ns.uf_focus_options.content.width_text:SetPoint("TOPLEFT", ns.uf_focus_options.content.title, "BOTTOMLEFT", 0, -30)
+		ns.uf_focus_options.content.width_text:SetPoint("TOPLEFT", ns.uf_focus_options.content, 16, -16)
 
 		ns.uf_focus_options.content.width = ns.createInputbox("uf_focus_options", 40, 20, LolzenUIcfg.unitframes["uf_focus_width"], "content")
 		ns.uf_focus_options.content.width:SetPoint("LEFT", ns.uf_focus_options.content.width_text, "RIGHT", 10, 0)
@@ -2437,6 +2440,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			if ns.uf_focus_options.content.cb2:GetChecked() == true then
 				ns.uf_focus_options.content.cb3:Hide()
 				ns.uf_focus_options.content.header4:SetPoint("TOPLEFT", ns.uf_focus_options.content.cb2, 0, -30)
+				ns.uf_focus_options.scrollbar:SetValue(0)
 				ns.uf_focus_options.scrollbar:Hide()
 				ns.uf_focus_options.scrollframe:EnableMouseWheel(false)
 			else

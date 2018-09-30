@@ -310,9 +310,11 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 			info.func = OnClick
 			if pickertype == "font" then
 				--create new fontobjects
-				LolzenFontObjects[v] = CreateFont(v)
-				LolzenFontObjects[v]:SetTextColor(1, 1, 1)
-				LolzenFontObjects[v]:SetFont(LSM:Fetch("font", v), 12, "")
+				if not LolzenFontObjects[v] then
+					LolzenFontObjects[v] = CreateFont(v)
+					LolzenFontObjects[v]:SetTextColor(1, 1, 1)
+					LolzenFontObjects[v]:SetFont(LSM:Fetch("font", v), 12, "")
+				end
 				--now use created fontObjects to distinguish the fonts in the picker
 				info.fontObject = v
 			elseif pickertype == "statusbar" then

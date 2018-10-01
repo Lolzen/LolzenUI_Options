@@ -25,6 +25,5 @@ modules/pullcount/options.lua
 modules/slashcommands/options.lua
 modules/tooltip/options.lua
 modules/unitframes/options.lua
-modules/versioncheck/options.lua
 modules/worldmap/options.lua
 modules/xpbar/options.lua

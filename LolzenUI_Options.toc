@@ -8,22 +8,4 @@
 
 core.lua
 
-modules/actionbars/options.lua
-modules/artifactbar/options.lua
-modules/buffs/options.lua
-modules/buffwatcher/options.lua
-modules/chat/options.lua
-modules/clock/options.lua
-modules/fonts/options.lua
-modules/itemlevel/options.lua
-modules/interruptannouncer/options.lua
-modules/minimap/options.lua
-modules/nameplates/options.lua
-modules/objectivetrackerframe/options.lua
-modules/orderhallbar/options.lua
-modules/pullcount/options.lua
-modules/slashcommands/options.lua
-modules/tooltip/options.lua
-modules/unitframes/options.lua
-modules/worldmap/options.lua
-modules/xpbar/options.lua
+options.xml

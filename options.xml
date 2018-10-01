@@ -1,0 +1,22 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="modules/actionbars/options.lua"/>
+	<Script file="modules/artifactbar/options.lua"/>
+	<Script file="modules/buffs/options.lua"/>
+	<Script file="modules/buffwatcher/options.lua"/>
+	<Script file="modules/chat/options.lua"/>
+	<Script file="modules/clock/options.lua"/>
+	<Script file="modules/fonts/options.lua"/>
+	<Script file="modules/itemlevel/options.lua"/>
+	<Script file="modules/interruptannouncer/options.lua"/>
+	<Script file="modules/minimap/options.lua"/>
+	<Script file="modules/nameplates/options.lua"/>
+	<Script file="modules/objectivetrackerframe/options.lua"/>
+	<Script file="modules/orderhallbar/options.lua"/>
+	<Script file="modules/pullcount/options.lua"/>
+	<Script file="modules/slashcommands/options.lua"/>
+	<Script file="modules/tooltip/options.lua"/>
+	<Script file="modules/unitframes/options.lua"/>
+	<Script file="modules/worldmap/options.lua"/>
+	<Script file="modules/xpbar/options.lua"/>
+</Ui>

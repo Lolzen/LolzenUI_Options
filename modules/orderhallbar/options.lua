@@ -36,8 +36,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local alpha_text = ns.createFontstring("orderhallbar", "Alpha:")
 		alpha_text:SetPoint("LEFT", color, "RIGHT", 10, 0)
 
-		local alpha = ns.createInputbox("orderhallbar", 30, 20, LolzenUIcfg.orderhallbar["ohb_background_alpha"])
-		alpha:SetPoint("LEFT", alpha_text, "RIGHT", 10, 0)
+		local alpha = ns.createPicker("orderhallbar", "alpha", "oh_bg_alpha", 45, LolzenUIcfg.orderhallbar["ohb_background_alpha"])
+		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -3)
 
 		local header2 = ns.createHeader("orderhallbar", "Zonetext:")
 		header2:SetPoint("TOPLEFT", ohb_bg_text, "BOTTOMLEFT", 0, -30)
@@ -86,7 +86,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {zone_color:GetVertexColor()}
 			LolzenUIcfg.orderhallbar["ohb_background"] = UIDropDownMenu_GetSelectedName(ohb_bg)
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {color:GetVertexColor()}
-			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(alpha:GetText())
+			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.orderhallbar["ohb_always_show"] = cb1:GetChecked()
 		end
 

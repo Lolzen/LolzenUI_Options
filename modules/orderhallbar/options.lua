@@ -78,7 +78,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local icon_size = ns.createInputbox("orderhallbar", 30, 20, LolzenUIcfg.orderhallbar["ohb_currency_icon_size"])
 		icon_size:SetPoint("LEFT", icon_size_text, "RIGHT", 10, 0)
 
-		ns["orderhallbar"].okay = function(self)
+		local applyButton = ns.createApplyButton("orderhallbar")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.orderhallbar["ohb_currency_icon_size"] = tonumber(icon_size:GetText())
 			LolzenUIcfg.orderhallbar["ohb_currency_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.orderhallbar["ohb_currency_font_size"] = tonumber(font_size:GetText())
@@ -88,7 +89,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.orderhallbar["ohb_always_show"] = cb1:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["orderhallbar"].default = function(self)
 			LolzenUIcfg.orderhallbar["ohb_currency_icon_size"] = 18

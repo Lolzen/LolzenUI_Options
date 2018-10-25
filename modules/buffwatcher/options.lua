@@ -79,7 +79,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				print("duplicate id detected!")
 			else
 				table.insert(LolzenUIcfg.buffwatcher["buffwatchlist"][UnitName("player")], eb:GetText())
-				print("Hit Okay reload the list")
+				print("Hit \"Apply Settings\" to reload the list")
 			end
 		end)
 
@@ -93,7 +93,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 					table.remove(LolzenUIcfg.buffwatcher["buffwatchlist"][UnitName("player")], k)
 				end
 			end
-			print("Hit Okay to reload the list")
+			print("Hit \"Apply Settings\" to reload the list")
 		end)
 
 		local tip = ns.createFontstring("buffwatcher", "|cff5599ffPROTIP: |rrefer to WoWhead and search for your spell,\n the spellid is in the URL")
@@ -131,12 +131,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local icon_spacing = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_icon_spacing"])
 		icon_spacing:SetPoint("LEFT", icon_spacing_text, "RIGHT", 10, 0)
 
-		ns["buffwatcher"].okay = function(self)
+		local applyButton = ns.createApplyButton("buffwatcher")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.buffwatcher["buffwatch_pos_x"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.buffwatcher["buffwatch_pos_y"] = tonumber(pos_y:GetText())
 			LolzenUIcfg.buffwatcher["buffwatch_icon_size"] = tonumber(icon_size:GetText())
 			LolzenUIcfg.buffwatcher["buffwatch_icon_spacing"] = tonumber(icon_spacing:GetText())
-		end
+			ReloadUI()
+		end)
 
 		ns["buffwatcher"].default = function(self)
 			LolzenUIcfg.buffwatcher["buffwatchlist"] = {}

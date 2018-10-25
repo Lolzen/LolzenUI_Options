@@ -30,12 +30,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local msg_desc = ns.createFontstring("interruptannouncer", "use |cff5599ff!spell|r for the interrupted spell and |cff5599ff!name|r for the unit's name which was interrupted")
 		msg_desc:SetPoint("TOPLEFT", msg_text, "BOTTOMLEFT", 0, -8)
 
-		ns["interruptannouncer"].okay = function(self)
+		local applyButton = ns.createApplyButton("interruptannouncer")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.interruptannouncer["interruptannoucer_instance"] = cb1:GetChecked()
 			LolzenUIcfg.interruptannouncer["interruptannoucer_party"] = cb2:GetChecked()
 			LolzenUIcfg.interruptannouncer["interruptannoucer_say"] = cb3:GetChecked()
 			LolzenUIcfg.interruptannouncer["interruptannouncer_msg"] = msg:GetText()
-		end
+			ReloadUI()
+		end)
 
 		ns["interruptannouncer"].default = function(self)
 			LolzenUIcfg.interruptannouncer["interruptannoucer_instance"] = true

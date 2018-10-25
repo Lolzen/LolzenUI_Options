@@ -179,7 +179,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local text_anchor = ns.createPicker("xpbar", "anchor", "xpbar_text_anchor_1", 110, LolzenUIcfg.xpbar["xpbar_text_anchor1"])
 		text_anchor:SetPoint("LEFT", text_anchor_text, "RIGHT", -10, -3)
 
-		ns["xpbar"].okay = function(self)
+		local applyButton = ns.createApplyButton("xpbar")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.xpbar["xpbar_height"] = tonumber(height:GetText())
 			LolzenUIcfg.xpbar["xpbar_width"] = tonumber(width:GetText())
 			LolzenUIcfg.xpbar["xpbar_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
@@ -203,7 +204,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.xpbar["xpbar_text_posx"] = tonumber(text_pos_x:GetText())
 			LolzenUIcfg.xpbar["xpbar_text_posy"] = tonumber(text_pos_y:GetText())
 			LolzenUIcfg.xpbar["xpbar_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(text_anchor)]
-		end
+			ReloadUI()
+		end)
 
 		ns["xpbar"].default = function(self)
 			LolzenUIcfg.xpbar["xpbar_height"] = 4

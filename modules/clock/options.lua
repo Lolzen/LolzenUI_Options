@@ -102,7 +102,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local anchor2 = ns.createPicker("clock", "anchor", "clock_text_anchor_2", 110, LolzenUIcfg.clock["clock_anchor2"])
 		anchor2:SetPoint("LEFT", anchor_text2, "RIGHT", -10, -3)
 
-		ns["clock"].okay = function(self)
+		local applyButton = ns.createApplyButton("clock")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.clock["clock_seconds_enabled"] = cb1:GetChecked()
 			LolzenUIcfg.clock["clock_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.clock["clock_seconds_color"] = {seconds_color:GetVertexColor()}
@@ -116,7 +117,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.clock["clock_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor2)]
 			LolzenUIcfg.clock["clock_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.clock["clock_posy"] = tonumber(pos_y:GetText())
-		end
+			ReloadUI()
+		end)
 
 		ns["clock"].default = function(self)
 			LolzenUIcfg.clock["clock_seconds_enabled"] = true

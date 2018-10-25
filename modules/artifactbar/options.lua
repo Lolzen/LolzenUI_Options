@@ -152,7 +152,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local text_anchor = ns.createPicker("artifactbar", "anchor", "artifactbar_text_anchor_1", 110, LolzenUIcfg.artifactbar["artifactbar_text_anchor1"])
 		text_anchor:SetPoint("LEFT", text_anchor_text, "RIGHT", -10, -3)
 
-		ns["artifactbar"].okay = function(self)
+		local applyButton = ns.createApplyButton("artifactbar")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.artifactbar["artifactbar_height"] = tonumber(height:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_width"] = tonumber(width:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
@@ -173,7 +174,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_text_posx"] = tonumber(text_pos_x:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_text_posy"] = tonumber(text_pos_y:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(text_anchor)]
-		end
+			ReloadUI()
+		end)
 
 		ns["artifactbar"].default = function(self)
 			LolzenUIcfg.artifactbar["artifactbar_height"] = 4

@@ -72,7 +72,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb4 = ns.createCheckBox("itemlevel", "itemquality_colors", "|cff5599ffUse item Quality for itemlevel color|r", LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"])
 		cb4:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
 
-		ns["itemlevel"].okay = function(self)
+		local applyButton = ns.createApplyButton("itemlevel")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.itemlevel["ilvl_characterframe"] = cb1:GetChecked()
 			LolzenUIcfg.itemlevel["ilvl_inspectframe"] = cb2:GetChecked()
 			LolzenUIcfg.itemlevel["ilvl_bags"] = cb3:GetChecked()
@@ -84,7 +85,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.itemlevel["ilvl_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.itemlevel["ilvl_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"] = cb4:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["itemlevel"].default = function(self)
 			LolzenUIcfg.itemlevel["ilvl_characterframe"] = true

@@ -183,7 +183,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local chat_dndflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_dnd"])
 		chat_dndflag:SetPoint("LEFT", chat_dndflag_text, "RIGHT", 10, 0)
 
-		ns["chat"].okay = function(self)
+		local applyButton = ns.createApplyButton("chat")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.chat["chat_custom_channel_stamps"] = cb1:GetChecked()
 			LolzenUIcfg.chat["chat_strip_brackets"] = cb2:GetChecked()
 			LolzenUIcfg.chat["chat_timestamp"] = cb3:GetChecked()
@@ -215,7 +216,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_sticky_channel"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_channel)])
 			LolzenUIcfg.chat["chat_flag_afk"] = chat_afkflag:GetText()
 			LolzenUIcfg.chat["chat_flag_dnd"] = chat_dndflag:GetText()
-		end
+			ReloadUI()
+		end)
 
 		ns["chat"].default = function(self)
 			LolzenUIcfg.chat["chat_custom_channel_stamps"] = true

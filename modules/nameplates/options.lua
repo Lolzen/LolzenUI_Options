@@ -512,7 +512,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_text_anchor2 = ns.createPicker("np_castbar_options", "anchor", "nameplates_castbar_text_anchor2", 110, LolzenUIcfg.nameplates["np_cbtext_anchor2"])
 		cb_text_anchor2:SetPoint("LEFT", cb_text_anchor_text2, "RIGHT", -10, -3)
 
-		ns["nameplates"].okay = function(self)
+		local applyButton = ns.createApplyButton("nameplates")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.nameplates["np_targetindicator"] = cb1:GetChecked()
 			LolzenUIcfg.nameplates["np_threatindicator"] = cb2:GetChecked()
 			LolzenUIcfg.nameplates["np_raidtargetindicator"] = cb3:GetChecked()
@@ -542,7 +543,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(aura_growthy)]
 			LolzenUIcfg.nameplates["np_aura_show_only_player"] = cb5:GetChecked()
 			LolzenUIcfg.nameplates["np_aura_desature_nonplayer_auras"] = cb6:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["nameplates"].default = function(self)
 			LolzenUIcfg.nameplates["np_targetindicator"] = true
@@ -577,7 +579,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["np_castbar_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("np_castbar_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.nameplates["np_cb_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_anchor)]
 			LolzenUIcfg.nameplates["np_cb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_anchor2)]
 			LolzenUIcfg.nameplates["np_cb_posx"] = tonumber(cb_pos_x:GetText())
@@ -606,7 +609,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_cbtext_font"] = UIDropDownMenu_GetSelectedName(cb_text_font)
 			LolzenUIcfg.nameplates["np_cbtext_font_size"] = tonumber(cb_text_font_size:GetText())
 			LolzenUIcfg.nameplates["np_cbtext_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_text_font_flag)]
-		end
+			ReloadUI()
+		end)
 
 		ns["np_castbar_options"].default = function(self)
 			LolzenUIcfg.nameplates["np_cb_anchor"] = "TOP"

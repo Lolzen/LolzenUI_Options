@@ -33,12 +33,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb2 = ns.createCheckBox("worldmap", "save_worldmap_position", "|cff5599ffSave WorldMap position|r", LolzenUIcfg.worldmap["worldmap_save_position"])
 		cb2:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", 0, -8)
 
-		ns["worldmap"].okay = function(self)
+		local applyButton = ns.createApplyButton("worldmap")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.worldmap["worldmap_scale"] = tonumber(scale:GetText())
 			LolzenUIcfg.worldmap["worldmap_coordinates"] = cb1:GetChecked()
 			LolzenUIcfg.worldmap["worldmap_title_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.worldmap["worldmap_save_position"] = cb2:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["worldmap"].default = function(self)
 			LolzenUIcfg.worldmap["worldmap_scale"] = 1

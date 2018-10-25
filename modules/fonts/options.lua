@@ -36,12 +36,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local standard = ns.createPicker("fonts", "font", "fonts_standardfont", 120, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
 		standard:SetPoint("LEFT", standard_text, "RIGHT", -10, -3)
 
-		ns["fonts"].okay = function(self)
+		local applyButton = ns.createApplyButton("fonts")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = UIDropDownMenu_GetSelectedName(dmg)
 			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = UIDropDownMenu_GetSelectedName(unit)
 			LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"] = UIDropDownMenu_GetSelectedName(np)
 			LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"] = UIDropDownMenu_GetSelectedName(standard)
-		end
+			ReloadUI()
+		end)
 
 		ns["fonts"].default = function(self)
 			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = "DroidSansBold"

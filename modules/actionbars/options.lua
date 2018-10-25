@@ -245,7 +245,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pb_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_pb_posy"])
 		pb_pos_y:SetPoint("LEFT", pb_pos_x, "RIGHT", 10, 0)
 
-		ns["actionbars"].okay = function(self)
+		local applyButton = ns.createApplyButton("actionbars")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = cb1:GetChecked()
 			LolzenUIcfg.actionbar["actionbar_normal_texture"] = normaltex_path:GetText()
 			LolzenUIcfg.actionbar["actionbar_flash_texture"] = flashtex_path:GetText()
@@ -289,7 +290,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.actionbar["actionbar_pb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pb_anchor2)]
 			LolzenUIcfg.actionbar["actionbar_pb_posx"] = tonumber(pb_pos_x:GetText())
 			LolzenUIcfg.actionbar["actionbar_pb_posy"] = tonumber(pb_pos_y:GetText())
-		end
+			ReloadUI()
+		end)
 
 		ns["actionbars"].default = function(self)
 			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = false

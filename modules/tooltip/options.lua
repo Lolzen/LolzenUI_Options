@@ -126,7 +126,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_f = ns.createColorPicker("tooltip", color, LolzenUIcfg.tooltip["tip_own_guild_color"])
 		color_f:SetAllPoints(color)
 
-		ns["tooltip"].okay = function(self)
+		local applyButton = ns.createApplyButton("tooltip")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.tooltip["tip_show_factionicons"] = cb1:GetChecked()
 			LolzenUIcfg.tooltip["tip_show_raidmark"] = cb2:GetChecked()
 			LolzenUIcfg.tooltip["tip_display_talents"] = cb3:GetChecked()
@@ -144,7 +145,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.tooltip["tip_statusflag_off_color"] = {color_off:GetVertexColor()}
 			LolzenUIcfg.tooltip["tip_own_guild_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.tooltip["tip_use_guild_color_globally"] = cb4:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["tooltip"].default = function(self)
 			LolzenUIcfg.tooltip["tip_show_factionicons"] = true

@@ -90,7 +90,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_f_exalted = ns.createColorPicker("miscellaneous", color_exalted, LolzenUIcfg.miscellaneous["misc_faction_colors"][8])
 		color_f_exalted:SetAllPoints(color_exalted)
 		
-		ns["miscellaneous"].okay = function(self)
+		local applyButton = ns.createApplyButton("miscellaneous")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.miscellaneous["misc_alternative_faction_colors"] = cb1:GetChecked()
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][1] = {color_hated:GetVertexColor()}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][2] = {color_hostile:GetVertexColor()}
@@ -100,7 +101,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][6] = {color_honored:GetVertexColor()}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][7] = {color_revered:GetVertexColor()}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][8] = {color_exalted:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 
 		ns["miscellaneous"].default = function(self)
 			LolzenUIcfg.miscellaneous["misc_alternative_faction_colors"] = true

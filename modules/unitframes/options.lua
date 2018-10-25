@@ -2747,7 +2747,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.uf_powercolor_options.pain_f = ns.createColorPicker("uf_powercolor_options", ns.uf_powercolor_options.pain, LolzenUIcfg.unitframes["uf_power_colors"][18])
 		ns.uf_powercolor_options.pain_f:SetAllPoints(ns.uf_powercolor_options.pain)
 
-		ns["unitframes"].okay = function(self)
+		local applyButton = ns.createApplyButton("unitframes")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = ns.unitframes.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_use_val_and_perc"] = ns.unitframes.content.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_perc_first"] = ns.unitframes.content.cb3:GetChecked()
@@ -2775,7 +2776,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_fade_combat"] = ns.unitframes.content.cb7:GetChecked()
 			LolzenUIcfg.unitframes["uf_fade_combat_incombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.combatfadeout_alpha)])
 			LolzenUIcfg.unitframes["uf_fade_combat_outofcombat"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(ns.unitframes.content.outofcombatfadeout_alpha)])
-		end
+			ReloadUI()
+		end)
 
 		ns["unitframes"].default = function(self)
 			LolzenUIcfg.unitframes["uf_use_hp_percent"] = false
@@ -2808,7 +2810,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_player_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_player_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_player_use_own_hp_font_settings"] = ns.uf_player_options.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_player_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_player_options.content.hp_font)
 			LolzenUIcfg.unitframes["uf_player_hp_font_size"] = tonumber(ns.uf_player_options.content.hp_font_size:GetText())
@@ -2859,7 +2862,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_player_cb_font_size"] = tonumber(ns.uf_player_options.content.cb_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_player_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_player_options.content.cb_font_flag)]
 			LolzenUIcfg.unitframes["uf_player_cb_font_color"] = {ns.uf_player_options.content.cb_font_color:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_player_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_player_use_own_hp_font_settings"] = true
@@ -2915,7 +2919,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_target_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_target_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_target_use_own_hp_font_settings"] = ns.uf_target_options.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_target_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_target_options.content.hp_font)
 			LolzenUIcfg.unitframes["uf_target_hp_font_size"] = tonumber(ns.uf_target_options.content.hp_font_size:GetText())
@@ -2972,7 +2977,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_target_cb_font_size"] = tonumber(ns.uf_target_options.content.cb_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_target_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_target_options.content.cb_font_flag)]
 			LolzenUIcfg.unitframes["uf_target_cb_font_color"] = {ns.uf_target_options.content.cb_font_color:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_target_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_target_use_own_hp_font_settings"] = true
@@ -3034,7 +3040,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_targettarget_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_targettarget_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_targettarget_use_own_hp_font_settings"] = ns.uf_targettarget_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_targettarget_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_targettarget_options.hp_font)
 			LolzenUIcfg.unitframes["uf_targettarget_hp_font_size"] = tonumber(ns.uf_targettarget_options.hp_font_size:GetText())
@@ -3044,7 +3051,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_targettarget_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_targettarget_options.hp_anchor)]
 			LolzenUIcfg.unitframes["uf_targettarget_width"] = tonumber(ns.uf_targettarget_options.width:GetText())
 			LolzenUIcfg.unitframes["uf_targettarget_height"] = tonumber(ns.uf_targettarget_options.height:GetText())
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_targettarget_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_targettarget_use_own_hp_font_settings"] = true
@@ -3059,7 +3067,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_party_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_party_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_party_enabled"] = ns.uf_party_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_use_vertical_layout"] = ns.uf_party_options.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_party_use_own_hp_font_settings"] = ns.uf_party_options.cb3:GetChecked()
@@ -3080,7 +3089,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_party_rc_posx"] = tonumber(ns.uf_party_options.rc_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_party_rc_posy"] = tonumber(ns.uf_party_options.rc_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_party_rc_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_party_options.rc_anchor)]
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_party_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_party_enabled"] = true
@@ -3106,7 +3116,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_raid_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_raid_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_raid_enabled"] = ns.uf_raid_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_raid_use_own_hp_font_settings"] = ns.uf_raid_options.cb2:GetChecked()
 			LolzenUIcfg.unitframes["uf_raid_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_raid_options.hp_font)
@@ -3126,7 +3137,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_raid_rc_posx"] = tonumber(ns.uf_raid_options.rc_pos_x:GetText())
 			LolzenUIcfg.unitframes["uf_raid_rc_posy"] = tonumber(ns.uf_raid_options.rc_pos_y:GetText())
 			LolzenUIcfg.unitframes["uf_raid_rc_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(ns.uf_raid_options.rc_anchor)]
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_raid_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_raid_enabled"] = true
@@ -3151,7 +3163,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_pet_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_pet_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_pet_use_own_hp_font_settings"] = ns.uf_pet_options.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_pet_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_pet_options.hp_font)
 			LolzenUIcfg.unitframes["uf_pet_hp_font_size"] = tonumber(ns.uf_pet_options.hp_font_size:GetText())
@@ -3181,7 +3194,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_pet_cb_font_size"] = tonumber(ns.uf_pet_options.cb_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_pet_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_pet_options.cb_font_flag)]
 			LolzenUIcfg.unitframes["uf_pet_cb_font_color"] = {ns.uf_pet_options.cb_font_color:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_pet_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_pet_use_own_hp_font_settings"] = true
@@ -3214,7 +3228,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_boss_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_boss_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_boss_width"] = tonumber(ns.uf_boss_options.content.width:GetText())
 			LolzenUIcfg.unitframes["uf_boss_height"] = tonumber(ns.uf_boss_options.content.height:GetText())
 			LolzenUIcfg.unitframes["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.growth)]
@@ -3267,7 +3282,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_boss_cb_font_size"] = tonumber(ns.uf_boss_options.content.cb_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_boss_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_boss_options.content.cb_font_flag)]
 			LolzenUIcfg.unitframes["uf_boss_cb_font_color"] = {ns.uf_boss_options.content.cb_font_color:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_boss_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_boss_width"] = 160
@@ -3325,7 +3341,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_focus_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_focus_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_focus_use_own_hp_font_settings"] = ns.uf_focus_options.content.cb1:GetChecked()
 			LolzenUIcfg.unitframes["uf_focus_hp_font"] = UIDropDownMenu_GetSelectedName(ns.uf_focus_options.content.hp_font)
 			LolzenUIcfg.unitframes["uf_focus_hp_font_size"] = tonumber(ns.uf_focus_options.content.hp_font_size:GetText())
@@ -3375,7 +3392,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_focus_cb_font_size"] = tonumber(ns.uf_focus_options.content.cb_font_size:GetText())
 			LolzenUIcfg.unitframes["uf_focus_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(ns.uf_focus_options.content.cb_font_flag)]
 			LolzenUIcfg.unitframes["uf_focus_cb_font_color"] = {ns.uf_focus_options.content.cb_font_color:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 
 		ns["uf_focus_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_focus_use_own_hp_font_settings"] = true
@@ -3430,7 +3448,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			ReloadUI()
 		end
 
-		ns["uf_powercolor_options"].okay = function(self)
+		local applyButton = ns.createApplyButton("uf_powercolor_options")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes["uf_power_colors"][0] = {ns.uf_powercolor_options.mana:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_power_colors"][1] = {ns.uf_powercolor_options.rage:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_power_colors"][2] = {ns.uf_powercolor_options.focus:GetVertexColor()}
@@ -3447,7 +3466,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes["uf_power_colors"][16] = {ns.uf_powercolor_options.ac:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_power_colors"][17] = {ns.uf_powercolor_options.fury:GetVertexColor()}
 			LolzenUIcfg.unitframes["uf_power_colors"][18] = {ns.uf_powercolor_options.pain:GetVertexColor()}
-		end
+			ReloadUI()
+		end)
 		
 		ns["uf_powercolor_options"].default = function(self)
 			LolzenUIcfg.unitframes["uf_power_colors"][0] = {48/255, 113/255, 191/255}

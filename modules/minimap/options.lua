@@ -15,9 +15,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb1 = ns.createCheckBox("minimap", "squareMinimap", "|cff5599ffsquare Minimap|r", LolzenUIcfg.minimap["minimap_square"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
-		ns["minimap"].okay = function(self)
+		local applyButton = ns.createApplyButton("minimap")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.minimap["minimap_square"] = cb1:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["minimap"].default = function(self)
 			LolzenUIcfg.minimap["minimap_square"] = true

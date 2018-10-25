@@ -76,7 +76,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pull_now = ns.createInputbox("pullcount", 100, 20, LolzenUIcfg.pullcount["pull_sound_pull"])
 		pull_now:SetPoint("LEFT", pull_now_text, "RIGHT", 10, 0)
 
-		ns["pullcount"].okay = function(self)
+		local applyButton = ns.createApplyButton("pullcount")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.pullcount["pull_count_range"] = tonumber(pull_count_range:GetText())
 			LolzenUIcfg.pullcount["pull_msg_count"] = pull_message_countdown:GetText()
 			LolzenUIcfg.pullcount["pull_msg_now"] = pull_message:GetText()
@@ -96,7 +97,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.pullcount["pull_filter_instance"] = cb3:GetChecked()
 			LolzenUIcfg.pullcount["pull_filter_say"] = cb4:GetChecked()
 			LolzenUIcfg.pullcount["pull_filter_channel"] = cb5:GetChecked()
-		end
+			ReloadUI()
+		end)
 
 		ns["pullcount"].default = function(self)
 			LolzenUIcfg.pullcount["pull_count_range"] = 3

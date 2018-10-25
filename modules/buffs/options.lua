@@ -199,7 +199,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local count_font_flag = ns.createPicker("buffs", "flag", "buffs_count_font_flag_picker", 100, LolzenUIcfg.buffs["buff_counter_font_flag"])
 		count_font_flag:SetPoint("LEFT", count_font_flag_text, "RIGHT", -10, -3)
 
-		ns["buffs"].okay = function(self)
+		local applyButton = ns.createApplyButton("buffs")
+		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.buffs["buff_size"] = tonumber(buff_size:GetText())
 			LolzenUIcfg.buffs["buff_debuff_size"] = tonumber(debuff_size:GetText())
 			LolzenUIcfg.buffs["buff_tempenchant_size"] = tonumber(tempenchant_size:GetText())
@@ -224,7 +225,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.buffs["buff_counter_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)]
 			LolzenUIcfg.buffs["buff_aura_texture"] = bufftex_path:GetText()
 			LolzenUIcfg.buffs["buff_debuff_texture"] = debufftex_path:GetText()
-		end
+			ReloadUI()
+		end)
 
 		ns["buffs"].default = function(self)
 			LolzenUIcfg.buffs["buff_size"] = 30

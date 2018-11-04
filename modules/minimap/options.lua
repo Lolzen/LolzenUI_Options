@@ -33,7 +33,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local anchor_text = ns.createFontstring("minimap", "Anchor:")
 		anchor_text:SetPoint("LEFT", pos_y, "RIGHT", 10, 0)
 
-		local anchor = ns.createPicker("minimap", "anchor", "clock_text_anchor_1", 110, LolzenUIcfg.minimap["minimap_anchor"])
+		local anchor = ns.createPicker("minimap", "anchor", "minimap_anchor", 110, LolzenUIcfg.minimap["minimap_anchor"])
 		anchor:SetPoint("LEFT", anchor_text, "RIGHT", -10, -3)
 
 		local applyButton = ns.createApplyButton("minimap")

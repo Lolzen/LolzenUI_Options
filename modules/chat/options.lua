@@ -11,7 +11,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("chat", "Modifies Chat look & feel")
 
-		local scrollFrame = ns.createScrollFrame("chat", 54)
+		local scrollFrame = ns.createScrollFrame("chat", 76)
 
 		local cb1 = ns.createCheckBox("chat", "chat_custom_stamps", "|cff5599ffuse short chat stamps (G| P| R| ...)|r", LolzenUIcfg.chat["chat_custom_channel_stamps"], "content")
 		cb1:SetPoint("TOPLEFT", ns.chat.content, 16, 0)
@@ -34,8 +34,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb7 = ns.createCheckBox("chat", "chat_strip_say_yell", "|cff5599ffstrip 'says' and 'yells' from chat|r", LolzenUIcfg.chat["chat_strip_say_and_yell"], "content")
 		cb7:SetPoint("TOPLEFT", cb6, "BOTTOMLEFT", 0, 0)
 
+		local cb8 = ns.createCheckBox("chat", "chat_shorten_channels", "|cff5599ffshort channel names|r", LolzenUIcfg.chat["chat_shorten_channels"], "content")
+		cb8:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 0, 0)
+
 		local header1 = ns.createHeader("chat", "Frame:", "content")
-		header1:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 0, -20)
+		header1:SetPoint("TOPLEFT", cb8, "BOTTOMLEFT", 0, -20)
 
 		local pos_x_text = ns.createFontstring("chat", "PosX:", "content")
 		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
@@ -64,11 +67,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("chat", "Font:", "content")
 		header2:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -30)
 
-		local cb8 = ns.createCheckBox("chat", "chat_font_shadow", "|cff5599fffont shadow|r", LolzenUIcfg.chat["chat_font_shadow"], "content")
-		cb8:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		local cb9 = ns.createCheckBox("chat", "chat_font_shadow", "|cff5599fffont shadow|r", LolzenUIcfg.chat["chat_font_shadow"], "content")
+		cb9:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
 
 		local font_text = ns.createFontstring("chat", "Font:", "content")
-		font_text:SetPoint("TOPLEFT", cb8, "BOTTOMLEFT", 0, -10)
+		font_text:SetPoint("TOPLEFT", cb9, "BOTTOMLEFT", 0, -10)
 
 		local font = ns.createPicker("chat", "font", "chat_font", 120, LolzenUIcfg.chat["chat_font"], "content")
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
@@ -94,11 +97,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("chat", "Background:", "content")
 		header3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -30)
 
-		local cb9 = ns.createCheckBox("chat", "chat_backgound", "|cff5599ffchat background|r", LolzenUIcfg.chat["chat_background"], "content")
-		cb9:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -10)
+		local cb10 = ns.createCheckBox("chat", "chat_backgound", "|cff5599ffchat background|r", LolzenUIcfg.chat["chat_background"], "content")
+		cb10:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -10)
 
 		local texture_text = ns.createFontstring("chat", "Texture:", "content")
-		texture_text:SetPoint("TOPLEFT", cb9, "BOTTOMLEFT", 0, -10)
+		texture_text:SetPoint("TOPLEFT", cb10, "BOTTOMLEFT", 0, -10)
 
 		local texture = ns.createPicker("chat", "background", "chat_background", 120, LolzenUIcfg.chat["chat_background_texture"], "content")
 		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
@@ -193,6 +196,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_auto_who"] = cb5:GetChecked()
 			LolzenUIcfg.chat["chat_show_afkdnd_once"] = cb6:GetChecked()
 			LolzenUIcfg.chat["chat_strip_say_and_yell"] = cb7:GetChecked()
+			LolzenUIcfg.chat["chat_shorten_channels"] = cb8:GetChecked()
 			LolzenUIcfg.chat["chat_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.chat["chat_posy"] = tonumber(pos_y:GetText())
 			LolzenUIcfg.chat["chat_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
@@ -201,8 +205,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.chat["chat_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.chat["chat_font_spacing"] = tonumber(spacing:GetText())
-			LolzenUIcfg.chat["chat_font_shadow"] = cb8:GetChecked()
-			LolzenUIcfg.chat["chat_background"] = cb9:GetChecked()
+			LolzenUIcfg.chat["chat_font_shadow"] = cb9:GetChecked()
+			LolzenUIcfg.chat["chat_background"] = cb10:GetChecked()
 			LolzenUIcfg.chat["chat_background_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.chat["chat_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.chat["chat_background_border"] = UIDropDownMenu_GetSelectedName(border)
@@ -228,6 +232,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_auto_who"] = true
 			LolzenUIcfg.chat["chat_show_afkdnd_once"] = true
 			LolzenUIcfg.chat["chat_strip_say_and_yell"] = true
+			LolzenUIcfg.chat["chat_shorten_channels"] = true
 			LolzenUIcfg.chat["chat_posx"] = 8
 			LolzenUIcfg.chat["chat_posy"] = 15
 			LolzenUIcfg.chat["chat_anchor1"] = "BOTTOMLEFT"

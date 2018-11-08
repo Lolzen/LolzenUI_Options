@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("fonts")
 
 		local about = ns.createDescription("fonts", "Changes the fonts used in WoW")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local dmg_text = ns.createFontstring("fonts", "|cff5599ffDAMAGE_TEXT_FONT:|r")
 		dmg_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

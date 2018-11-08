@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("clock")
 
 		local about = ns.createDescription("clock", "A clock with Addon stats along with fps and latency overwiev on mouseover")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("clock", "Hours & Minutes:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

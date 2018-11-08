@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("orderhallbar")
 
 		local about = ns.createDescription("orderhallbar", "Modify the OrderHallBar and show currencies marked as \"Show in Backpack\"")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("orderhallbar", "alwaysshow", "|cff5599ffalways show the orderhallbar|r", LolzenUIcfg.orderhallbar["ohb_always_show"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

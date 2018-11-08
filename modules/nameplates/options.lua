@@ -11,7 +11,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("nameplates")
 
 		local about = ns.createDescription("nameplates", "Modifies the Nameplates")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("nameplates", "Preview:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
@@ -284,9 +283,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ns.np_castbar_options.parent = "nameplates"
 		InterfaceOptions_AddCategory(ns.np_castbar_options)
 
-		local cb_title = ns.np_castbar_options:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-		cb_title:SetPoint("TOPLEFT", ns.np_castbar_options, 16, -16)
-		cb_title:SetText("|cff5599ffNameplates module: Castbar Options|r")
+		local cb_title = ns.createTitle("np_castbar_options", "Nameplates module: Castbar Options")
 
 		local cb_header1 = ns.createHeader("np_castbar_options", "Preview:")
 		cb_header1:SetPoint("TOPLEFT", cb_title, "BOTTOMLEFT", 0, -40)

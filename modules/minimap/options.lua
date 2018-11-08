@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("minimap")
 
 		local about = ns.createDescription("minimap", "A clean Minimap")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("minimap", "squareMinimap", "|cff5599ffsquare Minimap|r", LolzenUIcfg.minimap["minimap_square"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

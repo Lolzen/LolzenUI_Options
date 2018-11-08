@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("itemlevel")
 
 		local about = ns.createDescription("itemlevel", "Displays item level on equippable items")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("itemlevel", "Character", "|cff5599ffShow Itemlevel on Character frame|r", LolzenUIcfg.itemlevel["ilvl_characterframe"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

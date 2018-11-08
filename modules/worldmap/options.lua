@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("worldmap")
 
 		local about = ns.createDescription("worldmap", "Modifies & Enhances the Worldmap")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local scale_text = ns.createFontstring("worldmap", "Worldmap Scale (minimized) [range: 0.1 - 1]:")
 		scale_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("pullcount")
 
 		local about = ns.createDescription("pullcount", "Built-in /pull [num] ; works with DBM/BigWigs and plays sounds (optional)")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("pullcount", "Play sounds from custom messages from:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

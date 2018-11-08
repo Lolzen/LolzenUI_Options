@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("buffwatcher")
 
 		local about = ns.createDescription("buffwatcher", "Displays nice icons along with the duration if up")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("buffwatcher", "Buffs which are being watched:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

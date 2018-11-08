@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("objectivetracker")
 
 		local about = ns.createDescription("objectivetracker", "Modify behaviour and position of the ObjectiveTrackerFrame")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("objectivetracker", "combatcollapse", "|cff5599ffcombat auto collapse|r", LolzenUIcfg.objectivetracker["objectivetracker_combatcollapse"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

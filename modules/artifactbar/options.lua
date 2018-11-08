@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("artifactbar")
 
 		local about = ns.createDescription("artifactbar", "A bar which shows artifact power progress")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("artifactbar", "Frame")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

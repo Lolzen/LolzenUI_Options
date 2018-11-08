@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("actionbars")
 
 		local about = ns.createDescription("actionbars", "Skins the Actionbars and alters their positions")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("actionbars", "Preview:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

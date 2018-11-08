@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("slashcommands")
 
 		local about = ns.createDescription("slashcommands", "these are the slashcommands available:")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("slashcommands", "/rl")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

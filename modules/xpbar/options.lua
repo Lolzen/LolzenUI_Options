@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("xpbar")
 
 		local about = ns.createDescription("xpbar", "A bar which shows pretige/honor in bgs, rep at the watched faction or alternatively experience")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("xpbar", "Frame")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

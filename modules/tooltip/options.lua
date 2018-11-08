@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("tooltip")
 
 		local about = ns.createDescription("tooltip", "Modifies the look of the Tooltip and adds a few features")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("tooltip", "tt_factionicons", "|cff5599ffshow factionicons|r", LolzenUIcfg.tooltip["tip_show_factionicons"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

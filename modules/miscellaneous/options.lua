@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("miscellaneous")
 
 		local about = ns.createDescription("miscellaneous", "Miscellaneous options")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("miscellaneous", "Reputation Colors:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

@@ -11,7 +11,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("buffs")
 
 		local about = ns.createDescription("buffs", "Skins the buffs/debuffs along with a more detailed timer")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local header1 = ns.createHeader("buffs", "Preview:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

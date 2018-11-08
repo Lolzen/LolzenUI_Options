@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("interruptannouncer")
 
 		local about = ns.createDescription("interruptannouncer", "Announces interrupts")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("interruptannouncer", "instanceannounce", "|cff5599ffannounce interrupts in instance chat|r", LolzenUIcfg.interruptannouncer["interruptannoucer_instance"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

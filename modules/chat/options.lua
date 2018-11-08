@@ -10,7 +10,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("chat")
 
 		local about = ns.createDescription("chat", "Modifies Chat look & feel")
-		about:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -8)
 
 		local cb1 = ns.createCheckBox("chat", "chat_custom_stamps", "|cff5599ffuse short chat stamps (G| P| R| ...)|r", LolzenUIcfg.chat["chat_custom_channel_stamps"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

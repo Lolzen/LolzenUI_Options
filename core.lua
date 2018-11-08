@@ -31,15 +31,15 @@ end)
 --/ Provide functions to easily create options for modules /--
 
 -- title
-ns.createTitle = function(module, sub)
+ns.createTitle = function(module, optionalText)
 	local title
-	if sub ~= nil then
-		title = ns[module][sub]:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-	else
-		title = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-	end
+	title = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
 	title:SetPoint("TOPLEFT", ns[module], 16, -16)
-	title:SetText("|cff5599ff"..string.upper(string.sub(ns[module].name, 1, 1))..string.sub(ns[module].name, 2).." module Options|r")
+	if optionalText ~= nil then
+		title:SetText("|cff5599ff"..optionalText.."|r")
+	else
+		title:SetText("|cff5599ff"..string.upper(string.sub(ns[module].name, 1, 1))..string.sub(ns[module].name, 2).." module Options|r")
+	end
 	return title
 end
 
@@ -48,8 +48,10 @@ ns.createDescription = function(module, text, sub)
 	local desc
 	if sub ~= nil then
 		desc = ns[module][sub]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+		desc:SetPoint("TOPLEFT", ns[module][sub], 16, -40)
 	else
 		desc = ns[module]:CreateFontString(nil, "ARTWORK", "GameFontHighlightSmall")
+		desc:SetPoint("TOPLEFT", ns[module], 16, -40)
 	end
 	desc:SetText(text)
 	return desc
@@ -355,9 +357,8 @@ end
 
 -- colorPicker
 ns.createColorPicker = function(module, colorRect, colorVars, sub)
-	local function afbarSetNewColor()
-		r, g, b = ColorPickerFrame:GetColorRGB()
-		colorRect:SetVertexColor(r, g, b)
+	local function SetNewColor()
+		colorRect:SetVertexColor(ColorPickerFrame:GetColorRGB())
 	end
 
 	local function restorePreviousColor()
@@ -381,10 +382,46 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 		ColorPickerFrame.previousValues = colorVars
 		ColorPickerFrame:SetColorRGB(unpack(colorVars))
 		ColorPickerFrame.cancelFunc = restorePreviousColor
-		ColorPickerFrame.func = afbarSetNewColor
+		ColorPickerFrame.func = SetNewColor
 		ColorPickerFrame:Show()
 	end)
 	return colorpickerframe
+end
+
+-- scrollable content
+ns.createScrollFrame = function(module, max)
+	ns[module].scrollframe = CreateFrame("ScrollFrame", nil, ns[module])
+	ns[module].scrollframe:SetPoint("TOPLEFT", ns[module], 0, -56) 
+	ns[module].scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
+
+	ns[module].scrollbar = CreateFrame("Slider", nil, ns[module].scrollframe, "UIPanelScrollBarTemplate")
+	ns[module].scrollbar:SetPoint("TOPRIGHT", ns[module], -8, -84)
+	ns[module].scrollbar:SetPoint("BOTTOMRIGHT", ns[module], -8, 24)
+	ns[module].scrollbar:SetMinMaxValues(0, max) 
+	ns[module].scrollbar:SetValueStep(1) 
+	ns[module].scrollbar.scrollStep = 1
+	ns[module].scrollbar:SetValue(0) 
+	ns[module].scrollbar:SetWidth(16) 
+	ns[module].scrollbar:SetScript("OnValueChanged", function (self, value) 
+		self:GetParent():SetVerticalScroll(value) 
+	end)
+
+	ns[module].content = CreateFrame("Frame", nil, ns[module].scrollframe) 
+	ns[module].content:SetSize(128, 80) 
+	ns[module].scrollframe.content = ns[module].content
+ 
+	ns[module].scrollframe:SetScrollChild(ns[module].content)
+
+	-- enable mousewheel scrolling
+	ns[module].scrollframe:EnableMouseWheel(true)
+	ns[module].scrollframe:SetScript("OnMouseWheel", function(self, direction)
+		local current = ns[module].scrollbar:GetValue()
+		if direction == 1 then -- "up"
+			ns[module].scrollbar:SetValue(current - 10)
+		elseif direction == -1 then -- "down"
+			ns[module].scrollbar:SetValue(current + 10)
+		end
+	end)
 end
 
 -- "Apply Settings" Button

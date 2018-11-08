@@ -1,0 +1,14 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="modules/unitframes/general.lua"/>
+	<Script file="modules/unitframes/omf.lua"/>
+	<Script file="modules/unitframes/player.lua"/>
+	<Script file="modules/unitframes/target.lua"/>
+	<Script file="modules/unitframes/targettarget.lua"/>
+	<Script file="modules/unitframes/party.lua"/>
+	<Script file="modules/unitframes/raid.lua"/>
+	<Script file="modules/unitframes/pet.lua"/>
+	<Script file="modules/unitframes/boss.lua"/>
+	<Script file="modules/unitframes/focus.lua"/>
+	<Script file="modules/unitframes/powercolors.lua"/>
+</Ui>

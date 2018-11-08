@@ -17,7 +17,7 @@
 	<Script file="modules/pullcount/options.lua"/>
 	<Script file="modules/slashcommands/options.lua"/>
 	<Script file="modules/tooltip/options.lua"/>
-	<Script file="modules/unitframes/options.lua"/>
+	<Include file="modules/unitframes/options.xml"/>
 	<Script file="modules/worldmap/options.lua"/>
 	<Script file="modules/xpbar/options.lua"/>
 </Ui>

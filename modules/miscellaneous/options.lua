@@ -34,7 +34,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color_f_hostile = ns.createColorPicker("miscellaneous", color_hostile, LolzenUIcfg.miscellaneous["misc_faction_colors"][2])
 		color_f_hostile:SetAllPoints(color_hostile)
-		
+
 		local color_text_unfriendly = ns.createFontstring("miscellaneous", "Unfriendly:")
 		color_text_unfriendly:SetPoint("TOPLEFT", color_text_hostile, "BOTTOMLEFT", 0, -15)
 
@@ -43,7 +43,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color_f_unfriendly = ns.createColorPicker("miscellaneous", color_unfriendly, LolzenUIcfg.miscellaneous["misc_faction_colors"][3])
 		color_f_unfriendly:SetAllPoints(color_unfriendly)
-		
+
 		local color_text_neutral = ns.createFontstring("miscellaneous", "Neutral:")
 		color_text_neutral:SetPoint("TOPLEFT", color_text_unfriendly, "BOTTOMLEFT", 0, -15)
 
@@ -61,7 +61,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color_f_friendly = ns.createColorPicker("miscellaneous", color_friendly, LolzenUIcfg.miscellaneous["misc_faction_colors"][5])
 		color_f_friendly:SetAllPoints(color_friendly)
-	
+
 		local color_text_honored = ns.createFontstring("miscellaneous", "Honored:")
 		color_text_honored:SetPoint("TOPLEFT", color_text_friendly, "BOTTOMLEFT", 0, -15)
 
@@ -70,7 +70,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color_f_honored = ns.createColorPicker("miscellaneous", color_honored, LolzenUIcfg.miscellaneous["misc_faction_colors"][6])
 		color_f_honored:SetAllPoints(color_honored)
-		
+
 		local color_text_revered = ns.createFontstring("miscellaneous", "Revered:")
 		color_text_revered:SetPoint("TOPLEFT", color_text_honored, "BOTTOMLEFT", 0, -15)
 
@@ -79,7 +79,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color_f_revered = ns.createColorPicker("miscellaneous", color_revered, LolzenUIcfg.miscellaneous["misc_faction_colors"][7])
 		color_f_revered:SetAllPoints(color_revered)
-		
+
 		local color_text_exalted = ns.createFontstring("miscellaneous", "Exalted:")
 		color_text_exalted:SetPoint("TOPLEFT", color_text_revered, "BOTTOMLEFT", 0, -15)
 
@@ -88,7 +88,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color_f_exalted = ns.createColorPicker("miscellaneous", color_exalted, LolzenUIcfg.miscellaneous["misc_faction_colors"][8])
 		color_f_exalted:SetAllPoints(color_exalted)
-		
+
+		local header2 = ns.createHeader("miscellaneous", "MicroButtons:")
+		header2:SetPoint("TOPLEFT", color_text_exalted, "BOTTOMLEFT", 0, -20)
+
+		local cb2 = ns.createCheckBox("miscellaneous", "misc_microbttons", "|cff5599ffhide microbuttons|r", LolzenUIcfg.miscellaneous["misc_hide_microbuttons"])
+		cb2:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+
 		local applyButton = ns.createApplyButton("miscellaneous")
 		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.miscellaneous["misc_alternative_faction_colors"] = cb1:GetChecked()
@@ -100,6 +106,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][6] = {color_honored:GetVertexColor()}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][7] = {color_revered:GetVertexColor()}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][8] = {color_exalted:GetVertexColor()}
+			LolzenUIcfg.miscellaneous["misc_hide_microbuttons"] = cb2:GetChecked()
 			ReloadUI()
 		end)
 
@@ -113,6 +120,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][6] = {0, 0.6, 0.33}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][7] = {0, 0.7, 0.5}
 			LolzenUIcfg.miscellaneous["misc_faction_colors"][8] = {0, 0.7, 0.7}
+			LolzenUIcfg.miscellaneous["misc_hide_microbuttons"] = true
 			ReloadUI()
 		end
 	end

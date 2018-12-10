@@ -11,7 +11,7 @@
 	<Script file="modules/interruptannouncer/options.lua"/>
 	<Script file="modules/minimap/options.lua"/>
 	<Script file="modules/miscellaneous/options.lua"/>
-	<Script file="modules/nameplates/options.lua"/>
+	<Include file="modules/nameplates/options.xml"/>
 	<Script file="modules/objectivetrackerframe/options.lua"/>
 	<Script file="modules/orderhallbar/options.lua"/>
 	<Script file="modules/pullcount/options.lua"/>

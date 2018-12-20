@@ -41,6 +41,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local anchor = ns.createPicker("objectivetracker", "anchor", "objectivetracker_anchor", 110, LolzenUIcfg.objectivetracker["objectivetracker_anchor"])
 		anchor:SetPoint("LEFT", anchor_text, "RIGHT", -10, -3)
 
+		local scale_text = ns.createFontstring("objectivetracker", "Scale:")
+		scale_text:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -20)
+
+		local scale = ns.createPicker("objectivetracker", "alpha", "objectivetrackerframe_scale", 45, LolzenUIcfg.objectivetracker["objectivetracker_scale"])
+		scale:SetPoint("LEFT", scale_text, "RIGHT", 10, 0)
+
 		local applyButton = ns.createApplyButton("objectivetracker")
 		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.objectivetracker["objectivetracker_combatcollapse"] = cb1:GetChecked()
@@ -48,7 +54,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.objectivetracker["objectivetracker_posx"] = tonumber(pos_x:GetText())
 			LolzenUIcfg.objectivetracker["objectivetracker_posy"] = tonumber(pos_y:GetText())
 			LolzenUIcfg.objectivetracker["objectivetracker_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
-		--	LolzenUIcfg.objectivetracker["objectivetracker_scale"] = tonumber(anchor_point:GetText())
+			LolzenUIcfg.objectivetracker["objectivetracker_scale"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(scale)])
 			ReloadUI()
 		end)
 
@@ -58,7 +64,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.objectivetracker["objectivetracker_posx"] = 30
 			LolzenUIcfg.objectivetracker["objectivetracker_posy"] = -30
 			LolzenUIcfg.objectivetracker["objectivetracker_anchor"] = "TOPLEFT"
-		--	LolzenUIcfg.objectivetracker["objectivetracker_scale"] = 1
+			LolzenUIcfg.objectivetracker["objectivetracker_scale"] = 0.8
 			ReloadUI()
 		end
 	end

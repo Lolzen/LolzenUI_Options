@@ -284,6 +284,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			cb_height:Show()
 			cb_color_text:SetPoint("LEFT", cb_height, "RIGHT", 10, 0)
 			header5:SetPoint("TOPLEFT", cb_width_text, "BOTTOMLEFT", 0, -13)
+			ChangeScrollbarMinMax("uf_player_options", "+", 25)
 		else
 			cb_pos_x_text:Hide()
 			cb_pos_x:Hide()

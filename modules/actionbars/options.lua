@@ -1,6 +1,8 @@
 --// options for actionbars //--
 
 local _, ns = ...
+local L = ns.L
+local LUI = LolzenUI.L
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -9,9 +11,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("actionbars")
 
-		local about = ns.createDescription("actionbars", "Skins the Actionbars and alters their positions")
+		local about = ns.createDescription("actionbars", LUI["desc_actionbars"])
 
-		local header1 = ns.createHeader("actionbars", "Preview:")
+		local header1 = ns.createHeader("actionbars", L["Preview"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
 		-- // normaltexture buttonpreview // --
@@ -49,39 +51,39 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local pushedtex = ns.createButtonOverlay("actionbars", button5, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
 
-		local header2 = ns.createHeader("actionbars", "Textures & Size:")
+		local header2 = ns.createHeader("actionbars", L["ab_texture_and_size"])
 		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -20)
 
-		local cb1 = ns.createCheckBox("actionbars", "ab_show_keybinds", "|cff5599ffshow keybinds|r", LolzenUIcfg.actionbar["actionbar_show_keybinds"])
+		local cb1 = ns.createCheckBox("actionbars", "ab_show_keybinds", "|cff5599ff"..L["ab_keybinds"].."|r", LolzenUIcfg.actionbar["actionbar_show_keybinds"])
 		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
 
 		-- // texture paths // --
 		
-		local normaltex_path_text = ns.createFontstring("actionbars", "Normal texture:")
+		local normaltex_path_text = ns.createFontstring("actionbars", L["ab_normaltexture"]..":")
 		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
 
 		local normaltex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_normal_texture"])
 		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", 10, 0)
 
-		local flashtex_path_text = ns.createFontstring("actionbars", "Flash texture:")
+		local flashtex_path_text = ns.createFontstring("actionbars", L["ab_flashtexture"]..":")
 		flashtex_path_text:SetPoint("TOPLEFT", normaltex_path_text, "BOTTOMLEFT", 0, -10)
 
 		local flashtex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_flash_texture"])
 		flashtex_path:SetPoint("LEFT", flashtex_path_text, "RIGHT", 10, 0)
 
-		local checkedtex_path_text = ns.createFontstring("actionbars", "Checked texture:")
+		local checkedtex_path_text = ns.createFontstring("actionbars", L["ab_checkedtexture"]..":")
 		checkedtex_path_text:SetPoint("TOPLEFT", flashtex_path_text, "BOTTOMLEFT", 0, -10)
 
 		local checkedtex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_checked_texture"])
 		checkedtex_path:SetPoint("LEFT", checkedtex_path_text, "RIGHT", 10, 0)
 
-		local hovertex_path_text = ns.createFontstring("actionbars", "Hover texture:")
+		local hovertex_path_text = ns.createFontstring("actionbars", L["ab_hovertexture"]..":")
 		hovertex_path_text:SetPoint("TOPLEFT", checkedtex_path_text, "BOTTOMLEFT", 0, -10)
 
 		local hovertex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_hover_texture"])
 		hovertex_path:SetPoint("LEFT", hovertex_path_text, "RIGHT", 10, 0)
 
-		local pushedtex_path_text = ns.createFontstring("actionbars", "Pushed texture:")
+		local pushedtex_path_text = ns.createFontstring("actionbars", L["ab_pushedtexture"]..":")
 		pushedtex_path_text:SetPoint("TOPLEFT", hovertex_path_text, "BOTTOMLEFT", 0, -10)
 
 		local pushedtex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
@@ -89,24 +91,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // size // --
 
-		local size_text = ns.createFontstring("actionbars", "Button size:")
+		local size_text = ns.createFontstring("actionbars", L["ab_buttonsize"])
 		size_text:SetPoint("TOPLEFT", pushedtex_path_text, "BOTTOMLEFT", 0, -20)
 
 		local size = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_button_size"])
 		size:SetPoint("LEFT", size_text, "RIGHT", 10, 0)
 
-		local spacing_text = ns.createFontstring("actionbars", "Button spacing:")
+		local spacing_text = ns.createFontstring("actionbars", L["ab_buttonspacing"])
 		spacing_text:SetPoint("LEFT", size, "RIGHT", 10, 0)
 
 		local spacing = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_button_spacing"])
 		spacing:SetPoint("LEFT", spacing_text, "RIGHT", 10, 0)
 
-		local header3 = ns.createHeader("actionbars", "Bar positions: |cffffffff(scheme = anchor1, parent, anchor2, posX, posY)|r")
+		local header3 = ns.createHeader("actionbars", L["ab_positions"])
 		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -20)
 
 		-- // Main Menu Bar // --
 
-		local mmb_text = ns.createFontstring("actionbars", "Main Menu Bar:")
+		local mmb_text = ns.createFontstring("actionbars", L["ab_mainmenubar"]..":")
 		mmb_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -15)
 
 		local mmb_anchor1 = ns.createPicker("actionbars", "anchor", "mmb_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mmb_anchor1"])
@@ -126,7 +128,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // Multi Bar Bottom Left // --
 
-		local mbbl_text = ns.createFontstring("actionbars", "Multi Bar Bottom Left:")
+		local mbbl_text = ns.createFontstring("actionbars", L["ab_multibarbottomleft"]..":")
 		mbbl_text:SetPoint("TOPLEFT", mmb_text, "BOTTOMLEFT", 0, -15)
 
 		local mbbl_anchor1 = ns.createPicker("actionbars", "anchor", "mbbl_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbbl_anchor1"])
@@ -146,7 +148,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // Multi Bar Bottom Right // --
 
-		local mbbr_text = ns.createFontstring("actionbars", "Multi Bar Bottom Right:")
+		local mbbr_text = ns.createFontstring("actionbars", L["ab_multibarbottomright"]..":")
 		mbbr_text:SetPoint("TOPLEFT", mbbl_text, "BOTTOMLEFT", 0, -15)
 
 		local mbbr_anchor1 = ns.createPicker("actionbars", "anchor", "mbbr_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbbr_anchor1"])
@@ -166,7 +168,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // Multi Bar Left // --
 
-		local mbl_text = ns.createFontstring("actionbars", "Multi Bar Left:")
+		local mbl_text = ns.createFontstring("actionbars", L["ab_multibarleft"]..":")
 		mbl_text:SetPoint("TOPLEFT", mbbr_text, "BOTTOMLEFT", 0, -15)
 
 		local mbl_anchor1 = ns.createPicker("actionbars", "anchor", "mbl_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbl_anchor1"])
@@ -186,7 +188,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // Multi Bar Right // --
 
-		local mbr_text = ns.createFontstring("actionbars", "Multi Bar Right:")
+		local mbr_text = ns.createFontstring("actionbars", L["ab_multibarright"]..":")
 		mbr_text:SetPoint("TOPLEFT", mbl_text, "BOTTOMLEFT", 0, -15)
 
 		local mbr_anchor1 = ns.createPicker("actionbars", "anchor", "mbr_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbr_anchor1"])
@@ -206,7 +208,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // Pet Bar // --
 
-		local petb_text = ns.createFontstring("actionbars", "Pet Bar:")
+		local petb_text = ns.createFontstring("actionbars", L["ab_petbar"]..":")
 		petb_text:SetPoint("TOPLEFT", mbr_text, "BOTTOMLEFT", 0, -15)
 
 		local petb_anchor1 = ns.createPicker("actionbars", "anchor", "petb_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_petb_anchor1"])
@@ -226,7 +228,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // Possess Bar // --
 
-		local pb_text = ns.createFontstring("actionbars", "Possess Bar:")
+		local pb_text = ns.createFontstring("actionbars", L["ab_posessbar"]..":")
 		pb_text:SetPoint("TOPLEFT", petb_text, "BOTTOMLEFT", 0, -15)
 
 		local pb_anchor1 = ns.createPicker("actionbars", "anchor", "pb_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_pb_anchor1"])

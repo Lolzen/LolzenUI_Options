@@ -1,6 +1,8 @@
 --// options for fonts //--
 
 local _, ns = ...
+local L = ns.L
+local LUI = LolzenUI.L
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -9,27 +11,27 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("fonts")
 
-		local about = ns.createDescription("fonts", "Changes the fonts used in WoW")
+		local about = ns.createDescription("fonts", LUI["desc_fonts"])
 
-		local dmg_text = ns.createFontstring("fonts", "|cff5599ffDAMAGE_TEXT_FONT:|r")
+		local dmg_text = ns.createFontstring("fonts", "|cff5599ff"..L["DAMAGE_TEXT_FONT"]..":|r")
 		dmg_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
 		local dmg = ns.createPicker("fonts", "font", "fonts_dmgfont", 120, LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"])
 		dmg:SetPoint("LEFT", dmg_text, "RIGHT", -10, -3)
 
-		local unit_text = ns.createFontstring("fonts", "|cff5599ffUNIT_NAME_FONT:|r")
+		local unit_text = ns.createFontstring("fonts", "|cff5599ff"..L["UNIT_NAME_FONT"]..":|r")
 		unit_text:SetPoint("TOPLEFT", dmg_text, "BOTTOMLEFT", 0, -15)
 
 		local unit = ns.createPicker("fonts", "font", "fonts_unitfont", 120, LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"])
 		unit:SetPoint("LEFT", unit_text, "RIGHT", -10, -3)
 
-		local np_text = ns.createFontstring("fonts", "|cff5599ffNAMEPLATE_FONT:|r")
+		local np_text = ns.createFontstring("fonts", "|cff5599ff"..L["NAMEPLATE_FONT"]..":|r")
 		np_text:SetPoint("TOPLEFT", unit_text, "BOTTOMLEFT", 0, -15)
 
 		local np = ns.createPicker("fonts", "font", "fonts_npfont", 120, LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"])
 		np:SetPoint("LEFT", np_text, "RIGHT", -10, -3)
 
-		local standard_text = ns.createFontstring("fonts", "|cff5599ffSTANDARD_TEXT_FONT:|r")
+		local standard_text = ns.createFontstring("fonts", "|cff5599ff"..L["STANDARD_TEXT_FONT"]..":|r")
 		standard_text:SetPoint("TOPLEFT", np_text, "BOTTOMLEFT", 0, -15)
 
 		local standard = ns.createPicker("fonts", "font", "fonts_standardfont", 120, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])

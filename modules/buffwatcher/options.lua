@@ -1,6 +1,8 @@
 --// options for buffwatcher //--
 
 local _, ns = ...
+local L = ns.L
+local LUI = LolzenUI.L
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -9,9 +11,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("buffwatcher")
 
-		local about = ns.createDescription("buffwatcher", "Displays nice icons along with the duration if up")
+		local about = ns.createDescription("buffwatcher", LUI["desc_buffwatcher"])
 
-		local header1 = ns.createHeader("buffwatcher", "Buffs which are being watched:")
+		local header1 = ns.createHeader("buffwatcher", L["bw_watched_auras_header"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
 		local function getInfo(id)
@@ -43,7 +45,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			end
 		end
 
-		local add = ns.createFontstring("buffwatcher", "add or delete buffs to be watched (per spellid):")
+		local add = ns.createFontstring("buffwatcher", L["bw_add_or_delete_text"])
 		add:SetPoint("LEFT", header1, "RIGHT", 100, 0)
 
 		local eb = ns.createInputbox("buffwatcher", 50, 20, nil)
@@ -65,7 +67,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local b = CreateFrame("Button", "addButton", ns["buffwatcher"], "UIPanelButtonTemplate")
 		b:SetSize(80 ,22) -- width, height
-		b:SetText("add")
+		b:SetText(L["bw_add_button"])
 		b:SetPoint("TOPLEFT", eb, "BOTTOMLEFT", -7, -8)
 		b:SetScript("OnClick", function()
 			local isduplicate = false
@@ -84,7 +86,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local b2 = CreateFrame("Button", "delButton", ns["buffwatcher"], "UIPanelButtonTemplate")
 		b2:SetSize(80 ,22) -- width, height
-		b2:SetText("delete")
+		b2:SetText(L["bw_delete_button"])
 		b2:SetPoint("LEFT", b, "RIGHT", 10, 0)
 		b2:SetScript("OnClick", function()
 			for k, v in pairs(LolzenUIcfg.buffwatcher["buffwatchlist"][UnitName("player")]) do
@@ -95,7 +97,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			print("Hit \"Apply Settings\" to reload the list")
 		end)
 
-		local tip = ns.createFontstring("buffwatcher", "|cff5599ffPROTIP: |rrefer to WoWhead and search for your spell,\n the spellid is in the URL")
+		local tip = ns.createFontstring("buffwatcher", "|cff5599ffPROTIP: |r"..L["bw_protip_text"])
 		tip:SetPoint("TOPLEFT", b, "BOTTOMLEFT", 0, -8)
 
 		local help = ns["buffwatcher"]:CreateTexture(nil, "OVERLAY")
@@ -115,16 +117,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pos_y = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_pos_y"])
 		pos_y:SetPoint("LEFT", pos_y_text, "RIGHT", 10, 0)
 
-		local pos_desc = ns.createFontstring("buffwatcher", "The startingpoint is the center of the screen (0/0)")
+		local pos_desc = ns.createFontstring("buffwatcher", L["bw_startingpoint_notice"])
 		pos_desc:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -8)
 
-		local icon_size_text = ns.createFontstring("buffwatcher", "Icon Size:")
+		local icon_size_text = ns.createFontstring("buffwatcher", L["bw_icon_size"])
 		icon_size_text:SetPoint("TOPLEFT", pos_desc, "BOTTOMLEFT", 0, -15)
 
 		local icon_size = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_icon_size"])
 		icon_size:SetPoint("LEFT", icon_size_text, "RIGHT", 10, 0)
 
-		local icon_spacing_text = ns.createFontstring("buffwatcher", "Icon Spacing:")
+		local icon_spacing_text = ns.createFontstring("buffwatcher", L["bw_icon_spacing"])
 		icon_spacing_text:SetPoint("LEFT", icon_size, "RIGHT", 5, 0)
 
 		local icon_spacing = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_icon_spacing"])

@@ -1,6 +1,8 @@
 --// options for nameplates //--
 
 local _, ns = ...
+local L = ns.L
+local LUI = LolzenUI.L
 local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
@@ -10,7 +12,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("nameplates")
 
-		local about = ns.createDescription("nameplates", "Modifies the Nameplates")
+		local about = ns.createDescription("nameplates", LUI["desc_nameplates"])
 
 		local header1 = ns.createHeader("nameplates", "Preview:")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)

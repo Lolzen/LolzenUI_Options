@@ -3,17 +3,25 @@
 local addon, ns = ...
 _G[addon] = ns
 
+local L = LolzenUI.L
 local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 
+local sortTable = {}
+local sort_func = function(a, b)
+	return L[a.name] < L[b.name] 
+end
+
 -- create the module specific options
 function ns.createOptionPanels()
+	-- sort localized module names alphabethically
+	table.sort(LolzenUI.modules, sort_func)
 	for i=1, #LolzenUI.modules do
 		if LolzenUIcfg.modules[LolzenUI.modules[i].name] == true and LolzenUI.modules[i].hasOptions == true then
 			if not ns[LolzenUI.modules[i].name] then
 				ns[LolzenUI.modules[i].name] = CreateFrame("Frame", LolzenUI.modules[i].name.."panel", LolzenUI.panel)
-				ns[LolzenUI.modules[i].name].name = LolzenUI.modules[i].name
+				ns[LolzenUI.modules[i].name].name = L[LolzenUI.modules[i].name]
 				ns[LolzenUI.modules[i].name].parent = LolzenUI.panel.name
 				InterfaceOptions_AddCategory(ns[LolzenUI.modules[i].name])
 			end
@@ -38,7 +46,7 @@ ns.createTitle = function(module, optionalText)
 	if optionalText ~= nil then
 		title:SetText("|cff5599ff"..optionalText.."|r")
 	else
-		title:SetText("|cff5599ff"..string.upper(string.sub(ns[module].name, 1, 1))..string.sub(ns[module].name, 2).." module Options|r")
+		title:SetText("|cff5599ff"..string.upper(string.sub(ns[module].name, 1, 1))..string.sub(ns[module].name, 2).." "..ns.L["module Options"].."|r")
 	end
 	return title
 end

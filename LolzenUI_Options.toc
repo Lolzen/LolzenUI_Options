@@ -6,6 +6,7 @@
 ## Dependencies: LolzenUI
 ## LoadOnDemand: 1
 
+locales.xml
 core.lua
 
 options.xml

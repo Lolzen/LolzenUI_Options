@@ -331,7 +331,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_raidmark_anchor"] = "TOPRIGHT"
 			LolzenUIcfg.nameplates["np_raidmark_posx"] = -2
 			LolzenUIcfg.nameplates["np_raidmark_posy"] = 14
-			LolzenUIcfg.nameplates["np_aura_show_type"] = "None"
+			LolzenUIcfg.nameplates["np_aura_show_type"] = "Buffs"
 			LolzenUIcfg.nameplates["np_aura_maxnum"] = 8
 			LolzenUIcfg.nameplates["np_aura_spacing"] = 4
 			LolzenUIcfg.nameplates["np_aura_size"] = 14
@@ -341,8 +341,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.nameplates["np_aura_anchor2"] = "TOP"
 			LolzenUIcfg.nameplates["np_aura_growth_x"] = "RIGHT"
 			LolzenUIcfg.nameplates["np_aura_growth_y"] = "UP"
-			LolzenUIcfg.nameplates["np_aura_show_only_player"] = true
-			LolzenUIcfg.nameplates["np_aura_desature_nonplayer_auras"] = true
+			LolzenUIcfg.nameplates["np_aura_show_only_player"] = false
+			LolzenUIcfg.nameplates["np_aura_desature_nonplayer_auras"] = false
 			ReloadUI()
 		end
 	end

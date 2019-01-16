@@ -102,25 +102,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["pullcount"].default = function(self)
-			LolzenUIcfg.pullcount["pull_count_range"] = 3
-			LolzenUIcfg.pullcount["pull_msg_count"] = "Pull in !n"
-			LolzenUIcfg.pullcount["pull_msg_now"] = ">> Pull Now <<"
-			LolzenUIcfg.pullcount["pull_sound_1"] = "one.mp3"
-			LolzenUIcfg.pullcount["pull_sound_2"] = "two.mp3"
-			LolzenUIcfg.pullcount["pull_sound_3"] = "three.mp3"
-			LolzenUIcfg.pullcount["pull_sound_4"] = "four.mp3"
-			LolzenUIcfg.pullcount["pull_sound_5"] = "five.mp3"
-			LolzenUIcfg.pullcount["pull_sound_6"] = "six.mp3"
-			LolzenUIcfg.pullcount["pull_sound_7"] = "seven.mp3"
-			LolzenUIcfg.pullcount["pull_sound_8"] = "eight.mp3"
-			LolzenUIcfg.pullcount["pull_sound_9"] = "nine.mp3"
-			LolzenUIcfg.pullcount["pull_sound_10"] = "ten.mp3"
-			LolzenUIcfg.pullcount["pull_sound_pull"] = "Play.mp3"
-			LolzenUIcfg.pullcount["pull_filter_guild"] = true
-			LolzenUIcfg.pullcount["pull_filter_party"] = true
-			LolzenUIcfg.pullcount["pull_filter_instance"] = true
-			LolzenUIcfg.pullcount["pull_filter_say"] = false
-			LolzenUIcfg.pullcount["pull_filter_channel"] = true
+			LolzenUIcfg.pullcount = _G["LolzenUIdefaultcfg"].pullcount
 			ReloadUI()
 		end
 	end

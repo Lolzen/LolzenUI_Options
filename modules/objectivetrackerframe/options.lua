@@ -61,12 +61,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["objectivetracker"].default = function(self)
-			LolzenUIcfg.objectivetracker["objectivetracker_combatcollapse"] = true
-			LolzenUIcfg.objectivetracker["objectivetracker_logincollapse"] = true
-			LolzenUIcfg.objectivetracker["objectivetracker_posx"] = 30
-			LolzenUIcfg.objectivetracker["objectivetracker_posy"] = -30
-			LolzenUIcfg.objectivetracker["objectivetracker_anchor"] = "TOPLEFT"
-			LolzenUIcfg.objectivetracker["objectivetracker_scale"] = 0.8
+			LolzenUIcfg.objectivetracker = _G["LolzenUIdefaultcfg"].objectivetracker
 			ReloadUI()
 		end
 	end

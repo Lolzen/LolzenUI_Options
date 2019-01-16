@@ -295,49 +295,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["actionbars"].default = function(self)
-			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = false
-			LolzenUIcfg.actionbar["actionbar_normal_texture"] = "gloss"
-			LolzenUIcfg.actionbar["actionbar_flash_texture"] = "flash"
-			LolzenUIcfg.actionbar["actionbar_checked_texture"] = "checked"
-			LolzenUIcfg.actionbar["actionbar_hover_texture"] = "hover"
-			LolzenUIcfg.actionbar["actionbar_pushed_texture"] = "pushed"
-			LolzenUIcfg.actionbar["actionbar_button_spacing"] = 6
-			LolzenUIcfg.actionbar["actionbar_button_size"] = 26
-			LolzenUIcfg.actionbar["actionbar_mmb_anchor1"] = "BOTTOM"
-			LolzenUIcfg.actionbar["actionbar_mmb_parent"] = "UIParent"
-			LolzenUIcfg.actionbar["actionbar_mmb_anchor2"] = "BOTTOM"
-			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = 0
-			LolzenUIcfg.actionbar["actionbar_mmb_posy"] = 22
-			LolzenUIcfg.actionbar["actionbar_mbbl_anchor1"] = "BOTTOMLEFT"
-			LolzenUIcfg.actionbar["actionbar_mbbl_parent"] = "ActionButton1"
-			LolzenUIcfg.actionbar["actionbar_mbbl_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = 0
-			LolzenUIcfg.actionbar["actionbar_mbbl_posy"] = 5
-			LolzenUIcfg.actionbar["actionbar_mbbr_anchor1"] = "BOTTOMLEFT"
-			LolzenUIcfg.actionbar["actionbar_mbbr_parent"] = "MultiBarBottomLeftButton1"
-			LolzenUIcfg.actionbar["actionbar_mbbr_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_mbbr_posx"] = 0
-			LolzenUIcfg.actionbar["actionbar_mbbr_posy"] = 5
-			LolzenUIcfg.actionbar["actionbar_mbl_anchor1"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_mbl_parent"] = "MultiBarRightButton1"
-			LolzenUIcfg.actionbar["actionbar_mbl_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_mbl_posx"] = -33
-			LolzenUIcfg.actionbar["actionbar_mbl_posy"] = 0
-			LolzenUIcfg.actionbar["actionbar_mbr_anchor1"] = "RIGHT"
-			LolzenUIcfg.actionbar["actionbar_mbr_parent"] = "UIParent"
-			LolzenUIcfg.actionbar["actionbar_mbr_anchor2"] = "RIGHT"
-			LolzenUIcfg.actionbar["actionbar_mbr_posx"] = -2
-			LolzenUIcfg.actionbar["actionbar_mbr_posy"] = 150
-			LolzenUIcfg.actionbar["actionbar_petb_anchor1"] = "BOTTOMLEFT"
-			LolzenUIcfg.actionbar["actionbar_petb_parent"] = "MultiBarBottomRightButton1"
-			LolzenUIcfg.actionbar["actionbar_petb_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_petb_posx"] = 32
-			LolzenUIcfg.actionbar["actionbar_petb_posy"] = 60
-			LolzenUIcfg.actionbar["actionbar_pb_anchor1"] = "BOTTOMLEFT"
-			LolzenUIcfg.actionbar["actionbar_pb_parent"] = "MultiBarBottomRightButton1"
-			LolzenUIcfg.actionbar["actionbar_pb_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.actionbar["actionbar_pb_posx"] = 25
-			LolzenUIcfg.actionbar["actionbar_pb_posy"] = 30
+			LolzenUIcfg.actionbar = _G["LolzenUIdefaultcfg"].actionbar
 			ReloadUI()
 		end
 	end

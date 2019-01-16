@@ -41,10 +41,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["interruptannouncer"].default = function(self)
-			LolzenUIcfg.interruptannouncer["interruptannoucer_instance"] = true
-			LolzenUIcfg.interruptannouncer["interruptannoucer_party"] = true
-			LolzenUIcfg.interruptannouncer["interruptannoucer_say"] = true
-			LolzenUIcfg.interruptannouncer["interruptannouncer_msg"] = LUI["ia_announce_message_text_interrupted"]
+			LolzenUIcfg.interruptannouncer = _G["LolzenUIdefaultcfg"].interruptannouncer
 			ReloadUI()
 		end
 	end

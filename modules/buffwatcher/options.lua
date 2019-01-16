@@ -142,11 +142,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["buffwatcher"].default = function(self)
-			LolzenUIcfg.buffwatcher["buffwatchlist"] = {}
-			LolzenUIcfg.buffwatcher["buffwatch_pos_x"] = -250
-			LolzenUIcfg.buffwatcher["buffwatch_pos_y"] = -140
-			LolzenUIcfg.buffwatcher["buffwatch_icon_size"] = 52
-			LolzenUIcfg.buffwatcher["buffwatch_icon_spacing"] = 5
+			LolzenUIcfg.buffwatcher = _G["LolzenUIdefaultcfg"].buffwatcher
 			ReloadUI()
 		end
 	end

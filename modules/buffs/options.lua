@@ -230,30 +230,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["buffs"].default = function(self)
-			LolzenUIcfg.buffs["buff_size"] = 30
-			LolzenUIcfg.buffs["buff_debuff_size"] = 30
-			LolzenUIcfg.buffs["buff_tempenchant_size"] = 30
-			LolzenUIcfg.buffs["buff_anchor1"] = "TOPRIGHT"
-			LolzenUIcfg.buffs["buff_parent"] = "Minimap"
-			LolzenUIcfg.buffs["buff_anchor2"] = "TOPLEFT"
-			LolzenUIcfg.buffs["buff_posx"] = -15
-			LolzenUIcfg.buffs["buff_posy"] = 2
-			LolzenUIcfg.buffs["buff_duration_anchor1"] = "CENTER"
-			LolzenUIcfg.buffs["buff_duration_anchor2"] = "BOTTOM"
-			LolzenUIcfg.buffs["buff_duration_posx"] = 0
-			LolzenUIcfg.buffs["buff_duration_posy"] = 3
-			LolzenUIcfg.buffs["buff_duration_detailed"] = true
-			LolzenUIcfg.buffs["buff_duration_font"] = "DroidSans"
-			LolzenUIcfg.buffs["buff_duration_font_size"] = 11
-			LolzenUIcfg.buffs["buff_duration_font_flag"] = "OUTLINE"
-			LolzenUIcfg.buffs["buff_counter_anchor"] = "TOPRIGHT"
-			LolzenUIcfg.buffs["buff_counter_posx"] = 0
-			LolzenUIcfg.buffs["buff_counter_posy"] = 0
-			LolzenUIcfg.buffs["buff_counter_font"] = "DroidSans"
-			LolzenUIcfg.buffs["buff_counter_size"] = 16
-			LolzenUIcfg.buffs["buff_counter_font_flag"] = "OUTLINE"
-			LolzenUIcfg.buffs["buff_aura_texture"] = "auraborder"
-			LolzenUIcfg.buffs["buff_debuff_texture"] = "debuffborder"
+			LolzenUIcfg.buffs = _G["LolzenUIdefaultcfg"].buffs
 			ReloadUI()
 		end
 	end

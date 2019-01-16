@@ -122,19 +122,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["clock"].default = function(self)
-			LolzenUIcfg.clock["clock_seconds_enabled"] = true
-			LolzenUIcfg.clock["clock_color"] = {0.85, 0.55, 0}
-			LolzenUIcfg.clock["clock_seconds_color"] = {1, 1, 1}
-			LolzenUIcfg.clock["clock_font"] = "DroidSansBold"
-			LolzenUIcfg.clock["clock_font_seconds"] = "DroidSans"
-			LolzenUIcfg.clock["clock_font_size"] = 20
-			LolzenUIcfg.clock["clock_seconds_font_size"] = 14
-			LolzenUIcfg.clock["clock_font_flag"] = "OUTLINE"
-			LolzenUIcfg.clock["clock_seconds_font_flag"] = "THINOUTLINE"
-			LolzenUIcfg.clock["clock_anchor1"] = "TOPRIGHT"
-			LolzenUIcfg.clock["clock_anchor2"] = "TOPRIGHT"
-			LolzenUIcfg.clock["clock_posx"] = -5
-			LolzenUIcfg.clock["clock_posy"] = -9
+			LolzenUIcfg.clock = _G["LolzenUIdefaultcfg"].clock
 			ReloadUI()
 		end
 	end

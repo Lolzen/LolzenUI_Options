@@ -209,29 +209,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["xpbar"].default = function(self)
-			LolzenUIcfg.xpbar["xpbar_height"] = 4
-			LolzenUIcfg.xpbar["xpbar_width"] = 378
-			LolzenUIcfg.xpbar["xpbar_anchor"] = "BOTTOM"
-			LolzenUIcfg.xpbar["xpbar_parent"] = "UIParent"
-			LolzenUIcfg.xpbar["xpbar_posx"] = 0
-			LolzenUIcfg.xpbar["xpbar_posy"] = 5
-			LolzenUIcfg.xpbar["xpbar_texture"] = "LolzenUI Standard"
-			LolzenUIcfg.xpbar["xpbar_alpha"] = 0.4
-			LolzenUIcfg.xpbar["xpbar_bg_alpha"] = 0.5
-			LolzenUIcfg.xpbar["xpbar_xp_color"] = {0.6, 0, 0.6}
-			LolzenUIcfg.xpbar["xpbar_xp_rested_color"] = {46/255, 103/255, 208/255}
-			LolzenUIcfg.xpbar["xpbar_pvp_color"] = {1, 0.4, 0}
-			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {0, 187/255, 255/255}
-			LolzenUIcfg.xpbar["xpbar_1px_border"] = true
-			LolzenUIcfg.xpbar["xpbar_1px_border_round"] = true
-			LolzenUIcfg.xpbar["xpbar_mouseover_text"] = true
-			LolzenUIcfg.xpbar["xpbar_font"] = "DroidSansBold"
-			LolzenUIcfg.xpbar["xpbar_font_size"] = 10
-			LolzenUIcfg.xpbar["xpbar_font_flag"] = "THINOUTLINE"
-			LolzenUIcfg.xpbar["xpbar_font_color"] = {1, 1, 1}
-			LolzenUIcfg.xpbar["xpbar_text_posx"] = 0
-			LolzenUIcfg.xpbar["xpbar_text_posy"] = 8
-			LolzenUIcfg.xpbar["xpbar_text_anchor1"] = "TOP"
+			LolzenUIcfg.xpbar = _G["LolzenUIdefaultcfg"].xpbar
 			ReloadUI()
 		end
 	end

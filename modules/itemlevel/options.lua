@@ -90,17 +90,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["itemlevel"].default = function(self)
-			LolzenUIcfg.itemlevel["ilvl_characterframe"] = true
-			LolzenUIcfg.itemlevel["ilvl_inspectframe"] = true
-			LolzenUIcfg.itemlevel["ilvl_bags"] = true
-			LolzenUIcfg.itemlevel["ilvl_anchor"] = "TOP"
-			LolzenUIcfg.itemlevel["ilvl_font_posx"] = 0
-			LolzenUIcfg.itemlevel["ilvl_font_posy"] = -5
-			LolzenUIcfg.itemlevel["ilvl_font_color"] = {0, 1, 0}
-			LolzenUIcfg.itemlevel["ilvl_font"] = "DroidSans"
-			LolzenUIcfg.itemlevel["ilvl_font_size"] = 14
-			LolzenUIcfg.itemlevel["ilvl_font_flag"] = "THINOUTLINE"
-			LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"] = false
+			LolzenUIcfg.itemlevel = _G["LolzenUIdefaultcfg"].itemlevel
 			ReloadUI()
 		end
 	end

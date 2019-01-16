@@ -179,26 +179,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["artifactbar"].default = function(self)
-			LolzenUIcfg.artifactbar["artifactbar_height"] = 4
-			LolzenUIcfg.artifactbar["artifactbar_width"] = 378
-			LolzenUIcfg.artifactbar["artifactbar_anchor"] = "BOTTOM"
-			LolzenUIcfg.artifactbar["artifactbar_parent"] = "UIParent"
-			LolzenUIcfg.artifactbar["artifactbar_posx"] = 0
-			LolzenUIcfg.artifactbar["artifactbar_posy"] = 120
-			LolzenUIcfg.artifactbar["artifactbar_texture"] = "LolzenUI Standard"
-			LolzenUIcfg.artifactbar["artifactbar_alpha"] = 0.4
-			LolzenUIcfg.artifactbar["artifactbar_bg_alpha"] = 0.5
-			LolzenUIcfg.artifactbar["artifactbar_color"] = {1, 1, 0.7}
-			LolzenUIcfg.artifactbar["artifactbar_1px_border"] = true
-			LolzenUIcfg.artifactbar["artifactbar_1px_border_round"] = true
-			LolzenUIcfg.artifactbar["artifactbar_mouseover_text"] = true
-			LolzenUIcfg.artifactbar["artifactbar_font"] = "DroidSansBold"
-			LolzenUIcfg.artifactbar["artifactbar_font_size"] = 10
-			LolzenUIcfg.artifactbar["artifactbar_font_flag"] = "THINOUTLINE"
-			LolzenUIcfg.artifactbar["artifactbar_font_color"] = {1, 1, 1}
-			LolzenUIcfg.artifactbar["artifactbar_text_posx"] = 0
-			LolzenUIcfg.artifactbar["artifactbar_text_posy"] = 8
-			LolzenUIcfg.artifactbar["artifactbar_text_anchor1"] = "TOP"
+			LolzenUIcfg.artifactbar = _G["LolzenUIdefaultcfg"].artifactbar
 			ReloadUI()
 		end
 	end

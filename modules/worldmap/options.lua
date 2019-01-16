@@ -44,10 +44,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["worldmap"].default = function(self)
-			LolzenUIcfg.worldmap["worldmap_scale"] = 1
-			LolzenUIcfg.worldmap["worldmap_coordinates"] = true
-			LolzenUIcfg.worldmap["worldmap_title_color"] = {51/255, 181/255, 229/255}
-			LolzenUIcfg.worldmap["worldmap_save_position"] = true
+			LolzenUIcfg.worldmap = _G["LolzenUIdefaultcfg"].worldmap
 			ReloadUI()
 		end
 	end

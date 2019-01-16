@@ -113,16 +113,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["miscellaneous"].default = function(self)
-			LolzenUIcfg.miscellaneous["misc_alternative_faction_colors"] = true
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][1] = {1, 0.2, 0.15}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][2] = {0.8, 0.3, 0.22}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][3] = {0.75, 0.27, 0}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][4] = {0.9, 0.7, 0}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][5] = {0, 0.6, 0.1}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][6] = {0, 0.6, 0.33}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][7] = {0, 0.7, 0.5}
-			LolzenUIcfg.miscellaneous["misc_faction_colors"][8] = {0, 0.7, 0.7}
-			LolzenUIcfg.miscellaneous["misc_hide_microbuttons"] = true
+			LolzenUIcfg.miscellaneous = _G["LolzenUIdefaultcfg"].miscellaneous
 			ReloadUI()
 		end
 	end

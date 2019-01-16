@@ -150,23 +150,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["tooltip"].default = function(self)
-			LolzenUIcfg.tooltip["tip_show_factionicons"] = true
-			LolzenUIcfg.tooltip["tip_show_raidmark"] = true
-			LolzenUIcfg.tooltip["tip_display_talents"] = true
-			LolzenUIcfg.tooltip["tip_posx"] = -13
-			LolzenUIcfg.tooltip["tip_posy"] = 43
-			LolzenUIcfg.tooltip["tip_anchor1"] = "BOTTOMRIGHT"
-			LolzenUIcfg.tooltip["tip_anchor2"] = "BOTTOMRIGHT"
-			LolzenUIcfg.tooltip["tip_border"] = "LolzenUI Standard"
-			LolzenUIcfg.tooltip["tip_healthbar_texture"] = "LolzenUI Standard"
-			LolzenUIcfg.tooltip["tip_statusflag_afk"] = "AFK|"
-			LolzenUIcfg.tooltip["tip_statusflag_afk_color"] = {1, 1, 1}
-			LolzenUIcfg.tooltip["tip_statusflag_dnd"] = "DND|"
-			LolzenUIcfg.tooltip["tip_statusflag_dnd_color"] = {1, 1, 1}
-			LolzenUIcfg.tooltip["tip_statusflag_off"] = "(Off)"
-			LolzenUIcfg.tooltip["tip_statusflag_off_color"] = {1, 1, 1}
-			LolzenUIcfg.tooltip["tip_own_guild_color"] = {0, 5, 1}
-			LolzenUIcfg.tooltip["tip_use_guild_color_globally"] = false
+			LolzenUIcfg.tooltip = _G["LolzenUIdefaultcfg"].tooltip
 			ReloadUI()
 		end
 	end

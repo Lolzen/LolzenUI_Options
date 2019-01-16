@@ -47,10 +47,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["minimap"].default = function(self)
-			LolzenUIcfg.minimap["minimap_square"] = true
-			LolzenUIcfg.minimap["minimap_anchor"] = "TOPRIGHT"
-			LolzenUIcfg.minimap["minimap_posx"] = -15
-			LolzenUIcfg.minimap["minimap_posy"] = -40
+			LolzenUIcfg.minimap = _G["LolzenUIdefaultcfg"].minimap
 			ReloadUI()
 		end
 	end

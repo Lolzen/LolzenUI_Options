@@ -94,15 +94,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["orderhallbar"].default = function(self)
-			LolzenUIcfg.orderhallbar["ohb_currency_icon_size"] = 18
-			LolzenUIcfg.orderhallbar["ohb_currency_font"] = "DroidSansBold"
-			LolzenUIcfg.orderhallbar["ohb_currency_font_size"] = 12
-			LolzenUIcfg.orderhallbar["ohb_currency_font_flag"] = "OUTLINE"
-			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {51/255, 181/255, 229/225}
-			LolzenUIcfg.orderhallbar["ohb_background"] = "LolzenUI Standard"
-			LolzenUIcfg.orderhallbar["ohb_background_color"] = {0, 0, 0}
-			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = 0.5
-			LolzenUIcfg.orderhallbar["ohb_always_show"] = true
+			LolzenUIcfg.orderhallbar = _G["LolzenUIdefaultcfg"].orderhallbar
 			ReloadUI()
 		end
 	end

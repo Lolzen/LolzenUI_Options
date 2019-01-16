@@ -47,10 +47,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["fonts"].default = function(self)
-			LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"] = "DroidSansBold"
-			LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"] = "DroidSans"
-			LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"] = "DroidSans"
-			LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"] = "DroidSans"
+			LolzenUIcfg.fonts = _G["LolzenUIdefaultcfg"].fonts
 			ReloadUI()
 		end
 	end

@@ -227,38 +227,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		ns["chat"].default = function(self)
-			LolzenUIcfg.chat["chat_custom_channel_stamps"] = true
-			LolzenUIcfg.chat["chat_strip_brackets"] = true
-			LolzenUIcfg.chat["chat_timestamp"] = true
-			LolzenUIcfg.chat["chat_disable_fading"] = true
-			LolzenUIcfg.chat["chat_auto_who"] = true
-			LolzenUIcfg.chat["chat_show_afkdnd_once"] = true
-			LolzenUIcfg.chat["chat_strip_say_and_yell"] = true
-			LolzenUIcfg.chat["chat_shorten_channels"] = true
-			LolzenUIcfg.chat["chat_posx"] = 8
-			LolzenUIcfg.chat["chat_posy"] = 15
-			LolzenUIcfg.chat["chat_anchor1"] = "BOTTOMLEFT"
-			LolzenUIcfg.chat["chat_anchor2"] = "BOTTOMLEFT"
-			LolzenUIcfg.chat["chat_font"] = "DroidSans"
-			LolzenUIcfg.chat["chat_font_size"] = 12
-			LolzenUIcfg.chat["chat_font_flag"] = ""
-			LolzenUIcfg.chat["chat_font_spacing"] = 1
-			LolzenUIcfg.chat["chat_font_shadow"] = true
-			LolzenUIcfg.chat["chat_background"] = true
-			LolzenUIcfg.chat["chat_background_texture"] = "LolzenUI Standard"
-			LolzenUIcfg.chat["chat_background_alpha"] = 0.5
-			LolzenUIcfg.chat["chat_background_border"] = "LolzenUI Standard"
-			LolzenUIcfg.chat["chat_sticky_say"] = 1
-			LolzenUIcfg.chat["chat_sticky_yell"] = 0
-			LolzenUIcfg.chat["chat_sticky_party"] = 1
-			LolzenUIcfg.chat["chat_sticky_guild"] = 1
-			LolzenUIcfg.chat["chat_sticky_officer"] = 1
-			LolzenUIcfg.chat["chat_sticky_raid"] = 1
-			LolzenUIcfg.chat["chat_sticky_raidwarning"] = 1
-			LolzenUIcfg.chat["chat_sticky_whisper"] = 0
-			LolzenUIcfg.chat["chat_sticky_channel"] = 1
-			LolzenUIcfg.chat["chat_flag_afk"] = "AFK |"
-			LolzenUIcfg.chat["chat_flag_dnd"] = "DND |"
+			LolzenUIcfg.chat = _G["LolzenUIdefaultcfg"].chat
 			ReloadUI()
 		end
 	end

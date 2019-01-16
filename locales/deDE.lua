@@ -199,7 +199,7 @@ if GetLocale() == "deDE" then
 	L["uf_readycheckindicator_header"] = "Bereitschaftsprüfungs Symbol"
 	L["uf_general_use_hp_percent"] = "Zeige HP Prozent"
 	L["uf_general_use_both_value_and_percent"] = "Zeige HP Punkte & HP Prozent"
-	L["uf_general_switch_value_and_percent_order"] = "Benutze [Prozent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[Punkte] statt [Punkte]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[Prozent]"
+	L["uf_general_switch_value_and_percent_order"] = "Benutze [Prozent]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Punkte] statt [Punkte]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Prozent]"
 	L["uf_general_use_short_values"] = "Benutze kurze Zahlen (34m5, 3k2, etc)"
 	L["uf_general_use dot_divider"] = "Benutze punkttrennung bei kurzen Zahlen (34.5m, 3.2k, etc)"
 	L["uf_general_notice_reenables_options_below"] = "(Reaktiviert die Optionen unterhalb)"

@@ -199,7 +199,7 @@ if GetLocale() == "esMX" then
 	L["uf_readycheckindicator_header"] = "Readycheck indicator"
 	L["uf_general_use_hp_percent"] = "Show HP percent"
 	L["uf_general_use_both_value_and_percent"] = "Show HP points & HP percent"
-	L["uf_general_switch_value_and_percent_order"] = "Use [Percent]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[Points] instead of [Points]"..LolzenUIcfg.unitframes["uf_val_perc_divider"].."[Percent]"
+	L["uf_general_switch_value_and_percent_order"] = "Use [Percent]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Points] instead of [Points]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Percent]"
 	L["uf_general_use_short_values"] = "Use short values (34m5, 3k2, etc)"
 	L["uf_general_use dot_divider"] = "Use dot divider on short values (34.5m, 3.2k, etc)"
 	L["uf_general_notice_reenables_options_below"] = "(Reenables options below)"

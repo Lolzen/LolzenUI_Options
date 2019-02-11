@@ -185,11 +185,6 @@ ns.picker_flags = {
 	"",
 }
 
-ns.picker_bin = {
-	0,
-	1,
-}
-
 ns.picker_growth = {
 	"ABOVE",
 	"BELOW",

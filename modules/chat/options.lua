@@ -13,7 +13,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("chat", LUI["desc_chat"])
 
-		local scrollFrame = ns.createScrollFrame("chat", 250)
+		local scrollFrame = ns.createScrollFrame("chat", 310)
 
 		local cb1 = ns.createCheckBox("chat", "chat_custom_stamps", "|cff5599ff"..L["chat_short_chatstamps"].."|r", LolzenUIcfg.chat["chat_custom_channel_stamps"], "content")
 		cb1:SetPoint("TOPLEFT", ns.chat.content, 16, 0)
@@ -120,11 +120,23 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local border = ns.createPicker("chat", "border", "chat_border", 120, LolzenUIcfg.chat["chat_background_border"], "content")
 		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
 
-		local header4 = ns.createHeader("chat", L["chat_header_flags_and_sticky_channels"], "content")
+		local header4 = ns.createHeader("chat", L["chat_header_link_color"], "content")
 		header4:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -30)
+		
+		local color_text = ns.createFontstring("chat", L["color"]..":")
+		color_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -15)
+
+		local color = ns.createColorTexture("chat", 16, 16, LolzenUIcfg.chat["chat_link_color"], "LolzenUI Standard")
+		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
+
+		local color_f = ns.createColorPicker("chat", color, LolzenUIcfg.chat["chat_link_color"])
+		color_f:SetAllPoints(color)
+
+		local header5 = ns.createHeader("chat", L["chat_header_flags_and_sticky_channels"], "content")
+		header5:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", 0, -30)
 
 		local chat_afkflag_text = ns.createFontstring("chat", L["afk_flag"]..":", "content")
-		chat_afkflag_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
+		chat_afkflag_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 0, -10)
 
 		local chat_afkflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_afk"], "content")
 		chat_afkflag:SetPoint("LEFT", chat_afkflag_text, "RIGHT", 10, 0)
@@ -196,6 +208,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_sticky_channel"] = sticky_channel:GetChecked()
 			LolzenUIcfg.chat["chat_flag_afk"] = chat_afkflag:GetText()
 			LolzenUIcfg.chat["chat_flag_dnd"] = chat_dndflag:GetText()
+			LolzenUIcfg.chat["chat_link_color"] = {color:GetVertexColor()}
 			ReloadUI()
 		end)
 

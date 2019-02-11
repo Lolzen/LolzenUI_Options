@@ -92,7 +92,7 @@ if GetLocale() == "deDE" then
 	L["chat_short_channel_names"] = "Kurze Chatkanalnamen"
 	L["chat_font_shadow"] = "Schrift Schatten"
 	L["chat_background"] = "Chat Hintergrund"
-	L["chat_header_flags_and_sticky_channels"] = "Flaggen und Kanäle merken (0 = aus, 1 = an)"
+	L["chat_header_flags_and_sticky_channels"] = "Flaggen und Kanäle merken"
 	L["chat_sticky_say"] = "Sagen"
 	L["chat_sticky_yell"] = "Schreien"
 	L["chat_sticky_party"] = "Gruppe"

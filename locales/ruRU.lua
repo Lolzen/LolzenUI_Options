@@ -92,7 +92,7 @@ if GetLocale() == "ruRU" then
 	L["chat_short_channel_names"] = "Short channelnames"
 	L["chat_font_shadow"] = "Font shadow"
 	L["chat_background"] = "Chat background"
-	L["chat_header_flags_and_sticky_channels"] = "Flags and sticky channels (0 = off, 1 = on)"
+	L["chat_header_flags_and_sticky_channels"] = "Flags and sticky channels"
 	L["chat_sticky_say"] = "Say"
 	L["chat_sticky_yell"] = "Yell"
 	L["chat_sticky_party"] = "Party"

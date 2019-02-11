@@ -13,7 +13,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("chat", LUI["desc_chat"])
 
-		local scrollFrame = ns.createScrollFrame("chat", 76)
+		local scrollFrame = ns.createScrollFrame("chat", 250)
 
 		local cb1 = ns.createCheckBox("chat", "chat_custom_stamps", "|cff5599ff"..L["chat_short_chatstamps"].."|r", LolzenUIcfg.chat["chat_custom_channel_stamps"], "content")
 		cb1:SetPoint("TOPLEFT", ns.chat.content, 16, 0)
@@ -123,62 +123,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header4 = ns.createHeader("chat", L["chat_header_flags_and_sticky_channels"], "content")
 		header4:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -30)
 
-		local sticky_say_text = ns.createFontstring("chat", L["chat_sticky_say"]..":", "content")
-		sticky_say_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
-
-		local sticky_say = ns.createPicker("chat", "bin", "chat_sticky_say", 35, LolzenUIcfg.chat["chat_sticky_say"], "content")
-		sticky_say:SetPoint("LEFT", sticky_say_text, "RIGHT", -3, -3)
-
-		local sticky_yell_text = ns.createFontstring("chat", L["chat_sticky_yell"]..":", "content")
-		sticky_yell_text:SetPoint("TOPLEFT", sticky_say_text, "BOTTOMLEFT", 0, -15)
-
-		local sticky_yell = ns.createPicker("chat", "bin", "chat_sticky_yell", 35, LolzenUIcfg.chat["chat_sticky_yell"], "content")
-		sticky_yell:SetPoint("LEFT", sticky_yell_text, "RIGHT", -3, -3)
-
-		local sticky_party_text = ns.createFontstring("chat", L["chat_sticky_party"]..":", "content")
-		sticky_party_text:SetPoint("TOPLEFT", sticky_yell_text, "BOTTOMLEFT", 0, -15)
-
-		local sticky_party = ns.createPicker("chat", "bin", "chat_sticky_party", 35, LolzenUIcfg.chat["chat_sticky_party"], "content")
-		sticky_party:SetPoint("LEFT", sticky_party_text, "RIGHT", -10, -3)
-
-		local sticky_guild_text = ns.createFontstring("chat", L["chat_sticky_guild"]..":", "content")
-		sticky_guild_text:SetPoint("TOPLEFT", sticky_party_text, "BOTTOMLEFT", 0, -15)
-
-		local sticky_guild = ns.createPicker("chat", "bin", "chat_sticky_guild", 35, LolzenUIcfg.chat["chat_sticky_guild"], "content")
-		sticky_guild:SetPoint("LEFT", sticky_guild_text, "RIGHT", -10, -3)
-
-		local sticky_officer_text = ns.createFontstring("chat", L["chat_sticky_officer"]..":", "content")
-		sticky_officer_text:SetPoint("LEFT", sticky_say, "RIGHT", -5, 3)
-
-		local sticky_officer = ns.createPicker("chat", "bin", "chat_sticky_officer", 35, LolzenUIcfg.chat["chat_sticky_officer"], "content")
-		sticky_officer:SetPoint("LEFT", sticky_officer_text, "RIGHT", 21, -3)
-
-		local sticky_raid_text = ns.createFontstring("chat", L["chat_sticky_raid"]..":", "content")
-		sticky_raid_text:SetPoint("TOPLEFT", sticky_officer_text, "BOTTOMLEFT", 0, -15)
-
-		local sticky_raid = ns.createPicker("chat", "bin", "chat_sticky_raid", 35, LolzenUIcfg.chat["chat_sticky_raid"], "content")
-		sticky_raid:SetPoint("LEFT", sticky_raid_text, "RIGHT", 35, -3)
-
-		local sticky_raidwarning_text = ns.createFontstring("chat", L["chat_sticky_raidwarning"]..":", "content")
-		sticky_raidwarning_text:SetPoint("TOPLEFT", sticky_raid_text, "BOTTOMLEFT", 0, -15)
-
-		local sticky_raidwarning = ns.createPicker("chat", "bin", "chat_sticky_raidwarning", 35, LolzenUIcfg.chat["chat_sticky_raidwarning"], "content")
-		sticky_raidwarning:SetPoint("LEFT", sticky_raidwarning_text, "RIGHT", -10, -3)
-
-		local sticky_whisper_text = ns.createFontstring("chat", L["chat_sticky_whisper"]..":", "content")
-		sticky_whisper_text:SetPoint("TOPLEFT", sticky_raidwarning_text, "BOTTOMLEFT", 0, -15)
-
-		local sticky_whisper = ns.createPicker("chat", "bin", "chat_sticky_whisper", 35, LolzenUIcfg.chat["chat_sticky_whisper"], "content")
-		sticky_whisper:SetPoint("LEFT", sticky_whisper_text, "RIGHT", 17, -3)
-
-		local sticky_channel_text = ns.createFontstring("chat", L["chat_sticky_channel"]..":", "content")
-		sticky_channel_text:SetPoint("LEFT", sticky_officer, "RIGHT", -5, 3)
-
-		local sticky_channel = ns.createPicker("chat", "bin", "chat_sticky_channel", 35, LolzenUIcfg.chat["chat_sticky_channel"], "content")
-		sticky_channel:SetPoint("LEFT", sticky_channel_text, "RIGHT", -10, -3)
-
 		local chat_afkflag_text = ns.createFontstring("chat", L["afk_flag"]..":", "content")
-		chat_afkflag_text:SetPoint("LEFT", sticky_channel, "RIGHT", -5, 3)
+		chat_afkflag_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
 
 		local chat_afkflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_afk"], "content")
 		chat_afkflag:SetPoint("LEFT", chat_afkflag_text, "RIGHT", 10, 0)
@@ -188,6 +134,33 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local chat_dndflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_dnd"], "content")
 		chat_dndflag:SetPoint("LEFT", chat_dndflag_text, "RIGHT", 10, 0)
+
+		local sticky_say = ns.createCheckBox("chat", "sticky_say", "|cff5599ff"..L["chat_sticky_say"].."|r", LolzenUIcfg.chat["chat_sticky_say"], "content")
+		sticky_say:SetPoint("TOPLEFT", chat_dndflag_text, "BOTTOMLEFT", 0, -10)
+
+		local sticky_yell = ns.createCheckBox("chat", "sticky_yell", "|cff5599ff"..L["chat_sticky_yell"].."|r", LolzenUIcfg.chat["chat_sticky_yell"], "content")
+		sticky_yell:SetPoint("TOPLEFT", sticky_say, "BOTTOMLEFT", 0, 0)
+
+		local sticky_party = ns.createCheckBox("chat", "sticky_party", "|cff5599ff"..L["chat_sticky_party"].."|r", LolzenUIcfg.chat["chat_sticky_party"], "content")
+		sticky_party:SetPoint("TOPLEFT", sticky_yell, "BOTTOMLEFT", 0, 0)
+
+		local sticky_guild = ns.createCheckBox("chat", "sticky_guild", "|cff5599ff"..L["chat_sticky_guild"].."|r", LolzenUIcfg.chat["chat_sticky_guild"], "content")
+		sticky_guild:SetPoint("TOPLEFT", sticky_party, "BOTTOMLEFT", 0, 0)
+
+		local sticky_officer = ns.createCheckBox("chat", "sticky_officer", "|cff5599ff"..L["chat_sticky_officer"].."|r", LolzenUIcfg.chat["chat_sticky_officer"], "content")
+		sticky_officer:SetPoint("TOPLEFT", sticky_guild, "BOTTOMLEFT", 0, 0)
+
+		local sticky_raid = ns.createCheckBox("chat", "sticky_raid", "|cff5599ff"..L["chat_sticky_raid"].."|r", LolzenUIcfg.chat["chat_sticky_raid"], "content")
+		sticky_raid:SetPoint("TOPLEFT", sticky_officer, "BOTTOMLEFT", 0, 0)
+
+		local sticky_raidwarning  = ns.createCheckBox("chat", "sticky_raidwarning", "|cff5599ff"..L["chat_sticky_raidwarning"].."|r", LolzenUIcfg.chat["chat_sticky_raidwarning"], "content")
+		sticky_raidwarning :SetPoint("TOPLEFT", sticky_raid, "BOTTOMLEFT", 0, 0)
+
+		local sticky_whisper = ns.createCheckBox("chat", "sticky_whisper", "|cff5599ff"..L["chat_sticky_whisper"].."|r", LolzenUIcfg.chat["chat_sticky_whisper"], "content")
+		sticky_whisper:SetPoint("TOPLEFT", sticky_raidwarning, "BOTTOMLEFT", 0, 0)
+
+		local sticky_channel = ns.createCheckBox("chat", "sticky_channel", "|cff5599ff"..L["chat_sticky_channel"].."|r", LolzenUIcfg.chat["chat_sticky_channel"], "content")
+		sticky_channel:SetPoint("TOPLEFT", sticky_whisper, "BOTTOMLEFT", 0, 0)
 
 		local applyButton = ns.createApplyButton("chat")
 		applyButton:SetScript("OnClick", function()
@@ -212,15 +185,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.chat["chat_background_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.chat["chat_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUIcfg.chat["chat_background_border"] = UIDropDownMenu_GetSelectedName(border)
-			LolzenUIcfg.chat["chat_sticky_say"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_say)])
-			LolzenUIcfg.chat["chat_sticky_yell"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_yell)])
-			LolzenUIcfg.chat["chat_sticky_party"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_party)])
-			LolzenUIcfg.chat["chat_sticky_guild"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_guild)])
-			LolzenUIcfg.chat["chat_sticky_officer"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_officer)])
-			LolzenUIcfg.chat["chat_sticky_raid"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_raid)])
-			LolzenUIcfg.chat["chat_sticky_raidwarning"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_raidwarning)])
-			LolzenUIcfg.chat["chat_sticky_whisper"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_whisper)])
-			LolzenUIcfg.chat["chat_sticky_channel"] = tonumber(ns.picker_bin[UIDropDownMenu_GetSelectedID(sticky_channel)])
+			LolzenUIcfg.chat["chat_sticky_say"] = sticky_say:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_yell"] = sticky_yell:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_party"] = sticky_party:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_guild"] = sticky_guild:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_officer"] = sticky_officer:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_raid"] = sticky_raid:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_raidwarning"] = sticky_raidwarning:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_whisper"] = sticky_whisper:GetChecked()
+			LolzenUIcfg.chat["chat_sticky_channel"] = sticky_channel:GetChecked()
 			LolzenUIcfg.chat["chat_flag_afk"] = chat_afkflag:GetText()
 			LolzenUIcfg.chat["chat_flag_dnd"] = chat_dndflag:GetText()
 			ReloadUI()

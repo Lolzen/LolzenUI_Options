@@ -24,6 +24,26 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb3 = ns.createCheckBox("chat", "chat_timestamp", "|cff5599ff"..L["chat_show_timestamps"].."|r", LolzenUIcfg.chat["chat_timestamp"], "content")
 		cb3:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, 0)
 
+		cb3:SetScript("OnEnter", function(self)
+			GameTooltip:SetOwner(cb3, "ANCHOR_BOTTOMRIGHT")
+			GameTooltip:SetText(L["chat_timestamp_notice"], 1, 1, 1, 1, true)
+			GameTooltip:Show()
+		end)
+
+		cb3:SetScript("OnLeave", function(self)
+			GameTooltip:Hide()
+		end)
+		
+		cb3:SetScript("OnClick", function(self)
+			if GetCVar("showTimestamps") ~= "none" and self:GetChecked() == true then
+				SetCVar("showTimestamps", "none")
+			end
+		end)
+
+		if GetCVar("showTimestamps") ~= "none" then
+			cb3:SetChecked(false)
+		end
+
 		local cb4 = ns.createCheckBox("chat", "chat_fading", "|cff5599ff"..L["chat_disable_fading"].."|r", LolzenUIcfg.chat["chat_disable_fading"], "content")
 		cb4:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, 0)
 

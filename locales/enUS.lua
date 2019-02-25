@@ -273,4 +273,6 @@ if GetLocale() == "enUS" then
 	L["xp_1px_round"] = "Rounded 1px border"
 	L["xp_1px_notice"] = "Activate 1px border for this option"
 	L["xp_mouseover_text"] = "Show text on mouseover"
+	-- apply button
+	L["apply_button_text"] = "Apply Settings"
 end

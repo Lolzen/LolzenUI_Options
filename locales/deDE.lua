@@ -273,6 +273,4 @@ if GetLocale() == "deDE" then
 	L["xp_1px_round"] = "Abgerundeter 1px Rahmen"
 	L["xp_1px_notice"] = "Aktiviere 1px Rahmen für diese Option"
 	L["xp_mouseover_text"] = "Zeige den Text bei Mouseover"
-	-- apply button
-	L["apply_button_text"] = "Anwenden"
 end

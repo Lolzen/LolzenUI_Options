@@ -431,7 +431,7 @@ end
 ns.createApplyButton = function(module)
 	local button = CreateFrame("Button", module.."_ApplyButton", ns[module], "UIPanelButtonTemplate")
 	button:SetSize(120, 23) -- width, height
-	button:SetText("Apply Settings")
+	button:SetText(L["apply_button_text"])
 	button:SetPoint("BOTTOMRIGHT", ns[module], "BOTTOMRIGHT", -186, -37)
 	return button
 end

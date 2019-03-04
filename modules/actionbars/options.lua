@@ -106,145 +106,183 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("actionbars", L["ab_positions"])
 		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -20)
 
-		-- // Main Menu Bar // --
+		-- // Positions // --
 
-		local mmb_text = ns.createFontstring("actionbars", L["ab_mainmenubar"]..":")
-		mmb_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -15)
+		local actionbars = {
+			L["ab_mainmenubar"],
+			L["ab_multibarbottomleft"],
+			L["ab_multibarbottomright"],
+			L["ab_multibarleft"],
+			L["ab_multibarright"],
+			L["ab_petbar"],
+		}
 
-		local mmb_anchor1 = ns.createPicker("actionbars", "anchor", "mmb_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mmb_anchor1"])
-		mmb_anchor1:SetPoint("LEFT", mmb_text, "RIGHT", -10, -3)
+		local backdrop = {
+			bgFile = "Interface\\ChatFrame\\ChatFrameBackground", tile = true, tileSize = 16,
+			edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 16,
+			insets = {left = 4, right = 4, top = 4, bottom = 4},
+		}
 
-		local mmb_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_mmb_parent"])
-		mmb_parent:SetPoint("LEFT", mmb_anchor1, "RIGHT", -5, 3)
+		local headername = ns.createFontstring("actionbars", L["ab_bar_type"])
+		headername:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 8, -14)
 
-		local mmb_anchor2 = ns.createPicker("actionbars", "anchor", "mmb_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_mmb_anchor2"])
-		mmb_anchor2:SetPoint("LEFT", mmb_parent, "RIGHT", -10, -3)
+		local headerx = ns.createFontstring("actionbars", "X")
+		headerx:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 470, -14)
 
-		local mmb_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mmb_posx"])
-		mmb_pos_x:SetPoint("LEFT", mmb_anchor2, "RIGHT", -5, 3)
+		local headery = ns.createFontstring("actionbars", "Y")
+		headery:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 520, -14)
 
-		local mmb_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mmb_posy"])
-		mmb_pos_y:SetPoint("LEFT", mmb_pos_x, "RIGHT", 10, 0)
+		local resetOrUpdateFrame = function(self)
+			--self:
+		end
 
-		-- // Multi Bar Bottom Left // --
+		local OnEscapePressed = function(self)
+			self:SetText(self.oldText)
+			self:ClearFocus()
+			--TBD: reset frame
+		end
 
-		local mbbl_text = ns.createFontstring("actionbars", L["ab_multibarbottomleft"]..":")
-		mbbl_text:SetPoint("TOPLEFT", mmb_text, "BOTTOMLEFT", 0, -15)
+		local box = {}
+		for num, bar in pairs(actionbars) do
+			if not box[num] then
+				box[num] = CreateFrame("Frame", nil, ns.actionbars)
+				box[num]:SetSize(570, 30)
+				box[num]:SetBackdrop(backdrop)
+				box[num]:SetBackdropColor(0.1, 0.1, 0.1, 0.5)
+				box[num]:SetBackdropBorderColor(0.3, 0.3, 0.3, 1)
+				if num == 1 then
+					box[num]:SetPoint("TOPLEFT", headername, "BOTTOMLEFT", -4, -2)
+				else
+					box[num]:SetPoint("TOP", box[num-1], "BOTTOM", 0, -2)
+				end
+				
+				box[num].name = ns.createFontstring("actionbars", bar)
+				box[num].name:SetParent(box[num])
+				box[num].name:SetPoint("LEFT", box[num], "LEFT", 6, 0)
+				
+				box[num].editbox_x = CreateFrame("EditBox", nil, ns.actionbars)
+				box[num].editbox_x:SetSize(38, 14)
+				box[num].editbox_x:SetMaxLetters(5)
+				box[num].editbox_x:SetAutoFocus(false)
+				box[num].editbox_x:SetFontObject(GameFontHighlight)
+				box[num].editbox_x:SetPoint("RIGHT", box[num], "RIGHT", -80, 0)
+				box[num].editbox_x:SetJustifyH("CENTER")
+				box[num].editbox_x.numFormat = "%d"
+				if num == 1 then
+					box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mmb_posx"])		
+				elseif num == 2 then
+					box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbbl_posx"])
+				elseif num == 3 then
+					box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbbr_posx"])
+				elseif num == 4 then
+					box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbl_posx"])
+				elseif num == 5 then
+					box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbr_posx"])
+				elseif num == 6 then
+					box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_petb_posx"])
+				end
+				box[num].editbox_x.oldText = box[num].editbox_x:GetText()
+				box[num].editbox_x:SetCursorPosition(0)
+				
+				box[num].editbox_x_background = box[num].editbox_x:CreateTexture(nil, "BACKGROUND")
+				box[num].editbox_x_background:SetAllPoints(box[num].editbox_x)
+				box[num].editbox_x_background:SetColorTexture(0.2, 0.2, 0.2, 0.8)
+				
+				box[num].editbox_x:SetScript("OnEscapePressed", OnEscapePressed)
+			--	box[num].editbox_x_background:SetScript('OnEnterPressed', OnEnterPressed)
+			--	box[num].editbox_x_background:SetScript('OnEditFocusGained', OnEditFocusGained)
+			--	box[num].editbox_x_background:SetScript('OnEditFocusLost', OnEditFocusLost)
+			--	box[num].editbox_x_background:SetScript('OnTextChanged', OnTextChanged)
+			--	box[num].editbox_x_background:SetScript('OnChar', OnChar)
+				
+				box[num].editbox_y = CreateFrame("EditBox", nil, ns.actionbars)
+				box[num].editbox_y:SetSize(38, 14)
+				box[num].editbox_y:SetMaxLetters(5)
+				box[num].editbox_y:SetAutoFocus(false)
+				box[num].editbox_y:SetFontObject(GameFontHighlight)
+				box[num].editbox_y:SetPoint("RIGHT", box[num], "RIGHT", -30, 0)
+				box[num].editbox_y:SetJustifyH("CENTER")
+				box[num].editbox_y.numFormat = "%d"
+				if num == 1 then
+					box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mmb_posy"])		
+				elseif num == 2 then
+					box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbbl_posy"])
+				elseif num == 3 then
+					box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbbr_posy"])
+				elseif num == 4 then
+					box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbl_posy"])
+				elseif num == 5 then
+					box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbr_posy"])
+				elseif num == 6 then
+					box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_petb_posy"])
+				end
+				box[num].editbox_y.oldText = box[num].editbox_y:GetText()
+				box[num].editbox_y:SetCursorPosition(0)
+				
+				box[num].editbox_y_background = box[num].editbox_y:CreateTexture(nil, "BACKGROUND")
+				box[num].editbox_y_background:SetAllPoints(box[num].editbox_y)
+				box[num].editbox_y_background:SetColorTexture(0.2, 0.2, 0.2, 0.8)
+				
+				box[num].editbox_y:SetScript("OnEscapePressed", OnEscapePressed)
+			--	box[num].editbox_y_background:SetScript('OnEnterPressed', OnEnterPressed)
+			--	box[num].editbox_y_background:SetScript('OnEditFocusGained', OnEditFocusGained)
+			--	box[num].editbox_y_background:SetScript('OnEditFocusLost', OnEditFocusLost)
+			--	box[num].editbox_y_background:SetScript('OnTextChanged', OnTextChanged)
+			--	box[num].editbox_y_background:SetScript('OnChar', OnChar)
+				
+				
+	--			box[num].toggle = CreateFrame("Button", nil, box[num], "UIPanelButtonTemplate")
+	--			box[num].toggle:SetSize(100, 18)
+	--			box[num].toggle:SetPoint("CENTER", box[num], "CENTER", 0, 0)
+	--			box[num].toggle:SetText(L["ab_toggle_dragframe"])
+	--			box[num].toggle:SetScript("OnClick", function(self)
+	--				for i = 1, NUM_ACTIONBAR_BUTTONS do
+	--					local button = _G[dragFrameBarButtons[num]..i]
 
-		local mbbl_anchor1 = ns.createPicker("actionbars", "anchor", "mbbl_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbbl_anchor1"])
-		mbbl_anchor1:SetPoint("LEFT", mbbl_text, "RIGHT", -10, -3)
-
-		local mbbl_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_mbbl_parent"])
-		mbbl_parent:SetPoint("LEFT", mbbl_anchor1, "RIGHT", -5, 3)
-
-		local mbbl_anchor2 = ns.createPicker("actionbars", "anchor", "mbbl_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_mbbl_anchor2"])
-		mbbl_anchor2:SetPoint("LEFT", mbbl_parent, "RIGHT", -10, -3)
-
-		local mbbl_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbbl_posx"])
-		mbbl_pos_x:SetPoint("LEFT", mbbl_anchor2, "RIGHT", -5, 3)
-
-		local mbbl_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbbl_posy"])
-		mbbl_pos_y:SetPoint("LEFT", mbbl_pos_x, "RIGHT", 10, 0)
-
-		-- // Multi Bar Bottom Right // --
-
-		local mbbr_text = ns.createFontstring("actionbars", L["ab_multibarbottomright"]..":")
-		mbbr_text:SetPoint("TOPLEFT", mbbl_text, "BOTTOMLEFT", 0, -15)
-
-		local mbbr_anchor1 = ns.createPicker("actionbars", "anchor", "mbbr_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbbr_anchor1"])
-		mbbr_anchor1:SetPoint("LEFT", mbbr_text, "RIGHT", -10, -3)
-
-		local mbbr_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_mbbr_parent"])
-		mbbr_parent:SetPoint("LEFT", mbbr_anchor1, "RIGHT", -5, 3)
-
-		local mbbr_anchor2 = ns.createPicker("actionbars", "anchor", "mbbr_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_mbbr_anchor2"])
-		mbbr_anchor2:SetPoint("LEFT", mbbr_parent, "RIGHT", -10, -3)
-
-		local mbbr_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbbr_posx"])
-		mbbr_pos_x:SetPoint("LEFT", mbbr_anchor2, "RIGHT", -5, 3)
-
-		local mbbr_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbbr_posy"])
-		mbbr_pos_y:SetPoint("LEFT", mbbr_pos_x, "RIGHT", 10, 0)
-
-		-- // Multi Bar Left // --
-
-		local mbl_text = ns.createFontstring("actionbars", L["ab_multibarleft"]..":")
-		mbl_text:SetPoint("TOPLEFT", mbbr_text, "BOTTOMLEFT", 0, -15)
-
-		local mbl_anchor1 = ns.createPicker("actionbars", "anchor", "mbl_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbl_anchor1"])
-		mbl_anchor1:SetPoint("LEFT", mbl_text, "RIGHT", -10, -3)
-
-		local mbl_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_mbl_parent"])
-		mbl_parent:SetPoint("LEFT", mbl_anchor1, "RIGHT", -5, 3)
-
-		local mbl_anchor2 = ns.createPicker("actionbars", "anchor", "mbl_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_mbl_anchor2"])
-		mbl_anchor2:SetPoint("LEFT", mbl_parent, "RIGHT", -10, -3)
-
-		local mbl_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbl_posx"])
-		mbl_pos_x:SetPoint("LEFT", mbl_anchor2, "RIGHT", -5, 3)
-
-		local mbl_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbl_posy"])
-		mbl_pos_y:SetPoint("LEFT", mbl_pos_x, "RIGHT", 10, 0)
-
-		-- // Multi Bar Right // --
-
-		local mbr_text = ns.createFontstring("actionbars", L["ab_multibarright"]..":")
-		mbr_text:SetPoint("TOPLEFT", mbl_text, "BOTTOMLEFT", 0, -15)
-
-		local mbr_anchor1 = ns.createPicker("actionbars", "anchor", "mbr_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_mbr_anchor1"])
-		mbr_anchor1:SetPoint("LEFT", mbr_text, "RIGHT", -10, -3)
-
-		local mbr_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_mbr_parent"])
-		mbr_parent:SetPoint("LEFT", mbr_anchor1, "RIGHT", -5, 3)
-
-		local mbr_anchor2 = ns.createPicker("actionbars", "anchor", "mbr_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_mbr_anchor2"])
-		mbr_anchor2:SetPoint("LEFT", mbr_parent, "RIGHT", -10, -3)
-
-		local mbr_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbr_posx"])
-		mbr_pos_x:SetPoint("LEFT", mbr_anchor2, "RIGHT", -5, 3)
-
-		local mbr_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_mbr_posy"])
-		mbr_pos_y:SetPoint("LEFT", mbr_pos_x, "RIGHT", 10, 0)
-
-		-- // Pet Bar // --
-
-		local petb_text = ns.createFontstring("actionbars", L["ab_petbar"]..":")
-		petb_text:SetPoint("TOPLEFT", mbr_text, "BOTTOMLEFT", 0, -15)
-
-		local petb_anchor1 = ns.createPicker("actionbars", "anchor", "petb_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_petb_anchor1"])
-		petb_anchor1:SetPoint("LEFT", petb_text, "RIGHT", -10, -3)
-
-		local petb_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_petb_parent"])
-		petb_parent:SetPoint("LEFT", petb_anchor1, "RIGHT", -5, 3)
-
-		local petb_anchor2 = ns.createPicker("actionbars", "anchor", "petb_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_petb_anchor2"])
-		petb_anchor2:SetPoint("LEFT", petb_parent, "RIGHT", -10, -3)
-
-		local petb_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_petb_posx"])
-		petb_pos_x:SetPoint("LEFT", petb_anchor2, "RIGHT", -5, 3)
-
-		local petb_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_petb_posy"])
-		petb_pos_y:SetPoint("LEFT", petb_pos_x, "RIGHT", 10, 0)
-
-		-- // Possess Bar // --
-
-		local pb_text = ns.createFontstring("actionbars", L["ab_posessbar"]..":")
-		pb_text:SetPoint("TOPLEFT", petb_text, "BOTTOMLEFT", 0, -15)
-
-		local pb_anchor1 = ns.createPicker("actionbars", "anchor", "pb_anchor1_picker", 100, LolzenUIcfg.actionbar["actionbar_pb_anchor1"])
-		pb_anchor1:SetPoint("LEFT", pb_text, "RIGHT", -10, -3)
-
-		local pb_parent = ns.createInputbox("actionbars", 140, 20, LolzenUIcfg.actionbar["actionbar_pb_parent"])
-		pb_parent:SetPoint("LEFT", pb_anchor1, "RIGHT", -5, 3)
-
-		local pb_anchor2 = ns.createPicker("actionbars", "anchor", "pb_anchor2_picker", 100, LolzenUIcfg.actionbar["actionbar_pb_anchor2"])
-		pb_anchor2:SetPoint("LEFT", pb_parent, "RIGHT", -10, -3)
-
-		local pb_pos_x = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_pb_posx"])
-		pb_pos_x:SetPoint("LEFT", pb_anchor2, "RIGHT", -5, 3)
-
-		local pb_pos_y = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_pb_posy"])
-		pb_pos_y:SetPoint("LEFT", pb_pos_x, "RIGHT", 10, 0)
+	--					if button then
+	--						if button.dragFrameTexture:IsShown() then
+	--							button.dragFrameTexture:Hide()
+	--						else
+	--							button.dragFrameTexture:Show()
+	--						end
+	--					end
+	--				end
+	--			end)
+				
+				box[num].reset = CreateFrame("Button", nil, box[num])
+				box[num].reset:SetSize(16, 16)
+				box[num].reset:SetPoint("RIGHT", box[num], "RIGHT", -5, 0)
+				box[num].reset:SetNormalTexture[[Interface\Buttons\UI-Panel-MinimizeButton-Up]]
+				box[num].reset:SetPushedTexture[[Interface\Buttons\UI-Panel-MinimizeButton-Down]]
+				box[num].reset:SetHighlightTexture[[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]]
+				box[num].reset:SetScript("OnClick", function(self)
+					if num == 1 then
+						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mmb_posx"])	
+						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mmb_posy"])		
+					elseif num == 2 then
+						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbbl_posx"])
+						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbbl_posy"])
+					elseif num == 3 then
+						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbbr_posx"])
+						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbbr_posy"])
+					elseif num == 4 then
+						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbl_posx"])
+						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbl_posy"])
+					elseif num == 5 then
+						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbr_posx"])
+						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbr_posy"])
+					elseif num == 6 then
+						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_petb_posx"])
+						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_petb_posy"])
+					end
+				end)
+				box[num].reset:SetScript("OnEnter", function(self)
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetText("Reset")
+				end)
+				box[num].reset:SetScript("OnLeave", GameTooltip_Hide)
+			end
+		end
 
 		local applyButton = ns.createApplyButton("actionbars")
 		applyButton:SetScript("OnClick", function()
@@ -256,41 +294,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.actionbar["actionbar_pushed_texture"] = pushedtex_path:GetText()
 			LolzenUIcfg.actionbar["actionbar_button_spacing"] = spacing:GetText()
 			LolzenUIcfg.actionbar["actionbar_button_size"] = size:GetText()
-			LolzenUIcfg.actionbar["actionbar_mmb_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mmb_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_mmb_parent"] = mmb_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_mmb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mmb_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = tonumber(mmb_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mmb_posy"] = tonumber(mmb_pos_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbl_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbbl_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_mbbl_parent"] = mbbl_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_mbbl_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbbl_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = tonumber(mbbl_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbl_posy"] = tonumber(mbbl_pos_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbr_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbbr_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_mbbr_parent"] = mbbr_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_mbbr_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbbr_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_mbbr_posx"] = tonumber(mbbr_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbr_posy"] = tonumber(mbbr_pos_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbl_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbl_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_mbl_parent"] = mbl_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_mbl_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbl_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_mbl_posx"] = tonumber(mbl_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbl_posy"] = tonumber(mbl_pos_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbr_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbr_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_mbr_parent"] = mbr_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_mbr_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(mbr_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_mbr_posx"] = tonumber(mbr_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbr_posy"] = tonumber(mbr_pos_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_petb_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(petb_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_petb_parent"] = petb_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_petb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(petb_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_petb_posx"] = tonumber(petb_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_petb_posy"] = tonumber(petb_pos_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_pb_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pb_anchor1)]
-			LolzenUIcfg.actionbar["actionbar_pb_parent"] = pb_parent:GetText()
-			LolzenUIcfg.actionbar["actionbar_pb_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pb_anchor2)]
-			LolzenUIcfg.actionbar["actionbar_pb_posx"] = tonumber(pb_pos_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_pb_posy"] = tonumber(pb_pos_y:GetText())
+			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = tonumber(box[1].editbox_x:GetText())
+			LolzenUIcfg.actionbar["actionbar_mmb_posy"] = tonumber(box[1].editbox_y:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = tonumber(box[2].editbox_x:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbbl_posy"] = tonumber(box[2].editbox_y:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbbr_posx"] = tonumber(box[3].editbox_x:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbbr_posy"] = tonumber(box[3].editbox_y:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbl_posx"] = tonumber(box[4].editbox_x:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbl_posy"] = tonumber(box[4].editbox_y:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbr_posx"] = tonumber(box[5].editbox_x:GetText())
+			LolzenUIcfg.actionbar["actionbar_mbr_posy"] = tonumber(box[5].editbox_y:GetText())
+			LolzenUIcfg.actionbar["actionbar_petb_posx"] = tonumber(box[6].editbox_x:GetText())
+			LolzenUIcfg.actionbar["actionbar_petb_posy"] = tonumber(box[6].editbox_y:GetText())
 			ReloadUI()
 		end)
 

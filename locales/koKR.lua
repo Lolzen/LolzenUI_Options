@@ -58,6 +58,7 @@ if GetLocale() == "koKR" then
 	L["ab_multibarright"] = "Right Bar"
 	L["ab_petbar"] = "Pet Bar"
 	L["ab_posessbar"] = "Special Bar"
+	L["ab_bar_type"] = "Actionbar Type"
 	-- artifactbar
 	L["af_draw_1px"] = "Draw a 1px border around the artifactbar"
 	L["af_1px_round"] = "Rounded 1px border"

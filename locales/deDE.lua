@@ -58,6 +58,7 @@ if GetLocale() == "deDE" then
 	L["ab_multibarright"] = "Rechte Leiste"
 	L["ab_petbar"] = "Begleiterleiste"
 	L["ab_posessbar"] = "Spezial Leiste"
+	L["ab_bar_type"] = "Aktionsleisten Typ"
 	-- artifactbar
 	L["af_draw_1px"] = "Zeichne einen 1px Rahmen um die Artefaktleiste"
 	L["af_1px_round"] = "Abgerundeter 1px Rahmen"

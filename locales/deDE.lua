@@ -50,7 +50,7 @@ if GetLocale() == "deDE" then
 	L["ab_pushedtexture"] = "Pushed Textur"
 	L["ab_buttonsize"] = "Buttongröße"
 	L["ab_buttonspacing"] = "Buttonabstand"
-	L["ab_positions"] = "Leisten Positionen: |cffffffff(Schema = Ankerpunkt1, Stammpunkt, Ankerpunkt2, posX, posY)|r"
+	L["ab_positions"] = "Leisten Positionen"
 	L["ab_mainmenubar"] = "Hauptleiste"
 	L["ab_multibarbottomleft"] = "Untere Linke Leiste"
 	L["ab_multibarbottomright"] = "Untere Rechte Leiste"

@@ -50,7 +50,7 @@ if GetLocale() == "ptBR" then
 	L["ab_pushedtexture"] = "Pushed texture"
 	L["ab_buttonsize"] = "Button size"
 	L["ab_buttonspacing"] = "Button spacing"
-	L["ab_positions"] = "Bar positions: |cffffffff(Scheme = Anchor1, Parent, Anchor2, posX, posY)|r"
+	L["ab_positions"] = "Bar positions"
 	L["ab_mainmenubar"] = "Main Menu Bar"
 	L["ab_multibarbottomleft"] = "Bottom Left Bar"
 	L["ab_multibarbottomright"] = "Bottom Right Bar"

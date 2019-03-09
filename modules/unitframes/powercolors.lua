@@ -19,7 +19,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		mana_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -30)
 
 		local mana = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[0], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		mana:SetPoint("LEFT", mana_text, "RIGHT", 62, 0)
+		mana:SetPoint("LEFT", mana_text, "RIGHT", 100, 0)
 
 		local mana_f = ns.createColorPicker("uf_powercolor_options", mana, LolzenUIcfg.unitframes.powercolors[0])
 		mana_f:SetAllPoints(mana)
@@ -28,7 +28,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		rage_text:SetPoint("TOPLEFT", mana_text, "BOTTOMLEFT", 0, -10)
 
 		local rage = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[1], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		rage:SetPoint("LEFT", rage_text, "RIGHT", 65, 0)
+		rage:SetPoint("TOP", mana, "BOTTOM", 0, -4)
 
 		local rage_f = ns.createColorPicker("uf_powercolor_options", rage, LolzenUIcfg.unitframes.powercolors[1])
 		rage_f:SetAllPoints(rage)
@@ -37,7 +37,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		focus_text:SetPoint("TOPLEFT", rage_text, "BOTTOMLEFT", 0, -10)
 
 		local focus = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[2], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		focus:SetPoint("LEFT", focus_text, "RIGHT", 62, 0)
+		focus:SetPoint("TOP", rage, "BOTTOM", 0, -4)
 
 		local focus_f = ns.createColorPicker("uf_powercolor_options", focus, LolzenUIcfg.unitframes.powercolors[2])
 		focus_f:SetAllPoints(focus)
@@ -46,7 +46,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		energy_text:SetPoint("TOPLEFT", focus_text, "BOTTOMLEFT", 0, -10)
 
 		local energy = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[3], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		energy:SetPoint("LEFT", energy_text, "RIGHT", 56, 0)
+		energy:SetPoint("TOP", focus, "BOTTOM", 0, -4)
 
 		local energy_f = ns.createColorPicker("uf_powercolor_options", energy, LolzenUIcfg.unitframes.powercolors[3])
 		energy_f:SetAllPoints(energy)
@@ -55,7 +55,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cp_text:SetPoint("TOPLEFT", energy_text, "BOTTOMLEFT", 0, -10)
 
 		local cp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[4], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		cp:SetPoint("LEFT", cp_text, "RIGHT", 20, 0)
+		cp:SetPoint("TOP", energy, "BOTTOM", 0, -4)
 
 		local cp_f = ns.createColorPicker("uf_powercolor_options", cp, LolzenUIcfg.unitframes.powercolors[4])
 		cp_f:SetAllPoints(cp)
@@ -64,7 +64,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		runes_text:SetPoint("TOPLEFT", cp_text, "BOTTOMLEFT", 0, -10)
 
 		local runes = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[5], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		runes:SetPoint("LEFT", runes_text, "RIGHT", 61, 0)
+		runes:SetPoint("TOP", cp, "BOTTOM", 0, -4)
 
 		local runes_f = ns.createColorPicker("uf_powercolor_options", runes, LolzenUIcfg.unitframes.powercolors[5])
 		runes_f:SetAllPoints(runes)
@@ -73,7 +73,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		rp_text:SetPoint("TOPLEFT", runes_text, "BOTTOMLEFT", 0, -10)
 
 		local rp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[6], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		rp:SetPoint("LEFT", rp_text, "RIGHT", 28, 0)
+		rp:SetPoint("TOP", runes, "BOTTOM", 0, -4)
 
 		local rp_f = ns.createColorPicker("uf_powercolor_options", rp, LolzenUIcfg.unitframes.powercolors[6])
 		rp_f:SetAllPoints(rp)
@@ -82,7 +82,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		soulshards_text:SetPoint("TOPLEFT", rp_text, "BOTTOMLEFT", 0, -10)
 
 		local soulshards = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[7], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		soulshards:SetPoint("LEFT", soulshards_text, "RIGHT", 32, 0)
+		soulshards:SetPoint("TOP", rp, "BOTTOM", 0, -4)
 
 		local soulshards_f = ns.createColorPicker("uf_powercolor_options", soulshards, LolzenUIcfg.unitframes.powercolors[7])
 		soulshards_f:SetAllPoints(soulshards)
@@ -91,7 +91,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		lp_text:SetPoint("TOPLEFT", soulshards_text, "BOTTOMLEFT", 0, -10)
 
 		local lp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[8], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		lp:SetPoint("LEFT", lp_text, "RIGHT", 28, 0)
+		lp:SetPoint("TOP", soulshards, "BOTTOM", 0, -4)
 
 		local lp_f = ns.createColorPicker("uf_powercolor_options", lp, LolzenUIcfg.unitframes.powercolors[8])
 		lp_f:SetAllPoints(lp)
@@ -100,7 +100,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		hp_text:SetPoint("TOPLEFT", lp_text, "BOTTOMLEFT", 0, -10)
 
 		local hp = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[9], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		hp:SetPoint("LEFT", hp_text, "RIGHT", 32, 0)
+		hp:SetPoint("TOP", lp, "BOTTOM", 0, -4)
 
 		local hp_f = ns.createColorPicker("uf_powercolor_options", hp, LolzenUIcfg.unitframes.powercolors[9])
 		hp_f:SetAllPoints(hp)
@@ -109,7 +109,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		maelstrom_text:SetPoint("TOPLEFT", hp_text, "BOTTOMLEFT", 0, -10)
 
 		local maelstrom = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[11], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		maelstrom:SetPoint("LEFT", maelstrom_text, "RIGHT", 35, 0)
+		maelstrom:SetPoint("TOP", hp, "BOTTOM", 0, -4)
 
 		local maelstrom_f = ns.createColorPicker("uf_powercolor_options", maelstrom, LolzenUIcfg.unitframes.powercolors[11])
 		maelstrom_f:SetAllPoints(maelstrom)
@@ -118,7 +118,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		chi_text:SetPoint("TOPLEFT", maelstrom_text, "BOTTOMLEFT", 0, -10)
 
 		local chi = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[12], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		chi:SetPoint("LEFT", chi_text, "RIGHT", 75, 0)
+		chi:SetPoint("TOP", maelstrom, "BOTTOM", 0, -4)
 
 		local chi_f = ns.createColorPicker("uf_powercolor_options", chi, LolzenUIcfg.unitframes.powercolors[12])
 		chi_f:SetAllPoints(chi)
@@ -127,7 +127,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		insanity_text:SetPoint("TOPLEFT", chi_text, "BOTTOMLEFT", 0, -10)
 
 		local insanity = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[13], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		insanity:SetPoint("LEFT", insanity_text, "RIGHT", 51, 0)
+		insanity:SetPoint("TOP", chi, "BOTTOM", 0, -4)
 
 		local insanity_f = ns.createColorPicker("uf_powercolor_options", insanity, LolzenUIcfg.unitframes.powercolors[13])
 		insanity_f:SetAllPoints(insanity)
@@ -136,7 +136,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ac_text:SetPoint("TOPLEFT", insanity_text, "BOTTOMLEFT", 0, -10)
 
 		local ac = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[16], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		ac:SetPoint("LEFT", ac_text, "RIGHT", 11, 0)
+		ac:SetPoint("TOP", insanity, "BOTTOM", 0, -4)
 
 		local ac_f = ns.createColorPicker("uf_powercolor_options", ac, LolzenUIcfg.unitframes.powercolors[16])
 		ac_f:SetAllPoints(ac)
@@ -145,7 +145,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		fury_text:SetPoint("TOPLEFT", ac_text, "BOTTOMLEFT", 0, -10)
 
 		local fury = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[17], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		fury:SetPoint("LEFT", fury_text, "RIGHT", 70, 0)
+		fury:SetPoint("TOP", ac, "BOTTOM", 0, -4)
 
 		local fury_f = ns.createColorPicker("uf_powercolor_options", fury, LolzenUIcfg.unitframes.powercolors[17])
 		fury_f:SetAllPoints(fury)
@@ -154,7 +154,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		pain_text:SetPoint("TOPLEFT", fury_text, "BOTTOMLEFT", 0, -10)
 
 		local pain = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[18], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
-		pain:SetPoint("LEFT", pain_text, "RIGHT", 70, 0)
+		pain:SetPoint("TOP",fury, "BOTTOM", 0, -4)
 
 		local pain_f = ns.createColorPicker("uf_powercolor_options", pain, LolzenUIcfg.unitframes.powercolors[18])
 		pain_f:SetAllPoints(pain)

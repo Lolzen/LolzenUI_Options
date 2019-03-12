@@ -268,8 +268,6 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 		t = LSM:List(LSM.MediaType.FONT)
 	elseif pickertype == "flag" then
 		t = ns.picker_flags
-	elseif pickertype == "bin" then
-		t = ns.picker_bin
 	elseif pickertype == "growth" then
 		t = ns.picker_growth
 	elseif pickertype == "uf_parent" then

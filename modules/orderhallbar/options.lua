@@ -23,7 +23,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ohb_bg_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
 		local ohb_bg = ns.createPicker("orderhallbar", "background", "oh_bg_statusbar", 120, LolzenUIcfg.orderhallbar["ohb_background"])
-		ohb_bg:SetPoint("LEFT", ohb_bg_text, "RIGHT", -10, -3)
+		ohb_bg:SetPoint("LEFT", ohb_bg_text, "RIGHT", -10, -5)
 
 		local color_text = ns.createFontstring("orderhallbar", L["color"]..":")
 		color_text:SetPoint("LEFT", ohb_bg, "RIGHT", -5, 3)
@@ -38,7 +38,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		alpha_text:SetPoint("LEFT", color, "RIGHT", 10, 0)
 
 		local alpha = ns.createPicker("orderhallbar", "alpha", "oh_bg_alpha", 45, LolzenUIcfg.orderhallbar["ohb_background_alpha"])
-		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -3)
+		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -5)
 
 		local header2 = ns.createHeader("orderhallbar", L["ohb_zonetext_header"])
 		header2:SetPoint("TOPLEFT", ohb_bg_text, "BOTTOMLEFT", 0, -30)
@@ -52,14 +52,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local zone_color_f = ns.createColorPicker("orderhallbar", zone_color, LolzenUIcfg.orderhallbar["ohb_zone_color"])
 		zone_color_f:SetAllPoints(zone_color)
 
+		local zone_font_text = ns.createFontstring("orderhallbar", L["font"]..":")
+		zone_font_text:SetPoint("TOPLEFT", zone_color_text, "BOTTOMLEFT", 0, -10)
+
+		local zone_font = ns.createPicker("orderhallbar", "font", "orderhallbar_font", 120, LolzenUIcfg.orderhallbar["ohb_zone_font"])
+		zone_font:SetPoint("LEFT", zone_font_text, "RIGHT", -10, -5)
+
+		local zone_font_size_text = ns.createFontstring("orderhallbar", L["size"]..":")
+		zone_font_size_text:SetPoint("LEFT", zone_font, "RIGHT", -5, 3)
+
+		local zone_font_size = ns.createInputbox("orderhallbar", 30, 20, LolzenUIcfg.orderhallbar["ohb_zone_font_size"])
+		zone_font_size:SetPoint("LEFT", zone_font_size_text, "RIGHT", 10, 0)
+
+		local zone_font_flag_text = ns.createFontstring("orderhallbar", L["flag"]..":")
+		zone_font_flag_text:SetPoint("LEFT", zone_font_size, "RIGHT", 10, 0)
+
+		local zone_font_flag = ns.createPicker("orderhallbar", "flag", "orderhallbar_font_flag", 120, LolzenUIcfg.orderhallbar["ohb_zone_font_flag"])
+		zone_font_flag:SetPoint("LEFT", zone_font_flag_text, "RIGHT", -10, -5)
+
 		local header3 = ns.createHeader("orderhallbar", L["ohb_currency_header"])
-		header3:SetPoint("TOPLEFT", zone_color_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", zone_font_text, "BOTTOMLEFT", 0, -30)
 
 		local font_text = ns.createFontstring("orderhallbar", L["font"]..":")
 		font_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
 
 		local font = ns.createPicker("orderhallbar", "font", "orderhallbar_font", 120, LolzenUIcfg.orderhallbar["ohb_currency_font"])
-		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
+		font:SetPoint("LEFT", font_text, "RIGHT", -10, -5)
 
 		local font_size_text = ns.createFontstring("orderhallbar", L["size"]..":")
 		font_size_text:SetPoint("LEFT", font, "RIGHT", -5, 3)
@@ -71,7 +89,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		font_flag_text:SetPoint("LEFT", font_size, "RIGHT", 10, 0)
 
 		local font_flag = ns.createPicker("orderhallbar", "flag", "orderhallbar_font_flag", 120, LolzenUIcfg.orderhallbar["ohb_currency_font_flag"])
-		font_flag:SetPoint("LEFT", font_flag_text, "RIGHT", -10, -3)
+		font_flag:SetPoint("LEFT", font_flag_text, "RIGHT", -10, -5)
 
 		local icon_size_text = ns.createFontstring("orderhallbar", L["ohb_icon_size"]..":")
 		icon_size_text:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -15)
@@ -86,6 +104,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.orderhallbar["ohb_currency_font_size"] = tonumber(font_size:GetText())
 			LolzenUIcfg.orderhallbar["ohb_currency_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {zone_color:GetVertexColor()}
+			LolzenUIcfg.orderhallbar["ohb_zone_font"] = UIDropDownMenu_GetSelectedName(zone_font)
+			LolzenUIcfg.orderhallbar["ohb_zone_font_size"] = tonumber(zone_font_size:GetText())
+			LolzenUIcfg.orderhallbar["ohb_zone_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(zone_font_flag)]
 			LolzenUIcfg.orderhallbar["ohb_background"] = UIDropDownMenu_GetSelectedName(ohb_bg)
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])

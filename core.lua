@@ -185,6 +185,11 @@ ns.picker_flags = {
 	"",
 }
 
+ns.picker_dateformat = {
+	"EU",
+	"US",
+}
+
 ns.picker_growth = {
 	"ABOVE",
 	"BELOW",
@@ -264,6 +269,8 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 		t = ns.picker_alpha
 	elseif pickertype == "anchor" then
 		t = ns.picker_anchor
+	elseif pickertype == "dateformat" then
+		t = ns.picker_dateformat
 	elseif pickertype == "font" then
 		t = LSM:List(LSM.MediaType.FONT)
 	elseif pickertype == "flag" then
@@ -294,7 +301,7 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	end
 	picker:Show()
 	local function OnClick(name)
-		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" then
+		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" then
 			UIDropDownMenu_SetSelectedName(picker, name.value)
 		else
 			UIDropDownMenu_SetSelectedID(picker, name:GetID())
@@ -333,7 +340,7 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	UIDropDownMenu_Initialize(picker, initialize)
 	UIDropDownMenu_SetWidth(picker, width)
 	UIDropDownMenu_SetButtonWidth(picker, width+15)
-	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" then
+	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" then
 		UIDropDownMenu_SetSelectedName(picker, selectedName)
 	else
 		UIDropDownMenu_SetSelectedID(picker, selectedNum)

@@ -76,11 +76,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local seconds_color_f = ns.createColorPicker("clock", seconds_color, LolzenUIcfg.clock["clock_seconds_color"])
 		seconds_color_f:SetAllPoints(seconds_color)
 
-		local header3 = ns.createHeader("clock", L["frame"])
+		local header3 = ns.createHeader("clock", L["clock_date"])
 		header3:SetPoint("TOPLEFT", seconds_font_text, "BOTTOMLEFT", 0, -30)
 
+		local dateformat = ns.createPicker("clock", "dateformat", "clock_dateformat", 50, LolzenUIcfg.clock["clock_dateformat"])
+		dateformat:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -17, -3)
+
+		local header4 = ns.createHeader("clock", L["frame"])
+		header4:SetPoint("TOPLEFT", dateformat, "BOTTOMLEFT", 17, -27)
+
 		local pos_x_text = ns.createFontstring("clock", L["PosX"]..":")
-		pos_x_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -10)
+		pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
 
 		local pos_x = ns.createInputbox("clock", 30, 20, LolzenUIcfg.clock["clock_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
@@ -108,6 +114,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.clock["clock_seconds_enabled"] = cb1:GetChecked()
 			LolzenUIcfg.clock["clock_color"] = {color:GetVertexColor()}
 			LolzenUIcfg.clock["clock_seconds_color"] = {seconds_color:GetVertexColor()}
+			LolzenUIcfg.clock["clock_dateformat"] = UIDropDownMenu_GetSelectedName(dateformat)
 			LolzenUIcfg.clock["clock_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUIcfg.clock["clock_font_seconds"] = UIDropDownMenu_GetSelectedName(seconds_font)
 			LolzenUIcfg.clock["clock_font_size"] = tonumber(font_size:GetText())

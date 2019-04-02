@@ -109,6 +109,7 @@ if GetLocale() == "deDE" then
 	L["clock_hours_and_minutes_header"] = "Stunden & Minuten"
 	L["clock_seconds_header"] = "Sekunden"
 	L["clock_seconds_enabled"] = "Zeige Sekunden an"
+	L["clock_date"] = "Datumsformat"
 	-- fonts
 	L["DAMAGE_TEXT_FONT"] = "Schriftart Schaden"
 	L["UNIT_NAME_FONT"] = "Schriftart Einheiten"

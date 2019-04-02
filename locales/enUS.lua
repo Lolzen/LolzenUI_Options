@@ -109,6 +109,7 @@ if GetLocale() == "enUS" then
 	L["clock_hours_and_minutes_header"] = "Hours & Minutes"
 	L["clock_seconds_header"] = "Seconds"
 	L["clock_seconds_enabled"] = "Show seconds"
+	L["clock_date"] = "Date Format"
 	-- fonts
 	L["DAMAGE_TEXT_FONT"] = "Damage font"
 	L["UNIT_NAME_FONT"] = "Unit font"

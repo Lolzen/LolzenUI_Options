@@ -201,6 +201,8 @@ if GetLocale() == "ptBR" then
 	L["uf_roleindicator_header"] = "Role indicator"
 	L["uf_show_roleindicator"] = "Show role indicator"
 	L["uf_readycheckindicator_header"] = "Readycheck indicator"
+	L["uf_show_restingindicator"] = "Show resting indicator"
+	L["uf_restingindicator_header"] = "Resting indicator"
 	L["uf_general_use_hp_percent"] = "Show HP percent"
 	L["uf_general_use_both_value_and_percent"] = "Show HP points & HP percent"
 	L["uf_general_switch_value_and_percent_order"] = "Use [Percent]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Points] instead of [Points]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Percent]"

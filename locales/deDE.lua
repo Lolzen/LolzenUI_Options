@@ -201,6 +201,8 @@ if GetLocale() == "deDE" then
 	L["uf_roleindicator_header"] = "Rollensymbol"
 	L["uf_show_roleindicator"] = "Zeige Rollensymbol"
 	L["uf_readycheckindicator_header"] = "Bereitschaftsprüfungs Symbol"
+	L["uf_show_restingindicator"] = "Zeige Ruhegebietsymbol"
+	L["uf_restingindicator_header"] = "Ruhegebiet Symbol"
 	L["uf_general_use_hp_percent"] = "Zeige HP Prozent"
 	L["uf_general_use_both_value_and_percent"] = "Zeige HP Punkte & HP Prozent"
 	L["uf_general_switch_value_and_percent_order"] = "Benutze [Prozent]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Punkte] statt [Punkte]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Prozent]"

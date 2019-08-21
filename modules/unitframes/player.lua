@@ -27,7 +27,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("uf_player_options", L["sub_panel_unitframes_player_title"])
 
-		local scrollFrame = ns.createScrollFrame("uf_player_options", 102)
+		local scrollFrame = ns.createScrollFrame("uf_player_options", 186)
 
 		local width_text = ns.createFontstring("uf_player_options", L["width"]..":", "content")
 		width_text:SetPoint("TOPLEFT", ns.uf_player_options.content, 16, -16)
@@ -416,6 +416,36 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_font_color_f = ns.createColorPicker("uf_player_options", cb_font_color, LolzenUIcfg.unitframes.player["uf_player_cb_font_color"], "content")
 		cb_font_color_f:SetAllPoints(cb_font_color)
 
+		local header9 = ns.createHeader("uf_player_options", L["uf_restingindicator_header"], "content")
+		header9:SetPoint("TOPLEFT", cb_font, "BOTTOMLEFT", 17, -8)
+
+		local cb4 = ns.createCheckBox("uf_player_options", "uf_player_ri", "|cff5599ff"..L["uf_show_restingindicator"].."|r", LolzenUIcfg.unitframes.player["uf_player_show_restingindicator"], "content")
+		cb4:SetPoint("TOPLEFT", header9, "BOTTOMLEFT", 0, -8)
+
+		local resting_size_text = ns.createFontstring("uf_player_options", L["size"]..":", "content")
+		resting_size_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
+
+		local resting_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_resting_size"], "content")
+		resting_size:SetPoint("LEFT", resting_size_text, "RIGHT", 10, 0)
+
+		local resting_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
+		resting_pos_x_text:SetPoint("LEFT", resting_size, "RIGHT", 10, 0)
+
+		local resting_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_resting_posx"], "content")
+		resting_pos_x:SetPoint("LEFT", resting_pos_x_text, "RIGHT", 10, 0)
+
+		local resting_pos_y_text = ns.createFontstring("uf_player_options", L["PosY"]..":", "content")
+		resting_pos_y_text:SetPoint("LEFT", resting_pos_x, "RIGHT", 10, 0)
+
+		local resting_pos_y = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_resting_posy"], "content")
+		resting_pos_y:SetPoint("LEFT", resting_pos_y_text, "RIGHT", 10, 0)
+
+		local resting_anchor_text = ns.createFontstring("uf_player_options", L["anchor"]..":", "content")
+		resting_anchor_text:SetPoint("LEFT", resting_pos_y, "RIGHT", 10, 0)
+
+		local resting_anchor = ns.createPicker("uf_player_options", "anchor", "uf_player_resting_anchor", 120, LolzenUIcfg.unitframes.player["uf_player_resting_anchor"], "content")
+		resting_anchor:SetPoint("LEFT", resting_anchor_text, "RIGHT", -10, -3)
+
 		local applyButton = ns.createApplyButton("uf_player_options")
 		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.unitframes.player["uf_player_use_own_hp_font_settings"] = cb1:GetChecked()
@@ -468,6 +498,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.unitframes.player["uf_player_cb_font_size"] = tonumber(cb_font_size:GetText())
 			LolzenUIcfg.unitframes.player["uf_player_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_font_flag)]
 			LolzenUIcfg.unitframes.player["uf_player_cb_font_color"] = {cb_font_color:GetVertexColor()}
+			LolzenUIcfg.unitframes.player["uf_player_show_restingindicator"] = cb4:GetChecked()
+			LolzenUIcfg.unitframes.player["uf_player_resting_size"] = tonumber(resting_size:GetText())
+			LolzenUIcfg.unitframes.player["uf_player_resting_posx"] = tonumber(resting_pos_x:GetText())
+			LolzenUIcfg.unitframes.player["uf_player_resting_posy"] = tonumber(resting_pos_y:GetText())
+			LolzenUIcfg.unitframes.player["uf_player_resting_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(resting_anchor)]
 			ReloadUI()
 		end)
 

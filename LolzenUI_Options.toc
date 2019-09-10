@@ -5,6 +5,7 @@
 ## Notes: Options for LolzenUI
 ## Dependencies: LolzenUI
 ## LoadOnDemand: 1
+## SavedVariables: LolzenUIprofiles
 
 libs/libs.xml
 locales.xml

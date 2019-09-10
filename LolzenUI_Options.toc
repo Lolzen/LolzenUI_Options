@@ -6,7 +6,10 @@
 ## Dependencies: LolzenUI
 ## LoadOnDemand: 1
 
+libs/libs.xml
 locales.xml
 core.lua
 
 options.xml
+
+profiles.lua

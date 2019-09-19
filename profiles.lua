@@ -34,7 +34,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local function getSCETable(t)
 			-- serialize
 			local serializedTable = AceSerializer:Serialize(t)
-			--compress, using zlib @ level9
+			-- compress, using zlib @ level9
 			local compressed = LibDeflate:CompressDeflate(serializedTable, {level = 9})
 			-- encode to printable format
 			local encoded_string = LibDeflate:EncodeForPrint(compressed)
@@ -178,6 +178,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 				self:GetParent():Hide()
 			end,
 		}
+		
+		StaticPopupDialogs["LolzenUI_loadprofile"] = {
+			text = "Loading This Profile will overwrite your currwnt settings! Load anyways?",
+			button1 = "Ok",
+			button2 = "Cancel",
+			timeout = 0,
+			whileDead = true,
+			preferredIndex = 3,  -- avoid some UI taint
+			OnAccept = function(self)
+				loadProfile(UIDropDownMenu_GetSelectedName(profiles))
+			end,
+		}
 
 		StaticPopupDialogs["LolzenUI_reload_for_profile"] = {
 			text = "Reload now to take loaded Profile in effect?",
@@ -196,7 +208,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		loadButton:SetText("Load")
 		loadButton:SetPoint("TOPLEFT", profiles, "BOTTOMLEFT", 16, 0)
 		loadButton:SetScript("OnClick", function()
-			loadProfile(UIDropDownMenu_GetSelectedName(profiles))
+			StaticPopup_Show("LolzenUI_loadprofile")
 		end)
 
 		local saveButton = CreateFrame("Button", "saveButton_LolzenUIOptions", panel, "UIPanelButtonTemplate")
@@ -228,15 +240,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 					importTextfield:Hide()
 					self:Hide()
 					-- here we import and store the import string
-					--import_profile[1] = Profile Name
-					--import_profile[2] = LolzenUI Version in which the profile was exported
-					--import_profile[3] = the encoded & compressed profile string
+					-- import_profile[1] = Profile Name
+					-- import_profile[2] = LolzenUI Version in which the profile was exported
+					-- import_profile[3] = the encoded & compressed profile string
 					local import_string = importTextfield.EditBox:GetText()					
 					local import_profile = {}
 					for w in import_string:gmatch("([^?,]+)") do
 						import_profile[#import_profile+1] = w
 					end
-					--now save the profile		
+					-- now save the profile		
 					if not LolzenUIprofiles.profiles[import_profile[1]] then
 						-- check for version
 						if import_profile[2] < GetAddOnMetadata("LolzenUI", "version") then

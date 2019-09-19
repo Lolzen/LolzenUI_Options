@@ -3,15 +3,12 @@ local AceSerializer = LibStub:GetLibrary("AceSerializer-3.0")
 local LibDeflate = LibStub:GetLibrary("LibDeflate")
 
 --[[	ToDo:
-	implement loading/saving more gracefully
-	testing load/save
 	handle LolzenUIcfgOMF
 	cleanup
 ]]
 
 local f = CreateFrame("Frame")
 f:SetScript("OnEvent", function(self, event, addon)
-	local updateButtonText
 	if addon == "LolzenUI_Options" then
 		-- intitialize LolzenUIprofiles (Saved Variables for profiles) if they aren't already
 		if LolzenUIprofiles == nil then
@@ -32,52 +29,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 				}
 			end
 		end
-
-		--// Popuop Dialogs // --
-
-		StaticPopupDialogs["LolzenUI_protectedprofile"] = {
-			text = "Lolzen is the default profile and can not be overwritten",
-			button1 = "OK",
-			--button2 = "Cancel",
-			timeout = 0,
-			whileDead = true,
-			hideOnEscape = 1,
-			preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
-		--	OnAccept = function(self)
-		--		saveProfile(self.editBox:GetText())
-		--	end,
-		--	EditBoxOnEnterPressed = function(self)
-		--		local parent = self:GetParent()
-		--		saveProfile(parent.editBox:GetText())
-		--		parent:Hide()
-		--	end,
-		--	EditBoxOnEscapePressed = function(self)
-		--		self:GetParent():Hide()
-		--	end,
-		}
-		
-		StaticPopupDialogs["LolzenUI_saveprofile"] = {
-			text = "Enter Profile Name",
-			button1 = "Save",
-			button2 = "Cancel",
-			hasEditBox = true,
-			timeout = 0,
-			whileDead = true,
-			preferredIndex = 3,  -- avoid some UI taint, see http://www.wowace.com/announcements/how-to-avoid-some-ui-taint/
-			OnAccept = function(self)
-				saveProfile(self.editBox:GetText())
-			end,
-			EditBoxOnEnterPressed = function(self)
-				local parent = self:GetParent()
-				saveProfile(parent.editBox:GetText())
-				parent:Hide()
-			end,
-			EditBoxOnEscapePressed = function(self)
-				self:GetParent():Hide()
-			end,
-		}
-
-		-- // functions //--
 
 		-- serialize, compress and encode a config (table)
 		local function getSCETable(t)
@@ -101,43 +52,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			return deserialized_data
 		end
 
-		local function saveProfile(name)
-			if name == "Lolzen" then
-				StaticPopup_Show("LolzenUI_protectedprofile")
-			else
-				if not LolzenUIprofiles.profiles[name] then
-					LolzenUIprofiles.profiles[name] = LolzenUIcfg
-					UIDropDownMenu_SetSelectedName(profiles, name)
-					UIDropDownMenu_SetText(profiles, name)
-					LolzenUIprofiles.selectedProfile = name
-					updateButtonText(name)
-					print("New Profile "..name.." saved!")
-				else
-					LolzenUIprofiles.profiles[name] = LolzenUIcfg
-					UIDropDownMenu_SetSelectedName(profiles, name)
-					UIDropDownMenu_SetText(profiles, name)
-					LolzenUIprofiles.selectedProfile = name
-					updateButtonText(name)
-					print("Profile "..name.." updated!")
-				end
-				print("! "..LolzenUIprofiles.selectedProfile.." !"	)
-			end
-		end
-
-		local function loadProfile(name)
-			if LolzenUIprofiles.profiles[name] then
-			--	LolzenUIcfg = LolzenUIprofiles.profiles[name]
-			--	LolzenUIprofiles.selectedProfile = name
-			--	UIDropDownMenu_SetSelectedName(profiles, name)
-			--	UIDropDownMenu_SetText(profiles, name)
-				print("Profile "..name.." loaded!")
-			else
-				print("debug: "..name)
-			end
-		end
-
-		--// Profile Settings //--
-
 		-- parent panel
 		local panel = LolzenUI.panel
 
@@ -149,7 +63,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		profiles:Show()
 		local function OnClick(prof)
 			UIDropDownMenu_SetSelectedName(profiles, prof.value)
-			updateButtonText(prof.value)
 		end
 		local function initialize(profiles, level)
 			local info = UIDropDownMenu_CreateInfo()
@@ -172,10 +85,76 @@ f:SetScript("OnEvent", function(self, event, addon)
 		UIDropDownMenu_JustifyText(profiles, "LEFT")
 		profiles:SetPoint("TOPLEFT", profiles_text, "BOTTOMLEFT", -20, -3)
 
-		--// Load & Save Stuff //--
+		local function saveProfile(name)
+			if name == "Lolzen" then
+				StaticPopup_Show("LolzenUI_protectedprofile")
+			else
+				LolzenUIprofiles.profiles[name] = LolzenUIcfg
+				UIDropDownMenu_SetSelectedName(profiles, name)
+				UIDropDownMenu_SetText(profiles, name)
+				LolzenUIprofiles.selectedProfile = name
+				print("Profile "..name.." saved/updated")
+			end
+		end
+
+		local function loadProfile(name)
+			if LolzenUIprofiles.profiles[name] then
+				LolzenUIcfg = LolzenUIprofiles.profiles[name]
+				LolzenUIprofiles.selectedProfile = name
+				UIDropDownMenu_SetSelectedName(profiles, name)
+				UIDropDownMenu_SetText(profiles, name)
+				StaticPopup_Show("LolzenUI_reload_for_profile")
+				print("Profile "..name.." loaded! Reaload to take effect.")
+			else
+				print("debug: "..name)
+			end
+		end
+
+		StaticPopupDialogs["LolzenUI_protectedprofile"] = {
+			text = "Lolzen is the default profile and can not be overwritten",
+			button1 = "OK",
+			timeout = 0,
+			whileDead = true,
+			hideOnEscape = 1,
+			preferredIndex = 3,  -- avoid some UI taint
+		}
+		
+		StaticPopupDialogs["LolzenUI_saveprofile"] = {
+			text = "Enter Profile Name",
+			button1 = "Save",
+			button2 = "Cancel",
+			hasEditBox = true,
+			timeout = 0,
+			whileDead = true,
+			preferredIndex = 3,  -- avoid some UI taint
+			OnAccept = function(self)
+				saveProfile(self.editBox:GetText())
+				self:Hide()
+			end,
+			EditBoxOnEnterPressed = function(self)
+				local parent = self:GetParent()
+				saveProfile(parent.editBox:GetText())
+				parent:Hide()
+			end,
+			EditBoxOnEscapePressed = function(self)
+				self:GetParent():Hide()
+			end,
+		}
+
+		StaticPopupDialogs["LolzenUI_reload_for_profile"] = {
+			text = "Reload now to take loaded Profile in effect?",
+			button1 = "Yes",
+			button2 = "No",
+			timeout = 0,
+			whileDead = true,
+			preferredIndex = 3,  -- avoid some UI taint
+			OnAccept = function(self)
+				ReloadUI()
+			end,
+		}
 
 		local loadButton = CreateFrame("Button", "loadButton_LolzenUIOptions", panel, "UIPanelButtonTemplate")
-		loadButton:SetSize(60, 23) -- width, height
+		loadButton:SetSize(60, 23)
 		loadButton:SetText("Load")
 		loadButton:SetPoint("TOPLEFT", profiles, "BOTTOMLEFT", 16, 0)
 		loadButton:SetScript("OnClick", function()
@@ -183,34 +162,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local saveButton = CreateFrame("Button", "saveButton_LolzenUIOptions", panel, "UIPanelButtonTemplate")
-		saveButton:SetSize(60, 23) -- width, height
-		if UIDropDownMenu_GetSelectedName(profiles) == LolzenUIprofiles.selectedProfile then
-			saveButton:SetText("Update")
-		else
-			saveButton:SetText("Save")
-		end
+		saveButton:SetSize(60, 23)
+		saveButton:SetText("Save")
 		saveButton:SetPoint("LEFT", loadButton, "RIGHT", 5, 0)
 		saveButton:SetScript("OnClick", function()
-			if UIDropDownMenu_GetSelectedName(profiles) == LolzenUIprofiles.selectedProfile then
-				LolzenUIprofiles.profiles[LolzenUIprofiles.selectedProfile] = LolzenUIcfg
-				UIDropDownMenu_SetSelectedName(profiles, LolzenUIprofiles.selectedProfile)
-				UIDropDownMenu_SetText(profiles, LolzenUIprofiles.selectedProfile)
-				--LolzenUIprofiles.selectedProfile = UIDropDownMenu_GetSelectedName(profiles)
-				print("Profile "..UIDropDownMenu_GetSelectedName(profiles).." updated!")
-			else
-				StaticPopup_Show("LolzenUI_saveprofile")
-			end
+			StaticPopup_Show("LolzenUI_saveprofile")
 		end)
-
-		updateButtonText = function(selected)
-			if selected == LolzenUIprofiles.selectedProfile then
-				saveButton:SetText("Update")
-			else
-				saveButton:SetText("Save")
-			end
-		end
-
-		-- // Import & Export Stuff //--
 
 		local importTextfield = CreateFrame("ScrollFrame", "profileImportTextfield_LolzenUIOptions", panel, "InputScrollFrameTemplate")
 		importTextfield:SetPoint("TOP", profiles, "BOTTOM", 0, -50)
@@ -221,7 +178,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		importTextfield:Hide()
 		
 		local okButton = CreateFrame("Button", "loadButton_LolzenUIOptions", panel, "UIPanelButtonTemplate")
-		okButton:SetSize(importTextfield:GetWidth() + 10, 23) -- width, height
+		okButton:SetSize(importTextfield:GetWidth() + 10, 23)
 		okButton:SetPoint("TOPLEFT", importTextfield, "BOTTOMLEFT", -5, -10)
 		okButton.which = ""
 		okButton:SetScript("OnClick", function(self)

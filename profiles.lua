@@ -119,6 +119,44 @@ f:SetScript("OnEvent", function(self, event, addon)
 			preferredIndex = 3,  -- avoid some UI taint
 		}
 		
+		local tmpData = {}
+		StaticPopupDialogs["LolzenUI_havethisprofile"] = {
+			text = "This profile is already imported, do you want to update this profile?",
+			button1 = "Yes",
+			button2 = "No",
+			timeout = 0,
+			whileDead = true,
+			hideOnEscape = 1,
+			preferredIndex = 3,  -- avoid some UI taint
+			OnAccept = function(self)
+				LolzenUIprofiles.profiles[tmpData[1]] = getDSCETable(tmpData[3])
+				print("Profile "..tmpData[1].." has been updated")
+			end,
+		}
+		
+		StaticPopupDialogs["LolzenUI_oldprofile"] = {
+			text = "This profile is from an older UI version. Import Anyways?",
+			button1 = "Yes",
+			button2 = "No",
+			timeout = 0,
+			whileDead = true,
+			hideOnEscape = 1,
+			preferredIndex = 3,  -- avoid some UI taint
+			OnAccept = function(self)
+				LolzenUIprofiles.profiles[tmpData[1]] = getDSCETable(tmpData[3])
+				print("Profile "..tmpData[1].." has been updated")
+			end,
+		}
+		
+		StaticPopupDialogs["LolzenUI_olderprofile_version"] = {
+			text = "You already have a more up to date version of this profile imported.",
+			button1 = "OK",
+			timeout = 0,
+			whileDead = true,
+			hideOnEscape = 1,
+			preferredIndex = 3,  -- avoid some UI taint
+		}
+		
 		StaticPopupDialogs["LolzenUI_saveprofile"] = {
 			text = "Enter Profile Name",
 			button1 = "Save",
@@ -201,16 +239,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 					--now save the profile		
 					if not LolzenUIprofiles.profiles[import_profile[1]] then
 						-- check for version
-					--	if import_profile[2] < GetAddOnMetadata("LolzenUI", "version") then
-							--ask if the user still wants to import anyways
-							-- this will only be relevant IF any breaking changes were made between versions
-					--	else
+						if import_profile[2] < GetAddOnMetadata("LolzenUI", "version") then
+							StaticPopup_Show("LolzenUI_oldprofile")
+							tmpData = import_profile
+						else
 							LolzenUIprofiles.profiles[import_profile[1]] = getDSCETable(import_profile[3])
 							print("Profile "..import_profile[1].." has been imported")
-					--	end
+						end
 					else
-						print("Profile is already imported; Do you want to update the profile?")
-						-- TODO: actually implement the updating mechanism
+						if import_profile[2] < GetAddOnMetadata("LolzenUI", "version") then
+							StaticPopup_Show("LolzenUI_olderprofile_version")
+						else
+							StaticPopup_Show("LolzenUI_havethisprofile")
+							tmpData = import_profile
+						end
 					end
 				end
 			elseif okButton.which == "export" then

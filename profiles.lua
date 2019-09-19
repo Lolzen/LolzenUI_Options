@@ -12,22 +12,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 	if addon == "LolzenUI_Options" then
 		-- intitialize LolzenUIprofiles (Saved Variables for profiles) if they aren't already
 		if LolzenUIprofiles == nil then
-			if LolzenUIcfg["hasSeenTutorial"] == false then
-				LolzenUIprofiles = {
-					["profiles"] = {
-						["Lolzen"] = LolzenUI.defaultconfig,
-					},
-					["selectedProfile"] = "Lolzen",
-				}
-			else
-				LolzenUIprofiles = {
-					["profiles"] = {
-						["Lolzen"] = LolzenUI.defaultconfig,
-						["User"] = LolzenUIcfg,
-					},
-					["selectedProfile"] = "User",
-				}
-			end
+			LolzenUIprofiles = {
+				["profiles"] = {
+					["User"] = LolzenUIcfg,
+					["Lolzen"] = LolzenUI.defaultconfig,
+				},
+				["OMFProfiles"] = {
+					["User"] = LolzenUIcfgOMF,
+					["Lolzen"] = LolzenUI.OMFdefault,
+				},
+				["selectedProfile"] = "User",
+			}
 		end
 
 		-- serialize, compress and encode a config (table)
@@ -77,11 +72,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		UIDropDownMenu_Initialize(profiles, initialize)
 		UIDropDownMenu_SetWidth(profiles, 235)
 		UIDropDownMenu_SetButtonWidth(profiles, 250)
-		if LolzenUIprofiles == nil then
-			UIDropDownMenu_SetSelectedName(profiles, LolzenUIprofiles.selectedProfile)
-		else
-			UIDropDownMenu_SetSelectedName(profiles, LolzenUIprofiles.selectedProfile)
-		end
+		UIDropDownMenu_SetSelectedName(profiles, LolzenUIprofiles.selectedProfile)
 		UIDropDownMenu_JustifyText(profiles, "LEFT")
 		profiles:SetPoint("TOPLEFT", profiles_text, "BOTTOMLEFT", -20, -3)
 
@@ -90,6 +81,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				StaticPopup_Show("LolzenUI_protectedprofile")
 			else
 				LolzenUIprofiles.profiles[name] = LolzenUIcfg
+				LolzenUIprofiles.OMFProfiles[name] = LolzenUIcfgOMF
 				UIDropDownMenu_SetSelectedName(profiles, name)
 				UIDropDownMenu_SetText(profiles, name)
 				LolzenUIprofiles.selectedProfile = name
@@ -100,6 +92,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local function loadProfile(name)
 			if LolzenUIprofiles.profiles[name] then
 				LolzenUIcfg = LolzenUIprofiles.profiles[name]
+				LolzenUIcfgOMF = LolzenUIprofiles.OMFProfiles[name]
 				LolzenUIprofiles.selectedProfile = name
 				UIDropDownMenu_SetSelectedName(profiles, name)
 				UIDropDownMenu_SetText(profiles, name)
@@ -118,7 +111,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			hideOnEscape = 1,
 			preferredIndex = 3,  -- avoid some UI taint
 		}
-		
+
 		local tmpData = {}
 		StaticPopupDialogs["LolzenUI_havethisprofile"] = {
 			text = "This profile is already imported, do you want to update this profile?",
@@ -133,7 +126,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				print("Profile "..tmpData[1].." has been updated")
 			end,
 		}
-		
+
 		StaticPopupDialogs["LolzenUI_oldprofile"] = {
 			text = "This profile is from an older UI version. Import Anyways?",
 			button1 = "Yes",
@@ -147,7 +140,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				print("Profile "..tmpData[1].." has been updated")
 			end,
 		}
-		
+
 		StaticPopupDialogs["LolzenUI_olderprofile_version"] = {
 			text = "You already have a more up to date version of this profile imported.",
 			button1 = "OK",
@@ -156,7 +149,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			hideOnEscape = 1,
 			preferredIndex = 3,  -- avoid some UI taint
 		}
-		
+
 		StaticPopupDialogs["LolzenUI_saveprofile"] = {
 			text = "Enter Profile Name",
 			button1 = "Save",
@@ -178,7 +171,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				self:GetParent():Hide()
 			end,
 		}
-		
+
 		StaticPopupDialogs["LolzenUI_loadprofile"] = {
 			text = "Loading This Profile will overwrite your currwnt settings! Load anyways?",
 			button1 = "Ok",
@@ -226,7 +219,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		importTextfield.EditBox:SetMaxLetters(10000) -- even compressed the strings will be HUGE
 		importTextfield.EditBox:SetWidth(importTextfield:GetWidth() - 20)
 		importTextfield:Hide()
-		
+
 		local okButton = CreateFrame("Button", "loadButton_LolzenUIOptions", panel, "UIPanelButtonTemplate")
 		okButton:SetSize(importTextfield:GetWidth() + 10, 23)
 		okButton:SetPoint("TOPLEFT", importTextfield, "BOTTOMLEFT", -5, -10)

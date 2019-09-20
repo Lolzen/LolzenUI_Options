@@ -2,11 +2,6 @@
 local AceSerializer = LibStub:GetLibrary("AceSerializer-3.0")
 local LibDeflate = LibStub:GetLibrary("LibDeflate")
 
---[[	ToDo:
-	handle LolzenUIcfgOMF
-	cleanup
-]]
-
 local f = CreateFrame("Frame")
 f:SetScript("OnEvent", function(self, event, addon)
 	if addon == "LolzenUI_Options" then

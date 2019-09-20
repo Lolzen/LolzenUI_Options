@@ -123,6 +123,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			preferredIndex = 3,  -- avoid some UI taint
 			OnAccept = function(self)
 				LolzenUIprofiles.profiles[tmpData[1]] = getDSCETable(tmpData[3])
+				LolzenUIprofiles.OMFProfiles[tmpData[1]] = getDSCETable(tmpData[4])
 				print("Profile "..tmpData[1].." has been updated")
 			end,
 		}
@@ -137,6 +138,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			preferredIndex = 3,  -- avoid some UI taint
 			OnAccept = function(self)
 				LolzenUIprofiles.profiles[tmpData[1]] = getDSCETable(tmpData[3])
+				LolzenUIprofiles.OMFProfiles[tmpData[1]] = getDSCETable(tmpData[4])
 				print("Profile "..tmpData[1].." has been updated")
 			end,
 		}
@@ -236,6 +238,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 					-- import_profile[1] = Profile Name
 					-- import_profile[2] = LolzenUI Version in which the profile was exported
 					-- import_profile[3] = the encoded & compressed profile string
+					-- import_profile[4] = then encoded & compressed OMFProfile string
 					local import_string = importTextfield.EditBox:GetText()					
 					local import_profile = {}
 					for w in import_string:gmatch("([^?,]+)") do
@@ -249,6 +252,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 							tmpData = import_profile
 						else
 							LolzenUIprofiles.profiles[import_profile[1]] = getDSCETable(import_profile[3])
+							LolzenUIprofiles.OMFProfiles[tmpData[1]] = getDSCETable(tmpData[4])
 							print("Profile "..import_profile[1].." has been imported")
 						end
 					else
@@ -286,7 +290,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		exportButton:SetScript("OnClick", function()
 			okButton.which = "export"
 			importTextfield:Show()
-			importTextfield.EditBox:SetText("?"..LolzenUIprofiles.selectedProfile..","..GetAddOnMetadata("LolzenUI", "version")..","..getSCETable(LolzenUIprofiles.profiles[LolzenUIprofiles.selectedProfile]))
+			importTextfield.EditBox:SetText("?"..LolzenUIprofiles.selectedProfile..","..GetAddOnMetadata("LolzenUI", "version")..","..getSCETable(LolzenUIprofiles.profiles[LolzenUIprofiles.selectedProfile])..","..getSCETable(LolzenUIprofiles.OMFProfiles[LolzenUIprofiles.selectedProfile]))
 			importTextfield.EditBox:HighlightText()
 			importTextfield.EditBox:SetFocus()
 			okButton:Show()

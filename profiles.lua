@@ -14,12 +14,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		if LolzenUIprofiles == nil then
 			LolzenUIprofiles = {
 				["profiles"] = {
+					["Lolzen"] = _G["LolzenUIdefaultcfg"],
 					["User"] = LolzenUIcfg,
-					["Lolzen"] = LolzenUI.defaultconfig,
 				},
 				["OMFProfiles"] = {
+					["Lolzen"] = _G["LolzenUIOMFdefaultcfg"],
 					["User"] = LolzenUIcfgOMF,
-					["Lolzen"] = LolzenUI.OMFdefault,
 				},
 				["selectedProfile"] = "User",
 			}

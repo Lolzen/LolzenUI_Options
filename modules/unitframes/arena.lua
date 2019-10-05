@@ -27,7 +27,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("uf_arena_options", L["sub_panel_unitframes_arena_title"])
 
-		local scrollFrame = ns.createScrollFrame("uf_arena_options", 127)
+		local scrollFrame = ns.createScrollFrame("uf_arena_options", 147)
 
 		local width_text = ns.createFontstring("uf_arena_options", L["width"]..":", "content")
 		width_text:SetPoint("TOPLEFT", ns.uf_arena_options.content, 16, -16)
@@ -41,8 +41,20 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local height = ns.createInputbox("uf_arena_options", 40, 20, LolzenUIcfg.unitframes.arena["uf_arena_height"], "content")
 		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
 
+		local growth_text = ns.createFontstring("uf_arena_options", L["sub_panel_unitframes_arena_placement"]..":", "content")
+		growth_text:SetPoint("TOPLEFT", width_text, "BOTTOMLEFT", 0, -10)
+
+		local growth = ns.createPicker("uf_arena_options", "growth", "uf_arena_additional_arena_anchor", 110, LolzenUIcfg.unitframes.arena["uf_arena_additional_pos"], "content")
+		growth:SetPoint("LEFT", growth_text, "RIGHT", -10, -3)
+
+		local growth_spacing_text = ns.createFontstring("uf_arena_options", L["spacing"]..":", "content")
+		growth_spacing_text:SetPoint("LEFT", growth, "RIGHT", -10, 3)
+
+		local growth_spacing = ns.createInputbox("uf_arena_options", 40, 20, LolzenUIcfg.unitframes.arena["uf_arena_additional_spacing"], "content")
+		growth_spacing:SetPoint("LEFT", growth_spacing_text, "RIGHT", 10, 0)
+
 		local header1 = ns.createHeader("uf_arena_options", L["uf_healthpoints"], "content")
-		header1:SetPoint("TOPLEFT", width_text, 0, -30)
+		header1:SetPoint("TOPLEFT", growth_text, 0, -30)
 
 		local cb1 = ns.createCheckBox("uf_arena_options", "uf_arena_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.arena["uf_arena_use_own_hp_font_settings"], "content")
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)

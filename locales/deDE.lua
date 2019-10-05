@@ -245,6 +245,7 @@ if GetLocale() == "deDE" then
 	L["sub_panel_unitframes_focus_title"] = "Einheitenfenster Modul: Fokus Optionen"
 	L["sub_panel_unitframes_arena"] = "Arena"
 	L["sub_panel_unitframes_arena_title"] = "Einheitenfenster Modul: Arena Optionen"
+	L["sub_panel_unitframes_arena_placement"] = "Platzierung zusätzlicher Bossfenster"
 	L["sub_panel_unitframes_powercolors"] = "Ressourcen Farben"
 	L["sub_panel_unitframes_powercolors_title"] = "Einheitenfenster Modul: Ressourcen Farben Optionen"
 	L["sub_panel_unitframes_powercolors_mana"] = "Mana"

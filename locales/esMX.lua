@@ -245,6 +245,7 @@ if GetLocale() == "esMX" then
 	L["sub_panel_unitframes_focus_title"] = "Unitframes Module: Focus Options"
 	L["sub_panel_unitframes_arena"] = "Arena"
 	L["sub_panel_unitframes_arena_title"] = "Unitframes Module: Arena Options"
+	L["sub_panel_unitframes_arena_placement"] = "Additional arena unit placement"
 	L["sub_panel_unitframes_powercolors"] = "Power Colors"
 	L["sub_panel_unitframes_powercolors_title"] = "Unitframes Module: Power Colors Options"
 	L["sub_panel_unitframes_powercolors_mana"] = "Mana"

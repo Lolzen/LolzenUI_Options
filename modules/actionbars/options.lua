@@ -3,6 +3,7 @@
 local _, ns = ...
 local L = ns.L
 local LUI = LolzenUI.L
+local LBT = LibStub("LibButtonTexture-1.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -21,35 +22,35 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local button = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
-		local normaltex = ns.createButtonOverlay("actionbars", button, LolzenUIcfg.actionbar["actionbar_normal_texture"])
+		local normaltex = ns.createButtonOverlay("actionbars", button, LBT:Fetch("border", LolzenUIcfg.actionbar["actionbar_normal_texture"]))
 
 		-- // flashtexture buttonpreview // --
 
 		local button2 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button2:SetPoint("LEFT", button, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
-		local flashtex = ns.createButtonOverlay("actionbars", button2, LolzenUIcfg.actionbar["actionbar_flash_texture"])
+		local flashtex = ns.createButtonOverlay("actionbars", button2, LBT:Fetch("flashing", LolzenUIcfg.actionbar["actionbar_flash_texture"]))
 
 		-- // checkedtexture buttonpreview // --
 
 		local button3 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button3:SetPoint("LEFT", button2, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
-		local checkedtex = ns.createButtonOverlay("actionbars", button3, LolzenUIcfg.actionbar["actionbar_checked_texture"])
+		local checkedtex = ns.createButtonOverlay("actionbars", button3, LBT:Fetch("checked", LolzenUIcfg.actionbar["actionbar_checked_texture"]))
 
 		-- // hovertexture buttonpreview // --
 
 		local button4 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button4:SetPoint("LEFT", button3, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
-		local hovertex = ns.createButtonOverlay("actionbars", button4, LolzenUIcfg.actionbar["actionbar_hover_texture"])
+		local hovertex = ns.createButtonOverlay("actionbars", button4, LBT:Fetch("hover", LolzenUIcfg.actionbar["actionbar_hover_texture"]))
 
 		-- // pushedtexture buttonpreview // --
 
 		local button5 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
 		button5:SetPoint("LEFT", button4, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
-		local pushedtex = ns.createButtonOverlay("actionbars", button5, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
+		local pushedtex = ns.createButtonOverlay("actionbars", button5, LBT:Fetch("pushed", LolzenUIcfg.actionbar["actionbar_pushed_texture"]))
 
 		local header2 = ns.createHeader("actionbars", L["ab_texture_and_size"])
 		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -20)
@@ -62,31 +63,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local normaltex_path_text = ns.createFontstring("actionbars", L["ab_normaltexture"]..":")
 		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
 
-		local normaltex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_normal_texture"])
+		local normaltex_path = ns.createPicker("actionbars", "buttonborder", "actionbar_buttonborder", 120, LolzenUIcfg.actionbar["actionbar_normal_texture"])
 		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", 10, 0)
 
 		local flashtex_path_text = ns.createFontstring("actionbars", L["ab_flashtexture"]..":")
 		flashtex_path_text:SetPoint("TOPLEFT", normaltex_path_text, "BOTTOMLEFT", 0, -10)
 
-		local flashtex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_flash_texture"])
+		local flashtex_path = ns.createPicker("actionbars", "buttonflashing", "actionbar_buttonflash", 120, LolzenUIcfg.actionbar["actionbar_flash_texture"])
 		flashtex_path:SetPoint("LEFT", flashtex_path_text, "RIGHT", 10, 0)
 
 		local checkedtex_path_text = ns.createFontstring("actionbars", L["ab_checkedtexture"]..":")
 		checkedtex_path_text:SetPoint("TOPLEFT", flashtex_path_text, "BOTTOMLEFT", 0, -10)
 
-		local checkedtex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_checked_texture"])
+		local checkedtex_path = ns.createPicker("actionbars", "buttonchecked", "actionbar_buttonchecked", 120, LolzenUIcfg.actionbar["actionbar_checked_texture"])
 		checkedtex_path:SetPoint("LEFT", checkedtex_path_text, "RIGHT", 10, 0)
 
 		local hovertex_path_text = ns.createFontstring("actionbars", L["ab_hovertexture"]..":")
 		hovertex_path_text:SetPoint("TOPLEFT", checkedtex_path_text, "BOTTOMLEFT", 0, -10)
 
-		local hovertex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_hover_texture"])
+		local hovertex_path = ns.createPicker("actionbars", "buttonhover", "actionbar_buttonhover", 120, LolzenUIcfg.actionbar["actionbar_hover_texture"])
 		hovertex_path:SetPoint("LEFT", hovertex_path_text, "RIGHT", 10, 0)
 
 		local pushedtex_path_text = ns.createFontstring("actionbars", L["ab_pushedtexture"]..":")
 		pushedtex_path_text:SetPoint("TOPLEFT", hovertex_path_text, "BOTTOMLEFT", 0, -10)
 
-		local pushedtex_path = ns.createInputbox("actionbars", 80, 20, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
+		local pushedtex_path = ns.createPicker("actionbars", "buttonpushed", "actionbar_buttonpushed", 120, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
 		pushedtex_path:SetPoint("LEFT", pushedtex_path_text, "RIGHT", 10, 0)
 
 		-- // size // --
@@ -287,11 +288,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local applyButton = ns.createApplyButton("actionbars")
 		applyButton:SetScript("OnClick", function()
 			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = cb1:GetChecked()
-			LolzenUIcfg.actionbar["actionbar_normal_texture"] = normaltex_path:GetText()
-			LolzenUIcfg.actionbar["actionbar_flash_texture"] = flashtex_path:GetText()
-			LolzenUIcfg.actionbar["actionbar_checked_texture"] = checkedtex_path:GetText()
-			LolzenUIcfg.actionbar["actionbar_hover_texture"] = hovertex_path:GetText()
-			LolzenUIcfg.actionbar["actionbar_pushed_texture"] = pushedtex_path:GetText()
+			LolzenUIcfg.actionbar["actionbar_normal_texture"] = UIDropDownMenu_GetSelectedName(normaltex_path)
+			LolzenUIcfg.actionbar["actionbar_flash_texture"] = UIDropDownMenu_GetSelectedName(flashtex_path)
+			LolzenUIcfg.actionbar["actionbar_checked_texture"] = UIDropDownMenu_GetSelectedName(checkedtex_path)
+			LolzenUIcfg.actionbar["actionbar_hover_texture"] = UIDropDownMenu_GetSelectedName(hovertex_path)
+			LolzenUIcfg.actionbar["actionbar_pushed_texture"] = UIDropDownMenu_GetSelectedName(pushedtex_path)
 			LolzenUIcfg.actionbar["actionbar_button_spacing"] = spacing:GetText()
 			LolzenUIcfg.actionbar["actionbar_button_size"] = size:GetText()
 			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = tonumber(box[1].editbox_x:GetText())

@@ -53,7 +53,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pushedtex = ns.createButtonOverlay("actionbars", button5, LBT:Fetch("pushed", LolzenUIcfg.actionbar["actionbar_pushed_texture"]))
 
 		local header2 = ns.createHeader("actionbars", L["ab_texture_and_size"])
-		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -20)
+		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -14)
 
 		local cb1 = ns.createCheckBox("actionbars", "ab_show_keybinds", "|cff5599ff"..L["ab_keybinds"].."|r", LolzenUIcfg.actionbar["actionbar_show_keybinds"])
 		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
@@ -64,31 +64,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
 
 		local normaltex_path = ns.createPicker("actionbars", "buttonborder", "actionbar_buttonborder", 120, LolzenUIcfg.actionbar["actionbar_normal_texture"])
-		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", 10, 0)
+		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", -4, -5)
 
 		local flashtex_path_text = ns.createFontstring("actionbars", L["ab_flashtexture"]..":")
-		flashtex_path_text:SetPoint("TOPLEFT", normaltex_path_text, "BOTTOMLEFT", 0, -10)
+		flashtex_path_text:SetPoint("TOPLEFT", normaltex_path_text, "BOTTOMLEFT", 0, -14)
 
 		local flashtex_path = ns.createPicker("actionbars", "buttonflashing", "actionbar_buttonflash", 120, LolzenUIcfg.actionbar["actionbar_flash_texture"])
-		flashtex_path:SetPoint("LEFT", flashtex_path_text, "RIGHT", 10, 0)
+		flashtex_path:SetPoint("LEFT", flashtex_path_text, "RIGHT", 9, -5)
 
 		local checkedtex_path_text = ns.createFontstring("actionbars", L["ab_checkedtexture"]..":")
-		checkedtex_path_text:SetPoint("TOPLEFT", flashtex_path_text, "BOTTOMLEFT", 0, -10)
+		checkedtex_path_text:SetPoint("TOPLEFT", flashtex_path_text, "BOTTOMLEFT", 0, -14)
 
 		local checkedtex_path = ns.createPicker("actionbars", "buttonchecked", "actionbar_buttonchecked", 120, LolzenUIcfg.actionbar["actionbar_checked_texture"])
-		checkedtex_path:SetPoint("LEFT", checkedtex_path_text, "RIGHT", 10, 0)
+		checkedtex_path:SetPoint("LEFT", checkedtex_path_text, "RIGHT", -10, -5)
 
 		local hovertex_path_text = ns.createFontstring("actionbars", L["ab_hovertexture"]..":")
-		hovertex_path_text:SetPoint("TOPLEFT", checkedtex_path_text, "BOTTOMLEFT", 0, -10)
+		hovertex_path_text:SetPoint("TOPLEFT", checkedtex_path_text, "BOTTOMLEFT", 0, -14)
 
 		local hovertex_path = ns.createPicker("actionbars", "buttonhover", "actionbar_buttonhover", 120, LolzenUIcfg.actionbar["actionbar_hover_texture"])
-		hovertex_path:SetPoint("LEFT", hovertex_path_text, "RIGHT", 10, 0)
+		hovertex_path:SetPoint("LEFT", hovertex_path_text, "RIGHT", 3, -5)
 
 		local pushedtex_path_text = ns.createFontstring("actionbars", L["ab_pushedtexture"]..":")
-		pushedtex_path_text:SetPoint("TOPLEFT", hovertex_path_text, "BOTTOMLEFT", 0, -10)
+		pushedtex_path_text:SetPoint("TOPLEFT", hovertex_path_text, "BOTTOMLEFT", 0, -14)
 
 		local pushedtex_path = ns.createPicker("actionbars", "buttonpushed", "actionbar_buttonpushed", 120, LolzenUIcfg.actionbar["actionbar_pushed_texture"])
-		pushedtex_path:SetPoint("LEFT", pushedtex_path_text, "RIGHT", 10, 0)
+		pushedtex_path:SetPoint("LEFT", pushedtex_path_text, "RIGHT", -2, -5)
 
 		-- // size // --
 
@@ -105,7 +105,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		spacing:SetPoint("LEFT", spacing_text, "RIGHT", 10, 0)
 
 		local header3 = ns.createHeader("actionbars", L["ab_positions"])
-		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -20)
+		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -14)
 
 		-- // Positions // --
 

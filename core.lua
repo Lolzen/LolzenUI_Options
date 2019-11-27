@@ -5,6 +5,7 @@ _G[addon] = ns
 
 local L = LolzenUI.L
 local LSM = LibStub("LibSharedMedia-3.0")
+local LBT = LibStub("LibButtonTexture-1.0")
 
 local f = CreateFrame("Frame")
 
@@ -146,9 +147,15 @@ ns.createButtonOverlay = function(module, parent, texture, sub)
 	else
 		buttonOverlay = ns[module]:CreateTexture(nil, "OVERLAY")
 	end
-	buttonOverlay:SetTexture("Interface\\AddOns\\LolzenUI\\media\\"..texture)
-	buttonOverlay:SetPoint("TOPLEFT", parent, "TOPLEFT", -2, 2)
-	buttonOverlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", 2, -2)
+	buttonOverlay:SetTexture(texture)
+	-- blizzard actionbar textures don't play well
+	if texture == [[Interface\Buttons\UI-Quickslot2]] then
+		buttonOverlay:SetPoint("TOPLEFT", parent, "TOPLEFT", -13, 13)
+		buttonOverlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", 15, -15)
+	else
+		buttonOverlay:SetPoint("TOPLEFT", parent, "TOPLEFT", -2, 2)
+		buttonOverlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", 2, -2)
+	end
 	return buttonOverlay
 end
 
@@ -291,6 +298,16 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 		t = LSM:List(LSM.MediaType.BACKGROUND)
 	elseif pickertype == "border" then
 		t = LSM:List(LSM.MediaType.BORDER)
+	elseif pickertype == "buttonborder" then
+		t = LBT:List(LBT.MediaType.BORDER)
+	elseif pickertype == "buttonflashing" then
+		t = LBT:List(LBT.MediaType.FLASHING)
+	elseif pickertype == "buttonchecked" then
+		t = LBT:List(LBT.MediaType.CHECKED)
+	elseif pickertype == "buttonhover" then
+		t = LBT:List(LBT.MediaType.HOVER)
+	elseif pickertype == "buttonpushed" then
+		t = LBT:List(LBT.MediaType.PUSHED)
 	end
 	local selectedNum, selectedName
 	local picker
@@ -301,7 +318,7 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	end
 	picker:Show()
 	local function OnClick(name)
-		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" then
+		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" or pickertype == "buttonborder" or pickertype == "buttonflashing" or pickertype == "buttonchecked" or pickertype == "buttonhover" or pickertype == "buttonpushed" then
 			UIDropDownMenu_SetSelectedName(picker, name.value)
 		else
 			UIDropDownMenu_SetSelectedID(picker, name:GetID())
@@ -340,7 +357,7 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	UIDropDownMenu_Initialize(picker, initialize)
 	UIDropDownMenu_SetWidth(picker, width)
 	UIDropDownMenu_SetButtonWidth(picker, width+15)
-	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" then
+	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" or pickertype == "buttonborder" or pickertype == "buttonflashing" or pickertype == "buttonchecked" or pickertype == "buttonhover" or pickertype == "buttonpushed" then
 		UIDropDownMenu_SetSelectedName(picker, selectedName)
 	else
 		UIDropDownMenu_SetSelectedID(picker, selectedNum)

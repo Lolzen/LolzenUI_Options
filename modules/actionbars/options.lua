@@ -72,6 +72,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local cb1 = ns.createCheckBox("actionbars", "ab_show_keybinds", "|cff5599ff"..L["ab_keybinds"].."|r", LolzenUIcfg.actionbar["actionbar_show_keybinds"])
 		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		cb1:SetScript("OnClick", function(self)
+			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = cb1:GetChecked()
+			LolzenUI.SetActionBarKeyBindToggle()
+		end)
 
 		-- // texture paths // --
 		
@@ -347,7 +351,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local applyButton = ns.createApplyButton("actionbars")
 		applyButton:SetScript("OnClick", function()
-			LolzenUIcfg.actionbar["actionbar_show_keybinds"] = cb1:GetChecked()
 			LolzenUIcfg.actionbar["actionbar_button_spacing"] = spacing:GetText()
 			LolzenUIcfg.actionbar["actionbar_button_size"] = size:GetText()
 			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = tonumber(box[1].editbox_x:GetText())

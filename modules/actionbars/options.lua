@@ -248,14 +248,47 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local headery = ns.createFontstring("actionbars", "Y")
 		headery:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 520, -14)
 
-		local resetOrUpdateFrame = function(self)
-			--self:
-		end
-
 		local OnEscapePressed = function(self)
 			self:SetText(self.oldText)
 			self:ClearFocus()
-			--TBD: reset frame
+		end
+
+		local OnEditFocusGained = function(self)
+			self.oldText = self:GetText()
+		end
+
+		local OnEditFocusLost = function(self)
+			self:SetText(self.oldText)
+			self:ClearFocus()
+		end
+
+		local OnEnterPressed = function(self)
+			if self:GetName() == "x1" then
+				LolzenUIcfg.actionbar["actionbar_mmb_posx"] = self:GetText()
+			elseif self:GetName() == "x2" then
+				LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = self:GetText()
+			elseif self:GetName() == "x3" then
+				LolzenUIcfg.actionbar["actionbar_mbbr_posx"] = self:GetText()
+			elseif self:GetName() == "x4" then
+				LolzenUIcfg.actionbar["actionbar_mbl_posx"] = self:GetText()
+			elseif self:GetName() == "x5" then
+				LolzenUIcfg.actionbar["actionbar_mbr_posx"] = self:GetText()
+			elseif self:GetName() == "x6" then
+				LolzenUIcfg.actionbar["actionbar_petb_posx"] = self:GetText()
+			elseif self:GetName() == "y1" then
+				LolzenUIcfg.actionbar["actionbar_mmb_posy"] = self:GetText()
+			elseif self:GetName() == "y2" then
+				LolzenUIcfg.actionbar["actionbar_mbbl_posy"] = self:GetText()
+			elseif self:GetName() == "y3" then
+				LolzenUIcfg.actionbar["actionbar_mbbr_posy"] = self:GetText()
+			elseif self:GetName() == "y4" then
+				LolzenUIcfg.actionbar["actionbar_mbl_posy"] = self:GetText()
+			elseif self:GetName() == "y5" then
+				LolzenUIcfg.actionbar["actionbar_mbr_posy"] = self:GetText()
+			elseif self:GetName() == "y6" then
+				LolzenUIcfg.actionbar["actionbar_petb_posy"] = self:GetText()
+			end
+			LolzenUI.UpdateActionBarPositions()
 		end
 
 		local box = {}
@@ -271,12 +304,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 				else
 					box[num]:SetPoint("TOP", box[num-1], "BOTTOM", 0, -2)
 				end
-				
+
 				box[num].name = ns.createFontstring("actionbars", bar)
 				box[num].name:SetParent(box[num])
 				box[num].name:SetPoint("LEFT", box[num], "LEFT", 6, 0)
-				
-				box[num].editbox_x = CreateFrame("EditBox", nil, ns.actionbars)
+
+				box[num].editbox_x = CreateFrame("EditBox", "x"..num, ns.actionbars)
 				box[num].editbox_x:SetSize(38, 14)
 				box[num].editbox_x:SetMaxLetters(5)
 				box[num].editbox_x:SetAutoFocus(false)
@@ -299,19 +332,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 				end
 				box[num].editbox_x.oldText = box[num].editbox_x:GetText()
 				box[num].editbox_x:SetCursorPosition(0)
-				
+
 				box[num].editbox_x_background = box[num].editbox_x:CreateTexture(nil, "BACKGROUND")
 				box[num].editbox_x_background:SetAllPoints(box[num].editbox_x)
 				box[num].editbox_x_background:SetColorTexture(0.2, 0.2, 0.2, 0.8)
-				
+
 				box[num].editbox_x:SetScript("OnEscapePressed", OnEscapePressed)
-			--	box[num].editbox_x_background:SetScript('OnEnterPressed', OnEnterPressed)
-			--	box[num].editbox_x_background:SetScript('OnEditFocusGained', OnEditFocusGained)
-			--	box[num].editbox_x_background:SetScript('OnEditFocusLost', OnEditFocusLost)
-			--	box[num].editbox_x_background:SetScript('OnTextChanged', OnTextChanged)
-			--	box[num].editbox_x_background:SetScript('OnChar', OnChar)
-				
-				box[num].editbox_y = CreateFrame("EditBox", nil, ns.actionbars)
+				box[num].editbox_x:SetScript("OnEnterPressed", OnEnterPressed)
+				box[num].editbox_x:SetScript("OnEditFocusGained", OnEditFocusGained)
+				box[num].editbox_x:SetScript("OnEditFocusLost", OnEditFocusLost)
+
+				box[num].editbox_y = CreateFrame("EditBox", "y"..num, ns.actionbars)
 				box[num].editbox_y:SetSize(38, 14)
 				box[num].editbox_y:SetMaxLetters(5)
 				box[num].editbox_y:SetAutoFocus(false)
@@ -334,37 +365,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 				end
 				box[num].editbox_y.oldText = box[num].editbox_y:GetText()
 				box[num].editbox_y:SetCursorPosition(0)
-				
+
 				box[num].editbox_y_background = box[num].editbox_y:CreateTexture(nil, "BACKGROUND")
 				box[num].editbox_y_background:SetAllPoints(box[num].editbox_y)
 				box[num].editbox_y_background:SetColorTexture(0.2, 0.2, 0.2, 0.8)
-				
-				box[num].editbox_y:SetScript("OnEscapePressed", OnEscapePressed)
-			--	box[num].editbox_y_background:SetScript('OnEnterPressed', OnEnterPressed)
-			--	box[num].editbox_y_background:SetScript('OnEditFocusGained', OnEditFocusGained)
-			--	box[num].editbox_y_background:SetScript('OnEditFocusLost', OnEditFocusLost)
-			--	box[num].editbox_y_background:SetScript('OnTextChanged', OnTextChanged)
-			--	box[num].editbox_y_background:SetScript('OnChar', OnChar)
-				
-				
-	--			box[num].toggle = CreateFrame("Button", nil, box[num], "UIPanelButtonTemplate")
-	--			box[num].toggle:SetSize(100, 18)
-	--			box[num].toggle:SetPoint("CENTER", box[num], "CENTER", 0, 0)
-	--			box[num].toggle:SetText(L["ab_toggle_dragframe"])
-	--			box[num].toggle:SetScript("OnClick", function(self)
-	--				for i = 1, NUM_ACTIONBAR_BUTTONS do
-	--					local button = _G[dragFrameBarButtons[num]..i]
 
-	--					if button then
-	--						if button.dragFrameTexture:IsShown() then
-	--							button.dragFrameTexture:Hide()
-	--						else
-	--							button.dragFrameTexture:Show()
-	--						end
-	--					end
-	--				end
-	--			end)
-				
+				box[num].editbox_y:SetScript("OnEscapePressed", OnEscapePressed)
+				box[num].editbox_y:SetScript("OnEnterPressed", OnEnterPressed)
+				box[num].editbox_y:SetScript("OnEditFocusGained", OnEditFocusGained)
+				box[num].editbox_y:SetScript("OnEditFocusLost", OnEditFocusLost)
+
 				box[num].reset = CreateFrame("Button", nil, box[num])
 				box[num].reset:SetSize(16, 16)
 				box[num].reset:SetPoint("RIGHT", box[num], "RIGHT", -5, 0)
@@ -373,24 +383,38 @@ f:SetScript("OnEvent", function(self, event, addon)
 				box[num].reset:SetHighlightTexture[[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]]
 				box[num].reset:SetScript("OnClick", function(self)
 					if num == 1 then
-						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mmb_posx"])	
-						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mmb_posy"])		
+						box[num].editbox_x:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mmb_posx"])	
+						box[num].editbox_y:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mmb_posy"])		
+						LolzenUIcfg.actionbar["actionbar_mmb_posx"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mmb_posx"]
+						LolzenUIcfg.actionbar["actionbar_mmb_posy"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mmb_posy"]
 					elseif num == 2 then
-						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbbl_posx"])
-						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbbl_posy"])
+						box[num].editbox_x:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbl_posx"])
+						box[num].editbox_y:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbl_posy"])
+						LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbl_posx"]
+						LolzenUIcfg.actionbar["actionbar_mbbl_posy"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbl_posy"]
 					elseif num == 3 then
-						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbbr_posx"])
-						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbbr_posy"])
+						box[num].editbox_x:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbr_posx"])
+						box[num].editbox_y:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbr_posy"])
+						LolzenUIcfg.actionbar["actionbar_mbbr_posx"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbr_posx"]
+						LolzenUIcfg.actionbar["actionbar_mbbr_posy"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbbr_posy"]
 					elseif num == 4 then
-						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbl_posx"])
-						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbl_posy"])
+						box[num].editbox_x:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbl_posx"])
+						box[num].editbox_y:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbl_posy"])
+						LolzenUIcfg.actionbar["actionbar_mbl_posx"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbl_posx"]
+						LolzenUIcfg.actionbar["actionbar_mbl_posy"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbl_posy"]
 					elseif num == 5 then
-						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_mbr_posx"])
-						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_mbr_posy"])
+						box[num].editbox_x:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbr_posx"])
+						box[num].editbox_y:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_mbr_posy"])
+						LolzenUIcfg.actionbar["actionbar_mbr_posx"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbr_posx"]
+						LolzenUIcfg.actionbar["actionbar_mbr_posy"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_mbr_posy"]
 					elseif num == 6 then
-						box[num].editbox_x:SetText(LolzenUIcfg.actionbar["actionbar_petb_posx"])
-						box[num].editbox_y:SetText(LolzenUIcfg.actionbar["actionbar_petb_posy"])
+						box[num].editbox_x:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_petb_posx"])
+						box[num].editbox_y:SetText(_G["LolzenUIdefaultcfg"].actionbar["actionbar_petb_posy"])
+						LolzenUIcfg.actionbar["actionbar_petb_posx"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_petb_posx"]
+						LolzenUIcfg.actionbar["actionbar_petb_posy"] = _G["LolzenUIdefaultcfg"].actionbar["actionbar_petb_posy"]
 					end
+					-- update actionbar positions
+					LolzenUI.UpdateActionBarPositions()
 				end)
 				box[num].reset:SetScript("OnEnter", function(self)
 					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
@@ -399,23 +423,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 				box[num].reset:SetScript("OnLeave", GameTooltip_Hide)
 			end
 		end
-
-		local applyButton = ns.createApplyButton("actionbars")
-		applyButton:SetScript("OnClick", function()
-			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = tonumber(box[1].editbox_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mmb_posy"] = tonumber(box[1].editbox_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = tonumber(box[2].editbox_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbl_posy"] = tonumber(box[2].editbox_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbr_posx"] = tonumber(box[3].editbox_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbbr_posy"] = tonumber(box[3].editbox_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbl_posx"] = tonumber(box[4].editbox_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbl_posy"] = tonumber(box[4].editbox_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbr_posx"] = tonumber(box[5].editbox_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_mbr_posy"] = tonumber(box[5].editbox_y:GetText())
-			LolzenUIcfg.actionbar["actionbar_petb_posx"] = tonumber(box[6].editbox_x:GetText())
-			LolzenUIcfg.actionbar["actionbar_petb_posy"] = tonumber(box[6].editbox_y:GetText())
-			ReloadUI()
-		end)
 
 		ns["actionbars"].default = function(self)
 			LolzenUIcfg.actionbar = _G["LolzenUIdefaultcfg"].actionbar

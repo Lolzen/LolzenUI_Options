@@ -148,14 +148,8 @@ ns.createButtonOverlay = function(module, parent, texture, sub)
 		buttonOverlay = ns[module]:CreateTexture(nil, "OVERLAY")
 	end
 	buttonOverlay:SetTexture(texture)
-	-- blizzard actionbar textures don't play well
-	if texture == [[Interface\Buttons\UI-Quickslot2]] then
-		buttonOverlay:SetPoint("TOPLEFT", parent, "TOPLEFT", -13, 13)
-		buttonOverlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", 15, -15)
-	else
-		buttonOverlay:SetPoint("TOPLEFT", parent, "TOPLEFT", -2, 2)
-		buttonOverlay:SetPoint("BOTTOMRIGHT", parent, "BOTTOMRIGHT", 2, -2)
-	end
+	-- SetPoint() can still be individually done after this function has be called
+	buttonOverlay:SetAllPoints(parent)
 	return buttonOverlay
 end
 
@@ -323,6 +317,8 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 		else
 			UIDropDownMenu_SetSelectedID(picker, name:GetID())
 		end
+		-- option to add additional OnClick event conditions
+		picker.OnClick()
 	end
 	local function initialize(picker, level)
 		local info = UIDropDownMenu_CreateInfo()

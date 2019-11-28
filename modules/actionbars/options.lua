@@ -162,11 +162,62 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local size = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_button_size"])
 		size:SetPoint("LEFT", size_text, "RIGHT", 10, 0)
 
+		size:SetScript("OnEscapePressed", function(self)
+			self:SetText(self.oldText)
+			self:ClearFocus()
+		end)
+
+		size:SetScript("OnEnterPressed", function(self)
+			LolzenUIcfg.actionbar["actionbar_button_size"] = self:GetText()
+			self.oldText = self:GetText()
+			button:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
+			button2:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
+			button3:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
+			button4:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
+			button5:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
+			--update actionbutton size
+			LolzenUI.UpdateActionBarSize()
+		end)
+
+		size:SetScript("OnEditFocusGained", function(self)
+			self.oldText = self:GetText()
+		end)
+
+		size:SetScript("OnEditFocusLost", function(self)
+			self:SetText(self.oldText)
+			self:ClearFocus()
+		end)
+
 		local spacing_text = ns.createFontstring("actionbars", L["ab_buttonspacing"])
 		spacing_text:SetPoint("LEFT", size, "RIGHT", 10, 0)
 
 		local spacing = ns.createInputbox("actionbars", 30, 20, LolzenUIcfg.actionbar["actionbar_button_spacing"])
 		spacing:SetPoint("LEFT", spacing_text, "RIGHT", 10, 0)
+
+		spacing:SetScript("OnEscapePressed", function(self)
+			self:SetText(self.oldText)
+			self:ClearFocus()
+		end)
+
+		spacing:SetScript("OnEnterPressed", function(self)
+			LolzenUIcfg.actionbar["actionbar_button_spacing"] = self:GetText()
+			self.oldText = self:GetText()
+			button2:SetPoint("LEFT", button, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
+			button3:SetPoint("LEFT", button2, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
+			button4:SetPoint("LEFT", button3, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
+			button5:SetPoint("LEFT", button4, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
+			--update actionbutton spacing
+			LolzenUI.UpdateActionBarSpacing()
+		end)
+
+		spacing:SetScript("OnEditFocusGained", function(self)
+			self.oldText = self:GetText()
+		end)
+
+		spacing:SetScript("OnEditFocusLost", function(self)
+			self:SetText(self.oldText)
+			self:ClearFocus()
+		end)
 
 		local header3 = ns.createHeader("actionbars", L["ab_positions"])
 		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -14)
@@ -351,8 +402,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local applyButton = ns.createApplyButton("actionbars")
 		applyButton:SetScript("OnClick", function()
-			LolzenUIcfg.actionbar["actionbar_button_spacing"] = spacing:GetText()
-			LolzenUIcfg.actionbar["actionbar_button_size"] = size:GetText()
 			LolzenUIcfg.actionbar["actionbar_mmb_posx"] = tonumber(box[1].editbox_x:GetText())
 			LolzenUIcfg.actionbar["actionbar_mmb_posy"] = tonumber(box[1].editbox_y:GetText())
 			LolzenUIcfg.actionbar["actionbar_mbbl_posx"] = tonumber(box[2].editbox_x:GetText())

@@ -379,11 +379,67 @@ end
 -- colorPicker
 ns.createColorPicker = function(module, colorRect, colorVars, sub)
 	local function SetNewColor()
-		colorRect:SetVertexColor(ColorPickerFrame:GetColorRGB())
+		local r, g, b = ColorPickerFrame:GetColorRGB()
+		colorRect:SetVertexColor(r, g, b)
+		ColorPickerFrame.r:SetText(math.floor(r*255+0.5))
+		ColorPickerFrame.g:SetText(math.floor(g*255+0.5))
+		ColorPickerFrame.b:SetText(math.floor(b*255+0.5))
 	end
 
 	local function restorePreviousColor()
 		colorRect:SetVertexColor(unpack(ColorPickerFrame.previousValues))
+	end
+
+	-- Create editboxes so we can enter colors manually if desired
+	if not ColorPickerFrame.r then
+		local letter_r = ColorPickerFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+		letter_r:SetPoint("BOTTOMLEFT", 225, 110)
+		letter_r: SetText("r:")
+		ColorPickerFrame.r = CreateFrame("EditBox", nil, ColorPickerFrame, "InputBoxTemplate")
+		ColorPickerFrame.r:SetSize(30, 20)
+		ColorPickerFrame.r:SetAutoFocus(false)
+		ColorPickerFrame.r:ClearFocus()
+		ColorPickerFrame.r:SetNumeric()
+		ColorPickerFrame.r:SetNumber(math.floor(colorVars[1]*255+0.5))
+		ColorPickerFrame.r:SetPoint("LEFT", letter_r, "RIGHT", 5, 0)
+		ColorPickerFrame.r:SetCursorPosition(0)
+		ColorPickerFrame.r:SetScript("OnTextChanged", function(self)
+			ColorPickerFrame:SetColorRGB(ColorPickerFrame.r:GetNumber()/255, ColorPickerFrame.g:GetNumber()/255, ColorPickerFrame.b:GetNumber()/255)
+		end)
+	end
+
+	if not ColorPickerFrame.g then
+		local letter_g = ColorPickerFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+		letter_g:SetPoint("BOTTOMLEFT", 225, 90)
+		letter_g: SetText("g:")
+		ColorPickerFrame.g = CreateFrame("EditBox", nil, ColorPickerFrame, "InputBoxTemplate")
+		ColorPickerFrame.g:SetSize(30, 20)
+		ColorPickerFrame.g:SetAutoFocus(false)
+		ColorPickerFrame.g:ClearFocus()
+		ColorPickerFrame.g:SetNumeric()
+		ColorPickerFrame.g:SetNumber(math.floor(colorVars[2]*255+0.5))
+		ColorPickerFrame.g:SetPoint("LEFT", letter_g, "RIGHT", 5, 0)
+		ColorPickerFrame.g:SetCursorPosition(0)
+		ColorPickerFrame.g:SetScript("OnTextChanged", function(self)
+			ColorPickerFrame:SetColorRGB(ColorPickerFrame.r:GetNumber()/255, ColorPickerFrame.g:GetNumber()/255, ColorPickerFrame.b:GetNumber()/255)
+		end)
+	end
+
+	if not ColorPickerFrame.b then
+		local letter_b = ColorPickerFrame:CreateFontString(nil, "ARTWORK", "GameFontHighlight")
+		letter_b:SetPoint("BOTTOMLEFT", 225, 70)
+		letter_b:SetText("b:")
+		ColorPickerFrame.b = CreateFrame("EditBox", nil, ColorPickerFrame, "InputBoxTemplate")
+		ColorPickerFrame.b:SetSize(30, 20)
+		ColorPickerFrame.b:SetAutoFocus(false)
+		ColorPickerFrame.b:ClearFocus()
+		ColorPickerFrame.b:SetNumeric()
+		ColorPickerFrame.b:SetNumber(math.floor(colorVars[2]*255+0.5))
+		ColorPickerFrame.b:SetPoint("LEFT", letter_b, "RIGHT", 5, 0)
+		ColorPickerFrame.b:SetCursorPosition(0)
+		ColorPickerFrame.b:SetScript("OnTextChanged", function(self)
+			ColorPickerFrame:SetColorRGB(ColorPickerFrame.r:GetNumber()/255, ColorPickerFrame.g:GetNumber()/255, ColorPickerFrame.b:GetNumber()/255)
+		end)
 	end
 
 	local colorpickerframe
@@ -402,6 +458,9 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 		-- and fill with the relevant ones
 		ColorPickerFrame.previousValues = colorVars
 		ColorPickerFrame:SetColorRGB(unpack(colorVars))
+		ColorPickerFrame.r:SetText(math.floor(colorVars[1]*255+0.5))
+		ColorPickerFrame.g:SetText(math.floor(colorVars[2]*255+0.5))
+		ColorPickerFrame.b:SetText(math.floor(colorVars[3]*255+0.5))
 		ColorPickerFrame.cancelFunc = restorePreviousColor
 		ColorPickerFrame.func = SetNewColor
 		ColorPickerFrame:Show()

@@ -191,6 +191,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color = ns.createColorTexture("artifactbar", 16, 16, LolzenUIcfg.artifactbar["artifactbar_color"], LolzenUIcfg.artifactbar["artifactbar_texture"])
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
+		color.setActualColors = function()
+			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
+			LolzenUI.setArtifactRGBColor()
+		end
 
 		local color_f = ns.createColorPicker("artifactbar", color, LolzenUIcfg.artifactbar["artifactbar_color"])
 		color_f:SetAllPoints(color)
@@ -269,9 +273,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb3 = ns.createCheckBox("artifactbar", "af_text_hover", "|cff5599ff"..L["af_mouseover_text"].."|r", LolzenUIcfg.artifactbar["artifactbar_mouseover_text"])
 		cb3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
 
-		local applyButton = ns.createApplyButton("artifactbar")
-		applyButton:SetScript("OnClick", function()
-			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
+		--local applyButton = ns.createApplyButton("artifactbar")
+		--applyButton:SetScript("OnClick", function()
+		--[[
 			LolzenUIcfg.artifactbar["artifactbar_1px_border"] = cb1:GetChecked()
 			LolzenUIcfg.artifactbar["artifactbar_1px_border_round"] = cb2:GetChecked()
 			LolzenUIcfg.artifactbar["artifactbar_mouseover_text"] = cb3:GetChecked()
@@ -282,8 +286,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_text_posx"] = tonumber(font_pos_x:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_text_posy"] = tonumber(font_pos_y:GetText())
 			LolzenUIcfg.artifactbar["artifactbar_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(font_anchor)]
-			ReloadUI()
-		end)
+			ReloadUI()]]
+		--end)
 
 		ns["artifactbar"].default = function(self)
 			LolzenUIcfg.artifactbar = _G["LolzenUIdefaultcfg"].artifactbar

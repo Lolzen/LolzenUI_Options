@@ -384,6 +384,9 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 		ColorPickerFrame.r:SetText(math.floor(r*255+0.5))
 		ColorPickerFrame.g:SetText(math.floor(g*255+0.5))
 		ColorPickerFrame.b:SetText(math.floor(b*255+0.5))
+		if colorRect.setActualColors then
+			colorRect.setActualColors()
+		end
 	end
 
 	local function restorePreviousColor()

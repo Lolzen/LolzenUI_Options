@@ -391,6 +391,9 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 
 	local function restorePreviousColor()
 		colorRect:SetVertexColor(unpack(ColorPickerFrame.previousValues))
+		if colorRect.setActualColors then
+			colorRect.setActualColors()
+		end
 	end
 
 	-- Create editboxes so we can enter colors manually if desired

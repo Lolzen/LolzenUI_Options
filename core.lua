@@ -302,6 +302,10 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 		t = LBT:List(LBT.MediaType.HOVER)
 	elseif pickertype == "buttonpushed" then
 		t = LBT:List(LBT.MediaType.PUSHED)
+	elseif pickertype == "buff" then
+		t = LBT:List(LBT.MediaType.BUFF)
+	elseif pickertype == "debuff" then
+		t = LBT:List(LBT.MediaType.DEBUFF)
 	end
 	local selectedNum, selectedName
 	local picker
@@ -312,7 +316,7 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	end
 	picker:Show()
 	local function OnClick(name)
-		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" or pickertype == "buttonborder" or pickertype == "buttonflashing" or pickertype == "buttonchecked" or pickertype == "buttonhover" or pickertype == "buttonpushed" then
+		if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" or pickertype == "buttonborder" or pickertype == "buttonflashing" or pickertype == "buttonchecked" or pickertype == "buttonhover" or pickertype == "buttonpushed" or pickertype == "buff" or pickertype == "debuff" then
 			UIDropDownMenu_SetSelectedName(picker, name.value)
 		else
 			UIDropDownMenu_SetSelectedID(picker, name:GetID())
@@ -353,7 +357,7 @@ ns.createPicker = function(module, pickertype, name, width, selected, sub)
 	UIDropDownMenu_Initialize(picker, initialize)
 	UIDropDownMenu_SetWidth(picker, width)
 	UIDropDownMenu_SetButtonWidth(picker, width+15)
-	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" or pickertype == "buttonborder" or pickertype == "buttonflashing" or pickertype == "buttonchecked" or pickertype == "buttonhover" or pickertype == "buttonpushed" then
+	if pickertype == "font" or pickertype == "statusbar" or pickertype == "background" or pickertype == "border" or pickertype == "dateformat" or pickertype == "buttonborder" or pickertype == "buttonflashing" or pickertype == "buttonchecked" or pickertype == "buttonhover" or pickertype == "buttonpushed" or pickertype == "buff" or pickertype == "debuff" then
 		UIDropDownMenu_SetSelectedName(picker, selectedName)
 	else
 		UIDropDownMenu_SetSelectedID(picker, selectedNum)

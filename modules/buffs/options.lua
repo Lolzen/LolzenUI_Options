@@ -4,6 +4,7 @@ local _, ns = ...
 local L = ns.L
 local LUI = LolzenUI.L
 local LSM = LibStub("LibSharedMedia-3.0")
+local LBT = LibStub("LibButtonTexture-1.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -20,8 +21,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local button = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_size"], GetSpellTexture(546), nil)
 		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
-		local bufftex = ns.createButtonOverlay("buffs", button, LolzenUIcfg.buffs["buff_aura_texture"])
-		bufftex:SetVertexColor(0, 0, 0)
+		local bufftex = ns.createButtonOverlay("buffs", button, LBT:Fetch("buff", LolzenUIcfg.buffs["buff_aura_texture"]))
+		bufftex:SetPoint("TOPLEFT", button, "TOPLEFT", -2, 2)
+		bufftex:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+		if LolzenUIcfg.buffs["buff_aura_texture"] == "Blizzard QuickSlot2" then
+			bufftex:SetVertexColor(1, 1, 1)
+		else
+			bufftex:SetVertexColor(0, 0, 0)
+		end
 
 		local buttondur = ns.createFontstring("buffs", "TEXT")
 		buttondur:SetPoint(LolzenUIcfg.buffs["buff_duration_anchor1"], button, LolzenUIcfg.buffs["buff_duration_anchor2"], LolzenUIcfg.buffs["buff_duration_posx"], LolzenUIcfg.buffs["buff_duration_posy"])
@@ -41,13 +48,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local button2 = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_debuff_size"], GetSpellTexture(192423), nil)
 		button2:SetPoint("LEFT", button, "RIGHT", 5, 0)
 		
-		local debufftex = ns.createButtonOverlay("buffs", button2, LolzenUIcfg.buffs["buff_debuff_texture"])
+		local debufftex = ns.createButtonOverlay("buffs", button2, LBT:Fetch("debuff", LolzenUIcfg.buffs["buff_debuff_texture"]))
+		debufftex:SetPoint("TOPLEFT", button2, "TOPLEFT", -2, 2)
+		debufftex:SetPoint("BOTTOMRIGHT", button2, "BOTTOMRIGHT", 2, -2)
 		debufftex:SetVertexColor(1, 0, 0)
 
 --		local button3 = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_tempenchant_size"], select(3, GetSpellInfo(53343)))
 --		button3:SetPoint("LEFT", button2, "RIGHT", 5, 0)
 
 --		local tempenchtex = ns.createButtonOverlay("buffs", button3, LolzenUIcfg.buffs["buff_aura_texture"])
+--		tempenchant:SetPoint("TOPLEFT", button3, "TOPLEFT", -2, 2)
+--		tempenchanttex:SetPoint("BOTTOMRIGHT", button3, "BOTTOMRIGHT", 2, -2)
 --		tempenchtex:SetVertexColor(0, 0, 0)
 
 		local header2 = ns.createHeader("buffs", "Buffs:")
@@ -104,14 +115,35 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local bufftex_path_text = ns.createFontstring("buffs", "|cff5599ff"..L["buff_and_tempench_texture"]..":|r")
 		bufftex_path_text:SetPoint("TOPLEFT", anchor_text, "BOTTOMLEFT", 0, -15)
 
-		local bufftex_path = ns.createInputbox("buffs", 80, 20, LolzenUIcfg.buffs["buff_aura_texture"])
-		bufftex_path:SetPoint("LEFT", bufftex_path_text, "RIGHT", 10, 0)
+		local bufftex_path = ns.createPicker("buffs", "buff", "buffs_aura", 120, LolzenUIcfg.buffs["buff_aura_texture"])
+		bufftex_path:SetPoint("LEFT", bufftex_path_text, "RIGHT", -4, -5)
+		bufftex_path.OnClick = function()
+			LolzenUIcfg.buffs["buff_aura_texture"] = UIDropDownMenu_GetSelectedName(bufftex_path)
+			bufftex:SetTexture(nil)
+			bufftex:SetTexture(LBT:Fetch("buff", LolzenUIcfg.buffs["buff_aura_texture"]))
+			if LolzenUIcfg.buffs["buff_aura_texture"] == "Blizzard QuickSlot2" then
+				bufftex:SetPoint("TOPLEFT", button, "TOPLEFT", -11, 11)
+				bufftex:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 13, -13)
+				bufftex:SetVertexColor(1, 1, 1)
+			else
+				bufftex:SetPoint("TOPLEFT", button, "TOPLEFT", -2, 2)
+				bufftex:SetPoint("BOTTOMRIGHT", button, "BOTTOMRIGHT", 2, -2)
+				bufftex:SetVertexColor(0, 0, 0)
+			end
+	--		LolzenUI.SetActionBarTheme()
+		end
 
 		local debufftex_path_text = ns.createFontstring("buffs", "|cff5599ff"..L["debuff_texture"]..":|r")
 		debufftex_path_text:SetPoint("TOPLEFT", bufftex_path_text, "BOTTOMLEFT", 0, -15)
 
-		local debufftex_path = ns.createInputbox("buffs", 80, 20, LolzenUIcfg.buffs["buff_debuff_texture"])
-		debufftex_path:SetPoint("LEFT", debufftex_path_text, "RIGHT", 10, 0)
+		local debufftex_path = ns.createPicker("buffs", "debuff", "buffs_debuff", 120, LolzenUIcfg.buffs["buff_debuff_texture"])
+		debufftex_path:SetPoint("LEFT", debufftex_path_text, "RIGHT", -4, -5)
+		debufftex_path.OnClick = function()
+			LolzenUIcfg.buffs["buff_debuff_texture"] = UIDropDownMenu_GetSelectedName(debufftex_path)
+			debufftex:SetTexture(nil)
+			debufftex:SetTexture(LBT:Fetch("debuff", LolzenUIcfg.buffs["buff_debuff_texture"]))
+	--		LolzenUI.SetActionBarTheme()
+		end
 
 		local header3 = ns.createHeader("buffs", L["buff_duration_header"]..":")
 		header3:SetPoint("TOPLEFT", debufftex_path_text, "BOTTOMLEFT", 0, -30)
@@ -224,8 +256,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.buffs["buff_counter_font"] = UIDropDownMenu_GetSelectedName(count_font)
 			LolzenUIcfg.buffs["buff_counter_size"] = tonumber(count_font_size:GetText())
 			LolzenUIcfg.buffs["buff_counter_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(count_font_flag)]
-			LolzenUIcfg.buffs["buff_aura_texture"] = bufftex_path:GetText()
-			LolzenUIcfg.buffs["buff_debuff_texture"] = debufftex_path:GetText()
+			--LolzenUIcfg.buffs["buff_aura_texture"] = bufftex_path:GetText()
+			--LolzenUIcfg.buffs["buff_debuff_texture"] = debufftex_path:GetText()
 			ReloadUI()
 		end)
 

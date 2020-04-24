@@ -88,7 +88,6 @@ if GetLocale() == "esMX" then
 	L["chat_show_timestamps"] = "Show timestamp"
 	L["chat_timestamp_notice"] = "This option sets Blizzard's built in timestamps to 'none'"
 	L["chat_disable_fading"] = "Disable fading"
-	L["chat_auto_who"] = "Send /who automatcally on new incoming whispers"
 	L["chat_afk_dnd_once"] = "Show afk/dnd only once per person"
 	L["chat_strip_say_and_yell"] = "Remove 'say' and 'yell' from chat"
 	L["chat_short_channel_names"] = "Short channelnames"
@@ -118,7 +117,6 @@ if GetLocale() == "esMX" then
 	-- interruptannouncer
 	L["ia_announce_intance"] = "Announce interrupts in /i"
 	L["ia_announce_party"] = "Announce interrupts in /p"
-	L["ia_announce_say"] = "Announce interrupts in /s"
 	L["ia_message"] = "Interruptmessage"
 	L["ia_message_description"] = "Use |cff5599ff!spell|r for the interrupted spell and |cff5599ff!name|r for the name of the interrupted unit"
 	-- itemlevel

@@ -88,7 +88,6 @@ if GetLocale() == "deDE" then
 	L["chat_show_timestamps"] = "Zeige Zeitstempel"
 	L["chat_timestamp_notice"] = "Diese Option setzt Blizzard's eingebaute Zeitstempel zu 'keine'"
 	L["chat_disable_fading"] = "Deaktiviere Verblassen"
-	L["chat_auto_who"] = "Sende /who automatisch bei neuen eingehenden Flüsternachrichten"
 	L["chat_afk_dnd_once"] = "Zeige afk/dnd nachrichten nur einmal pro person"
 	L["chat_strip_say_and_yell"] = "Entferne 'sagt' und 'schreit' vom Chat"
 	L["chat_short_channel_names"] = "Kurze Chatkanalnamen"
@@ -118,7 +117,6 @@ if GetLocale() == "deDE" then
 	-- interruptannouncer
 	L["ia_announce_intance"] = "Sage Unterbrechungen im /i an"
 	L["ia_announce_party"] = "Sage Unterbrechungen im /p an"
-	L["ia_announce_say"] = "Sage Unterbrechungen im /s an"
 	L["ia_message"] = "Unterbrechungsansage"
 	L["ia_message_description"] = "Benutze |cff5599ff!spell|r für den unterbrochenen Zauber und |cff5599ff!name|r für den Namen der unterbochenen Einheit"
 	-- itemlevel

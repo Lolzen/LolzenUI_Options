@@ -81,7 +81,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local anchor = ns.createPicker("minimap", "anchor", "minimap_anchor", 110, LolzenUIcfg.minimap["minimap_anchor"])
 		anchor:SetPoint("LEFT", anchor_text, "RIGHT", -10, -3)
-
 		anchor.OnClick = function()
 			LolzenUIcfg.minimap["minimap_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(anchor)]
 			LolzenUI.setMiniMapPosition()

@@ -151,9 +151,11 @@ if GetLocale() == "deDE" then
 	L["sub_panel_nameplates_spark_header"] = "Funken"
 	-- objectivetrackerframe
 	L["objective_autocollapse"] = "Automatisches minimieren im Kampf"
-	L["objective_autocollapse_desc"] = "Verkleinert automatisch im Kampf und vergößert außerhalb des Kampfes"
+	L["objective_autocollapse_desc"] = "Minimiert automatisch im Kampf und vergößert außerhalb des Kampfes"
 	L["objective_auto_collapse_login"] = "Automatisches minimieren beim Einloggen"
 	L["objective_auto_collapse_login_desc"] = "Minimiert automatisch beim einloggen"
+	L["objective_auto_collapse_dungeon"] = "Automatisches minimieren in Dungeons & Raids"
+	L["objective_auto_collapse_dungeon_desc"] = "Minimiert automatisch in Dungeons & Raids"
 	-- orderhallbar
 	L["ohb_always_show"] = "Zeige die Ordenshallenleiste immer an"
 	L["ohb_zonetext_header"] = "Zonentext"

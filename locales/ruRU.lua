@@ -154,6 +154,8 @@ if GetLocale() == "ruRU" then
 	L["objective_autocollapse_desc"] = "Automatically minimizes in combat and expands out of fight"
 	L["objective_auto_collapse_login"] = "Auto collapse on login"
 	L["objective_auto_collapse_login_desc"] = "Automatically minimizes on login"
+	L["objective_auto_collapse_dungeon"] = "Auto collapse in Dungeons & Raids"
+	L["objective_auto_collapse_dungeon_desc"] = "Automatically minimizes in Dungeons & Raids"
 	-- orderhallbar
 	L["ohb_always_show"] = "Always show the Orderhallbar"
 	L["ohb_zonetext_header"] = "Zonetext"

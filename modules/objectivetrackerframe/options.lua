@@ -33,8 +33,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb2_desc = ns.createFontstring("objectivetracker", L["objective_auto_collapse_login_desc"])
 		cb2_desc:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, 0)
 
+		local cb3 = ns.createCheckBox("objectivetracker", "dungeoncollapse", "|cff5599ff"..L["objective_auto_collapse_dungeon"].."|r", LolzenUIcfg.objectivetracker["objectivetracker_dungeoncollapse"])
+		cb3:SetPoint("TOPLEFT", cb2_desc, "BOTTOMLEFT", 0, -8)
+
+		cb3:SetScript("OnClick", function(self)
+			LolzenUIcfg.objectivetracker["objectivetracker_dungeoncollapse"] = cb3:GetChecked()
+		end)
+
+		local cb3_desc = ns.createFontstring("objectivetracker", L["objective_auto_collapse_dungeon_desc"])
+		cb3_desc:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, 0)
+
 		local pos_x_text = ns.createFontstring("objectivetracker", L["PosX"]..":")
-		pos_x_text:SetPoint("TOPLEFT", cb2_desc, "BOTTOMLEFT", 0, -20)
+		pos_x_text:SetPoint("TOPLEFT", cb3_desc, "BOTTOMLEFT", 0, -20)
 
 		local pos_x = ns.createInputbox("objectivetracker", 30, 20, LolzenUIcfg.objectivetracker["objectivetracker_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)

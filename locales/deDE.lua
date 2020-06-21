@@ -172,10 +172,10 @@ if GetLocale() == "deDE" then
 	L["count_countdown_message"] = "Countdown Nachricht"
 	L["count_!n_represents"] = "|cff5599ff!n|r repränsentiert eine nummer (1-10)"
 	L["count_range_header"] = "Zähler Grenze & Klang Dateien"
-	L["count_range_notice"] = "|cffffffff(Klangdateien befinden sich in LolzenUI/sounds)|r"
 	L["count_range"] = "Pull Zähl Grenze (1-10)"
 	L["count_file"] = "Klangdatei für Zahl"
 	L["count_file_pull"] = "Klangdatei für Pull"
+	L["count_file_abort"] = "Klangdatei für Abbruch"
 	-- slashcommands
 	L["slash_rl"] = "Eine kurze version von /reload"
 	L["slash_frame"] = "Schreibt im Chat den Namen des Fensters unter dem Cursor"

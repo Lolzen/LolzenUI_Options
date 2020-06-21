@@ -172,10 +172,10 @@ if GetLocale() == "enUS" then
 	L["count_countdown_message"] = "Countdown message"
 	L["count_!n_represents"] = "|cff5599ff!n|r represents a number (1-10)"
 	L["count_range_header"] = "Count Range & Soundfiles"
-	L["count_range_notice"] = "|cffffffff(Soundfiles are located in LolzenUI/sounds)|r"
 	L["count_range"] = "Pull count range (1-10)"
 	L["count_file"] = "Soundfile for number"
 	L["count_file_pull"] = "Soundfile for Pull"
+	L["count_file_abort"] = "Soundfile for Abort"
 	-- slashcommands
 	L["slash_rl"] = "A short version of /reload"
 	L["slash_frame"] = "Prints the name of the frame the mouse is hovering over"

@@ -588,7 +588,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local cb_alpha = ns.createPicker("uf_player_options", "alpha", "uf_player_cb_alpha", 45, LolzenUIcfg.unitframes.player["uf_player_cb_alpha"], "content")
 		cb_alpha:SetPoint("LEFT", cb_alpha_text, "RIGHT", -10, -3)
-		cb_anchor2.OnClick = function()
+		cb_alpha.OnClick = function()
 			LolzenUIcfg.unitframes.player["uf_player_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(cb_alpha)])
 			LolzenUI.SetUFPlayerCBColor()
 		end

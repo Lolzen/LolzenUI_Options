@@ -268,7 +268,7 @@ if GetLocale() == "ruRU" then
 	L["sub_panel_unitframes_omf_title"] = "Unitframes Module: Positions [oUF_Movableframes]"
 	L["sub_panel_unitframes_omf_about"] = "Type %s to toggle anchorframes"
 	-- worldmap
-	L["wm_scale"] = "Worldmapscale [limit: 0.1 - 1]"
+	L["wm_scale"] = "Worldmapscale"
 	L["wm_coordinates"] = "Activate mouse coordinates"
 	L["wm_title_or_coordinates_color"] = "Title/Coordinates Color"
 	L["save_worldmap_position"] = "Save worldmap position"

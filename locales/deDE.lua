@@ -268,7 +268,7 @@ if GetLocale() == "deDE" then
 	L["sub_panel_unitframes_omf_title"] = "Einheitenfenster Modul: Positionen [oUF_Movableframes]"
 	L["sub_panel_unitframes_omf_about"] = "Tippe %s um Ankerpunkte An und Auszuschalten"
 	-- worldmap
-	L["wm_scale"] = "Weltkartenskalierung [reichweite: 0.1 - 1]"
+	L["wm_scale"] = "Weltkartenskalierung"
 	L["wm_coordinates"] = "Aktiviere Maus Koordinaten"
 	L["wm_title_or_coordinates_color"] = "Titeltext/Koordinaten Farbe"
 	L["save_worldmap_position"] = "Speichere die Weltkartenposition"

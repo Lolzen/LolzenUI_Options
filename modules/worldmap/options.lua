@@ -16,27 +16,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local scale_text = ns.createFontstring("worldmap", L["wm_scale"]..":")
 		scale_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
-		local scale = ns.createInputbox("worldmap", 30, 20, LolzenUIcfg.worldmap["worldmap_scale"])
-		scale:SetPoint("LEFT", scale_text, "RIGHT", 10, 0)
-
-		scale:SetScript("OnEscapePressed", function(self)
-			self:SetText(self.oldText)
-			self:ClearFocus()
-		end)
-
-		scale:SetScript("OnEnterPressed", function(self)
-			LolzenUIcfg.worldmap["worldmap_scale"] = tonumber(scale:GetText())
-			self.oldText = self:GetText()
-		end)
-
-		scale:SetScript("OnEditFocusGained", function(self)
-			self.oldText = self:GetText()
-		end)
-
-		scale:SetScript("OnEditFocusLost", function(self)
-			self:SetText(self.oldText)
-			self:ClearFocus()
-		end)
+		local scale = ns.createPicker("worldmap", "alpha", "worldmapframe_scale", 45, LolzenUIcfg.worldmap["worldmap_scale"])
+		scale:SetPoint("LEFT", scale_text, "RIGHT", -10, -3)
+		scale.OnClick = function()
+			LolzenUIcfg.worldmap["worldmap_scale"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(scale)])
+			WorldMapFrame:SynchronizeDisplayState()
+		end
 
 		local cb1 = ns.createCheckBox("worldmap", "title_coordinates", "|cff5599ff"..L["wm_coordinates"].."|r", LolzenUIcfg.worldmap["worldmap_coordinates"])
 		cb1:SetPoint("TOPLEFT", scale_text, "BOTTOMLEFT", 0, -8)

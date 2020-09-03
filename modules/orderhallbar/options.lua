@@ -3,6 +3,7 @@
 local _, ns = ...
 local L = ns.L
 local LUI = LolzenUI.L
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -32,6 +33,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		ohb_bg.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_background"] = UIDropDownMenu_GetSelectedName(ohb_bg)
 			LolzenUI.setOHBBGTexture()
+			self.color:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.orderhallbar["ohb_background"]))
 		end
 
 		local color_text = ns.createFontstring("orderhallbar", L["color"]..":")
@@ -39,6 +41,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color = ns.createColorTexture("orderhallbar", 16, 16, LolzenUIcfg.orderhallbar["ohb_background_color"], LolzenUIcfg.orderhallbar["ohb_background"])
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
+		self.color = color
 		color.setActualColors = function()
 			LolzenUIcfg.orderhallbar["ohb_background_color"] = {color:GetVertexColor()}
 			LolzenUI.setOHBBGColor()
@@ -63,7 +66,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local zone_color_text = ns.createFontstring("orderhallbar", L["color"]..":")
 		zone_color_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
 
-		local zone_color = ns.createColorTexture("orderhallbar", 16, 16, LolzenUIcfg.orderhallbar["ohb_zone_color"], LolzenUIcfg.orderhallbar["ohb_background"])
+		local zone_color = ns.createColorTexture("orderhallbar", 16, 16, LolzenUIcfg.orderhallbar["ohb_zone_color"], "LolzenUI Standard")
 		zone_color:SetPoint("LEFT", zone_color_text, "RIGHT", 10, 0)
 		zone_color.setActualColors = function()
 			LolzenUIcfg.orderhallbar["ohb_zone_color"] = {zone_color:GetVertexColor()}

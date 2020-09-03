@@ -3,6 +3,7 @@
 local _, ns = ...
 local L = ns.L
 local LUI = LolzenUI.L
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -184,6 +185,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		texture.OnClick = function()
 			LolzenUIcfg.artifactbar["artifactbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUI.SetArtifactBarTexture()
+			self.color:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.artifactbar["artifactbar_texture"]))
+			self.font_color:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.artifactbar["artifactbar_texture"]))
 		end
 
 		local color_text = ns.createFontstring("artifactbar", L["color"]..":")
@@ -191,6 +194,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color = ns.createColorTexture("artifactbar", 16, 16, LolzenUIcfg.artifactbar["artifactbar_color"], LolzenUIcfg.artifactbar["artifactbar_texture"])
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
+		self.color = color
 		color.setActualColors = function()
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
 			LolzenUI.SetArtifactRGBColor()
@@ -298,6 +302,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local font_color = ns.createColorTexture("artifactbar", 16, 16, LolzenUIcfg.artifactbar["artifactbar_font_color"], LolzenUIcfg.artifactbar["artifactbar_texture"])
 		font_color:SetPoint("LEFT", font_color_text, "RIGHT", 10, 0)
+		self.font_color = font_color
 		font_color.setActualColors = function()
 			LolzenUIcfg.artifactbar["artifactbar_font_color"] = {font_color:GetVertexColor()}
 			LolzenUI.SetArtifactRGBTextColor()

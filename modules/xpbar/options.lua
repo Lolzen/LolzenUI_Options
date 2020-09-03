@@ -3,6 +3,7 @@
 local _, ns = ...
 local L = ns.L
 local LUI = LolzenUI.L
+local LSM = LibStub("LibSharedMedia-3.0")
 
 local f = CreateFrame("Frame")
 f:RegisterEvent("ADDON_LOADED")
@@ -184,6 +185,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		texture.OnClick = function()
 			LolzenUIcfg.xpbar["xpbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUI.setXPBarTexture()
+			self.color:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.xpbar["xpbar_texture"]))
+			self.color2:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.xpbar["xpbar_texture"]))
+			self.color3:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.xpbar["xpbar_texture"]))
+			self.color4:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.xpbar["xpbar_texture"]))
 		end
 
 		local color_text = ns.createFontstring("xpbar", L["xp_regular_xp_color"]..":")
@@ -191,6 +196,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color = ns.createColorTexture("xpbar", 16, 16, LolzenUIcfg.xpbar["xpbar_xp_color"], LolzenUIcfg.xpbar["xpbar_texture"])
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
+		self.color = color
 		color.setActualColors = function()
 			LolzenUIcfg.xpbar["xpbar_xp_color"] = {color:GetVertexColor()}
 			LolzenUI.setXPBarRGBColor()
@@ -204,6 +210,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color2 = ns.createColorTexture("xpbar", 16, 16, LolzenUIcfg.xpbar["xpbar_xp_rested_color"], LolzenUIcfg.xpbar["xpbar_texture"])
 		color2:SetPoint("LEFT", color_text2, "RIGHT", 10, 0)
+		self.color2 = color2
 		color2.setActualColors = function()
 			LolzenUIcfg.xpbar["xpbar_xp_rested_color"] = {color2:GetVertexColor()}
 			LolzenUI.setXPBarRGBColor()
@@ -217,6 +224,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color3 = ns.createColorTexture("xpbar", 16, 16, LolzenUIcfg.xpbar["xpbar_pvp_color"], LolzenUIcfg.xpbar["xpbar_texture"])
 		color3:SetPoint("LEFT", color_text3, "RIGHT", 10, 0)
+		self.color3 = color3
 		color3.setActualColors = function()
 			LolzenUIcfg.xpbar["xpbar_pvp_color"] = {color3:GetVertexColor()}
 			LolzenUI.setXPBarRGBColor()
@@ -230,6 +238,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local color4 = ns.createColorTexture("xpbar", 16, 16, LolzenUIcfg.xpbar["xpbar_paragon_color"], LolzenUIcfg.xpbar["xpbar_texture"])
 		color4:SetPoint("LEFT", color_text4, "RIGHT", 10, 0)
+		self.color4 = color4
 		color4.setActualColors = function()
 			LolzenUIcfg.xpbar["xpbar_paragon_color"] = {color4:GetVertexColor()}
 			LolzenUI.setXPBarRGBColor()
@@ -336,7 +345,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local font_color_text = ns.createFontstring("xpbar", L["color"]..":")
 		font_color_text:SetPoint("LEFT", font_anchor, "RIGHT", -5, 3)
 
-		local font_color = ns.createColorTexture("xpbar", 16, 16, LolzenUIcfg.xpbar["xpbar_font_color"], LolzenUIcfg.xpbar["xpbar_texture"])
+		local font_color = ns.createColorTexture("xpbar", 16, 16, LolzenUIcfg.xpbar["xpbar_font_color"], "LolzenUI Standard")
 		font_color:SetPoint("LEFT", font_color_text, "RIGHT", 10, 0)
 		font_color.setActualColors = function()
 			LolzenUIcfg.xpbar["xpbar_font_color"] = {font_color:GetVertexColor()}

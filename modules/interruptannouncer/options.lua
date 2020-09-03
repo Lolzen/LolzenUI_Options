@@ -30,7 +30,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local msg_text = ns.createFontstring("interruptannouncer", L["ia_message"]..":")
 		msg_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -13)
 
-		local msg = ns.createInputbox("interruptannouncer", 400, 20, LUI["ia_announce_message_text_interrupted"])
+		local msg = ns.createInputbox("interruptannouncer", 400, 20, LolzenUIcfg.interruptannouncer["interruptannouncer_msg"])
 		msg:SetPoint("LEFT", msg_text, "RIGHT", 10, 0)
 
 		msg:SetScript("OnEscapePressed", function(self)

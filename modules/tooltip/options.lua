@@ -160,7 +160,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_afk_text = ns.createFontstring("tooltip", L["color"]..":")
 		color_afk_text:SetPoint("LEFT", afk_flag, "RIGHT", 10, 0)
 
-		local color_afk = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_afk_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
+		local color_afk = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_afk_color"], "LolzenUI Standard")
 		color_afk:SetPoint("LEFT", color_afk_text, "RIGHT", 10, 0)
 		color_afk.setActualColors = function()
 			LolzenUIcfg.tooltip["tip_statusflag_afk_color"] = {color_afk:GetVertexColor()}
@@ -197,7 +197,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_dnd_text = ns.createFontstring("tooltip", L["color"]..":")
 		color_dnd_text:SetPoint("LEFT", dnd_flag, "RIGHT", 10, 0)
 
-		local color_dnd = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_dnd_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
+		local color_dnd = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_dnd_color"], "LolzenUI Standard")
 		color_dnd:SetPoint("LEFT", color_dnd_text, "RIGHT", 10, 0)
 		color_dnd.setActualColors = function()
 			LolzenUIcfg.tooltip["tip_statusflag_dnd_color"] = {color_dnd:GetVertexColor()}
@@ -234,7 +234,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_off_text = ns.createFontstring("tooltip", L["color"]..":")
 		color_off_text:SetPoint("LEFT", off_flag, "RIGHT", 10, 0)
 
-		local color_off = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_off_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
+		local color_off = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_statusflag_off_color"], "LolzenUI Standard")
 		color_off:SetPoint("LEFT", color_off_text, "RIGHT", 10, 0)
 		color_off.setActualColors = function()
 			LolzenUIcfg.tooltip["tip_statusflag_off_color"] = {color_off:GetVertexColor()}
@@ -255,7 +255,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local color_text = ns.createFontstring("tooltip", L["color"]..":")
 		color_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
 
-		local color = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_own_guild_color"], LolzenUIcfg.tooltip["tip_healthbar_texture"])
+		local color = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_own_guild_color"], "LolzenUI Standard")
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
 		color.setActualColors = function()
 			LolzenUIcfg.tooltip["tip_own_guild_color"] = {color:GetVertexColor()}

@@ -186,7 +186,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUIcfg.artifactbar["artifactbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUI.SetArtifactBarTexture()
 			self.color:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.artifactbar["artifactbar_texture"]))
-			self.font_color:SetTexture(LSM:Fetch("statusbar", LolzenUIcfg.artifactbar["artifactbar_texture"]))
 		end
 
 		local color_text = ns.createFontstring("artifactbar", L["color"]..":")
@@ -300,9 +299,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local font_color_text = ns.createFontstring("artifactbar", L["color"]..":")
 		font_color_text:SetPoint("LEFT", font_anchor, "RIGHT", -5, 3)
 
-		local font_color = ns.createColorTexture("artifactbar", 16, 16, LolzenUIcfg.artifactbar["artifactbar_font_color"], LolzenUIcfg.artifactbar["artifactbar_texture"])
+		local font_color = ns.createColorTexture("artifactbar", 16, 16, LolzenUIcfg.artifactbar["artifactbar_font_color"], "LolzenUI Standard")
 		font_color:SetPoint("LEFT", font_color_text, "RIGHT", 10, 0)
-		self.font_color = font_color
 		font_color.setActualColors = function()
 			LolzenUIcfg.artifactbar["artifactbar_font_color"] = {font_color:GetVertexColor()}
 			LolzenUI.SetArtifactRGBTextColor()

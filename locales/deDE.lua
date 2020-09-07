@@ -88,7 +88,6 @@ if GetLocale() == "deDE" then
 	L["chat_show_timestamps"] = "Zeige Zeitstempel"
 	L["chat_timestamp_notice"] = "Diese Option setzt Blizzard's eingebaute Zeitstempel zu 'keine'"
 	L["chat_disable_fading"] = "Deaktiviere Verblassen"
-	L["chat_auto_who"] = "Sende /who automatisch bei neuen eingehenden Flüsternachrichten"
 	L["chat_afk_dnd_once"] = "Zeige afk/dnd nachrichten nur einmal pro person"
 	L["chat_strip_say_and_yell"] = "Entferne 'sagt' und 'schreit' vom Chat"
 	L["chat_short_channel_names"] = "Kurze Chatkanalnamen"
@@ -118,7 +117,6 @@ if GetLocale() == "deDE" then
 	-- interruptannouncer
 	L["ia_announce_intance"] = "Sage Unterbrechungen im /i an"
 	L["ia_announce_party"] = "Sage Unterbrechungen im /p an"
-	L["ia_announce_say"] = "Sage Unterbrechungen im /s an"
 	L["ia_message"] = "Unterbrechungsansage"
 	L["ia_message_description"] = "Benutze |cff5599ff!spell|r für den unterbrochenen Zauber und |cff5599ff!name|r für den Namen der unterbochenen Einheit"
 	-- itemlevel
@@ -153,9 +151,11 @@ if GetLocale() == "deDE" then
 	L["sub_panel_nameplates_spark_header"] = "Funken"
 	-- objectivetrackerframe
 	L["objective_autocollapse"] = "Automatisches minimieren im Kampf"
-	L["objective_autocollapse_desc"] = "Verkleinert automatisch im Kampf und vergößert außerhalb des Kampfes"
+	L["objective_autocollapse_desc"] = "Minimiert automatisch im Kampf und vergößert außerhalb des Kampfes"
 	L["objective_auto_collapse_login"] = "Automatisches minimieren beim Einloggen"
 	L["objective_auto_collapse_login_desc"] = "Minimiert automatisch beim einloggen"
+	L["objective_auto_collapse_dungeon"] = "Automatisches minimieren in Dungeons & Raids"
+	L["objective_auto_collapse_dungeon_desc"] = "Minimiert automatisch in Dungeons & Raids"
 	-- orderhallbar
 	L["ohb_always_show"] = "Zeige die Ordenshallenleiste immer an"
 	L["ohb_zonetext_header"] = "Zonentext"
@@ -172,10 +172,10 @@ if GetLocale() == "deDE" then
 	L["count_countdown_message"] = "Countdown Nachricht"
 	L["count_!n_represents"] = "|cff5599ff!n|r repränsentiert eine nummer (1-10)"
 	L["count_range_header"] = "Zähler Grenze & Klang Dateien"
-	L["count_range_notice"] = "|cffffffff(Klangdateien befinden sich in LolzenUI/sounds)|r"
 	L["count_range"] = "Pull Zähl Grenze (1-10)"
 	L["count_file"] = "Klangdatei für Zahl"
 	L["count_file_pull"] = "Klangdatei für Pull"
+	L["count_file_abort"] = "Klangdatei für Abbruch"
 	-- slashcommands
 	L["slash_rl"] = "Eine kurze version von /reload"
 	L["slash_frame"] = "Schreibt im Chat den Namen des Fensters unter dem Cursor"
@@ -268,7 +268,7 @@ if GetLocale() == "deDE" then
 	L["sub_panel_unitframes_omf_title"] = "Einheitenfenster Modul: Positionen [oUF_Movableframes]"
 	L["sub_panel_unitframes_omf_about"] = "Tippe %s um Ankerpunkte An und Auszuschalten"
 	-- worldmap
-	L["wm_scale"] = "Weltkartenskalierung [reichweite: 0.1 - 1]"
+	L["wm_scale"] = "Weltkartenskalierung"
 	L["wm_coordinates"] = "Aktiviere Maus Koordinaten"
 	L["wm_title_or_coordinates_color"] = "Titeltext/Koordinaten Farbe"
 	L["save_worldmap_position"] = "Speichere die Weltkartenposition"

@@ -88,7 +88,6 @@ if GetLocale() == "esES" then
 	L["chat_show_timestamps"] = "Show timestamp"
 	L["chat_timestamp_notice"] = "This option sets Blizzard's built in timestamps to 'none'"
 	L["chat_disable_fading"] = "Disable fading"
-	L["chat_auto_who"] = "Send /who automatcally on new incoming whispers"
 	L["chat_afk_dnd_once"] = "Show afk/dnd only once per person"
 	L["chat_strip_say_and_yell"] = "Remove 'say' and 'yell' from chat"
 	L["chat_short_channel_names"] = "Short channelnames"
@@ -118,7 +117,6 @@ if GetLocale() == "esES" then
 	-- interruptannouncer
 	L["ia_announce_intance"] = "Announce interrupts in /i"
 	L["ia_announce_party"] = "Announce interrupts in /p"
-	L["ia_announce_say"] = "Announce interrupts in /s"
 	L["ia_message"] = "Interruptmessage"
 	L["ia_message_description"] = "Use |cff5599ff!spell|r for the interrupted spell and |cff5599ff!name|r for the name of the interrupted unit"
 	-- itemlevel
@@ -156,6 +154,8 @@ if GetLocale() == "esES" then
 	L["objective_autocollapse_desc"] = "Automatically minimizes in combat and expands out of fight"
 	L["objective_auto_collapse_login"] = "Auto collapse on login"
 	L["objective_auto_collapse_login_desc"] = "Automatically minimizes on login"
+	L["objective_auto_collapse_dungeon"] = "Auto collapse in Dungeons & Raids"
+	L["objective_auto_collapse_dungeon_desc"] = "Automatically minimizes in Dungeons & Raids"
 	-- orderhallbar
 	L["ohb_always_show"] = "Always show the Orderhallbar"
 	L["ohb_zonetext_header"] = "Zonetext"
@@ -172,10 +172,10 @@ if GetLocale() == "esES" then
 	L["count_countdown_message"] = "Countdown message"
 	L["count_!n_represents"] = "|cff5599ff!n|r represents a number (1-10)"
 	L["count_range_header"] = "Count Range & Soundfiles"
-	L["count_range_notice"] = "|cffffffff(Soundfiles are located in LolzenUI/sounds)|r"
 	L["count_range"] = "Pull count range (1-10)"
 	L["count_file"] = "Soundfile for number"
 	L["count_file_pull"] = "Soundfile for Pull"
+	L["count_file_abort"] = "Soundfile for Abort"
 	-- slashcommands
 	L["slash_rl"] = "A short version of /reload"
 	L["slash_frame"] = "Prints the name of the frame the mouse is hovering over"
@@ -268,7 +268,7 @@ if GetLocale() == "esES" then
 	L["sub_panel_unitframes_omf_title"] = "Unitframes Module: Positions [oUF_Movableframes]"
 	L["sub_panel_unitframes_omf_about"] = "Type %s to toggle anchorframes"
 	-- worldmap
-	L["wm_scale"] = "Worldmapscale [limit: 0.1 - 1]"
+	L["wm_scale"] = "Worldmapscale"
 	L["wm_coordinates"] = "Activate mouse coordinates"
 	L["wm_title_or_coordinates_color"] = "Title/Coordinates Color"
 	L["save_worldmap_position"] = "Save worldmap position"

@@ -17,8 +17,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("artifactbar", L["frame"])
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("artifactbar", 600, 154)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local height_text = ns.createFontstring("artifactbar", L["height"]..":")
-		height_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
+		height_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -16)
 
 		local height = ns.createInputbox("artifactbar", 30, 20, LolzenUIcfg.artifactbar["artifactbar_height"])
 		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
@@ -232,10 +236,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("artifactbar", L["font"])
-		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -30)
+		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -6)
+
+		local header2BG = ns.createBackground("artifactbar", 600, 80)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local font_pos_x_text = ns.createFontstring("artifactbar", L["PosX"]..":")
-		font_pos_x_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		font_pos_x_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -16)
 
 		local font_pos_x = ns.createInputbox("artifactbar", 30, 20, LolzenUIcfg.artifactbar["artifactbar_text_posx"])
 		font_pos_x:SetPoint("LEFT", font_pos_x_text, "RIGHT", 10, 0)

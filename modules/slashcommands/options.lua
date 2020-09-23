@@ -13,8 +13,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("slashcommands", LUI["desc_slashcommands"])
 
+		local aboutBG = ns.createBackground("slashcommands", 600, 204)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local header1 = ns.createHeader("slashcommands", "/rl")
-		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
+		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 4, -20)
 
 		local desc1 = ns.createFontstring("slashcommands", L["slash_rl"])
 		desc1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, 0)

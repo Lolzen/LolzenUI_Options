@@ -88,7 +88,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		-- // texture paths // --
 		
 		local normaltex_path_text = ns.createFontstring("actionbars", L["ab_normaltexture"]..":")
-		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local normaltex_path = ns.createPicker("actionbars", "buttonborder", "actionbar_buttonborder", 120, LolzenUIcfg.actionbar["actionbar_normal_texture"])
 		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", -4, -5)
@@ -220,7 +220,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -14)
 
 		local header3BG = ns.createBackground("actionbars", 600, 217)
-		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -8, -4)
 		header3BG:SetFrameLevel(1)
 
 		-- // Positions // --

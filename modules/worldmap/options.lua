@@ -13,8 +13,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("worldmap", LUI["desc_worldmap"])
 
+		local aboutBG = ns.createBackground("worldmap", 600, 106)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local scale_text = ns.createFontstring("worldmap", L["wm_scale"]..":")
-		scale_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
+		scale_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -26)
 
 		local scale = ns.createPicker("worldmap", "alpha", "worldmapframe_scale", 45, LolzenUIcfg.worldmap["worldmap_scale"])
 		scale:SetPoint("LEFT", scale_text, "RIGHT", -10, -3)

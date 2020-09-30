@@ -196,7 +196,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_text:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -15)
 
 		local color = ns.createColorTexture("artifactbar", 16, 16, LolzenUIcfg.artifactbar["artifactbar_color"], LolzenUIcfg.artifactbar["artifactbar_texture"])
-		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
+		color:SetPoint("LEFT", color_text, "RIGHT", 14, 0)
 		self.color = color
 		color.setActualColors = function()
 			LolzenUIcfg.artifactbar["artifactbar_color"] = {color:GetVertexColor()}
@@ -243,7 +243,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		header2BG:SetFrameLevel(1)
 
 		local font_pos_x_text = ns.createFontstring("artifactbar", L["PosX"]..":")
-		font_pos_x_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -16)
+		font_pos_x_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -16)
 
 		local font_pos_x = ns.createInputbox("artifactbar", 30, 20, LolzenUIcfg.artifactbar["artifactbar_text_posx"])
 		font_pos_x:SetPoint("LEFT", font_pos_x_text, "RIGHT", 10, 0)
@@ -364,7 +364,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb3 = ns.createCheckBox("artifactbar", "af_text_hover", "|cff5599ff"..L["af_mouseover_text"].."|r", LolzenUIcfg.artifactbar["artifactbar_mouseover_text"])
-		cb3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
+		cb3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", -4, -8)
 		cb3:SetScript("OnClick", function(self)
 			LolzenUIcfg.artifactbar["artifactbar_mouseover_text"] = self:GetChecked()
 			LolzenUI.SetArtifactTextVisible()

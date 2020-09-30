@@ -217,10 +217,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header3 = ns.createHeader("actionbars", L["ab_positions"])
-		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -14)
+		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", -4, -14)
 
 		local header3BG = ns.createBackground("actionbars", 600, 217)
-		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -8, -4)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
 		header3BG:SetFrameLevel(1)
 
 		-- // Positions // --

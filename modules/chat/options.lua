@@ -13,15 +13,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("chat", LUI["desc_chat"])
 
-		local scrollFrame = ns.createScrollFrame("chat", 290)
+		local scrollFrame = ns.createScrollFrame("chat", 270)
 
 		local cb1 = ns.createCheckBox("chat", "chat_custom_stamps", "|cff5599ff"..L["chat_short_chatstamps"].."|r", LolzenUIcfg.chat["chat_custom_channel_stamps"], "content")
-		cb1:SetPoint("TOPLEFT", ns.chat.content, 16, 0)
+		cb1:SetPoint("TOPLEFT", ns.chat.content, 16, -20)
 
 		cb1:SetScript("OnClick", function(self)
 			LolzenUIcfg.chat["chat_custom_channel_stamps"] = cb1:GetChecked()
 			LolzenUI.SetChatChannelStamps()
 		end)
+
+		local cb1BG = ns.createBackground("chat", 580, 170, "content")
+		cb1BG:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", -4, 26)
+		cb1BG:SetFrameLevel(1)
 
 		local cb2 = ns.createCheckBox("chat", "chat_brackets", "|cff5599ff"..L["chat_strip_brackets"].."|r", LolzenUIcfg.chat["chat_strip_brackets"], "content")
 		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, 0)
@@ -84,10 +88,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("chat", L["frame"], "content")
-		header1:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 0, -20)
+		header1:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 0, -5)
+
+		local header1BG = ns.createBackground("chat", 580, 40, "content")
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local pos_x_text = ns.createFontstring("chat", L["PosX"]..":", "content")
-		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
+		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 4, -18)
 
 		local pos_x = ns.createInputbox("chat", 30, 20, LolzenUIcfg.chat["chat_posx"], "content")
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
@@ -159,7 +167,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("chat", L["font"], "content")
-		header2:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -30)
+		header2:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", -4, -20)
+
+		local header2BG = ns.createBackground("chat", 580, 66, "content")
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local cb9 = ns.createCheckBox("chat", "chat_font_shadow", "|cff5599ff"..L["chat_font_shadow"].."|r", LolzenUIcfg.chat["chat_font_shadow"], "content")
 		cb9:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
@@ -170,7 +182,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local font_text = ns.createFontstring("chat", L["font"]..":", "content")
-		font_text:SetPoint("TOPLEFT", cb9, "BOTTOMLEFT", 0, -10)
+		font_text:SetPoint("TOPLEFT", cb9, "BOTTOMLEFT", 4, -10)
 
 		local font = ns.createPicker("chat", "font", "chat_font", 120, LolzenUIcfg.chat["chat_font"], "content")
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
@@ -242,7 +254,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header3 = ns.createHeader("chat", L["background"], "content")
-		header3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", -4, -20)
+
+		local header3BG = ns.createBackground("chat", 580, 66, "content")
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local cb10 = ns.createCheckBox("chat", "chat_backgound", "|cff5599ff"..L["chat_background"].."|r", LolzenUIcfg.chat["chat_background"], "content")
 		cb10:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -10)
@@ -253,7 +269,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local texture_text = ns.createFontstring("chat", L["texture"]..":", "content")
-		texture_text:SetPoint("TOPLEFT", cb10, "BOTTOMLEFT", 0, -10)
+		texture_text:SetPoint("TOPLEFT", cb10, "BOTTOMLEFT", 4, -10)
 
 		local texture = ns.createPicker("chat", "background", "chat_background", 120, LolzenUIcfg.chat["chat_background_texture"], "content")
 		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
@@ -283,12 +299,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header4 = ns.createHeader("chat", L["chat_header_link_color"], "content")
-		header4:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -30)
-		
-		local color_text = ns.createFontstring("chat", L["color"]..":")
-		color_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -15)
+		header4:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", -4, -20)
 
-		local color = ns.createColorTexture("chat", 16, 16, LolzenUIcfg.chat["chat_link_color"], "LolzenUI Standard")
+		local header4BG = ns.createBackground("chat", 580, 33, "content")
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
+
+		local color_text = ns.createFontstring("chat", L["color"]..":", "content")
+		color_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 4, -15)
+
+		local color = ns.createColorTexture("chat", 16, 16, LolzenUIcfg.chat["chat_link_color"], "LolzenUI Standard", "content")
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)
 		color.setActualColors = function()
 			LolzenUIcfg.chat["chat_link_color"] = {color:GetVertexColor()}
@@ -298,10 +318,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_f:SetAllPoints(color)
 
 		local header5 = ns.createHeader("chat", L["chat_header_flags_and_sticky_channels"], "content")
-		header5:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", 0, -30)
+		header5:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", -4, -20)
+
+		local header5BG = ns.createBackground("chat", 580, 274, "content")
+		header5BG:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", -4, -4)
+		header5BG:SetFrameLevel(1)
 
 		local chat_afkflag_text = ns.createFontstring("chat", L["afk_flag"]..":", "content")
-		chat_afkflag_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 0, -10)
+		chat_afkflag_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 4, -14)
 
 		local chat_afkflag = ns.createInputbox("chat", 50, 20, LolzenUIcfg.chat["chat_flag_afk"], "content")
 		chat_afkflag:SetPoint("LEFT", chat_afkflag_text, "RIGHT", 10, 0)
@@ -353,7 +377,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local sticky_say = ns.createCheckBox("chat", "sticky_say", "|cff5599ff"..L["chat_sticky_say"].."|r", LolzenUIcfg.chat["chat_sticky_say"], "content")
-		sticky_say:SetPoint("TOPLEFT", chat_dndflag_text, "BOTTOMLEFT", 0, -10)
+		sticky_say:SetPoint("TOPLEFT", chat_dndflag_text, "BOTTOMLEFT", -4, -10)
 
 		sticky_say:SetScript("OnClick", function(self)
 			LolzenUIcfg.chat["chat_sticky_say"] = sticky_say:GetChecked()

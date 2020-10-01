@@ -13,6 +13,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("interruptannouncer", LUI["desc_interruptannouncer"])
 
+		local aboutBG = ns.createBackground("interruptannouncer", 600, 106)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("interruptannouncer", "instanceannounce", "|cff5599ff"..L["ia_announce_intance"].."|r", LolzenUIcfg.interruptannouncer["interruptannoucer_instance"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
@@ -28,7 +32,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local msg_text = ns.createFontstring("interruptannouncer", L["ia_message"]..":")
-		msg_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -13)
+		msg_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 4, -13)
 
 		local msg = ns.createInputbox("interruptannouncer", 400, 20, LolzenUIcfg.interruptannouncer["interruptannouncer_msg"])
 		msg:SetPoint("LEFT", msg_text, "RIGHT", 10, 0)

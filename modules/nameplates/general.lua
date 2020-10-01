@@ -17,9 +17,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("nameplates", L["Preview"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("nameplates", 600, 40)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local prev_np_frame = CreateFrame("Frame", nil, ns["nameplates"])
 		prev_np_frame:SetSize(LolzenUIcfg.nameplates.general["np_width"]*LolzenUIcfg.nameplates.general["np_selected_scale"], LolzenUIcfg.nameplates.general["np_height"]*LolzenUIcfg.nameplates.general["np_selected_scale"])
-		prev_np_frame:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
+		prev_np_frame:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 8, -25)
 
 		local prev_np = prev_np_frame:CreateTexture(nil, "BACKGROUND")
 		prev_np:SetAllPoints(prev_np_frame)
@@ -52,8 +56,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		prev_np_raidmark:SetPoint(LolzenUIcfg.nameplates.general["np_raidmark_anchor"], prev_np, LolzenUIcfg.nameplates.general["np_raidmark_posx"], LolzenUIcfg.nameplates.general["np_raidmark_posy"])
 		prev_np_raidmark:SetSize(LolzenUIcfg.nameplates.general["np_raidmark_size"], LolzenUIcfg.nameplates.general["np_raidmark_size"])
 
+		local prev_np_frameBG = ns.createBackground("nameplates", 600, 58)
+		prev_np_frameBG:SetPoint("TOPLEFT", prev_np_frame, "BOTTOMLEFT", -12, -14)
+		prev_np_frameBG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("nameplates", "targetindicator", "|cff5599ff"..L["np_show_targetindicator"].."|r", LolzenUIcfg.nameplates.general["np_targetindicator"])
-		cb1:SetPoint("TOPLEFT", prev_np, "BOTTOMLEFT", 0, -20)
+		cb1:SetPoint("TOPLEFT", prev_np, "BOTTOMLEFT", -8, -20)
 
 		cb1:SetScript("OnClick", function(self)
 			LolzenUIcfg.nameplates.general["np_targetindicator"] = cb1:GetChecked()
@@ -90,10 +98,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("nameplates", L["np_nameplates_general_header"])
-		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -20)
+		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -8)
+
+		local header2BG = ns.createBackground("nameplates", 600, 33)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local height_text = ns.createFontstring("nameplates", L["height"]..":")
-		height_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		height_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -15)
 
 		local height = ns.createInputbox("nameplates", 40, 20, LolzenUIcfg.nameplates.general["np_height"])
 		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
@@ -200,10 +212,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header3 = ns.createHeader("nameplates", L["np_level_and_name_header"])
-		header3:SetPoint("TOPLEFT", height_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", height_text, "BOTTOMLEFT", -4, -17)
+
+		local header3BG = ns.createBackground("nameplates", 600, 64)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local lvlname_font_text = ns.createFontstring("nameplates", L["font"]..":")
-		lvlname_font_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -10)
+		lvlname_font_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -17)
 
 		local lvlname_font = ns.createPicker("nameplates", "font", "lvlname_font", 120, LolzenUIcfg.nameplates.general["np_lvlname_font"])
 		lvlname_font:SetPoint("LEFT", lvlname_font_text, "RIGHT", -10, -3)
@@ -323,10 +339,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header4 = ns.createHeader("nameplates", L["raidmarks"])
-		header4:SetPoint("TOPLEFT", lvlname_pos_x_text, "BOTTOMLEFT", 0, -30)
+		header4:SetPoint("TOPLEFT", lvlname_pos_x_text, "BOTTOMLEFT", -4, -20)
+
+		local header4BG = ns.createBackground("nameplates", 600, 48)
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
 
 		local cb3 = ns.createCheckBox("nameplates", "raidtargetindicator", "|cff5599ff"..L["show_raidmarks"].."|r", LolzenUIcfg.nameplates.general["np_raidtargetindicator"])
-		cb3:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -5)
+		cb3:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -7)
 
 		cb3:SetScript("OnClick", function(self)
 			LolzenUIcfg.nameplates.general["np_raidtargetindicator"] = cb3:GetChecked()
@@ -345,7 +365,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local rt_size_text = ns.createFontstring("nameplates", L["size"]..":")
-		rt_size_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, 0)
+		rt_size_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 4, 0)
 
 		local rt_size = ns.createInputbox("nameplates", 30, 20, LolzenUIcfg.nameplates.general["np_raidmark_size"])
 		rt_size:SetPoint("LEFT", rt_size_text, "RIGHT", 10, 0)
@@ -440,10 +460,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header5 = ns.createHeader("nameplates", L["auras"])
-		header5:SetPoint("TOPLEFT", rt_size_text, 0, -30)
+		header5:SetPoint("TOPLEFT", rt_size_text, -4, -23)
+
+		local header5BG = ns.createBackground("nameplates", 600, 130)
+		header5BG:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", -4, -4)
+		header5BG:SetFrameLevel(1)
 
 		local aura_type_text = ns.createFontstring("nameplates", L["show"]..":")
-		aura_type_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 0, -8)
+		aura_type_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 4, -16)
 
 		local aura_type = ns.createPicker("nameplates", "uf_auratype", "np_aura_type", 70, LolzenUIcfg.nameplates.general["np_aura_show_type"])
 		aura_type:SetPoint("LEFT", aura_type_text, "RIGHT", -10, -3)
@@ -623,7 +647,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb5 = ns.createCheckBox("nameplates", "np_show_only_player_auras", "|cff5599ff"..L["show_only_player_auras"].."|r", LolzenUIcfg.nameplates.general["np_aura_show_only_player"])
-		cb5:SetPoint("TOPLEFT", aura_growthx_text, "BOTTOMLEFT", 0, -8)
+		cb5:SetPoint("TOPLEFT", aura_growthx_text, "BOTTOMLEFT", -4, -8)
 
 		local cb6 = ns.createCheckBox("nameplates", "np_desature_nonplayer_auras", "|cff5599ff"..L["desature_auras_not_by_player"].."|r", LolzenUIcfg.nameplates.general["np_aura_desature_nonplayer_auras"])
 		cb6:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 0, 0)

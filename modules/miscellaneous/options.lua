@@ -16,6 +16,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("miscellaneous", L["misc_rep_colors_header"])
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("miscellaneous", 600, 243)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("miscellaneous", "alternateFactionColors", "|cff5599ff"..L["misc_use_alternative_rep_colors"].."|r", LolzenUIcfg.miscellaneous["misc_alternative_faction_colors"])
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 		cb1:SetScript("OnClick", function(self)
@@ -128,7 +132,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_f_exalted:SetAllPoints(color_exalted)
 
 		local header2 = ns.createHeader("miscellaneous", L["misc_microbuttons"])
-		header2:SetPoint("TOPLEFT", color_text_exalted, "BOTTOMLEFT", 0, -20)
+		header2:SetPoint("TOPLEFT", color_text_exalted, "BOTTOMLEFT", 0, -18)
+
+		local header2BG = ns.createBackground("miscellaneous", 600, 30)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local cb2 = ns.createCheckBox("miscellaneous", "misc_microbttons", "|cff5599ff"..L["misc_hide_microbuttons"].."|r", LolzenUIcfg.miscellaneous["misc_hide_microbuttons"])
 		cb2:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)

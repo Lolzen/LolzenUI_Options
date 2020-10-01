@@ -18,8 +18,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("buffs", L["Preview"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("buffs", 600, 48)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local button = ns.createButtonTexture("buffs", LolzenUIcfg.buffs["buff_size"], GetSpellTexture(546), nil)
-		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
+		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 6, -12)
 
 		local bufftex = ns.createButtonOverlay("buffs", button, LBT:Fetch("buff", LolzenUIcfg.buffs["buff_aura_texture"]))
 		bufftex:SetPoint("TOPLEFT", button, "TOPLEFT", -2, 2)
@@ -62,10 +66,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 --		tempenchtex:SetVertexColor(0, 0, 0)
 
 		local header2 = ns.createHeader("buffs", "Buffs:")
-		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -30)
+		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", -6, -14)
+
+		local header2BG = ns.createBackground("buffs", 600, 140)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local buff_size_text = ns.createFontstring("buffs", L["buff_size"]..":")
-		buff_size_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		buff_size_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -16)
 
 		local buff_size = ns.createInputbox("buffs", 30, 20, LolzenUIcfg.buffs["buff_size"])
 		buff_size:SetPoint("LEFT", buff_size_text, "RIGHT", 10, 0)
@@ -256,10 +264,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header3 = ns.createHeader("buffs", L["buff_duration_header"]..":")
-		header3:SetPoint("TOPLEFT", debufftex_path_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", debufftex_path_text, "BOTTOMLEFT", -4, -20)
+
+		local header3BG = ns.createBackground("buffs", 600, 80)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local dur_pos_x_text = ns.createFontstring("buffs", L["PosX"]..":")
-		dur_pos_x_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
+		dur_pos_x_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -16)
 
 		local dur_pos_x = ns.createInputbox("buffs", 30, 20, LolzenUIcfg.buffs["buff_duration_posx"])
 		dur_pos_x:SetPoint("LEFT", dur_pos_x_text, "RIGHT", 10, 0)
@@ -391,10 +403,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header4 = ns.createHeader("buffs", L["buff_counter_header"]..":")
-		header4:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -30)
+		header4:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", -4, -4)
+
+		local header4BG = ns.createBackground("buffs", 600, 63)
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
 
 		local count_pos_x_text = ns.createFontstring("buffs", L["PosX"]..":")
-		count_pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
+		count_pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 4, -16)
 
 		local count_pos_x = ns.createInputbox("buffs", 30, 20, LolzenUIcfg.buffs["buff_counter_posx"])
 		count_pos_x:SetPoint("LEFT", count_pos_x_text, "RIGHT", 10, 0)

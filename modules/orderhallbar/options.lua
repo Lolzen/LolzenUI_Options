@@ -14,6 +14,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("orderhallbar", LUI["desc_orderhallbar"])
 
+		local aboutBG = ns.createBackground("orderhallbar", 600, 33)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("orderhallbar", "alwaysshow", "|cff5599ff"..L["ohb_always_show"].."|r", LolzenUIcfg.orderhallbar["ohb_always_show"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
@@ -23,13 +27,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("orderhallbar", L["background"])
-		header1:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -30)
-		
+		header1:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -7)
+
+		local header1BG = ns.createBackground("orderhallbar", 600, 40)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local ohb_bg_text = ns.createFontstring("orderhallbar", L["texture"]..":")
-		ohb_bg_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
+		ohb_bg_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 4, -18)
 
 		local ohb_bg = ns.createPicker("orderhallbar", "background", "oh_bg_statusbar", 120, LolzenUIcfg.orderhallbar["ohb_background"])
-		ohb_bg:SetPoint("LEFT", ohb_bg_text, "RIGHT", -10, -5)
+		ohb_bg:SetPoint("LEFT", ohb_bg_text, "RIGHT", -10, -3)
 		ohb_bg.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_background"] = UIDropDownMenu_GetSelectedName(ohb_bg)
 			LolzenUI.setOHBBGTexture()
@@ -54,17 +62,21 @@ f:SetScript("OnEvent", function(self, event, addon)
 		alpha_text:SetPoint("LEFT", color, "RIGHT", 10, 0)
 
 		local alpha = ns.createPicker("orderhallbar", "alpha", "oh_bg_alpha", 45, LolzenUIcfg.orderhallbar["ohb_background_alpha"])
-		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -5)
+		alpha:SetPoint("LEFT", alpha_text, "RIGHT", -10, -3)
 		alpha.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_background_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(alpha)])
 			LolzenUI.setOHBBGAlpha()
 		end
 
 		local header2 = ns.createHeader("orderhallbar", L["ohb_zonetext_header"])
-		header2:SetPoint("TOPLEFT", ohb_bg_text, "BOTTOMLEFT", 0, -30)
+		header2:SetPoint("TOPLEFT", ohb_bg_text, "BOTTOMLEFT", -4, -20)
+
+		local header2BG = ns.createBackground("orderhallbar", 600, 63)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local zone_color_text = ns.createFontstring("orderhallbar", L["color"]..":")
-		zone_color_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		zone_color_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -16)
 
 		local zone_color = ns.createColorTexture("orderhallbar", 16, 16, LolzenUIcfg.orderhallbar["ohb_zone_color"], "LolzenUI Standard")
 		zone_color:SetPoint("LEFT", zone_color_text, "RIGHT", 10, 0)
@@ -77,10 +89,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		zone_color_f:SetAllPoints(zone_color)
 
 		local zone_font_text = ns.createFontstring("orderhallbar", L["font"]..":")
-		zone_font_text:SetPoint("TOPLEFT", zone_color_text, "BOTTOMLEFT", 0, -10)
+		zone_font_text:SetPoint("TOPLEFT", zone_color_text, "BOTTOMLEFT", 0, -14)
 
 		local zone_font = ns.createPicker("orderhallbar", "font", "orderhallbar_font", 120, LolzenUIcfg.orderhallbar["ohb_zone_font"])
-		zone_font:SetPoint("LEFT", zone_font_text, "RIGHT", -10, -5)
+		zone_font:SetPoint("LEFT", zone_font_text, "RIGHT", -10, -3)
 		zone_font.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_zone_font"] = UIDropDownMenu_GetSelectedName(zone_font)
 			LolzenUI.setOHBZoneFont()
@@ -116,20 +128,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 		zone_font_flag_text:SetPoint("LEFT", zone_font_size, "RIGHT", 10, 0)
 
 		local zone_font_flag = ns.createPicker("orderhallbar", "flag", "orderhallbar_font_flag", 120, LolzenUIcfg.orderhallbar["ohb_zone_font_flag"])
-		zone_font_flag:SetPoint("LEFT", zone_font_flag_text, "RIGHT", -10, -5)
+		zone_font_flag:SetPoint("LEFT", zone_font_flag_text, "RIGHT", -10, -3)
 		zone_font_flag.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_zone_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(zone_font_flag)]
 			LolzenUI.setOHBZoneFont()
 		end
 
 		local header3 = ns.createHeader("orderhallbar", L["ohb_currency_header"])
-		header3:SetPoint("TOPLEFT", zone_font_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", zone_font_text, "BOTTOMLEFT", -4, -16)
+
+		local header3BG = ns.createBackground("orderhallbar", 600, 63)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local font_text = ns.createFontstring("orderhallbar", L["font"]..":")
-		font_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
+		font_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -16)
 
 		local font = ns.createPicker("orderhallbar", "font", "orderhallbar_font", 120, LolzenUIcfg.orderhallbar["ohb_currency_font"])
-		font:SetPoint("LEFT", font_text, "RIGHT", -10, -5)
+		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
 		font.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_currency_font"] = UIDropDownMenu_GetSelectedName(font)
 			LolzenUI.setOHBCurrencyFont()
@@ -165,7 +181,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		font_flag_text:SetPoint("LEFT", font_size, "RIGHT", 10, 0)
 
 		local font_flag = ns.createPicker("orderhallbar", "flag", "orderhallbar_font_flag", 120, LolzenUIcfg.orderhallbar["ohb_currency_font_flag"])
-		font_flag:SetPoint("LEFT", font_flag_text, "RIGHT", -10, -5)
+		font_flag:SetPoint("LEFT", font_flag_text, "RIGHT", -10, -3)
 		font_flag.OnClick = function()
 			LolzenUIcfg.orderhallbar["ohb_currency_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(font_flag)]
 			LolzenUI.setOHBCurrencyFont()

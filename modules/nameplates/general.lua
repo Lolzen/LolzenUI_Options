@@ -31,7 +31,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		prev_np_lvlname:SetText("|cffffff00110|r + Random Name")
 		prev_np_lvlname:SetPoint(LolzenUIcfg.nameplates.general["np_lvlname_anchor"], prev_np, LolzenUIcfg.nameplates.general["np_lvlname_posx"]*LolzenUIcfg.nameplates.general["np_selected_scale"], LolzenUIcfg.nameplates.general["np_lvlname_posy"]*LolzenUIcfg.nameplates.general["np_selected_scale"])
 
-		local prev_np_threatglow = CreateFrame("Frame", nil, ns["nameplates"])
+		local prev_np_threatglow = CreateFrame("Frame", nil, ns["nameplates"], "BackdropTemplate")
 		prev_np_threatglow:SetFrameStrata("BACKGROUND")
 		prev_np_threatglow:SetBackdrop({
 			edgeFile ="Interface\\AddOns\\LolzenUI\\media\\glow", edgeSize = 5,

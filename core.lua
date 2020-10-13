@@ -21,7 +21,7 @@ function ns.createOptionPanels()
 	for i=1, #LolzenUI.modules do
 		if LolzenUIcfg.modules[LolzenUI.modules[i].name] == true and LolzenUI.modules[i].hasOptions == true then
 			if not ns[LolzenUI.modules[i].name] then
-				ns[LolzenUI.modules[i].name] = CreateFrame("Frame", LolzenUI.modules[i].name.."panel", LolzenUI.panel)
+				ns[LolzenUI.modules[i].name] = CreateFrame("Frame", LolzenUI.modules[i].name.."panel", LolzenUI.panel, "BackdropTemplate")
 				ns[LolzenUI.modules[i].name].name = L[LolzenUI.modules[i].name]
 				ns[LolzenUI.modules[i].name].parent = LolzenUI.panel.name
 				InterfaceOptions_AddCategory(ns[LolzenUI.modules[i].name])
@@ -470,9 +470,9 @@ ns.createColorPicker = function(module, colorRect, colorVars, sub)
 
 	local colorpickerframe
 	if sub ~= nil then
-		colorpickerframe = CreateFrame("Frame", nil, ns[module][sub])
+		colorpickerframe = CreateFrame("Frame", nil, ns[module][sub], "BackdropTemplate")
 	else
-		colorpickerframe = CreateFrame("Frame", nil, ns[module])
+		colorpickerframe = CreateFrame("Frame", nil, ns[module], "BackdropTemplate")
 	end
 	colorpickerframe:SetFrameStrata("HIGH")
 	colorpickerframe:EnableMouse(true)
@@ -496,7 +496,7 @@ end
 
 -- scrollable content
 ns.createScrollFrame = function(module, max)
-	ns[module].scrollframe = CreateFrame("ScrollFrame", nil, ns[module])
+	ns[module].scrollframe = CreateFrame("ScrollFrame", nil, ns[module], "BackdropTemplate")
 	ns[module].scrollframe:SetPoint("TOPLEFT", ns[module], 0, -56) 
 	ns[module].scrollframe:SetPoint("BOTTOMRIGHT", 0, 5)
 
@@ -512,7 +512,7 @@ ns.createScrollFrame = function(module, max)
 		self:GetParent():SetVerticalScroll(value) 
 	end)
 
-	ns[module].content = CreateFrame("Frame", nil, ns[module].scrollframe) 
+	ns[module].content = CreateFrame("Frame", nil, ns[module].scrollframe, "BackdropTemplate") 
 	ns[module].content:SetSize(128, 80) 
 	ns[module].scrollframe.content = ns[module].content
  

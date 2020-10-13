@@ -1,7 +1,7 @@
-## Interface: 80300
+## Interface: 90000
 ## Author: Lolzen
 ## Title: Lolzen User interface Options
-## Version: 8.3.7_r1
+## Version: 9.0.1_r1
 ## Notes: Options for LolzenUI
 ## Dependencies: LolzenUI
 ## LoadOnDemand: 1

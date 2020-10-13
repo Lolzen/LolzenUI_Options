@@ -231,7 +231,6 @@ if GetLocale() == "ptBR" then
 	L["sub_panel_unitframes_party"] = "Party"
 	L["sub_panel_unitframes_party_title"] = "Unitframes Module: Party Options"
 	L["sub_panel_unitframes_party_use_LolzenUI"] = "Use LolzenUI integrated Partyframes"
-	L["sub_panel_unitframes_party_use_vertical_layout"] = "Use Vertikal Layout"
 	L["sub_panel_unitframes_raid"] = "Raid"
 	L["sub_panel_unitframes_raid_title"] = "Unitframes Module: Raid Options"
 	L["sub_panel_unitframes_raid_use_LolzenUI"] = "Use LolzenUI integrated Raidframes"

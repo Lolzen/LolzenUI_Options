@@ -231,7 +231,6 @@ if GetLocale() == "deDE" then
 	L["sub_panel_unitframes_party"] = "Gruppe"
 	L["sub_panel_unitframes_party_title"] = "Einheitenfenster Modul: Gruppe Optionen"
 	L["sub_panel_unitframes_party_use_LolzenUI"] = "Benutze LolzenUI integrierte Gruppenfenster"
-	L["sub_panel_unitframes_party_use_vertical_layout"] = "Benutze Vertikales Layout"
 	L["sub_panel_unitframes_raid"] = "Schlachtzug"
 	L["sub_panel_unitframes_raid_title"] = "Einheitenfenster Modul: Schlachtzug Optionen"
 	L["sub_panel_unitframes_raid_use_LolzenUI"] = "Benutze LolzenUI integrierte Raidruppenfenster"

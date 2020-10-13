@@ -296,7 +296,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("uf_raid_options", L["uf_readycheckindicator_header"])
 		header3:SetPoint("TOPLEFT", ri_size_text, 0, -30)
 
-		local rc_size_text = ns.createFontstring("uf_raid_options", L["size"])
+		local rc_size_text = ns.createFontstring("uf_raid_options", L["size"]..":")
 		rc_size_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -15)
 
 		local rc_size = ns.createInputbox("uf_raid_options", 30, 20, LolzenUIcfg.unitframes.raid["uf_raid_rc_size"])

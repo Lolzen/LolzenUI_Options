@@ -23,16 +23,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUI.ToggleOUFParty()
 		end)
 
-		local cb2 = ns.createCheckBox("uf_party_options", "uf_party_vertical", "|cff5599ff"..L["sub_panel_unitframes_party_use_vertical_layout"].."|r", LolzenUIcfg.unitframes.party["uf_party_use_vertical_layout"])
-		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, 0)
-
-		cb2:SetScript("OnClick", function(self)
-			LolzenUIcfg.unitframes.party["uf_party_use_vertical_layout"] = cb2:GetChecked()
-			LolzenUI.ToggleOUFParty()
-		end)
-
 		local width_text = ns.createFontstring("uf_party_options", L["width"]..":")
-		width_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -8)
+		width_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
 
 		local width = ns.createInputbox("uf_party_options", 40, 20, LolzenUIcfg.unitframes.party["uf_party_width"])
 		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)

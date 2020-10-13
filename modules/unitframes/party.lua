@@ -78,16 +78,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("uf_party_options", L["uf_healthpoints"])
 		header1:SetPoint("TOPLEFT", width_text, 0, -30)
 
-		local cb3 = ns.createCheckBox("uf_party_options", "uf_party_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.party["uf_party_use_own_hp_font_settings"])
-		cb3:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
+		local cb2 = ns.createCheckBox("uf_party_options", "uf_party_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.party["uf_party_use_own_hp_font_settings"])
+		cb2:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
-		cb3:SetScript("OnClick", function(self)
-			LolzenUIcfg.unitframes.party["uf_party_use_own_hp_font_settings"] = cb3:GetChecked()
+		cb2:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.party["uf_party_use_own_hp_font_settings"] = cb2:GetChecked()
 			LolzenUI.SetUFPartyOwnFont()
 		end)
 
 		local hp_pos_x_text = ns.createFontstring("uf_party_options", L["PosX"]..":")
-		hp_pos_x_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -8)
+		hp_pos_x_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -8)
 
 		local hp_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes.party["uf_party_hp_posx"])
 		hp_pos_x:SetPoint("LEFT", hp_pos_x_text, "RIGHT", 10, 0)
@@ -197,16 +197,16 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("uf_party_options", L["uf_roleindicator_header"])
 		header2:SetPoint("TOPLEFT", hp_font_text, 0, -30)
 
-		local cb4 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ff"..L["uf_show_roleindicator"].."|r", LolzenUIcfg.unitframes.party["uf_party_showroleindicator"])
-		cb4:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		local cb3 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ff"..L["uf_show_roleindicator"].."|r", LolzenUIcfg.unitframes.party["uf_party_showroleindicator"])
+		cb3:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
 
-		cb4:SetScript("OnClick", function(self)
-			LolzenUIcfg.unitframes.party["uf_party_showroleindicator"] = cb4:GetChecked()
+		cb3:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.party["uf_party_showroleindicator"] = cb3:GetChecked()
 			LolzenUI.SetUFPartyShowRoleIndicator()
 		end)
 
 		local ri_size_text = ns.createFontstring("uf_party_options", L["size"]..":")
-		ri_size_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
+		ri_size_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -8)
 
 		local ri_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes.party["uf_party_ri_size"])
 		ri_size:SetPoint("LEFT", ri_size_text, "RIGHT", 10, 0)

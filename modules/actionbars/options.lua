@@ -294,7 +294,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local box = {}
 		for num, bar in pairs(actionbars) do
 			if not box[num] then
-				box[num] = CreateFrame("Frame", nil, ns.actionbars)
+				box[num] = CreateFrame("Frame", nil, ns.actionbars, "BackdropTemplate")
 				box[num]:SetSize(570, 30)
 				box[num]:SetBackdrop(backdrop)
 				box[num]:SetBackdropColor(0.1, 0.1, 0.1, 0.5)
@@ -309,7 +309,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 				box[num].name:SetParent(box[num])
 				box[num].name:SetPoint("LEFT", box[num], "LEFT", 6, 0)
 
-				box[num].editbox_x = CreateFrame("EditBox", "x"..num, ns.actionbars)
+				box[num].editbox_x = CreateFrame("EditBox", "x"..num, ns.actionbars, "BackdropTemplate")
 				box[num].editbox_x:SetSize(38, 14)
 				box[num].editbox_x:SetMaxLetters(5)
 				box[num].editbox_x:SetAutoFocus(false)

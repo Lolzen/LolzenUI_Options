@@ -1,7 +1,7 @@
 ## Interface: 90000
 ## Author: Lolzen
 ## Title: Lolzen User interface Options
-## Version: 9.0.1_r1
+## Version: 9.0.1_r3
 ## Notes: Options for LolzenUI
 ## Dependencies: LolzenUI
 ## LoadOnDemand: 1

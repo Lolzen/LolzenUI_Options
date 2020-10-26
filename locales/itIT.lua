@@ -209,7 +209,6 @@ if GetLocale() == "itIT" then
 	L["uf_general_switch_value_and_percent_order"] = "Use [Percent]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Points] instead of [Points]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Percent]"
 	L["uf_general_use_short_values"] = "Use short values (34m5, 3k2, etc)"
 	L["uf_general_use dot_divider"] = "Use dot divider on short values (34.5m, 3.2k, etc)"
-	L["uf_general_notice_reenables_options_below"] = "(Reenables options below)"
 	L["uf_general_notice_activate_hpperc_for_this"] = "Enable HP percent for this"
 	L["uf_general_notice_deactivate_hpperc_for_this"] = "Disable HP percent for this"
 	L["uf_general_notice_activate_hpval_and_hpperc_for_this"] = "Enable HP points & HP percent for this"

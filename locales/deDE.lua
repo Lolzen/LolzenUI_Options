@@ -209,7 +209,6 @@ if GetLocale() == "deDE" then
 	L["uf_general_switch_value_and_percent_order"] = "Benutze [Prozent]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Punkte] statt [Punkte]"..LolzenUIcfg.unitframes.general["uf_val_perc_divider"].."[Prozent]"
 	L["uf_general_use_short_values"] = "Benutze kurze Zahlen (34m5, 3k2, etc)"
 	L["uf_general_use dot_divider"] = "Benutze punkttrennung bei kurzen Zahlen (34.5m, 3.2k, etc)"
-	L["uf_general_notice_reenables_options_below"] = "(Reaktiviert die Optionen unterhalb)"
 	L["uf_general_notice_activate_hpperc_for_this"] = "Aktiviere HP Prozent hierfür"
 	L["uf_general_notice_deactivate_hpperc_for_this"] = "Deaktiviere HP Prozent hierfür"
 	L["uf_general_notice_activate_hpval_and_hpperc_for_this"] = "Aktiviere HPPunkte & HP Prozent hierfür"

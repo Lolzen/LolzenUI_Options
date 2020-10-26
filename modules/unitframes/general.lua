@@ -16,7 +16,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ff"..L["uf_general_use_hp_percent"].."|r", LolzenUIcfg.unitframes.general["uf_use_hp_percent"], "content")
 		cb1:SetPoint("TOPLEFT", ns.unitframes.content, 16, 0)
 
-		local cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ff"..L["uf_general_use_both_value_and_percent"].." "..L["uf_general_notice_reenables_options_below"].."|r", LolzenUIcfg.unitframes.general["uf_use_val_and_perc"], "content")
+		local cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ff"..L["uf_general_use_both_value_and_percent"].."|r", LolzenUIcfg.unitframes.general["uf_use_val_and_perc"], "content")
 		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -0)
 
 		local perc_val_divider_text = ns.createFontstring("unitframes", L["uf_general_hpdivider_text"]..":", "content")
@@ -28,42 +28,58 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb3 = ns.createCheckBox("unitframes", "uf_perc_first", "|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r", LolzenUIcfg.unitframes.general["uf_perc_first"], "content")
 		cb3:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -0)
 
+		cb3:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.general["uf_perc_first"] = cb3:GetChecked()
+			LolzenUI.SetUFTagUpdate()
+		end)
+
 		local cb4 = ns.createCheckBox("unitframes", "uf_siVal", "|cff5599ff"..L["uf_general_use_short_values"].."|r", LolzenUIcfg.unitframes.general["uf_use_sivalue"], "content")
 		cb4:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -0)
+
+		cb4:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.general["uf_use_sivalue"] = cb4:GetChecked()
+			LolzenUI.SetUFTagUpdate()
+		end)
 
 		local cb5 = ns.createCheckBox("unitframes", "uf_siVal_dot", "|cff5599ff"..L["uf_general_use dot_divider"].."|r", LolzenUIcfg.unitframes.general["uf_use_dot_format"], "content")
 		cb5:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -0)
 
+		cb5:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.general["uf_use_dot_format"] = cb5:GetChecked()
+			LolzenUI.SetUFTagUpdate()
+		end)
+
 		cb1:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.general["uf_use_hp_percent"] = cb1:GetChecked()
+			LolzenUI.SetUFTagUpdate()
 			if cb1:GetChecked() == true then
 				cb2:Enable()
-				cb4:Disable()
-				cb5:Disable()
-				uf_hp_val_and_percText:SetText("|cff5599ff"..L["uf_general_use_both_value_and_percent"].." "..L["uf_general_notice_reenables_options_below"].."|r")
 				if cb2:GetChecked() == true then
 					cb3:Enable()
+					cb4:Enable()
 					uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r")
+					uf_hp_val_and_percText:SetText("|cff5599ff"..L["uf_general_use_both_value_and_percent"].."|r")
 				else
 					cb3:Disable()
-					uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpval_and_hpperc_for_this"].."|r")
+					cb4:Disable()
+					uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
+					uf_hp_val_and_percText:SetText("|cff5599ff"..L["uf_general_use_both_value_and_percent"].."|r")
 				end
 				if cb2:GetChecked() == true then
 					perc_val_divider_text:Show()
 					perc_val_divider:Show()
+					uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r |cffff5555"..L["uf_general_notice_deactivate_hpperc_for_this"].."|r")
 				else
 					perc_val_divider_text:Hide()
 					perc_val_divider:Hide()
+					uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r")
 				end
-				uf_siValText:SetText("|cff5599ff"..L["uf_general_use_short_values"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
-				uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r |cffff5555"..L["uf_general_notice_deactivate_hpperc_for_this"].."|r")
+				uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r")
 			else
 				cb2:Disable()
 				cb3:Disable()
-				cb4:Enable()
-				cb5:Enable()
 				perc_val_divider_text:Hide()
 				perc_val_divider:Hide()
-				uf_siValText:SetText("|cff5599ff"..L["uf_general_use_short_values"].."|r")
 				uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
 				uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r")
 				uf_hp_val_and_percText:SetText("|cff5599ff"..L["uf_general_use_both_value_and_percent"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
@@ -76,23 +92,23 @@ f:SetScript("OnEvent", function(self, event, addon)
 				cb4:Enable()
 				cb5:Enable()
 			else
-				cb2:Disable()
 				cb3:Disable()
 				cb4:Disable()
 				cb5:Disable()
-				uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpval_and_hpperc_for_this"].."|r")
+				uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
 				uf_siValText:SetText("|cff5599ff"..L["uf_general_use_short_values"].."|r |cffff5555"..L["uf_general_notice_deactivate_hpperc_for_this"].."|r")
+				uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r |cffff5555"..L["uf_general_notice_deactivate_hpperc_for_this"].."|r")
 			end
 		else
 			cb2:Disable()
 			cb3:Disable()
-			cb4:Enable()
-			cb5:Enable()
 			uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
 			uf_hp_val_and_percText:SetText("|cff5599ff"..L["uf_general_use_both_value_and_percent"].."|r |cffff5555"..L["uf_general_notice_activate_hpperc_for_this"].."|r")
 		end
 
 		cb2:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.general["uf_use_val_and_perc"] = cb2:GetChecked()
+			LolzenUI.SetUFTagUpdate()
 			if cb2:GetChecked() == true then
 				cb3:Enable()
 				cb4:Enable()
@@ -109,8 +125,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 				perc_val_divider_text:Hide()
 				perc_val_divider:Hide()
 				uf_perc_firstText:SetText("|cff5599ff"..L["uf_general_switch_value_and_percent_order"].."|r |cffff5555"..L["uf_general_notice_activate_hpval_and_hpperc_for_this"].."|r")
-				uf_siValText:SetText("|cff5599ff"..L["uf_general_use_short_values"].."|r |cffff5555"..L["uf_general_notice_deactivate_hpperc_for_this"].."|r")
-				uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r |cffff5555"..L["uf_general_notice_deactivate_hpperc_for_this"].."|r")
+				uf_siValText:SetText("|cff5599ff"..L["uf_general_use_short_values"].."|r |cffff5555"..L["uf_general_notice_activate_hpval_and_hpperc_for_this"].."|r")
+				uf_siVal_dotText:SetText("|cff5599ff"..L["uf_general_use dot_divider"].."|r |cffff5555"..L["uf_general_notice_activate_hpval_and_hpperc_for_this"].."|r")
 			end
 		end)
 
@@ -256,12 +272,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local applyButton = ns.createApplyButton("unitframes")
 		applyButton:SetScript("OnClick", function()
-			LolzenUIcfg.unitframes.general["uf_use_hp_percent"] = cb1:GetChecked()
-			LolzenUIcfg.unitframes.general["uf_use_val_and_perc"] = cb2:GetChecked()
-			LolzenUIcfg.unitframes.general["uf_perc_first"] = cb3:GetChecked()
+			
 			LolzenUIcfg.unitframes.general["uf_val_perc_divider"] = perc_val_divider:GetText()
-			LolzenUIcfg.unitframes.general["uf_use_sivalue"] = cb4:GetChecked()
-			LolzenUIcfg.unitframes.general["uf_use_dot_format"] = cb5:GetChecked()
+			
+			
+			
+			
 			LolzenUIcfg.unitframes.general["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUIcfg.unitframes.general["uf_border"] = UIDropDownMenu_GetSelectedName(border)
 			LolzenUIcfg.unitframes.general["uf_ri_size"] = tonumber(rt_size:GetText())

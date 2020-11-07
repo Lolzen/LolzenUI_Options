@@ -35,9 +35,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local width = ns.createInputbox("uf_boss_options", 40, 20, LolzenUIcfg.unitframes.boss["uf_boss_width"], "content")
 		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)
 
-		local width = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes.player["uf_player_width"], "content")
-		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)
-
 		width:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
 			self:ClearFocus()

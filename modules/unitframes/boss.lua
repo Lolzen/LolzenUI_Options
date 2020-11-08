@@ -41,7 +41,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		width:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_width"] = tonumber(width:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_width"] = tonumber(width:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerSize()
 		end)
@@ -67,7 +67,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		height:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_height"] = tonumber(height:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_height"] = tonumber(height:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerSize()
 		end)
@@ -87,7 +87,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local growth = ns.createPicker("uf_boss_options", "growth", "uf_boss_additional_boss_anchor", 110, LolzenUIcfg.unitframes.boss["uf_boss_additional_pos"], "content")
 		growth:SetPoint("LEFT", growth_text, "RIGHT", -10, -3)
 		growth.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_hp_font"] = UIDropDownMenu_GetSelectedName(hp_font)
+			LolzenUIcfg.unitframes.boss["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(growth)]
 			--LolzenUI.SetUFPlayerHPFont()
 		end
 
@@ -103,7 +103,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		growth_spacing:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_height"] = tonumber(height:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_additional_spacing"] = tonumber(growth_spacing:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerSize()
 		end)
@@ -127,7 +127,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb2:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 
 		cb2:SetScript("OnClick", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_use_own_hp_font_settings"] = cb1:GetChecked()
+			LolzenUIcfg.unitframes.boss["uf_boss_use_own_hp_font_settings"] = cb2:GetChecked()
 			--LolzenUI.SetUFPlayerOwnFont()
 		end)
 
@@ -143,7 +143,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		hp_pos_x:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_hp_posx"] = tonumber(hp_pos_x:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_hp_posx"] = tonumber(hp_pos_x:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerHPPos()
 		end)
@@ -169,7 +169,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		hp_pos_y:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_hp_posy"] = tonumber(hp_pos_y:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_hp_posy"] = tonumber(hp_pos_y:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerHPPos()
 		end)
@@ -189,7 +189,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local hp_anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_hp_anchor", 110, LolzenUIcfg.unitframes.boss["uf_boss_hp_anchor"], "content")
 		hp_anchor:SetPoint("LEFT", hp_anchor_text, "RIGHT", -10, -3)
 		hp_anchor.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(hp_anchor)]
+			LolzenUIcfg.unitframes.boss["uf_boss_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(hp_anchor)]
 			--LolzenUI.SetUFPlayerHPPos()
 		end
 
@@ -199,7 +199,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local hp_font = ns.createPicker("uf_boss_options", "font", "uf_boss_hp_font", 120, LolzenUIcfg.unitframes.boss["uf_boss_hp_font"], "content")
 		hp_font:SetPoint("LEFT", hp_font_text, "RIGHT", -10, -3)
 		hp_font.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_hp_font"] = UIDropDownMenu_GetSelectedName(hp_font)
+			LolzenUIcfg.unitframes.boss["uf_boss_hp_font"] = UIDropDownMenu_GetSelectedName(hp_font)
 			--LolzenUI.SetUFPlayerHPFont()
 		end
 
@@ -215,7 +215,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		hp_font_size:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_hp_font_size"] = tonumber(hp_font_size:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_hp_font_size"] = tonumber(hp_font_size:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerHPFont()
 		end)
@@ -235,7 +235,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local hp_font_flag = ns.createPicker("uf_boss_options", "flag", "uf_boss_hp_font_flag", 120, LolzenUIcfg.unitframes.boss["uf_boss_hp_font_flag"], "content")
 		hp_font_flag:SetPoint("LEFT", hp_font_flag_text, "RIGHT", -10, -3)
 		hp_font_flag.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(hp_font_flag)]
+			LolzenUIcfg.unitframes.boss["uf_boss_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(hp_font_flag)]
 			--LolzenUI.SetUFPlayerHPFont()
 		end
 
@@ -254,7 +254,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		pp_pos_x:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_pp_posx"] = tonumber(pp_pos_x:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_posx"] = tonumber(pp_pos_x:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerPowerPos()
 		end)
@@ -280,7 +280,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		pp_pos_y:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_pp_posy"] = tonumber(pp_pos_y:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_posy"] = tonumber(pp_pos_y:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerPowerPos()
 		end)
@@ -300,7 +300,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pp_anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_pp_anchor", 90, LolzenUIcfg.unitframes.boss["uf_boss_pp_anchor"], "content")
 		pp_anchor:SetPoint("LEFT", pp_anchor_text, "RIGHT", -10, -3)
 		pp_anchor.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_pp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pp_anchor)]
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pp_anchor)]
 			--LolzenUI.SetUFPlayerPowerPos()
 		end
 
@@ -310,7 +310,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pp_parent = ns.createPicker("uf_boss_options", "uf_parent", "uf_boss_pp_parent", 50, LolzenUIcfg.unitframes.boss["uf_boss_pp_parent"], "content")
 		pp_parent:SetPoint("LEFT", pp_parent_text, "RIGHT", -10, -3)
 		pp_parent.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(pp_parent)]
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(pp_parent)]
 			--LolzenUI.SetUFPlayerPowerPos()
 		end
 
@@ -320,7 +320,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pp_anchor2 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_pp_anchor2", 90, LolzenUIcfg.unitframes.boss["uf_boss_pp_anchor2"], "content")
 		pp_anchor2:SetPoint("LEFT", pp_anchor2_text, "RIGHT", -10, -3)
 		pp_anchor2.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_pp_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pp_anchor2)]
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pp_anchor2)]
 			--LolzenUI.SetUFPlayerPowerPos()
 		end
 
@@ -330,7 +330,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pp_font = ns.createPicker("uf_boss_options", "font", "uf_boss_pp_font", 120, LolzenUIcfg.unitframes.boss["uf_boss_pp_font"], "content")
 		pp_font:SetPoint("LEFT", pp_font_text, "RIGHT", -10, -3)
 		pp_font.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_pp_font"] = UIDropDownMenu_GetSelectedName(pp_font)
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_font"] = UIDropDownMenu_GetSelectedName(pp_font)
 			--LolzenUI.SetUFPlayerPowerFont()
 		end
 
@@ -346,7 +346,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		pp_font_size:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.player["uf_player_pp_font_size"] = tonumber(pp_font_size:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_font_size"] = tonumber(pp_font_size:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFPlayerPowerFont()
 		end)
@@ -366,13 +366,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local pp_font_flag = ns.createPicker("uf_boss_options", "flag", "uf_boss_pp_font_flag", 120, LolzenUIcfg.unitframes.boss["uf_boss_pp_font_flag"], "content")
 		pp_font_flag:SetPoint("LEFT", pp_font_flag_text, "RIGHT", -10, -3)
 		pp_font_flag.OnClick = function()
-			--LolzenUIcfg.unitframes.player["uf_player_pp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(pp_font_flag)]
+			LolzenUIcfg.unitframes.boss["uf_boss_pp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(pp_font_flag)]
 			--LolzenUI.SetUFPlayerPowerFont()
 		end
 
 		local header3 = ns.createHeader("uf_boss_options", L["auras"], "content")
 
 		cb1:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.boss["uf_boss_show_power"] = cb1:GetChecked()
+			--function
 			if cb1:GetChecked() == true then
 				header2:Show()
 				pp_pos_x_text:Show()
@@ -463,7 +465,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local aura_type = ns.createPicker("uf_boss_options", "uf_auratype", "uf_boss_aura_type", 70, LolzenUIcfg.unitframes.boss["uf_boss_aura_show_type"], "content")
 		aura_type:SetPoint("LEFT", aura_type_text, "RIGHT", -10, -3)
 		aura_type.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_aura_show_type"] = ns.picker_uf_auratype[UIDropDownMenu_GetSelectedID(aura_type)]
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_show_type"] = ns.picker_uf_auratype[UIDropDownMenu_GetSelectedID(aura_type)]
 			--LolzenUI.SetUFTargetAuraType()
 		end
 
@@ -479,7 +481,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		aura_maxnum:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_aura_maxnum"] = tonumber(aura_maxnum:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_maxnum"] = tonumber(aura_maxnum:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetAuraNum()
 		end)
@@ -505,7 +507,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		aura_spacing:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_aura_spacing"] = tonumber(aura_spacing:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_spacing"] = tonumber(aura_spacing:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetAuraSpacing()
 		end)
@@ -531,7 +533,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		aura_size:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_aura_size"] = tonumber(aura_size:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_size"] = tonumber(aura_size:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTagetAuraSize()
 		end)
@@ -557,7 +559,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		aura_pos_x:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_aura_posx"] = tonumber(aura_pos_x:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_posx"] = tonumber(aura_pos_x:GetText())
+			self.oldText = self:GetText()
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetAuraPos()
 		end)
@@ -583,8 +586,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		aura_pos_y:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_aura_posy"] = tonumber(aura_pos_y:GetText())
-			self.oldText = self:GetText()
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_posy"] = tonumber(aura_pos_y:GetText())
 			--LolzenUI.SetUFTargetAuraPos()
 		end)
 
@@ -603,7 +605,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local aura_anchor = ns.createPicker("uf_boss_options", "anchor", "uf_boss_aura_anchor", 90, LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor1"], "content")
 		aura_anchor:SetPoint("LEFT", aura_anchor_text, "RIGHT", -10, -3)
 		aura_anchor.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_aura_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor)]
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor)]
 			--LolzenUI.SetUFTargetAuraPos()
 		end
 
@@ -613,7 +615,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local aura_anchor2 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_aura_anchor2", 90, LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor2"], "content")
 		aura_anchor2:SetPoint("LEFT", aura_anchor2_text, "RIGHT", -10, -3)
 		aura_anchor2.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_aura_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor2)]
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor2)]
 			--LolzenUI.SetUFTargetAuraPos()
 		end
 
@@ -623,7 +625,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local aura_growthx = ns.createPicker("uf_boss_options", "uf_auragrowth_x", "uf_boss_aura_growthx", 70, LolzenUIcfg.unitframes.boss["uf_boss_aura_growth_x"], "content")
 		aura_growthx:SetPoint("LEFT", aura_growthx_text, "RIGHT", -10, -3)
 		aura_growthx.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(aura_growthx)]
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(aura_growthx)]
 			--LolzenUI.SetUFTargetAuraGrowth()
 		end
 
@@ -633,7 +635,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local aura_growthy = ns.createPicker("uf_boss_options", "uf_auragrowth_y", "uf_boss_aura_growthy", 70, LolzenUIcfg.unitframes.boss["uf_boss_aura_growth_y"], "content")
 		aura_growthy:SetPoint("LEFT", aura_growthy_text, "RIGHT", -10, -3)
 		aura_growthy.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(aura_growthy)]
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(aura_growthy)]
 			--LolzenUI.SetUFTargetAuraGrowth()
 		end
 
@@ -644,12 +646,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb4:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, 0)
 
 		cb4:SetScript("OnClick", function(self)
-
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_desature_nonplayer_auras"] = cb4:GetChecked()
+			--function
 		end)
 
 		local header4 = ns.createHeader("uf_boss_options", L["uf_castbar"], "content")
 
 		cb3:SetScript("OnClick", function(self)
+			LolzenUIcfg.unitframes.boss["uf_boss_aura_show_only_player"] = cb3:GetChecked()
+			--function
 			if cb3:GetChecked() == true then
 				cb4:Hide()
 				header4:SetPoint("TOPLEFT", cb3, 0, -30)
@@ -676,7 +681,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_color = ns.createColorTexture("uf_boss_options", 16, 16, LolzenUIcfg.unitframes.boss["uf_boss_cb_color"], LolzenUIcfg.unitframes.general["uf_statusbar_texture"], "content")
 		cb_color:SetPoint("LEFT", cb_color_text, "RIGHT", 10, 0)
 		cb_color.setActualColors = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_color"] = {cb_color:GetVertexColor()}
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_color"] = {cb_color:GetVertexColor()}
 			--LolzenUI.SetUFTargetCBColor()
 		end
 
@@ -689,7 +694,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_alpha = ns.createPicker("uf_boss_options", "alpha", "uf_boss_cb_alpha", 45, LolzenUIcfg.unitframes.boss["uf_boss_cb_alpha"], "content")
 		cb_alpha:SetPoint("LEFT", cb_alpha_text, "RIGHT", -10, -3)
 		cb_alpha.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(cb_alpha)])
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(cb_alpha)])
 			--LolzenUI.SetUFTargetCBColor()
 		end
 
@@ -708,7 +713,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_icon_size:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_icon_size"] = tonumber(cb_icon_size:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_size"] = tonumber(cb_icon_size:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBIconCutAndSize()
 		end)
@@ -734,7 +739,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_icon_pos_x:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_icon_posx"] = tonumber(cb_icon_pos_x:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_posx"] = tonumber(cb_icon_pos_x:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBIconPos()
 		end)
@@ -760,7 +765,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_icon_pos_y:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_icon_posy"] = tonumber(cb_icon_pos_y:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_posy"] = tonumber(cb_icon_pos_y:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBIconPos()
 		end)
@@ -780,7 +785,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_icon_anchor1 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_cb_icon_anchor1", 70, LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_anchor1"], "content")
 		cb_icon_anchor1:SetPoint("LEFT", cb_icon_anchor1_text, "RIGHT", -10, -3)
 		cb_icon_anchor1.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor1)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor1)]
 			--LolzenUI.SetUFTargetCBIconPos()
 		end
 
@@ -790,7 +795,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_icon_anchor2 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_cb_icon_anchor2", 70, LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_anchor2"], "content")
 		cb_icon_anchor2:SetPoint("LEFT", cb_icon_anchor2_text, "RIGHT", -10, -3)
 		cb_icon_anchor2.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor2)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor2)]
 			--LolzenUI.SetUFTargetCBIconPos()
 		end
 
@@ -798,7 +803,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb5:SetPoint("TOPLEFT", cb_icon_size_text, "BOTTOMLEFT", 0, -8)
 
 		cb5:SetScript("OnClick", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_icon_cut"] = cb5:GetChecked()
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_cut"] = cb5:GetChecked()
 			--LolzenUI.SetUFTargetCBIconCutAndSize()
 		end)
 
@@ -817,7 +822,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_time_pos_x:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_time_posx"] = tonumber(cb_time_pos_x:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_posx"] = tonumber(cb_time_pos_x:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBTimePos()
 		end)
@@ -843,7 +848,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_time_pos_y:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_time_posy"] = tonumber(cb_time_pos_y:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_posy"] = tonumber(cb_time_pos_y:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBTimePos()
 		end)
@@ -863,7 +868,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_time_anchor1 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_cb_time_anchor1", 110, LolzenUIcfg.unitframes.boss["uf_boss_cb_time_anchor1"], "content")
 		cb_time_anchor1:SetPoint("LEFT", cb_time_anchor1_text, "RIGHT", -10, -3)
 		cb_time_anchor1.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor1)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor1)]
 			--LolzenUI.SetUFTargetCBTimePos()
 		end
 
@@ -873,7 +878,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_time_anchor2 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_cb_time_anchor2", 110, LolzenUIcfg.unitframes.boss["uf_boss_cb_time_anchor2"], "content")
 		cb_time_anchor2:SetPoint("LEFT", cb_time_anchor2_text, "RIGHT", -10, -3)
 		cb_time_anchor2.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor2)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor2)]
 			--LolzenUI.SetUFTargetCBTimePos()
 		end
 
@@ -892,7 +897,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_text_pos_x:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_text_posx"] = tonumber(cb_text_pos_x:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_posx"] = tonumber(cb_text_pos_x:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBTextPos()
 		end)
@@ -918,7 +923,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_text_pos_y:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_text_posy"] = tonumber(cb_text_pos_y:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_posy"] = tonumber(cb_text_pos_y:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBTextPos()
 		end)
@@ -938,7 +943,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_text_anchor1 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_cb_text_anchor1", 110, LolzenUIcfg.unitframes.boss["uf_boss_cb_text_anchor1"], "content")
 		cb_text_anchor1:SetPoint("LEFT", cb_text_anchor1_text, "RIGHT", -10, -3)
 		cb_text_anchor1.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor1)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor1)]
 			--LolzenUI.SetUFTargetCBTextPos()
 		end
 
@@ -948,7 +953,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_text_anchor2 = ns.createPicker("uf_boss_options", "anchor", "uf_boss_cb_text_anchor2", 110, LolzenUIcfg.unitframes.boss["uf_boss_cb_text_anchor2"], "content")
 		cb_text_anchor2:SetPoint("LEFT", cb_text_anchor2_text, "RIGHT", -10, -3)
 		cb_text_anchor2.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor2)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor2)]
 			--LolzenUI.SetUFTargetCBTextPos()
 		end
 
@@ -958,7 +963,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_font = ns.createPicker("uf_boss_options", "font", "uf_boss_cb_font", 120, LolzenUIcfg.unitframes.boss["uf_boss_cb_font"], "content")
 		cb_font:SetPoint("TOPLEFT", header8, "BOTTOMLEFT", -20, -8)
 		cb_font.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_font"] = UIDropDownMenu_GetSelectedName(cb_font)
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_font"] = UIDropDownMenu_GetSelectedName(cb_font)
 			--LolzenUI.SetUFTargetCBTextFont()
 		end
 
@@ -974,7 +979,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		cb_font_size:SetScript("OnEnterPressed", function(self)
-			--LolzenUIcfg.unitframes.target["uf_target_cb_font_size"] = tonumber(cb_font_size:GetText())
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_font_size"] = tonumber(cb_font_size:GetText())
 			self.oldText = self:GetText()
 			--LolzenUI.SetUFTargetCBTextFont()
 		end)
@@ -994,7 +999,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_font_flag = ns.createPicker("uf_boss_options", "flag", "uf_boss_cb_font_flag", 120, LolzenUIcfg.unitframes.boss["uf_boss_cb_font_flag"], "content")
 		cb_font_flag:SetPoint("LEFT", cb_font_flag_text, "RIGHT", -10, -3)
 		cb_font_flag.OnClick = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_font_flag)]
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_font_flag)]
 			--LolzenUI.SetUFTargetCBTextFont()
 		end
 
@@ -1004,69 +1009,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_font_color = ns.createColorTexture("uf_boss_options", 16, 16, LolzenUIcfg.unitframes.boss["uf_boss_cb_font_color"], LolzenUIcfg.unitframes.general["uf_statusbar_texture"], "content")
 		cb_font_color:SetPoint("LEFT", cb_font_color_text, "RIGHT", 10, 0)
 		cb_font_color.setActualColors = function()
-			--LolzenUIcfg.unitframes.target["uf_target_cb_font_color"] = {cb_font_color:GetVertexColor()}
+			LolzenUIcfg.unitframes.boss["uf_boss_cb_font_color"] = {cb_font_color:GetVertexColor()}
 			--LolzenUI.SetUFTargetCBTextColor()
 		end
 
 		local cb_font_color_f = ns.createColorPicker("uf_boss_options", cb_font_color, LolzenUIcfg.unitframes.boss["uf_boss_cb_font_color"], "content")
 		cb_font_color_f:SetAllPoints(cb_font_color)
-
-		local applyButton = ns.createApplyButton("uf_boss_options")
-		applyButton:SetScript("OnClick", function()
-			LolzenUIcfg.unitframes.boss["uf_boss_width"] = tonumber(width:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_height"] = tonumber(height:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_additional_pos"] = ns.picker_growth[UIDropDownMenu_GetSelectedID(growth)]
-			LolzenUIcfg.unitframes.boss["uf_boss_additional_spacing"] = tonumber(growth_spacing:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_show_power"] = cb1:GetChecked()
-			LolzenUIcfg.unitframes.boss["uf_boss_use_own_hp_font_settings"] = cb2:GetChecked()
-			LolzenUIcfg.unitframes.boss["uf_boss_hp_font"] = UIDropDownMenu_GetSelectedName(hp_font)
-			LolzenUIcfg.unitframes.boss["uf_boss_hp_font_size"] = tonumber(hp_font_size:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_hp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(hp_font_flag)]
-			LolzenUIcfg.unitframes.boss["uf_boss_hp_posx"] = tonumber(hp_pos_x:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_hp_posy"] = tonumber(hp_pos_y:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_hp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(hp_anchor)]
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_font"] = UIDropDownMenu_GetSelectedName(pp_font)
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_font_size"] = tonumber(pp_font_size:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(pp_font_flag)]
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_posx"] = tonumber(pp_pos_x:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_posy"] = tonumber(pp_pos_y:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pp_anchor)]
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(pp_anchor2)]
-			LolzenUIcfg.unitframes.boss["uf_boss_pp_parent"] = ns.picker_uf_parent[UIDropDownMenu_GetSelectedID(pp_parent)]
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_show_type"] = ns.picker_uf_auratype[UIDropDownMenu_GetSelectedID(aura_type)]
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_posx"] = tonumber(aura_pos_x:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_posy"] = tonumber(aura_pos_y:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor)]
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor2)]
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_maxnum"] = tonumber(aura_maxnum:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_spacing"] = tonumber(aura_spacing:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_size"] = tonumber(aura_size:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_growth_x"] = ns.picker_uf_auragrowth_x[UIDropDownMenu_GetSelectedID(aura_growthx)]
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_growth_y"] = ns.picker_uf_auragrowth_y[UIDropDownMenu_GetSelectedID(aura_growthy)]
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_show_only_player"] = cb3:GetChecked()
-			LolzenUIcfg.unitframes.boss["uf_boss_aura_desature_nonplayer_auras"] = cb4:GetChecked()
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_color"] = {cb_color:GetVertexColor()}
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_alpha"] = tonumber(ns.picker_alpha[UIDropDownMenu_GetSelectedID(cb_alpha)])
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_cut"] = cb5:GetChecked()
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_size"] = tonumber(cb_icon_size:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_posx"] = tonumber(cb_icon_pos_x:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_posy"] = tonumber(cb_icon_pos_y:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor1)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor2)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_posx"] = tonumber(cb_time_pos_x:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_posy"] = tonumber(cb_time_pos_y:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor1)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor2)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_posx"] = tonumber(cb_text_pos_x:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_posy"] = tonumber(cb_text_pos_y:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor1)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor2)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_font"] = UIDropDownMenu_GetSelectedName(cb_font)
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_font_size"] = tonumber(cb_font_size:GetText())
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_font_flag"] = ns.picker_flags[UIDropDownMenu_GetSelectedID(cb_font_flag)]
-			LolzenUIcfg.unitframes.boss["uf_boss_cb_font_color"] = {cb_font_color:GetVertexColor()}
-			ReloadUI()
-		end)
 
 		ns["uf_boss_options"].default = function(self)
 			LolzenUIcfg.unitframes.boss = _G["LolzenUIdefaultcfg"].unitframes.boss

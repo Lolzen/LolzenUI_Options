@@ -8,7 +8,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 	if addon == "LolzenUI_Options" and LolzenUIcfg.modules["unitframes"] == true then
 
 		-- // Create a subcategory panel for Power Colors // --
-		ns.uf_powercolor_options = CreateFrame("Frame", "unitframe_bosspanel", ns["unitframes"])
+		ns.uf_powercolor_options = CreateFrame("Frame", "unitframe_powercolorpanel", ns["unitframes"])
 		ns.uf_powercolor_options.name = "   "..L["sub_panel_unitframes_powercolors"]
 		ns.uf_powercolor_options.parent = LUI["unitframes"]
 		InterfaceOptions_AddCategory(ns.uf_powercolor_options)

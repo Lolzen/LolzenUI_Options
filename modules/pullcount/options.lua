@@ -17,6 +17,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("pullcount", L["count_play_sound_from"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("pullcount", 600, 126)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("pullcount", "filter_guild", "|cff5599ff"..L["count_guild"].."|r", LolzenUIcfg.pullcount["pull_filter_guild"])
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
 		cb1:SetScript("OnClick", function(self)
@@ -53,10 +57,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header2 = ns.createHeader("pullcount", L["count_custom_message_to_react_header"]..":")
-		header2:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 0, -20)
+		header2:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 0, -6)
+
+		local header2BG = ns.createBackground("pullcount", 600, 48)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local pull_message_count_text = ns.createFontstring("pullcount", L["count_countdown_message"]..":")
-		pull_message_count_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		pull_message_count_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -16)
 
 		local pull_message_countdown = ns.createInputbox("pullcount", 100, 20, LolzenUIcfg.pullcount["pull_msg_count"])
 		pull_message_countdown:SetPoint("LEFT", pull_message_count_text, "RIGHT", 10, 0)
@@ -109,10 +117,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header3 = ns.createHeader("pullcount", L["count_range_header"])
-		header3:SetPoint("TOPLEFT", count_notice, "BOTTOMLEFT", 0, -20)
+		header3:SetPoint("TOPLEFT", count_notice, "BOTTOMLEFT", -4, -10)
+
+		local header3BG = ns.createBackground("pullcount", 600, 268)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local pull_count_range_text = ns.createFontstring("pullcount", L["count_range"]..":")
-		pull_count_range_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
+		pull_count_range_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -16)
 
 		local pull_count_range = ns.createPicker("pullcount", "pullcount_range", "pull_count_range", 120, LolzenUIcfg.pullcount["pull_count_range"])
 		pull_count_range:SetPoint("LEFT", pull_count_range_text, "RIGHT", -10, -3)

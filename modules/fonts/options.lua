@@ -13,8 +13,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("fonts", LUI["desc_fonts"])
 
+		local aboutBG = ns.createBackground("fonts", 600, 116)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local dmg_text = ns.createFontstring("fonts", "|cff5599ff"..L["DAMAGE_TEXT_FONT"]..":|r")
-		dmg_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
+		dmg_text:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 4, -28)
 
 		local dmg = ns.createPicker("fonts", "font", "fonts_dmgfont", 120, LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"])
 		dmg:SetPoint("LEFT", dmg_text, "RIGHT", -10, -3)

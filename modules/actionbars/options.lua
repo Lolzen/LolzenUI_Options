@@ -17,10 +17,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("actionbars", L["Preview"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("actionbars", 600, 38)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		-- // normaltexture buttonpreview // --
 
-		local button = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
-		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
+		local button = ns.createButtonTexture("actionbars", 26, GetSpellTexture(214815), nil)
+		button:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
 
 		local normaltex = ns.createButtonOverlay("actionbars", button, LBT:Fetch("border", LolzenUIcfg.actionbar["actionbar_normal_texture"]))
 		if LolzenUIcfg.actionbar["actionbar_normal_texture"] == "Blizzard QuickSlot2" then
@@ -33,7 +37,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // flashtexture buttonpreview // --
 
-		local button2 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
+		local button2 = ns.createButtonTexture("actionbars", 26, GetSpellTexture(214815), nil)
 		button2:SetPoint("LEFT", button, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
 		local flashtex = ns.createButtonOverlay("actionbars", button2, LBT:Fetch("flashing", LolzenUIcfg.actionbar["actionbar_flash_texture"]))
@@ -42,7 +46,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // checkedtexture buttonpreview // --
 
-		local button3 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
+		local button3 = ns.createButtonTexture("actionbars", 26, GetSpellTexture(214815), nil)
 		button3:SetPoint("LEFT", button2, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
 		local checkedtex = ns.createButtonOverlay("actionbars", button3, LBT:Fetch("checked", LolzenUIcfg.actionbar["actionbar_checked_texture"]))
@@ -51,7 +55,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // hovertexture buttonpreview // --
 
-		local button4 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
+		local button4 = ns.createButtonTexture("actionbars", 26, GetSpellTexture(214815), nil)
 		button4:SetPoint("LEFT", button3, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
 		local hovertex = ns.createButtonOverlay("actionbars", button4, LBT:Fetch("hover", LolzenUIcfg.actionbar["actionbar_hover_texture"]))
@@ -60,7 +64,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		-- // pushedtexture buttonpreview // --
 
-		local button5 = ns.createButtonTexture("actionbars", LolzenUIcfg.actionbar["actionbar_button_size"], GetSpellTexture(214815), nil)
+		local button5 = ns.createButtonTexture("actionbars", 26, GetSpellTexture(214815), nil)
 		button5:SetPoint("LEFT", button4, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
 
 		local pushedtex = ns.createButtonOverlay("actionbars", button5, LBT:Fetch("pushed", LolzenUIcfg.actionbar["actionbar_pushed_texture"]))
@@ -68,7 +72,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		pushedtex:SetPoint("BOTTOMRIGHT", button5, "BOTTOMRIGHT", 2, -2)
 
 		local header2 = ns.createHeader("actionbars", L["ab_texture_and_size"])
-		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -14)
+		header2:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -7)
+
+		local header2BG = ns.createBackground("actionbars", 600, 185)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local cb1 = ns.createCheckBox("actionbars", "ab_show_keybinds", "|cff5599ff"..L["ab_keybinds"].."|r", LolzenUIcfg.actionbar["actionbar_show_keybinds"])
 		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
@@ -80,7 +88,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		-- // texture paths // --
 		
 		local normaltex_path_text = ns.createFontstring("actionbars", L["ab_normaltexture"]..":")
-		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		normaltex_path_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local normaltex_path = ns.createPicker("actionbars", "buttonborder", "actionbar_buttonborder", 120, LolzenUIcfg.actionbar["actionbar_normal_texture"])
 		normaltex_path:SetPoint("LEFT", normaltex_path_text, "RIGHT", -4, -5)
@@ -170,12 +178,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		size:SetScript("OnEnterPressed", function(self)
 			LolzenUIcfg.actionbar["actionbar_button_size"] = self:GetText()
 			self.oldText = self:GetText()
-			button:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
-			button2:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
-			button3:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
-			button4:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
-			button5:SetSize(LolzenUIcfg.actionbar["actionbar_button_size"], LolzenUIcfg.actionbar["actionbar_button_size"])
-			--update actionbutton size
 			LolzenUI.UpdateActionBarSize()
 		end)
 
@@ -202,11 +204,6 @@ f:SetScript("OnEvent", function(self, event, addon)
 		spacing:SetScript("OnEnterPressed", function(self)
 			LolzenUIcfg.actionbar["actionbar_button_spacing"] = self:GetText()
 			self.oldText = self:GetText()
-			button2:SetPoint("LEFT", button, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
-			button3:SetPoint("LEFT", button2, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
-			button4:SetPoint("LEFT", button3, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
-			button5:SetPoint("LEFT", button4, "RIGHT", LolzenUIcfg.actionbar["actionbar_button_spacing"], 0)
-			--update actionbutton spacing
 			LolzenUI.UpdateActionBarSpacing()
 		end)
 
@@ -220,7 +217,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header3 = ns.createHeader("actionbars", L["ab_positions"])
-		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", 0, -14)
+		header3:SetPoint("TOPLEFT", size_text, "BOTTOMLEFT", -4, -14)
+
+		local header3BG = ns.createBackground("actionbars", 600, 217)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		-- // Positions // --
 

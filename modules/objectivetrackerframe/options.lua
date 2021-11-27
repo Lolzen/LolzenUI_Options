@@ -13,6 +13,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("objectivetracker", LUI["desc_objectivetracker"])
 
+		local aboutBG = ns.createBackground("objectivetracker", 600, 132)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("objectivetracker", "combatcollapse", "|cff5599ff"..L["objective_autocollapse"].."|r", LolzenUIcfg.objectivetracker["objectivetracker_combatcollapse"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
@@ -21,27 +25,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local cb1_desc = ns.createFontstring("objectivetracker", L["objective_autocollapse_desc"])
-		cb1_desc:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, 0)
+		cb1_desc:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, 0)
 
 		local cb2 = ns.createCheckBox("objectivetracker", "logincollapse", "|cff5599ff"..L["objective_auto_collapse_login"].."|r", LolzenUIcfg.objectivetracker["objectivetracker_logincollapse"])
-		cb2:SetPoint("TOPLEFT", cb1_desc, "BOTTOMLEFT", 0, -8)
+		cb2:SetPoint("TOPLEFT", cb1_desc, "BOTTOMLEFT", -4, -8)
 
 		cb2:SetScript("OnClick", function(self)
 			LolzenUIcfg.objectivetracker["objectivetracker_logincollapse"] = cb2:GetChecked()
 		end)
 
 		local cb2_desc = ns.createFontstring("objectivetracker", L["objective_auto_collapse_login_desc"])
-		cb2_desc:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, 0)
+		cb2_desc:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 4, 0)
 
 		local cb3 = ns.createCheckBox("objectivetracker", "dungeoncollapse", "|cff5599ff"..L["objective_auto_collapse_dungeon"].."|r", LolzenUIcfg.objectivetracker["objectivetracker_dungeoncollapse"])
-		cb3:SetPoint("TOPLEFT", cb2_desc, "BOTTOMLEFT", 0, -8)
+		cb3:SetPoint("TOPLEFT", cb2_desc, "BOTTOMLEFT", -4, -8)
 
 		cb3:SetScript("OnClick", function(self)
 			LolzenUIcfg.objectivetracker["objectivetracker_dungeoncollapse"] = cb3:GetChecked()
 		end)
 
 		local cb3_desc = ns.createFontstring("objectivetracker", L["objective_auto_collapse_dungeon_desc"])
-		cb3_desc:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, 0)
+		cb3_desc:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 4, 0)
+
+		local header2BG = ns.createBackground("objectivetracker", 600, 70)
+		header2BG:SetPoint("TOPLEFT", cb3_desc, "BOTTOMLEFT", -8, -8)
+		header2BG:SetFrameLevel(1)
 
 		local pos_x_text = ns.createFontstring("objectivetracker", L["PosX"]..":")
 		pos_x_text:SetPoint("TOPLEFT", cb3_desc, "BOTTOMLEFT", 0, -20)

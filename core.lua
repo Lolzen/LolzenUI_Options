@@ -548,9 +548,9 @@ ns.createBackground = function(module, height, width, sub)
 	}
 	local bg
 	if sub ~= nil then
-		bg = CreateFrame("Frame", nil, ns[module][sub])
+		bg = CreateFrame("Frame", nil, ns[module][sub], "BackdropTemplate")
 	else
-		bg = CreateFrame("Frame", nil, ns[module])
+		bg = CreateFrame("Frame", nil, ns[module], "BackdropTemplate")
 	end
 	bg:SetBackdrop(backdrop)
 	bg:SetBackdropColor(0.1, 0.1, 0.1, 0.5)

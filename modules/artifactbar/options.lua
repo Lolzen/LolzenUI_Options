@@ -22,7 +22,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		header1BG:SetFrameLevel(1)
 
 		local height_text = ns.createFontstring("artifactbar", L["height"]..":")
-		height_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -16)
+		height_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 4, -16)
 
 		local height = ns.createInputbox("artifactbar", 30, 20, LolzenUIcfg.artifactbar["artifactbar_height"])
 		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
@@ -207,7 +207,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_f:SetAllPoints(color)
 
 		local cb1 = ns.createCheckBox("artifactbar", "pxborder", "|cff5599ff"..L["af_draw_1px"].."|r", LolzenUIcfg.artifactbar["artifactbar_1px_border"])
-		cb1:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", 0, -8)
+		cb1:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", -4, -8)
 
 		local cb2 = ns.createCheckBox("artifactbar", "pxborder_round", "|cff5599ff"..L["af_1px_round"].."|r", LolzenUIcfg.artifactbar["artifactbar_1px_border_round"])
 		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, 0)

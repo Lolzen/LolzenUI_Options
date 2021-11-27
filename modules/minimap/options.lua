@@ -14,7 +14,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local about = ns.createDescription("minimap", LUI["desc_minimap"])
 
 		local aboutBG = ns.createBackground("minimap", 600, 30)
-		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -16)
 		aboutBG:SetFrameLevel(1)
 
 		local cb1 = ns.createCheckBox("minimap", "squareMinimap", "|cff5599ff"..L["mm_square"].."|r", LolzenUIcfg.minimap["minimap_square"])

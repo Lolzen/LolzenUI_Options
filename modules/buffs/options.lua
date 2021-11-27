@@ -396,7 +396,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb1 = ns.createCheckBox("buffs", "detailedduration", "|cff5599ff"..L["buff_detailed_duration_text"].."|r", LolzenUIcfg.buffs["buff_duration_detailed"])
-		cb1:SetPoint("TOPLEFT", dur_font_text, "BOTTOMLEFT", 0, -8)
+		cb1:SetPoint("TOPLEFT", dur_font_text, "BOTTOMLEFT", -4, -8)
 		cb1:SetScript("OnClick", function(self)
 			LolzenUIcfg.buffs["buff_duration_detailed"] = cb1:GetChecked()
 			LolzenUI.SetBuffDurationMode()

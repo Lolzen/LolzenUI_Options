@@ -252,7 +252,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_f4:SetAllPoints(color4)
 
 		local cb1 = ns.createCheckBox("xpbar", "pxborder_xp", "|cff5599ff"..L["xp_draw_1px"].."|r", LolzenUIcfg.xpbar["xpbar_1px_border"])
-		cb1:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", 0, -8)
+		cb1:SetPoint("TOPLEFT", color_text, "BOTTOMLEFT", -4, -8)
 
 		local cb2 = ns.createCheckBox("xpbar", "pxborder_round_xp", "|cff5599ff"..L["xp_1px_round"].."|r", LolzenUIcfg.xpbar["xpbar_1px_border_round"])
 		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, 0)
@@ -282,7 +282,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("xpbar", L["font"])
-		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", -4, -10)
+		header2:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -10)
 
 		local header2BG = ns.createBackground("xpbar", 600, 82)
 		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
@@ -410,7 +410,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb3 = ns.createCheckBox("xpbar", "xp_text_hover", "|cff5599ff"..L["xp_mouseover_text"].."|r", LolzenUIcfg.xpbar["xpbar_mouseover_text"])
-		cb3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
+		cb3:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", -4, -8)
 
 		cb3:SetScript("OnClick", function(self)
 			LolzenUIcfg.xpbar["xpbar_mouseover_text"] = cb3:GetChecked()

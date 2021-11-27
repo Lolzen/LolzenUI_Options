@@ -296,7 +296,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb4 = ns.createCheckBox("itemlevel", "itemquality_colors", "|cff5599ff"..L["ilvl_use_quality_color"].."|r", LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"])
-		cb4:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
+		cb4:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", -4, -8)
 
 		cb4:SetScript("OnClick", function(self)
 			LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"] = cb4:GetChecked()

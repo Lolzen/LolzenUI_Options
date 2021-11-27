@@ -525,7 +525,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		aura_pos_x:SetScript("OnEnterPressed", function(self)
 			LolzenUIcfg.unitframes.boss["uf_boss_aura_posx"] = tonumber(aura_pos_x:GetText())
 			self.oldText = self:GetText()
-			LolzenUI.SetUBossAuraPos()
+			LolzenUI.SetUFBossAuraPos()
 		end)
 
 		aura_pos_x:SetScript("OnEditFocusGained", function(self)
@@ -551,7 +551,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		aura_pos_y:SetScript("OnEnterPressed", function(self)
 			LolzenUIcfg.unitframes.boss["uf_boss_aura_posy"] = tonumber(aura_pos_y:GetText())
 			self.oldText = self:GetText()
-			LolzenUI.SetUBossAuraPos()
+			LolzenUI.SetUFBossAuraPos()
 		end)
 
 		aura_pos_y:SetScript("OnEditFocusGained", function(self)
@@ -570,7 +570,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		aura_anchor:SetPoint("LEFT", aura_anchor_text, "RIGHT", -10, -3)
 		aura_anchor.OnClick = function()
 			LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor)]
-			LolzenUI.SetUBossAuraPos()
+			LolzenUI.SetUFBossAuraPos()
 		end
 
 		local aura_anchor2_text = ns.createFontstring("uf_boss_options", L["anchor"].."2:", "content")
@@ -580,7 +580,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		aura_anchor2:SetPoint("LEFT", aura_anchor2_text, "RIGHT", -10, -3)
 		aura_anchor2.OnClick = function()
 			LolzenUIcfg.unitframes.boss["uf_boss_aura_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(aura_anchor2)]
-			LolzenUI.SetUBossAuraPos()
+			LolzenUI.SetUFBossAuraPos()
 		end
 
 		local aura_growthx_text = ns.createFontstring("uf_boss_options", L["growth_x"]..":", "content")

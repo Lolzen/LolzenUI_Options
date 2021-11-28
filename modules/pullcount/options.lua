@@ -119,7 +119,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("pullcount", L["count_range_header"])
 		header3:SetPoint("TOPLEFT", count_notice, "BOTTOMLEFT", -4, -10)
 
-		local header3BG = ns.createBackground("pullcount", 600, 268)
+		local header3BG = ns.createBackground("pullcount", 600, 264)
 		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
 		header3BG:SetFrameLevel(1)
 

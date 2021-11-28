@@ -11,10 +11,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("unitframes", LUI["desc_unitframes"])
 
-		local scrollFrame = ns.createScrollFrame("unitframes", 50)
+		local scrollFrame = ns.createScrollFrame("unitframes", 46)
 
 		local cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ff"..L["uf_general_use_hp_percent"].."|r", LolzenUIcfg.unitframes.general["uf_use_hp_percent"], "content")
-		cb1:SetPoint("TOPLEFT", ns.unitframes.content, 16, 0)
+		cb1:SetPoint("TOPLEFT", ns.unitframes.content, 16, -14)
+
+		local cbBG = ns.createBackground("unitframes", 586, 130, "content")
+		cbBG:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", -4, 30)
+		cbBG:SetFrameLevel(1)
 
 		local cb2 = ns.createCheckBox("unitframes", "uf_hp_val_and_perc", "|cff5599ff"..L["uf_general_use_both_value_and_percent"].."|r", LolzenUIcfg.unitframes.general["uf_use_val_and_perc"], "content")
 		cb2:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -0)
@@ -158,31 +162,39 @@ f:SetScript("OnEvent", function(self, event, addon)
 			perc_val_divider:Hide()
 		end
 
+		local cb5BG = ns.createBackground("unitframes", 586, 40, "content")
+		cb5BG:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", -4, -4)
+		cb5BG:SetFrameLevel(1)
+
 		local texture_text = ns.createFontstring("unitframes", L["texture"]..":", "content")
-		texture_text:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 0, -15)
+		texture_text:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", 4, -19)
 
 		local texture = ns.createPicker("unitframes", "statusbar", "uf_statusbar", 120, LolzenUIcfg.unitframes.general["uf_statusbar_texture"], "content")
-		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -3)
+		texture:SetPoint("LEFT", texture_text, "RIGHT", -10, -2)
 		texture.OnClick = function()
 			LolzenUIcfg.unitframes.general["uf_statusbar_texture"] = UIDropDownMenu_GetSelectedName(texture)
 			LolzenUI.SetUFTexture()
 		end
 
 		local border_text = ns.createFontstring("unitframes", L["border"]..":", "content")
-		border_text:SetPoint("LEFT", texture, "RIGHT", -5, 3)
+		border_text:SetPoint("LEFT", texture, "RIGHT", -5, 1)
 
 		local border = ns.createPicker("unitframes", "border", "uf_border", 120, LolzenUIcfg.unitframes.general["uf_border"], "content")
-		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
+		border:SetPoint("LEFT", border_text, "RIGHT", -10, -1)
 		border.OnClick = function()
 			LolzenUIcfg.unitframes.general["uf_border"] = UIDropDownMenu_GetSelectedName(border)
 			LolzenUI.SetUFBorder()
 		end
 
 		local header1 = ns.createHeader("unitframes", L["raidmarks"], "content")
-		header1:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", 0, -30)
+		header1:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", -4, -20)
+
+		local header1BG = ns.createBackground("unitframes", 586, 40, "content")
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local rt_size_text = ns.createFontstring("unitframes", L["size"]..":", "content")
-		rt_size_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
+		rt_size_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 4, -19)
 
 		local rt_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes.general["uf_ri_size"], "content")
 		rt_size:SetPoint("LEFT", rt_size_text, "RIGHT", 10, 0)
@@ -263,17 +275,21 @@ f:SetScript("OnEvent", function(self, event, addon)
 		rt_anchor_text:SetPoint("LEFT", rt_pos_y, "RIGHT", 10, 0)
 
 		local rt_anchor = ns.createPicker("unitframes", "anchor", "uf_rt_anchor", 110, LolzenUIcfg.unitframes.general["uf_ri_anchor"], "content")
-		rt_anchor:SetPoint("LEFT", rt_anchor_text, "RIGHT", -10, -3)
+		rt_anchor:SetPoint("LEFT", rt_anchor_text, "RIGHT", -10, -2)
 		rt_anchor.OnClick = function()
 			LolzenUIcfg.unitframes.general["uf_ri_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(rt_anchor)]
 			LolzenUI.SetUFRaidMarkPos()
 		end
 
 		local header2 = ns.createHeader("unitframes", L["uf_general_leadindicator"], "content")
-		header2:SetPoint("TOPLEFT", rt_size_text, "BOTTOMLEFT", 0, -30)
+		header2:SetPoint("TOPLEFT", rt_size_text, "BOTTOMLEFT", -4, -20)
+
+		local header2BG = ns.createBackground("unitframes", 586, 40, "content")
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local lead_size_text = ns.createFontstring("unitframes", L["size"]..":", "content")
-		lead_size_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
+		lead_size_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -19)
 
 		local lead_size = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes.general["uf_lead_size"], "content")
 		lead_size:SetPoint("LEFT", lead_size_text, "RIGHT", 10, 0)
@@ -354,14 +370,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 		lead_anchor_text:SetPoint("LEFT", lead_pos_y, "RIGHT", 10, 0)
 
 		local lead_anchor = ns.createPicker("unitframes", "anchor", "uf_lead_anchor", 110, LolzenUIcfg.unitframes.general["uf_lead_anchor"], "content")
-		lead_anchor:SetPoint("LEFT", lead_anchor_text, "RIGHT", -10, -3)
+		lead_anchor:SetPoint("LEFT", lead_anchor_text, "RIGHT", -10, -2)
 		lead_anchor.OnClick = function()
 			LolzenUIcfg.unitframes.general["uf_lead_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(lead_anchor)]
 			LolzenUI.SetUFLeadIndicatorPos()
 		end
 
 		local header3 = ns.createHeader("unitframes", L["alpha"], "content")
-		header3:SetPoint("TOPLEFT", lead_size_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", lead_size_text, "BOTTOMLEFT", -4, -20)
+
+		local header3BG = ns.createBackground("unitframes", 586, 136, "content")
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local cb6 = ns.createCheckBox("unitframes", "uf_fadeout", "|cff5599ff"..L["uf_general_fadout_out_of_reach"].."|r", LolzenUIcfg.unitframes.general["uf_fade_outofreach"], "content")
 		cb6:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
@@ -373,7 +393,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local fadeout_alpha_text = ns.createFontstring("unitframes", L["uf_general_fadout_out_of_reach_alpha"]..":", "content")
-		fadeout_alpha_text:SetPoint("TOPLEFT", cb6, "BOTTOMLEFT", 0, -8)
+		fadeout_alpha_text:SetPoint("TOPLEFT", cb6, "BOTTOMLEFT", 4, -8)
 
 		local fadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_fadout_alpha", 45, LolzenUIcfg.unitframes.general["uf_fade_outofreach_alpha"], "content")
 		fadeout_alpha:SetPoint("LEFT", fadeout_alpha_text, "RIGHT", -10, -3)
@@ -384,7 +404,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb7 = ns.createCheckBox("unitframes", "uf_combatfade", "|cff5599ff"..L["uf_general_combatfade"].."|r", LolzenUIcfg.unitframes.general["uf_fade_combat"], "content")
-		cb7:SetPoint("TOPLEFT", fadeout_alpha_text, "BOTTOMLEFT", 0, -8)
+		cb7:SetPoint("TOPLEFT", fadeout_alpha_text, "BOTTOMLEFT", -4, -8)
 
 		cb7:SetScript("OnClick", function(self)
 			LolzenUIcfg.unitframes.general["uf_fade_combat"] = cb7:GetChecked()
@@ -392,7 +412,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local combatfadeout_alpha_text = ns.createFontstring("unitframes", L["uf_general_combatfade_in_combat_alpha"]..":", "content")
-		combatfadeout_alpha_text:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 0, -8)
+		combatfadeout_alpha_text:SetPoint("TOPLEFT", cb7, "BOTTOMLEFT", 4, -8)
 
 		local combatfadeout_alpha = ns.createPicker("unitframes", "alpha", "uf_combatfade_incombat", 45, LolzenUIcfg.unitframes.general["uf_fade_combat_incombat"], "content")
 		combatfadeout_alpha:SetPoint("LEFT", combatfadeout_alpha_text, "RIGHT", -10, -3)
@@ -412,10 +432,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header4 = ns.createHeader("unitframes", L["uf_general_hp_font_options"], "content")
-		header4:SetPoint("TOPLEFT", outofcombatfadeout_alpha_text, "BOTTOMLEFT", 0, -30)
+		header4:SetPoint("TOPLEFT", outofcombatfadeout_alpha_text, "BOTTOMLEFT", -4, -20)
+
+		local header4BG = ns.createBackground("unitframes", 586, 68, "content")
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
 
 		local general_hp_pos_x_text = ns.createFontstring("unitframes", L["PosX"]..":", "content")
-		general_hp_pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
+		general_hp_pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 4, -20)
 
 		local general_hp_pos_x = ns.createInputbox("unitframes", 30, 20, LolzenUIcfg.unitframes.general["uf_general_hp_posx"], "content")
 		general_hp_pos_x:SetPoint("LEFT", general_hp_pos_x_text, "RIGHT", 10, 0)

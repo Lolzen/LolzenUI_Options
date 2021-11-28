@@ -27,13 +27,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local title = ns.createTitle("uf_player_options", L["sub_panel_unitframes_player_title"])
 
-		local scrollFrame = ns.createScrollFrame("uf_player_options", 186)
+		local scrollFrame = ns.createScrollFrame("uf_player_options", 234)
 
 		local width_text = ns.createFontstring("uf_player_options", L["width"]..":", "content")
-		width_text:SetPoint("TOPLEFT", ns.uf_player_options.content, 16, -16)
+		width_text:SetPoint("TOPLEFT", ns.uf_player_options.content, 20, -20)
+
+		local wtBG = ns.createBackground("uf_player_options", 580, 34, "content")
+		wtBG:SetPoint("TOPLEFT", width_text, "BOTTOMLEFT", -8, 23)
+		wtBG:SetFrameLevel(1)
 
 		local width = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes.player["uf_player_width"], "content")
-		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)
+		width:SetPoint("LEFT", width_text, "RIGHT", 10, 1)
 
 		width:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -56,10 +60,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local height_text = ns.createFontstring("uf_player_options", L["height"]..":", "content")
-		height_text:SetPoint("LEFT", width, "RIGHT", 10, 0)
+		height_text:SetPoint("LEFT", width, "RIGHT", 10, -1)
 
 		local height = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes.player["uf_player_height"], "content")
-		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
+		height:SetPoint("LEFT", height_text, "RIGHT", 10, 1)
 
 		height:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -82,7 +86,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("uf_player_options", L["uf_healthpoints"], "content")
-		header1:SetPoint("TOPLEFT", width_text, 0, -30)
+		header1:SetPoint("TOPLEFT", width_text, -4, -24)
+
+		local header1BG = ns.createBackground("uf_player_options", 580, 86, "content")
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local cb1 = ns.createCheckBox("uf_player_options", "uf_player_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.player["uf_player_use_own_hp_font_settings"], "content")
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
@@ -92,7 +100,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local hp_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
-		hp_pos_x_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		hp_pos_x_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local hp_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_hp_posx"], "content")
 		hp_pos_x:SetPoint("LEFT", hp_pos_x_text, "RIGHT", 10, 0)
@@ -200,10 +208,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("uf_player_options", L["uf_powerpoints"], "content")
-		header2:SetPoint("TOPLEFT", hp_font_text, 0, -30)
+		header2:SetPoint("TOPLEFT", hp_font_text, -4, -28)
+
+		local header2BG = ns.createBackground("uf_player_options", 580, 86, "content")
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local pp_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
-		pp_pos_x_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		pp_pos_x_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -14)
 
 		local pp_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_pp_posx"], "content")
 		pp_pos_x:SetPoint("LEFT", pp_pos_x_text, "RIGHT", 10, 0)
@@ -331,10 +343,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header3 = ns.createHeader("uf_player_options", L["sub_panel_unitframes_player_classpower_and_runes_header"], "content")
-		header3:SetPoint("TOPLEFT", pp_font_text, 0, -30)
-		
+		header3:SetPoint("TOPLEFT", pp_font_text, -4, -30)
+
+		local header3BG = ns.createBackground("uf_player_options", 580, 62, "content")
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
+
 		local classpower_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
-		classpower_pos_x_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -13)
+		classpower_pos_x_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -16)
 
 		local classpower_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_classpower_posx"], "content")
 		classpower_pos_x:SetPoint("LEFT", classpower_pos_x_text, "RIGHT", 10, 0)
@@ -442,13 +458,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header4 = ns.createHeader("uf_player_options", L["uf_castbar"], "content")
-		header4:SetPoint("TOPLEFT", classpower_border_text, 0, -30)
+		header4:SetPoint("TOPLEFT", classpower_border_text, -4, -28)
+
+		local header4BG = ns.createBackground("uf_player_options", 580, 58, "content")
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
 
 		local cb2 = ns.createCheckBox("uf_player_options", "uf_player_use_castbar_standalone", "|cff5599ff"..L["uf_use_standalone_castbar"].."|r", LolzenUIcfg.unitframes.player["uf_player_cb_standalone"], "content")
 		cb2:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
 
 		local cb_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
-		cb_pos_x_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -5)
+		cb_pos_x_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 4, -5)
 
 		local cb_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_cb_posx"], "content")
 		cb_pos_x:SetPoint("LEFT", cb_pos_x_text, "RIGHT", 10, 0)
@@ -595,6 +615,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local header5 = ns.createHeader("uf_player_options", L["icon"]..":", "content")
 
+		local header5BG = ns.createBackground("uf_player_options", 580, 58, "content")
+		header5BG:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", -4, -4)
+		header5BG:SetFrameLevel(1)
+
 		cb2:SetScript("OnClick", function(self)
 			LolzenUIcfg.unitframes.player["uf_player_cb_standalone"] = cb2:GetChecked()
 			LolzenUI.SetUFPlayerCBStandalone()
@@ -613,8 +637,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 				cb_height:Show()
 				cb_color_text:ClearAllPoints()
 				cb_color_text:SetPoint("LEFT", cb_height, "RIGHT", 10, 0)
-				header5:SetPoint("TOPLEFT", cb_width_text, "BOTTOMLEFT", 0, -13)
+				header5:SetPoint("TOPLEFT", cb_width_text, "BOTTOMLEFT", -4, -19)
 				ChangeScrollbarMinMax("uf_player_options", "+", 25)
+				header4BG:SetSize(580, 83)
 			else
 				cb_pos_x_text:Hide()
 				cb_pos_x:Hide()
@@ -629,9 +654,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 				cb_height_text:Hide()
 				cb_height:Hide()
 				cb_color_text:ClearAllPoints()
-				cb_color_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -5)
-				header5:SetPoint("TOPLEFT", cb_color_text, "BOTTOMLEFT", 0, -13)
+				cb_color_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 4, -5)
+				header5:SetPoint("TOPLEFT", cb_color_text, "BOTTOMLEFT", -4, -19)
 				ChangeScrollbarMinMax("uf_player_options", "-", 25)
+				header4BG:SetSize(580, 58)
 			end
 		end)
 
@@ -649,8 +675,9 @@ f:SetScript("OnEvent", function(self, event, addon)
 			cb_height_text:Show()
 			cb_height:Show()
 			cb_color_text:SetPoint("LEFT", cb_height, "RIGHT", 10, 0)
-			header5:SetPoint("TOPLEFT", cb_width_text, "BOTTOMLEFT", 0, -13)
+			header5:SetPoint("TOPLEFT", cb_width_text, "BOTTOMLEFT", -4, -19)
 			ChangeScrollbarMinMax("uf_player_options", "+", 25)
+			header4BG:SetSize(580, 83)
 		else
 			cb_pos_x_text:Hide()
 			cb_pos_x:Hide()
@@ -664,12 +691,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 			cb_width:Hide()
 			cb_height_text:Hide()
 			cb_height:Hide()
-			cb_color_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -5)
-			header5:SetPoint("TOPLEFT", cb_color_text, "BOTTOMLEFT", 0, -13)
+			cb_color_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 4, -5)
+			header5:SetPoint("TOPLEFT", cb_color_text, "BOTTOMLEFT", -4, -19)
+			header4BG:SetSize(580, 58)
 		end
 
 		local cb_icon_size_text = ns.createFontstring("uf_player_options", L["size"]..":", "content")
-		cb_icon_size_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 0, -8)
+		cb_icon_size_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 4, -16)
 
 		local cb_icon_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_cb_icon_size"], "content")
 		cb_icon_size:SetPoint("LEFT", cb_icon_size_text, "RIGHT", 10, 0)
@@ -767,7 +795,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb3 = ns.createCheckBox("uf_player_options", "uf_player_use_castbar_icon_cut", "|cff5599ff"..L["uf_trim_castbar_icon"].."|r", LolzenUIcfg.unitframes.player["uf_player_cb_icon_cut"], "content")
-		cb3:SetPoint("TOPLEFT", cb_icon_size_text, "BOTTOMLEFT", 0, -8)
+		cb3:SetPoint("TOPLEFT", cb_icon_size_text, "BOTTOMLEFT", -4, -8)
 
 		cb3:SetScript("OnClick", function(self)
 			LolzenUIcfg.unitframes.player["uf_player_cb_icon_cut"] = cb3:GetChecked()
@@ -777,8 +805,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header6 = ns.createHeader("uf_player_options", L["time"]..":", "content")
 		header6:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -8)
 
+		local header6BG = ns.createBackground("uf_player_options", 580, 38, "content")
+		header6BG:SetPoint("TOPLEFT", header6, "BOTTOMLEFT", -4, -4)
+		header6BG:SetFrameLevel(1)
+
 		local cb_time_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
-		cb_time_pos_x_text:SetPoint("TOPLEFT", header6, "BOTTOMLEFT", 0, -8)
+		cb_time_pos_x_text:SetPoint("TOPLEFT", header6, "BOTTOMLEFT", 4, -18)
 
 		local cb_time_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_cb_time_posx"], "content")
 		cb_time_pos_x:SetPoint("LEFT", cb_time_pos_x_text, "RIGHT", 10, 0)
@@ -833,27 +865,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb_time_anchor1_text:SetPoint("LEFT", cb_time_pos_y, "RIGHT", 10, 0)
 
 		local cb_time_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_time_anchor1", 110, LolzenUIcfg.unitframes.player["uf_player_cb_time_anchor1"], "content")
-		cb_time_anchor1:SetPoint("LEFT", cb_time_anchor1_text, "RIGHT", -10, -3)
+		cb_time_anchor1:SetPoint("LEFT", cb_time_anchor1_text, "RIGHT", -10, -2)
 		cb_time_anchor1.OnClick = function()
 			LolzenUIcfg.unitframes.player["uf_player_cb_time_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor1)]
 			LolzenUI.SetUFPlayerCBTimePos()
 		end
 
 		local cb_time_anchor2_text = ns.createFontstring("uf_player_options", L["anchor"].."2:", "content")
-		cb_time_anchor2_text:SetPoint("LEFT", cb_time_anchor1, "RIGHT", -5, 3)		
+		cb_time_anchor2_text:SetPoint("LEFT", cb_time_anchor1, "RIGHT", -5, 2)		
 	
 		local cb_time_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_time_anchor2", 110, LolzenUIcfg.unitframes.player["uf_player_cb_time_anchor2"], "content")
-		cb_time_anchor2:SetPoint("LEFT", cb_time_anchor2_text, "RIGHT", -10, -3)
+		cb_time_anchor2:SetPoint("LEFT", cb_time_anchor2_text, "RIGHT", -10, -2)
 		cb_time_anchor2.OnClick = function()
 			LolzenUIcfg.unitframes.player["uf_player_cb_time_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_time_anchor2)]
 			LolzenUI.SetUFPlayerCBTimePos()
 		end
 
 		local header7 = ns.createHeader("uf_player_options", L["text"]..":", "content")
-		header7:SetPoint("TOPLEFT", cb_time_pos_x_text, "BOTTOMLEFT", 0, -13)
+		header7:SetPoint("TOPLEFT", cb_time_pos_x_text, "BOTTOMLEFT", -4, -17)
+
+		local header7BG = ns.createBackground("uf_player_options", 580, 38, "content")
+		header7BG:SetPoint("TOPLEFT", header7, "BOTTOMLEFT", -4, -4)
+		header7BG:SetFrameLevel(1)
 
 		local cb_text_pos_x_text = ns.createFontstring("uf_player_options", L["PosX"]..":", "content")
-		cb_text_pos_x_text:SetPoint("TOPLEFT", header7, "BOTTOMLEFT", 0, -8)
+		cb_text_pos_x_text:SetPoint("TOPLEFT", header7, "BOTTOMLEFT", 4, -18)
 
 		local cb_text_pos_x = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_cb_text_posx"], "content")
 		cb_text_pos_x:SetPoint("LEFT", cb_text_pos_x_text, "RIGHT", 10, 0)
@@ -908,27 +944,31 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb_text_anchor1_text:SetPoint("LEFT", cb_text_pos_y, "RIGHT", 10, 0)
 
 		local cb_text_anchor1 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_text_anchor1", 110, LolzenUIcfg.unitframes.player["uf_player_cb_text_anchor1"], "content")
-		cb_text_anchor1:SetPoint("LEFT", cb_text_anchor1_text, "RIGHT", -10, -3)
+		cb_text_anchor1:SetPoint("LEFT", cb_text_anchor1_text, "RIGHT", -10, -2)
 		cb_text_anchor1.OnClick = function()
 			LolzenUIcfg.unitframes.player["uf_player_cb_text_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor1)]
 			LolzenUI.SetUFPlayerCBTextPos()
 		end
 
 		local cb_text_anchor2_text = ns.createFontstring("uf_player_options", L["anchor"].."2:", "content")
-		cb_text_anchor2_text:SetPoint("LEFT", cb_text_anchor1, "RIGHT", -5, 3)
+		cb_text_anchor2_text:SetPoint("LEFT", cb_text_anchor1, "RIGHT", -5, 2)
 
 		local cb_text_anchor2 = ns.createPicker("uf_player_options", "anchor", "uf_player_cb_text_anchor2", 110, LolzenUIcfg.unitframes.player["uf_player_cb_text_anchor2"], "content")
-		cb_text_anchor2:SetPoint("LEFT", cb_text_anchor2_text, "RIGHT", -10, -3)
+		cb_text_anchor2:SetPoint("LEFT", cb_text_anchor2_text, "RIGHT", -10, -2)
 		cb_text_anchor2.OnClick = function()
 			LolzenUIcfg.unitframes.player["uf_player_cb_text_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_text_anchor2)]
 			LolzenUI.SetUFPlayerCBTextPos()
 		end
 
 		local header8 = ns.createHeader("uf_player_options", L["uf_time_and_spellname_header"]..":", "content")
-		header8:SetPoint("TOPLEFT", cb_text_pos_x_text, "BOTTOMLEFT", 0, -13)
+		header8:SetPoint("TOPLEFT", cb_text_pos_x_text, "BOTTOMLEFT", -4, -17)
+
+		local header8BG = ns.createBackground("uf_player_options", 580, 38, "content")
+		header8BG:SetPoint("TOPLEFT", header8, "BOTTOMLEFT", -4, -4)
+		header8BG:SetFrameLevel(1)
 
 		local cb_font = ns.createPicker("uf_player_options", "font", "uf_player_cb_font", 120, LolzenUIcfg.unitframes.player["uf_player_cb_font"], "content")
-		cb_font:SetPoint("TOPLEFT", header8, "BOTTOMLEFT", -20, -8)
+		cb_font:SetPoint("TOPLEFT", header8, "BOTTOMLEFT", -16, -10)
 		cb_font.OnClick = function()
 			LolzenUIcfg.unitframes.player["uf_player_cb_font"] = UIDropDownMenu_GetSelectedName(cb_font)
 			LolzenUI.SetUFPlayerCBTextFont()
@@ -984,7 +1024,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		cb_font_color_f:SetAllPoints(cb_font_color)
 
 		local header9 = ns.createHeader("uf_player_options", L["uf_restingindicator_header"], "content")
-		header9:SetPoint("TOPLEFT", cb_font, "BOTTOMLEFT", 17, -8)
+		header9:SetPoint("TOPLEFT", cb_font, "BOTTOMLEFT", 17, -2)
+
+		local header9BG = ns.createBackground("uf_player_options", 580, 60, "content")
+		header9BG:SetPoint("TOPLEFT", header9, "BOTTOMLEFT", -4, -4)
+		header9BG:SetFrameLevel(1)
 
 		local cb4 = ns.createCheckBox("uf_player_options", "uf_player_ri", "|cff5599ff"..L["uf_show_restingindicator"].."|r", LolzenUIcfg.unitframes.player["uf_player_show_restingindicator"], "content")
 		cb4:SetPoint("TOPLEFT", header9, "BOTTOMLEFT", 0, -8)
@@ -994,7 +1038,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local resting_size_text = ns.createFontstring("uf_player_options", L["size"]..":", "content")
-		resting_size_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
+		resting_size_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 4, -8)
 
 		local resting_size = ns.createInputbox("uf_player_options", 30, 20, LolzenUIcfg.unitframes.player["uf_player_resting_size"], "content")
 		resting_size:SetPoint("LEFT", resting_size_text, "RIGHT", 10, 0)

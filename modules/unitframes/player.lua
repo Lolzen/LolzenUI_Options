@@ -60,10 +60,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local height_text = ns.createFontstring("uf_player_options", L["height"]..":", "content")
-		height_text:SetPoint("LEFT", width, "RIGHT", 10, -1)
+		height_text:SetPoint("LEFT", width, "RIGHT", 10, 0)
 
 		local height = ns.createInputbox("uf_player_options", 40, 20, LolzenUIcfg.unitframes.player["uf_player_height"], "content")
-		height:SetPoint("LEFT", height_text, "RIGHT", 10, 1)
+		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
 
 		height:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)

@@ -16,7 +16,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb1 = ns.createCheckBox("unitframes", "uf_hp_perc", "|cff5599ff"..L["uf_general_use_hp_percent"].."|r", LolzenUIcfg.unitframes.general["uf_use_hp_percent"], "content")
 		cb1:SetPoint("TOPLEFT", ns.unitframes.content, 16, -14)
 
-		local cbBG = ns.createBackground("unitframes", 586, 130, "content")
+		local cbBG = ns.createBackground("unitframes", 580, 130, "content")
 		cbBG:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", -4, 30)
 		cbBG:SetFrameLevel(1)
 
@@ -162,7 +162,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 			perc_val_divider:Hide()
 		end
 
-		local cb5BG = ns.createBackground("unitframes", 586, 40, "content")
+		local cb5BG = ns.createBackground("unitframes", 580, 40, "content")
 		cb5BG:SetPoint("TOPLEFT", cb5, "BOTTOMLEFT", -4, -4)
 		cb5BG:SetFrameLevel(1)
 
@@ -189,7 +189,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("unitframes", L["raidmarks"], "content")
 		header1:SetPoint("TOPLEFT", texture_text, "BOTTOMLEFT", -4, -20)
 
-		local header1BG = ns.createBackground("unitframes", 586, 40, "content")
+		local header1BG = ns.createBackground("unitframes", 580, 40, "content")
 		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
 		header1BG:SetFrameLevel(1)
 
@@ -284,7 +284,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header2 = ns.createHeader("unitframes", L["uf_general_leadindicator"], "content")
 		header2:SetPoint("TOPLEFT", rt_size_text, "BOTTOMLEFT", -4, -20)
 
-		local header2BG = ns.createBackground("unitframes", 586, 40, "content")
+		local header2BG = ns.createBackground("unitframes", 580, 40, "content")
 		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
 		header2BG:SetFrameLevel(1)
 
@@ -379,7 +379,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header3 = ns.createHeader("unitframes", L["alpha"], "content")
 		header3:SetPoint("TOPLEFT", lead_size_text, "BOTTOMLEFT", -4, -20)
 
-		local header3BG = ns.createBackground("unitframes", 586, 136, "content")
+		local header3BG = ns.createBackground("unitframes", 580, 136, "content")
 		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
 		header3BG:SetFrameLevel(1)
 
@@ -434,7 +434,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header4 = ns.createHeader("unitframes", L["uf_general_hp_font_options"], "content")
 		header4:SetPoint("TOPLEFT", outofcombatfadeout_alpha_text, "BOTTOMLEFT", -4, -20)
 
-		local header4BG = ns.createBackground("unitframes", 586, 68, "content")
+		local header4BG = ns.createBackground("unitframes", 580, 68, "content")
 		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
 		header4BG:SetFrameLevel(1)
 

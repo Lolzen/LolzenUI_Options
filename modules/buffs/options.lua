@@ -403,7 +403,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header4 = ns.createHeader("buffs", L["buff_counter_header"]..":")
-		header4:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", -4, -4)
+		header4:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -4)
 
 		local header4BG = ns.createBackground("buffs", 600, 63)
 		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)

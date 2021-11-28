@@ -28,7 +28,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local color_text_hated = ns.createFontstring("miscellaneous", L["misc_hated"]..":")
-		color_text_hated:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -15)
+		color_text_hated:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -15)
 
 		local color_hated = ns.createColorTexture("miscellaneous", 16, 16, LolzenUIcfg.miscellaneous["misc_faction_colors"][1], "LolzenUI Standard")
 		color_hated:SetPoint("LEFT", color_text_hated, "RIGHT", 50, 0)
@@ -132,7 +132,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_f_exalted:SetAllPoints(color_exalted)
 
 		local header2 = ns.createHeader("miscellaneous", L["misc_microbuttons"])
-		header2:SetPoint("TOPLEFT", color_text_exalted, "BOTTOMLEFT", 0, -18)
+		header2:SetPoint("TOPLEFT", color_text_exalted, "BOTTOMLEFT", -4, -18)
 
 		local header2BG = ns.createBackground("miscellaneous", 600, 30)
 		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)

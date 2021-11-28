@@ -18,7 +18,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local width_text = ns.createFontstring("uf_targettarget_options", L["width"]..":")
 		width_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 4, -44)
 
-		local wtBG = ns.createBackground("uf_targettarget_options", 580, 34)
+		local wtBG = ns.createBackground("uf_targettarget_options", 600, 34)
 		wtBG:SetPoint("TOPLEFT", width_text, "BOTTOMLEFT", -8, 23)
 		wtBG:SetFrameLevel(1)
 
@@ -74,7 +74,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("uf_targettarget_options", L["uf_healthpoints"])
 		header1:SetPoint("TOPLEFT", width_text, -4, -24)
 
-		local header1BG = ns.createBackground("uf_targettarget_options", 580, 86)
+		local header1BG = ns.createBackground("uf_targettarget_options", 600, 86)
 		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
 		header1BG:SetFrameLevel(1)
 

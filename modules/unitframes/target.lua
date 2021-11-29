@@ -553,20 +553,24 @@ f:SetScript("OnEvent", function(self, event, addon)
 				cb3:Hide()
 				header4:SetPoint("TOPLEFT", cb2, 0, -30)
 				ChangeScrollbarMinMax("uf_target_options", "-", 24)
+				header3BG:SetSize(580, 109)
 			else
 				cb3:Show()
 				header4:SetPoint("TOPLEFT", cb3, 0, -30)
 				ChangeScrollbarMinMax("uf_target_options", "+", 24)
+				header3BG:SetSize(580, 133)
 			end
 		end)
 
 		if cb2:GetChecked() == true then
 			cb3:Hide()
 			header4:SetPoint("TOPLEFT", cb2, 0, -30)
+			header3BG:SetSize(580, 109)
 		else
 			cb3:Show()
 			header4:SetPoint("TOPLEFT", cb3, 0, -30)
 			ChangeScrollbarMinMax("uf_target_options", "+", 24)
+			header3BG:SetSize(580, 133)
 		end
 
 		local cb4 = ns.createCheckBox("uf_target_options", "uf_target_use_castbar_standalone", "|cff5599ff"..L["uf_use_standalone_castbar"].."|r", LolzenUIcfg.unitframes.target["uf_target_cb_standalone"], "content")

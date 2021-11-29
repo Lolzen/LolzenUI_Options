@@ -16,7 +16,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("uf_powercolor_options", L["sub_panel_unitframes_powercolors_title"])
 
 		local mana_text = ns.createFontstring("uf_powercolor_options", L["sub_panel_unitframes_powercolors_mana"]..":")
-		mana_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -30)
+		mana_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 4, -30)
+
+		local mtBG = ns.createBackground("uf_powercolor_options", 600, 330)
+		mtBG:SetPoint("TOPLEFT", mana_text, "BOTTOMLEFT", -8, 20)
+		mtBG:SetFrameLevel(1)
 
 		local mana = ns.createColorTexture("uf_powercolor_options", 16, 16, LolzenUIcfg.unitframes.powercolors[0], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
 		mana:SetPoint("LEFT", mana_text, "RIGHT", 100, 0)

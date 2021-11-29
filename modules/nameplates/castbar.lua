@@ -19,9 +19,13 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local cb_header1 = ns.createHeader("np_castbar_options", L["Preview"]..":")
 		cb_header1:SetPoint("TOPLEFT", cb_title, "BOTTOMLEFT", 0, -40)
 
+		local header1BG = ns.createBackground("np_castbar_options", 600, 40)
+		header1BG:SetPoint("TOPLEFT", cb_header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local cb_prev_np_frame = CreateFrame("Frame", nil, ns["np_castbar_options"])
 		cb_prev_np_frame:SetSize(LolzenUIcfg.nameplates.general["np_width"]*LolzenUIcfg.nameplates.general["np_selected_scale"], LolzenUIcfg.nameplates.general["np_height"]*LolzenUIcfg.nameplates.general["np_selected_scale"])
-		cb_prev_np_frame:SetPoint("TOPLEFT", cb_header1, "BOTTOMLEFT", 20, -10)
+		cb_prev_np_frame:SetPoint("TOPLEFT", cb_header1, "BOTTOMLEFT", 28, -20)
 
 		ns.setNPCBPrevSize = function()
 			cb_prev_np_frame:SetSize(LolzenUIcfg.nameplates.general["np_width"]*LolzenUIcfg.nameplates.general["np_selected_scale"], LolzenUIcfg.nameplates.general["np_height"]*LolzenUIcfg.nameplates.general["np_selected_scale"])
@@ -101,8 +105,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			cb_prev_np_text:SetPoint(LolzenUIcfg.nameplates.castbar["np_cbtext_anchor"], cb_prev_np_cb, LolzenUIcfg.nameplates.castbar["np_cbtext_anchor2"], LolzenUIcfg.nameplates.castbar["np_cbtext_posx"]*LolzenUIcfg.nameplates.general["np_selected_scale"], LolzenUIcfg.nameplates.castbar["np_cbtext_posy"]*LolzenUIcfg.nameplates.general["np_selected_scale"])
 		end
 
+		local cb_header2 = ns.createHeader("np_castbar_options", L["Position"])
+		cb_header2:SetPoint("TOPLEFT", cb_prev_np_frame, "BOTTOMLEFT", -28, -20)
+
+		local cb_header2BG = ns.createBackground("np_castbar_options", 600, 64)
+		cb_header2BG:SetPoint("TOPLEFT", cb_header2, "BOTTOMLEFT", -4, -4)
+		cb_header2BG:SetFrameLevel(1)
+
 		local cb_pos_x_text = ns.createFontstring("np_castbar_options", L["PosX"]..":")
-		cb_pos_x_text:SetPoint("TOPLEFT", cb_prev_np_frame, "BOTTOMLEFT", -20, -30)
+		cb_pos_x_text:SetPoint("TOPLEFT", cb_header2, "BOTTOMLEFT", 4, -16)
 
 		local cb_pos_x = ns.createInputbox("np_castbar_options", 30, 20, LolzenUIcfg.nameplates.castbar["np_cb_posx"])
 		cb_pos_x:SetPoint("LEFT", cb_pos_x_text, "RIGHT", 10, 0)
@@ -244,11 +255,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			self:ClearFocus()
 		end)
 
-		local cb_header2 = ns.createHeader("np_castbar_options", L["sub_panel_nameplates_spark_header"])
-		cb_header2:SetPoint("TOPLEFT", cb_texture_text, "BOTTOMLEFT", 0, -30)
+		local cb_header3 = ns.createHeader("np_castbar_options", L["sub_panel_nameplates_spark_header"])
+		cb_header3:SetPoint("TOPLEFT", cb_texture_text, "BOTTOMLEFT", -4, -20)
+
+		local cb_header3BG = ns.createBackground("np_castbar_options", 600, 30)
+		cb_header3BG:SetPoint("TOPLEFT", cb_header3, "BOTTOMLEFT", -4, -4)
+		cb_header3BG:SetFrameLevel(1)
 
 		local cb_spark_height_text = ns.createFontstring("np_castbar_options", L["height"]..":")
-		cb_spark_height_text:SetPoint("TOPLEFT", cb_header2, "BOTTOMLEFT", 0, -10)
+		cb_spark_height_text:SetPoint("TOPLEFT", cb_header3, "BOTTOMLEFT", 4, -14)
 
 		local cb_spark_height = ns.createInputbox("np_castbar_options", 30, 20, LolzenUIcfg.nameplates.castbar["np_spark_height"])
 		cb_spark_height:SetPoint("LEFT", cb_spark_height_text, "RIGHT", 10, 0)
@@ -301,11 +316,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			self:ClearFocus()
 		end)
 
-		local cb_header3 = ns.createHeader("np_castbar_options", L["icon"])
-		cb_header3:SetPoint("TOPLEFT", cb_spark_height_text, "BOTTOMLEFT", 0, -30)
+		local cb_header4 = ns.createHeader("np_castbar_options", L["icon"])
+		cb_header4:SetPoint("TOPLEFT", cb_spark_height_text, "BOTTOMLEFT", -4, -14)
+
+		local cb_header4BG = ns.createBackground("np_castbar_options", 600, 60)
+		cb_header4BG:SetPoint("TOPLEFT", cb_header4, "BOTTOMLEFT", -4, -4)
+		cb_header4BG:SetFrameLevel(1)
 
 		local cb_icon_size_text = ns.createFontstring("np_castbar_options", L["size"]..":")
-		cb_icon_size_text:SetPoint("TOPLEFT", cb_header3, "BOTTOMLEFT", 0, -10)
+		cb_icon_size_text:SetPoint("TOPLEFT", cb_header4, "BOTTOMLEFT", 4, -14)
 
 		local cb_icon_size = ns.createInputbox("np_castbar_options", 30, 20, LolzenUIcfg.nameplates.castbar["np_cbicon_size"])
 		cb_icon_size:SetPoint("LEFT", cb_icon_size_text, "RIGHT", 10, 0)
@@ -412,11 +431,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUI.setNP_CBIconPos()
 		end
 
-		local cb_header4 = ns.createHeader("np_castbar_options", L["time"])
-		cb_header4:SetPoint("TOPLEFT", cb_icon_anchor_text, "BOTTOMLEFT", 0, -30)
+		local cb_header5 = ns.createHeader("np_castbar_options", L["time"])
+		cb_header5:SetPoint("TOPLEFT", cb_icon_anchor_text, "BOTTOMLEFT", -4, -16)
+
+		local cb_header5BG = ns.createBackground("np_castbar_options", 600, 60)
+		cb_header5BG:SetPoint("TOPLEFT", cb_header5, "BOTTOMLEFT", -4, -4)
+		cb_header5BG:SetFrameLevel(1)
 
 		local cb_time_font_text = ns.createFontstring("np_castbar_options", L["font"]..":")
-		cb_time_font_text:SetPoint("TOPLEFT", cb_header4, "BOTTOMLEFT", 0, -10)
+		cb_time_font_text:SetPoint("TOPLEFT", cb_header5, "BOTTOMLEFT", 4, -16)
 
 		local cb_time_font = ns.createPicker("np_castbar_options", "font", "cb_time_font", 120, LolzenUIcfg.nameplates.castbar["np_cbtime_font"])
 		cb_time_font:SetPoint("LEFT", cb_time_font_text, "RIGHT", -10, -3)
@@ -544,11 +567,15 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUI.setNP_CBTimePos()
 		end
 
-		local cb_header5 = ns.createHeader("np_castbar_options", L["text"])
-		cb_header5:SetPoint("TOPLEFT", cb_time_pos_x_text, "BOTTOMLEFT", 0, -30)
+		local cb_header6 = ns.createHeader("np_castbar_options", L["text"])
+		cb_header6:SetPoint("TOPLEFT", cb_time_pos_x_text, "BOTTOMLEFT", -4, -16)
+
+		local cb_header6BG = ns.createBackground("np_castbar_options", 600, 60)
+		cb_header6BG:SetPoint("TOPLEFT", cb_header6, "BOTTOMLEFT", -4, -4)
+		cb_header6BG:SetFrameLevel(1)
 
 		local cb_text_font_text = ns.createFontstring("np_castbar_options", L["font"]..":")
-		cb_text_font_text:SetPoint("TOPLEFT", cb_header5, "BOTTOMLEFT", 0, -10)
+		cb_text_font_text:SetPoint("TOPLEFT", cb_header6, "BOTTOMLEFT", 4, -16)
 
 		local cb_text_font = ns.createPicker("np_castbar_options", "font", "cb_text_font", 120, LolzenUIcfg.nameplates.castbar["np_cbtext_font"])
 		cb_text_font:SetPoint("LEFT", cb_text_font_text, "RIGHT", -10, -3)

@@ -16,6 +16,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("buffwatcher", L["bw_watched_auras_header"]..":")
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("buffwatcher", 280, 475)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local function getInfo(id)
 			local name, _, spellicon = GetSpellInfo(id)
 			if spellicon ~= nil then
@@ -37,7 +41,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 					icon[i]:SetTexture(select(2, getInfo(LolzenUIcfg.buffwatcher["buffwatchlist"][UnitName("player")][i])))
 				end
 				if i == 1 then
-					icon[i]:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -20)
+					icon[i]:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 6, -20)
 				else
 					icon[i]:SetPoint("TOPLEFT", icon[i-1], "BOTTOMLEFT", 0, -5)
 				end
@@ -61,10 +65,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		generateList()
 
 		local add = ns.createFontstring("buffwatcher", L["bw_add_or_delete_text"])
-		add:SetPoint("LEFT", header1, "RIGHT", 100, 0)
+		add:SetPoint("LEFT", header1, "RIGHT", 80, 0)
+
+		local addBG = ns.createBackground("buffwatcher", 318, 130)
+		addBG:SetPoint("TOPLEFT", add, "BOTTOMLEFT", -4, -4)
+		addBG:SetFrameLevel(1)
 
 		local eb = ns.createInputbox("buffwatcher", 50, 20, nil)
-		eb:SetPoint("TOPLEFT", add, "BOTTOMLEFT", 5, -8)
+		eb:SetPoint("TOPLEFT", add, "BOTTOMLEFT", 10, -10)
 
 		local previewicon = ns["buffwatcher"]:CreateTexture(nil, "OVERLAY")
 		previewicon:SetTexCoord(.04, .94, .04, .94)
@@ -83,7 +91,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local b = CreateFrame("Button", "addButton", ns["buffwatcher"], "UIPanelButtonTemplate")
 		b:SetSize(80 ,22) -- width, height
 		b:SetText(L["bw_add_button"])
-		b:SetPoint("TOPLEFT", eb, "BOTTOMLEFT", -7, -8)
+		b:SetPoint("TOPLEFT", eb, "BOTTOMLEFT", -5, -8)
 		b:SetScript("OnClick", function()
 			local isduplicate = false
 			for k, v in pairs(LolzenUIcfg.buffwatcher["buffwatchlist"][UnitName("player")]) do
@@ -114,16 +122,8 @@ f:SetScript("OnEvent", function(self, event, addon)
 			LolzenUI.BuffWatcherUpdate()
 		end)
 
-		local tip = ns.createFontstring("buffwatcher", "|cff5599ffPROTIP: |r"..L["bw_protip_text"])
-		tip:SetPoint("TOPLEFT", b, "BOTTOMLEFT", 0, -8)
-
-		local help = ns["buffwatcher"]:CreateTexture(nil, "OVERLAY")
-		help:SetSize(293, 66)
-		help:SetTexture("Interface\\AddOns\\LolzenUI_Options\\modules\\buffwatcher\\help.tga")
-		help:SetPoint("TOPLEFT", tip, "BOTTOMLEFT", 0, -8)
-
 		local pos_x_text = ns.createFontstring("buffwatcher", "PosX:")
-		pos_x_text:SetPoint("TOPLEFT", help, "BOTTOMLEFT", 0, -20)
+		pos_x_text:SetPoint("TOPLEFT", b, "BOTTOMLEFT", 4, -10)
 
 		local pos_x = ns.createInputbox("buffwatcher", 30, 20, LolzenUIcfg.buffwatcher["buffwatch_pos_x"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
@@ -228,6 +228,18 @@ f:SetScript("OnEvent", function(self, event, addon)
 			self:SetText(self.oldText)
 			self:ClearFocus()
 		end)
+
+		local tip = ns.createFontstring("buffwatcher", "|cff5599ffPROTIP: |r"..L["bw_protip_text"])
+		tip:SetPoint("TOPLEFT", icon_size_text, "BOTTOMLEFT", -4, -20)
+
+		local help = ns["buffwatcher"]:CreateTexture(nil, "OVERLAY")
+		help:SetSize(293, 66)
+		help:SetTexture("Interface\\AddOns\\LolzenUI_Options\\modules\\buffwatcher\\help.tga")
+		help:SetPoint("TOPLEFT", tip, "BOTTOMLEFT", 0, -8)
+
+		local helpBG = ns.createBackground("buffwatcher", 318, 110)
+		helpBG:SetPoint("TOPLEFT", icon_size_text, "BOTTOMLEFT", -12, -12)
+		helpBG:SetFrameLevel(1)
 
 		ns["buffwatcher"].default = function(self)
 			LolzenUIcfg.buffwatcher = _G["LolzenUIdefaultcfg"].buffwatcher

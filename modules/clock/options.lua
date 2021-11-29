@@ -16,8 +16,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header1 = ns.createHeader("clock", L["clock_hours_and_minutes_header"])
 		header1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
+		local header1BG = ns.createBackground("clock", 600, 40)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
+
 		local font_text = ns.createFontstring("clock", L["font"]..":")
-		font_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -10)
+		font_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 4, -18)
 
 		local font = ns.createPicker("clock", "font", "clock_font", 120, LolzenUIcfg.clock["clock_font"])
 		font:SetPoint("LEFT", font_text, "RIGHT", -10, -3)
@@ -76,7 +80,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_f:SetAllPoints(color)
 
 		local header2 = ns.createHeader("clock", L["clock_seconds_header"])
-		header2:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -30)
+		header2:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", -4, -20)
+
+		local header2BG = ns.createBackground("clock", 600, 63)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local cb1 = ns.createCheckBox("clock", "clock_seconds_enabled", "|cff5599ff"..L["clock_seconds_enabled"].."|r", LolzenUIcfg.clock["clock_seconds_enabled"])
 		cb1:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -10)
@@ -86,10 +94,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local seconds_font_text = ns.createFontstring("clock", L["font"]..":")
-		seconds_font_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		seconds_font_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local seconds_font = ns.createPicker("clock", "font", "clock_font_seconds", 120, LolzenUIcfg.clock["clock_font_seconds"])
-		seconds_font:SetPoint("LEFT", seconds_font_text, "RIGHT", -10, -3)
+		seconds_font:SetPoint("LEFT", seconds_font_text, "RIGHT", -6, -3)
 		seconds_font.OnClick = function()
 			LolzenUIcfg.clock["clock_font_seconds"] = UIDropDownMenu_GetSelectedName(seconds_font)
 			LolzenUI.SetClockFontSeconds()
@@ -145,19 +153,27 @@ f:SetScript("OnEvent", function(self, event, addon)
 		seconds_color_f:SetAllPoints(seconds_color)
 
 		local header3 = ns.createHeader("clock", L["clock_date"])
-		header3:SetPoint("TOPLEFT", seconds_font_text, "BOTTOMLEFT", 0, -30)
+		header3:SetPoint("TOPLEFT", seconds_font_text, "BOTTOMLEFT", -4, -20)
+
+		local header3BG = ns.createBackground("clock", 600, 40)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local dateformat = ns.createPicker("clock", "dateformat", "clock_dateformat", 50, LolzenUIcfg.clock["clock_dateformat"])
-		dateformat:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -17, -3)
+		dateformat:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -14, -10)
 		dateformat.OnClick = function()
 			LolzenUIcfg.clock["clock_dateformat"] = UIDropDownMenu_GetSelectedName(dateformat)
 		end
 
 		local header4 = ns.createHeader("clock", L["frame"])
-		header4:SetPoint("TOPLEFT", dateformat, "BOTTOMLEFT", 17, -27)
+		header4:SetPoint("TOPLEFT", dateformat, "BOTTOMLEFT", 14, -7)
+
+		local header4BG = ns.createBackground("clock", 600, 40)
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
 
 		local pos_x_text = ns.createFontstring("clock", L["PosX"]..":")
-		pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -10)
+		pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 4, -18)
 
 		local pos_x = ns.createInputbox("clock", 30, 20, LolzenUIcfg.clock["clock_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)

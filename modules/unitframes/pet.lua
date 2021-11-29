@@ -16,10 +16,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("uf_pet_options", L["sub_panel_unitframes_pet_title"])
 
 		local width_text = ns.createFontstring("uf_pet_options", L["width"]..":")
-		width_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -30)
+		width_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 4, -44)
+
+		local wtBG = ns.createBackground("uf_pet_options", 600, 34)
+		wtBG:SetPoint("TOPLEFT", width_text, "BOTTOMLEFT", -8, 23)
+		wtBG:SetFrameLevel(1)
 
 		local width = ns.createInputbox("uf_pet_options", 40, 20, LolzenUIcfg.unitframes.pet["uf_pet_width"])
-		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)
+		width:SetPoint("LEFT", width_text, "RIGHT", 10, 1)
 
 		width:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -42,10 +46,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local height_text = ns.createFontstring("uf_pet_options", L["height"]..":")
-		height_text:SetPoint("LEFT", width, "RIGHT", 10, 0)
+		height_text:SetPoint("LEFT", width, "RIGHT", 10, -1)
 
 		local height = ns.createInputbox("uf_pet_options", 40, 20, LolzenUIcfg.unitframes.pet["uf_pet_height"])
-		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
+		height:SetPoint("LEFT", height_text, "RIGHT", 10, 1)
 
 		height:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -68,7 +72,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("uf_pet_options", L["uf_healthpoints"])
-		header1:SetPoint("TOPLEFT", width_text, 0, -30)
+		header1:SetPoint("TOPLEFT", width_text, -4, -24)
+
+		local header1BG = ns.createBackground("uf_pet_options", 600, 86)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local cb1 = ns.createCheckBox("uf_pet_options", "uf_pet_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.pet["uf_pet_use_own_hp_font_settings"])
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
@@ -78,7 +86,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local hp_pos_x_text = ns.createFontstring("uf_pet_options", L["PosX"]..":")
-		hp_pos_x_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		hp_pos_x_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local hp_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes.pet["uf_pet_hp_posx"])
 		hp_pos_x:SetPoint("LEFT", hp_pos_x_text, "RIGHT", 10, 0)
@@ -186,10 +194,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("uf_pet_options", L["uf_castbar"])
-		header2:SetPoint("TOPLEFT", hp_font_text, 0, -30)
+		header2:SetPoint("TOPLEFT", hp_font_text, -4, -28)
+
+		local header2BG = ns.createBackground("uf_pet_options", 600, 38)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local cb_color_text = ns.createFontstring("uf_pet_options", L["color"]..":")
-		cb_color_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		cb_color_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -18)
 
 		local cb_color = ns.createColorTexture("uf_pet_options", 16, 16, LolzenUIcfg.unitframes.pet["uf_pet_cb_color"], LolzenUIcfg.unitframes.general["uf_statusbar_texture"])
 		cb_color:SetPoint("LEFT", cb_color_text, "RIGHT", 10, 0)
@@ -212,13 +224,17 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header3 = ns.createHeader("uf_pet_options", L["icon"]..":")
-		header3:SetPoint("TOPLEFT", cb_color_text, "BOTTOMLEFT", 0, -12)
+		header3:SetPoint("TOPLEFT", cb_color_text, "BOTTOMLEFT", -4, -18)
+
+		local header3BG = ns.createBackground("uf_pet_options", 600, 58)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local cb_icon_size_text = ns.createFontstring("uf_pet_options", L["size"]..":")
-		cb_icon_size_text:SetPoint("TOPLEFT",header3, "BOTTOMLEFT", 0, -8)
+		cb_icon_size_text:SetPoint("TOPLEFT",header3, "BOTTOMLEFT", 4, -16)
 
 		local cb_icon_size = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_size"])
-		cb_icon_size:SetPoint("LEFT", cb_icon_size_text, "RIGHT", 10, 0)
+		cb_icon_size:SetPoint("LEFT", cb_icon_size_text, "RIGHT", 10, 1)
 
 		cb_icon_size:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -241,10 +257,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local cb_icon_pos_x_text = ns.createFontstring("uf_pet_options", L["PosX"]..":")
-		cb_icon_pos_x_text:SetPoint("LEFT", cb_icon_size, "RIGHT", 10, 0)
+		cb_icon_pos_x_text:SetPoint("LEFT", cb_icon_size, "RIGHT", 10, -1)
 
 		local cb_icon_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_posx"])
-		cb_icon_pos_x:SetPoint("LEFT", cb_icon_pos_x_text, "RIGHT", 10, 0)
+		cb_icon_pos_x:SetPoint("LEFT", cb_icon_pos_x_text, "RIGHT", 10, 1)
 
 		cb_icon_pos_x:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -267,10 +283,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local cb_icon_pos_y_text = ns.createFontstring("uf_pet_options", L["PosY"]..":")
-		cb_icon_pos_y_text:SetPoint("LEFT", cb_icon_pos_x, "RIGHT", 5, 0)
+		cb_icon_pos_y_text:SetPoint("LEFT", cb_icon_pos_x, "RIGHT", 5, -1)
 
 		local cb_icon_pos_y = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_posy"])
-		cb_icon_pos_y:SetPoint("LEFT", cb_icon_pos_y_text, "RIGHT", 10, 0)
+		cb_icon_pos_y:SetPoint("LEFT", cb_icon_pos_y_text, "RIGHT", 10, 1)
 
 		cb_icon_pos_y:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -293,27 +309,27 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local cb_icon_anchor1_text = ns.createFontstring("uf_pet_options", L["anchor"].."1:")
-		cb_icon_anchor1_text:SetPoint("LEFT", cb_icon_pos_y, "RIGHT", 10, 0)
+		cb_icon_anchor1_text:SetPoint("LEFT", cb_icon_pos_y, "RIGHT", 10, -1)
 
 		local cb_icon_anchor1 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_icon_anchor1", 70, LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_anchor1"])
-		cb_icon_anchor1:SetPoint("LEFT", cb_icon_anchor1_text, "RIGHT", -10, -3)
+		cb_icon_anchor1:SetPoint("LEFT", cb_icon_anchor1_text, "RIGHT", -10, -2)
 		cb_icon_anchor1.OnClick = function()
 			LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_anchor1"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor1)]
 			LolzenUI.SetUFPetCBIconPos()
 		end
 
 		local cb_icon_anchor2_text = ns.createFontstring("uf_pet_options", L["anchor"].."2:")
-		cb_icon_anchor2_text:SetPoint("LEFT", cb_icon_anchor1, "RIGHT", -5, 3)
+		cb_icon_anchor2_text:SetPoint("LEFT", cb_icon_anchor1, "RIGHT", -5, 2)
 
 		local cb_icon_anchor2 = ns.createPicker("uf_pet_options", "anchor", "uf_pet_cb_icon_anchor2", 70, LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_anchor2"])
-		cb_icon_anchor2:SetPoint("LEFT", cb_icon_anchor2_text, "RIGHT", -10, -3)
+		cb_icon_anchor2:SetPoint("LEFT", cb_icon_anchor2_text, "RIGHT", -10, -2)
 		cb_icon_anchor2.OnClick = function()
 			LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_anchor2"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(cb_icon_anchor2)]
 			LolzenUI.SetUFPetCBIconPos()
 		end
 
 		local cb2 = ns.createCheckBox("uf_pet_options", "uf_pet_use_castbar_icon_cut", "|cff5599ff"..L["uf_trim_castbar_icon"].."|r", LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_cut"])
-		cb2:SetPoint("TOPLEFT", cb_icon_size_text, "BOTTOMLEFT", 0, -8)
+		cb2:SetPoint("TOPLEFT", cb_icon_size_text, "BOTTOMLEFT", -4, -8)
 		cb2:SetScript("OnClick", function(self)
 			LolzenUIcfg.unitframes.pet["uf_pet_cb_icon_cut"] = cb2:GetChecked()
 			LolzenUI.SetUFPetCBIconCutAndSize()
@@ -322,8 +338,12 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local header4 = ns.createHeader("uf_pet_options", L["time"]..":")
 		header4:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -8)
 
+		local header4BG = ns.createBackground("uf_pet_options", 600, 38)
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
+
 		local cb_time_pos_x_text = ns.createFontstring("uf_pet_options", L["PosX"]..":")
-		cb_time_pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
+		cb_time_pos_x_text:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 4, -18)
 
 		local cb_time_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes.pet["uf_pet_cb_time_posx"])
 		cb_time_pos_x:SetPoint("LEFT", cb_time_pos_x_text, "RIGHT", 10, 0)
@@ -395,10 +415,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header5 = ns.createHeader("uf_pet_options", L["text"]..":")
-		header5:SetPoint("TOPLEFT", cb_time_pos_x_text, "BOTTOMLEFT", 0, -13)
+		header5:SetPoint("TOPLEFT", cb_time_pos_x_text, "BOTTOMLEFT", -4, -17)
+
+		local header5BG = ns.createBackground("uf_pet_options", 600, 38)
+		header5BG:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", -4, -4)
+		header5BG:SetFrameLevel(1)
 
 		local cb_text_pos_x_text = ns.createFontstring("uf_pet_options", L["PosX"]..":")
-		cb_text_pos_x_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 0, -8)
+		cb_text_pos_x_text:SetPoint("TOPLEFT", header5, "BOTTOMLEFT", 4, -18)
 
 		local cb_text_pos_x = ns.createInputbox("uf_pet_options", 30, 20, LolzenUIcfg.unitframes.pet["uf_pet_cb_text_posx"])
 		cb_text_pos_x:SetPoint("LEFT", cb_text_pos_x_text, "RIGHT", 10, 0)
@@ -470,10 +494,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header6 = ns.createHeader("uf_pet_options", L["uf_time_and_spellname_header"]..":")
-		header6:SetPoint("TOPLEFT", cb_text_pos_x_text, "BOTTOMLEFT", 0, -13)
+		header6:SetPoint("TOPLEFT", cb_text_pos_x_text, "BOTTOMLEFT", -4, -17)
+
+		local header6BG = ns.createBackground("uf_pet_options", 600, 38)
+		header6BG:SetPoint("TOPLEFT", header6, "BOTTOMLEFT", -4, -4)
+		header6BG:SetFrameLevel(1)
 
 		local cb_font = ns.createPicker("uf_pet_options", "font", "uf_pet_cb_font", 120, LolzenUIcfg.unitframes.pet["uf_pet_cb_font"])
-		cb_font:SetPoint("TOPLEFT", header6, "BOTTOMLEFT", -20, -8)
+		cb_font:SetPoint("TOPLEFT", header6, "BOTTOMLEFT", -16, -10)
 		cb_font.OnClick = function()
 			LolzenUIcfg.unitframes.pet["uf_pet_cb_font"] = UIDropDownMenu_GetSelectedName(cb_font)
 			LolzenUI.SetUFPetCBTextFont()

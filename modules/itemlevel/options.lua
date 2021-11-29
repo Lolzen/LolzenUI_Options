@@ -13,6 +13,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("itemlevel", LUI["desc_itemlevel"])
 
+		local aboutBG = ns.createBackground("itemlevel", 600, 83)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("itemlevel", "Character", "|cff5599ff"..L["ilvl_show_on_characterframe"].."|r", LolzenUIcfg.itemlevel["ilvl_characterframe"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 
@@ -52,10 +56,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header = ns.createHeader("itemlevel", L["ilvl_header_text"])
-		header:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -13)
+		header:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -10)
+
+		local headerBG = ns.createBackground("itemlevel", 600, 82)
+		headerBG:SetPoint("TOPLEFT", header, "BOTTOMLEFT", -4, -4)
+		headerBG:SetFrameLevel(1)
 
 		local pos_x_text = ns.createFontstring("itemlevel", L["PosX"]..":")
-		pos_x_text:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 0, -10)
+		pos_x_text:SetPoint("TOPLEFT", header, "BOTTOMLEFT", 4, -18)
 
 		local pos_x = ns.createInputbox("itemlevel", 30, 20, LolzenUIcfg.itemlevel["ilvl_font_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
@@ -288,7 +296,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local cb4 = ns.createCheckBox("itemlevel", "itemquality_colors", "|cff5599ff"..L["ilvl_use_quality_color"].."|r", LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"])
-		cb4:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", 0, -8)
+		cb4:SetPoint("TOPLEFT", font_text, "BOTTOMLEFT", -4, -8)
 
 		cb4:SetScript("OnClick", function(self)
 			LolzenUIcfg.itemlevel["ilvl_use_itemquality_color"] = cb4:GetChecked()

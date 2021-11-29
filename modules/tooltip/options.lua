@@ -13,6 +13,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local about = ns.createDescription("tooltip", LUI["desc_tooltip"])
 
+		local aboutBG = ns.createBackground("tooltip", 600, 83)
+		aboutBG:SetPoint("TOPLEFT", about, "BOTTOMLEFT", -4, -14)
+		aboutBG:SetFrameLevel(1)
+
 		local cb1 = ns.createCheckBox("tooltip", "tt_factionicons", "|cff5599ff"..L["tt_show_factionicons"].."|r", LolzenUIcfg.tooltip["tip_show_factionicons"])
 		cb1:SetPoint("TOPLEFT", about, "BOTTOMLEFT", 0, -20)
 		cb1:SetScript("OnClick", function(self)
@@ -32,10 +36,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("tooltip", L["Position"])
-		header1:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -20)
+		header1:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -8)
+
+		local header1BG = ns.createBackground("tooltip", 600, 36)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local pos_x_text = ns.createFontstring("tooltip", L["PosX"]..":")
-		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
+		pos_x_text:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 4, -16)
 
 		local pos_x = ns.createInputbox("tooltip", 30, 20, LolzenUIcfg.tooltip["tip_posx"])
 		pos_x:SetPoint("LEFT", pos_x_text, "RIGHT", 10, 0)
@@ -107,10 +115,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("tooltip", L["texture"])
-		header2:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", 0, -20)
+		header2:SetPoint("TOPLEFT", pos_x_text, "BOTTOMLEFT", -4, -16)
+
+		local header2BG = ns.createBackground("tooltip", 600, 36)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local border_text = ns.createFontstring("tooltip", L["border"]..":")
-		border_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
+		border_text:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 4, -16)
 
 		local border = ns.createPicker("tooltip", "border", "tip_border", 120, LolzenUIcfg.tooltip["tip_border"])
 		border:SetPoint("LEFT", border_text, "RIGHT", -10, -3)
@@ -130,10 +142,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header3 = ns.createHeader("tooltip", L["tt_flags_header"])
-		header3:SetPoint("TOPLEFT", border_text, "BOTTOMLEFT", 0, -20)
+		header3:SetPoint("TOPLEFT", border_text, "BOTTOMLEFT", -4, -16)
+
+		local header3BG = ns.createBackground("tooltip", 600, 36)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local afk_flag_text = ns.createFontstring("tooltip", L["afk_flag"]..":")
-		afk_flag_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -8)
+		afk_flag_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -16)
 
 		local afk_flag = ns.createInputbox("tooltip", 50, 20, LolzenUIcfg.tooltip["tip_statusflag_afk"])
 		afk_flag:SetPoint("LEFT", afk_flag_text, "RIGHT", 10, 0)
@@ -244,7 +260,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		color_off_f:SetAllPoints(color_off)
 
 		local header4 = ns.createHeader("tooltip", L["tt_player_guild_header"])
-		header4:SetPoint("TOPLEFT", afk_flag_text, "BOTTOMLEFT", 0, -20)
+		header4:SetPoint("TOPLEFT", afk_flag_text, "BOTTOMLEFT", -4, -16)
+
+		local header4BG = ns.createBackground("tooltip", 600, 58)
+		header4BG:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", -4, -4)
+		header4BG:SetFrameLevel(1)
 
 		local cb4 = ns.createCheckBox("tooltip", "tip_global_guild_color", "|cff5599ff"..L["tt_use_guild_color_globally"].."|r", LolzenUIcfg.tooltip["tip_use_guild_color_globally"])
 		cb4:SetPoint("TOPLEFT", header4, "BOTTOMLEFT", 0, -8)
@@ -253,7 +273,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local color_text = ns.createFontstring("tooltip", L["color"]..":")
-		color_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 0, -8)
+		color_text:SetPoint("TOPLEFT", cb4, "BOTTOMLEFT", 4, -8)
 
 		local color = ns.createColorTexture("tooltip", 16, 16, LolzenUIcfg.tooltip["tip_own_guild_color"], "LolzenUI Standard")
 		color:SetPoint("LEFT", color_text, "RIGHT", 10, 0)

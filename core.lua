@@ -538,3 +538,23 @@ ns.createApplyButton = function(module)
 	button:SetPoint("BOTTOMRIGHT", ns[module], "BOTTOMRIGHT", -186, -37)
 	return button
 end
+
+-- background
+ns.createBackground = function(module, height, width, sub)
+	local backdrop = {
+		bgFile = "Interface\\ChatFrame\\ChatFrameBackground", tile = true, tileSize = 16,
+		edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 16,
+		insets = {left = 4, right = 4, top = 4, bottom = 4},
+	}
+	local bg
+	if sub ~= nil then
+		bg = CreateFrame("Frame", nil, ns[module][sub], "BackdropTemplate")
+	else
+		bg = CreateFrame("Frame", nil, ns[module], "BackdropTemplate")
+	end
+	bg:SetBackdrop(backdrop)
+	bg:SetBackdropColor(0.1, 0.1, 0.1, 0.5)
+	bg:SetBackdropBorderColor(0.3, 0.3, 0.3, 1)
+	bg:SetSize(height, width)
+	return bg
+end

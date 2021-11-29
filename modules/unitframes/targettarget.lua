@@ -16,10 +16,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("uf_targettarget_options", L["sub_panel_unitframes_targettarget_title"])
 
 		local width_text = ns.createFontstring("uf_targettarget_options", L["width"]..":")
-		width_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -30)
+		width_text:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 4, -44)
+
+		local wtBG = ns.createBackground("uf_targettarget_options", 600, 34)
+		wtBG:SetPoint("TOPLEFT", width_text, "BOTTOMLEFT", -8, 23)
+		wtBG:SetFrameLevel(1)
 
 		local width = ns.createInputbox("uf_targettarget_options", 40, 20, LolzenUIcfg.unitframes.targettarget["uf_targettarget_width"])
-		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)
+		width:SetPoint("LEFT", width_text, "RIGHT", 10, 1)
 
 		width:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -42,10 +46,10 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local height_text = ns.createFontstring("uf_targettarget_options", L["height"]..":")
-		height_text:SetPoint("LEFT", width, "RIGHT", 10, 0)
+		height_text:SetPoint("LEFT", width, "RIGHT", 10, -1)
 
 		local height = ns.createInputbox("uf_targettarget_options", 40, 20, LolzenUIcfg.unitframes.targettarget["uf_targettarget_height"])
-		height:SetPoint("LEFT", height_text, "RIGHT", 10, 0)
+		height:SetPoint("LEFT", height_text, "RIGHT", 10, 1)
 
 		height:SetScript("OnEscapePressed", function(self)
 			self:SetText(self.oldText)
@@ -68,7 +72,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("uf_targettarget_options", L["uf_healthpoints"])
-		header1:SetPoint("TOPLEFT", width_text, 0, -30)
+		header1:SetPoint("TOPLEFT", width_text, -4, -24)
+
+		local header1BG = ns.createBackground("uf_targettarget_options", 600, 86)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local cb1 = ns.createCheckBox("uf_targettarget_options", "uf_targettarget_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.targettarget["uf_targettarget_use_own_hp_font_settings"])
 		cb1:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
@@ -78,7 +86,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local hp_pos_x_text = ns.createFontstring("uf_targettarget_options", L["PosX"]..":")
-		hp_pos_x_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		hp_pos_x_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local hp_pos_x = ns.createInputbox("uf_targettarget_options", 30, 20, LolzenUIcfg.unitframes.targettarget["uf_targettarget_hp_posx"])
 		hp_pos_x:SetPoint("LEFT", hp_pos_x_text, "RIGHT", 10, 0)

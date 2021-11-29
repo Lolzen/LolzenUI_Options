@@ -22,24 +22,32 @@ f:SetScript("OnEvent", function(self, event, addon)
 
 		local dmg = ns.createPicker("fonts", "font", "fonts_dmgfont", 120, LolzenUIcfg.fonts["fonts_DAMAGE_TEXT_FONT"])
 		dmg:SetPoint("LEFT", dmg_text, "RIGHT", -10, -3)
+		dmg.OnClick = function()
+		end
 
 		local unit_text = ns.createFontstring("fonts", "|cff5599ff"..L["UNIT_NAME_FONT"]..":|r")
 		unit_text:SetPoint("TOPLEFT", dmg_text, "BOTTOMLEFT", 0, -15)
 
 		local unit = ns.createPicker("fonts", "font", "fonts_unitfont", 120, LolzenUIcfg.fonts["fonts_UNIT_NAME_FONT"])
 		unit:SetPoint("LEFT", unit_text, "RIGHT", -10, -3)
+		unit.OnClick = function()
+		end
 
 		local np_text = ns.createFontstring("fonts", "|cff5599ff"..L["NAMEPLATE_FONT"]..":|r")
 		np_text:SetPoint("TOPLEFT", unit_text, "BOTTOMLEFT", 0, -15)
 
 		local np = ns.createPicker("fonts", "font", "fonts_npfont", 120, LolzenUIcfg.fonts["fonts_NAMEPLATE_FONT"])
 		np:SetPoint("LEFT", np_text, "RIGHT", -10, -3)
+		np.OnClick = function()
+		end
 
 		local standard_text = ns.createFontstring("fonts", "|cff5599ff"..L["STANDARD_TEXT_FONT"]..":|r")
 		standard_text:SetPoint("TOPLEFT", np_text, "BOTTOMLEFT", 0, -15)
 
 		local standard = ns.createPicker("fonts", "font", "fonts_standardfont", 120, LolzenUIcfg.fonts["fonts_STANDARD_TEXT_FONT"])
 		standard:SetPoint("LEFT", standard_text, "RIGHT", -10, -3)
+		standard.OnClick = function()
+		end
 
 		local applyButton = ns.createApplyButton("fonts")
 		applyButton:SetScript("OnClick", function()

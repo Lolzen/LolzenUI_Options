@@ -16,15 +16,19 @@ f:SetScript("OnEvent", function(self, event, addon)
 		local title = ns.createTitle("uf_party_options", L["sub_panel_unitframes_party_title"])
 
 		local cb1 = ns.createCheckBox("uf_party_options", "uf_party_enabled", "|cff5599ff"..L["sub_panel_unitframes_party_use_LolzenUI"].."|r", LolzenUIcfg.unitframes.party["uf_party_enabled"])
-		cb1:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -30)
+		cb1:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -35)
 
 		cb1:SetScript("OnClick", function(self)
 			LolzenUIcfg.unitframes.party["uf_party_enabled"] = cb1:GetChecked()
 			LolzenUI.ToggleOUFParty()
 		end)
 
+		local cbBG = ns.createBackground("uf_party_options", 600, 58)
+		cbBG:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", -4, 28)
+		cbBG:SetFrameLevel(1)
+
 		local width_text = ns.createFontstring("uf_party_options", L["width"]..":")
-		width_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 0, -8)
+		width_text:SetPoint("TOPLEFT", cb1, "BOTTOMLEFT", 4, -8)
 
 		local width = ns.createInputbox("uf_party_options", 40, 20, LolzenUIcfg.unitframes.party["uf_party_width"])
 		width:SetPoint("LEFT", width_text, "RIGHT", 10, 0)
@@ -76,7 +80,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local header1 = ns.createHeader("uf_party_options", L["uf_healthpoints"])
-		header1:SetPoint("TOPLEFT", width_text, 0, -30)
+		header1:SetPoint("TOPLEFT", width_text, -4, -26)
+
+		local header1BG = ns.createBackground("uf_party_options", 600, 86)
+		header1BG:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", -4, -4)
+		header1BG:SetFrameLevel(1)
 
 		local cb2 = ns.createCheckBox("uf_party_options", "uf_party_use_custom_font_hp", "|cff5599ff"..L["uf_healthpoints_overwrite_global_settings"].."|r", LolzenUIcfg.unitframes.party["uf_party_use_own_hp_font_settings"])
 		cb2:SetPoint("TOPLEFT", header1, "BOTTOMLEFT", 0, -8)
@@ -87,7 +95,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local hp_pos_x_text = ns.createFontstring("uf_party_options", L["PosX"]..":")
-		hp_pos_x_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 0, -8)
+		hp_pos_x_text:SetPoint("TOPLEFT", cb2, "BOTTOMLEFT", 4, -8)
 
 		local hp_pos_x = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes.party["uf_party_hp_posx"])
 		hp_pos_x:SetPoint("LEFT", hp_pos_x_text, "RIGHT", 10, 0)
@@ -195,7 +203,11 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header2 = ns.createHeader("uf_party_options", L["uf_roleindicator_header"])
-		header2:SetPoint("TOPLEFT", hp_font_text, 0, -30)
+		header2:SetPoint("TOPLEFT", hp_font_text, -4, -28)
+
+		local header2BG = ns.createBackground("uf_party_options", 600, 61)
+		header2BG:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", -4, -4)
+		header2BG:SetFrameLevel(1)
 
 		local cb3 = ns.createCheckBox("uf_party_options", "uf_party_ri", "|cff5599ff"..L["uf_show_roleindicator"].."|r", LolzenUIcfg.unitframes.party["uf_party_showroleindicator"])
 		cb3:SetPoint("TOPLEFT", header2, "BOTTOMLEFT", 0, -8)
@@ -206,7 +218,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end)
 
 		local ri_size_text = ns.createFontstring("uf_party_options", L["size"]..":")
-		ri_size_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 0, -8)
+		ri_size_text:SetPoint("TOPLEFT", cb3, "BOTTOMLEFT", 4, -8)
 
 		local ri_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes.party["uf_party_ri_size"])
 		ri_size:SetPoint("LEFT", ri_size_text, "RIGHT", 10, 0)
@@ -294,10 +306,14 @@ f:SetScript("OnEvent", function(self, event, addon)
 		end
 
 		local header3 = ns.createHeader("uf_party_options", L["uf_readycheckindicator_header"])
-		header3:SetPoint("TOPLEFT", ri_size_text, 0, -30)
+		header3:SetPoint("TOPLEFT", ri_size_text, -4, -28)
+
+		local header3BG = ns.createBackground("uf_party_options", 600, 38)
+		header3BG:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", -4, -4)
+		header3BG:SetFrameLevel(1)
 
 		local rc_size_text = ns.createFontstring("uf_party_options", L["size"]..":")
-		rc_size_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 0, -15)
+		rc_size_text:SetPoint("TOPLEFT", header3, "BOTTOMLEFT", 4, -18)
 
 		local rc_size = ns.createInputbox("uf_party_options", 30, 20, LolzenUIcfg.unitframes.party["uf_party_rc_size"])
 		rc_size:SetPoint("LEFT", rc_size_text, "RIGHT", 10, 0)
@@ -378,7 +394,7 @@ f:SetScript("OnEvent", function(self, event, addon)
 		rc_anchor_text:SetPoint("LEFT", rc_pos_y, "RIGHT", 10, 0)
 
 		local rc_anchor = ns.createPicker("uf_party_options", "anchor", "uf_party_rc_anchor", 120, LolzenUIcfg.unitframes.party["uf_party_rc_anchor"])
-		rc_anchor:SetPoint("LEFT", rc_anchor_text, "RIGHT", -10, -3)
+		rc_anchor:SetPoint("LEFT", rc_anchor_text, "RIGHT", -10, -2)
 		rc_anchor.OnClick = function()
 			LolzenUIcfg.unitframes.party["uf_party_rc_anchor"] = ns.picker_anchor[UIDropDownMenu_GetSelectedID(rc_anchor)]
 			LolzenUI.SetUFPartyReadyCheckIndicatorPos()
